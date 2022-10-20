@@ -10,13 +10,14 @@ import UIKit
 
 
 class FilmCollection: UIView{
-    
+
     lazy var collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
-        cv.backgroundColor =  #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
+        cv.backgroundColor =  #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+       
         return cv
     }()
     
@@ -25,6 +26,9 @@ class FilmCollection: UIView{
         addSubview(collectionView)
         collectionView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, traling: trailingAnchor)
 
+    }
+    func reloadData(){
+        collectionView.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {

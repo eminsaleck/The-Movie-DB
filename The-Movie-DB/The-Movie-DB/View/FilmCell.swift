@@ -17,7 +17,7 @@ class FilmCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-      backgroundColor = UIColor(white: 1, alpha: 1)
+        self.backgroundColor = UIColor(white: 1, alpha: 1)
         setupElements()
         setupConstraints()
     }
