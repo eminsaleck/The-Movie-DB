@@ -20,12 +20,18 @@ class ViewController: UIViewController {
     var items: [Displayable] = [] //from Realm to Items -> reloadData()
     var selectedItem: Displayable?
     
+    override func loadView() {
+        view = FilmCollection()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchFilms()
+        
 
     }
 }
+
 
 
 
