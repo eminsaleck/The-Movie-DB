@@ -1,13 +1,8 @@
-//CollectionView
-//ReusableCell
+//Pagination
 //Realm
-//FetchData into Cells
+//Coordinator + selectedItem ->   var data: Displayable? (DetailVC)
 
 //DiffableDataSource + Realm
-
-//Pagination
-
-//selectedItem ->   var data: Displayable? (DetailVC)
 
 
 import UIKit
