@@ -1,5 +1,5 @@
 //Pagination
-//Realm
+//Realm + DataManager
 //Coordinator + selectedItem ->   var data: Displayable? (DetailVC)
 
 //DiffableDataSource + Realm

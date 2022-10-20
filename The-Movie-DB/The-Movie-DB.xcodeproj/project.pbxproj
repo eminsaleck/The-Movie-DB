@@ -27,6 +27,7 @@
 		ACD70991290144E600A1116C /* NetworkExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD70990290144E600A1116C /* NetworkExtension.swift */; };
 		ACD709962901545600A1116C /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD709952901545600A1116C /* CollectionViewLayout.swift */; };
 		ACD7099929015C2D00A1116C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = ACD7099829015C2D00A1116C /* SDWebImage */; };
+		ACD7099B29016A3C00A1116C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7099A29016A3B00A1116C /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		ACD7098E2901390400A1116C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ACD70990290144E600A1116C /* NetworkExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExtension.swift; sourceTree = "<group>"; };
 		ACD709952901545600A1116C /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		ACD7099A29016A3B00A1116C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		ACD70947290117BB00A1116C /* The-Movie-DB */ = {
 			isa = PBXGroup;
 			children = (
+				ACD7099A29016A3B00A1116C /* DataManager.swift */,
 				ACD7098C290132ED00A1116C /* CollectionDataSource.swift */,
 				ACD7098929012F3100A1116C /* Models */,
 				ACD7098829012F1F00A1116C /* View */,
@@ -332,6 +335,7 @@
 				ACD7097929011A2500A1116C /* Film.swift in Sources */,
 				ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */,
 				ACD7097D29011A3600A1116C /* Displayable.swift in Sources */,
+				ACD7099B29016A3C00A1116C /* DataManager.swift in Sources */,
 				ACD7094B290117BB00A1116C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
