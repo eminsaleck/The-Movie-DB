@@ -25,6 +25,8 @@
 		ACD7098D290132ED00A1116C /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7098C290132ED00A1116C /* CollectionDataSource.swift */; };
 		ACD7098F2901390400A1116C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7098E2901390400A1116C /* DetailViewController.swift */; };
 		ACD70991290144E600A1116C /* NetworkExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD70990290144E600A1116C /* NetworkExtension.swift */; };
+		ACD709962901545600A1116C /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD709952901545600A1116C /* CollectionViewLayout.swift */; };
+		ACD7099929015C2D00A1116C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = ACD7099829015C2D00A1116C /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,7 @@
 		ACD7098C290132ED00A1116C /* CollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
 		ACD7098E2901390400A1116C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ACD70990290144E600A1116C /* NetworkExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExtension.swift; sourceTree = "<group>"; };
+		ACD709952901545600A1116C /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACD7099929015C2D00A1116C /* SDWebImage in Frameworks */,
 				ACD7098029011A8C00A1116C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD7094C290117BB00A1116C /* ViewController.swift */,
+				ACD709952901545600A1116C /* CollectionViewLayout.swift */,
 				ACD7098E2901390400A1116C /* DetailViewController.swift */,
 				ACD70990290144E600A1116C /* NetworkExtension.swift */,
 			);
@@ -195,6 +200,7 @@
 			name = "The-Movie-DB";
 			packageProductDependencies = (
 				ACD7097F29011A8C00A1116C /* Alamofire */,
+				ACD7099829015C2D00A1116C /* SDWebImage */,
 			);
 			productName = "The-Movie-DB";
 			productReference = ACD70945290117BB00A1116C /* The-Movie-DB.app */;
@@ -270,6 +276,7 @@
 			mainGroup = ACD7093C290117BB00A1116C;
 			packageReferences = (
 				ACD7097E29011A8C00A1116C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				ACD7099729015C2D00A1116C /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = ACD70946290117BB00A1116C /* Products */;
 			projectDirPath = "";
@@ -320,6 +327,7 @@
 				ACD7098429011F0700A1116C /* Extension Anchor.swift in Sources */,
 				ACD7097B29011A2C00A1116C /* Films.swift in Sources */,
 				ACD70991290144E600A1116C /* NetworkExtension.swift in Sources */,
+				ACD709962901545600A1116C /* CollectionViewLayout.swift in Sources */,
 				ACD7098D290132ED00A1116C /* CollectionDataSource.swift in Sources */,
 				ACD7097929011A2500A1116C /* Film.swift in Sources */,
 				ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */,
@@ -676,6 +684,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		ACD7099729015C2D00A1116C /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -683,6 +699,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ACD7097E29011A8C00A1116C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		ACD7099829015C2D00A1116C /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACD7099729015C2D00A1116C /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
