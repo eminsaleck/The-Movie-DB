@@ -81,7 +81,6 @@ class FilmCell: UICollectionViewCell {
         review.text = film.review
         titleLabel.text = film.titleName
         rating.text = String(film.rating)
-        print(film.poster)
     }
     
     

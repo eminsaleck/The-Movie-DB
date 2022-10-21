@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Films: Codable {
+struct Films: Codable, Hashable {
     let page: Int
     let results: [Film]
     let totalPages, totalResults: Int

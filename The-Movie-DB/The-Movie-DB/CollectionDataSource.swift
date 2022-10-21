@@ -6,26 +6,3 @@
 //
 
 import UIKit
-
-class CollectionDataSource: NSObject, UICollectionViewDataSource{
-
-    var films: [Film] = [] 
-    var items: [Displayable] = [] //from Realm to Items -> reloadData()
-    var selectedItem: Displayable?
-  
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCell.reuseId, for: indexPath) as! FilmCell
-        cell.configure(with: items[indexPath.item])
-        
-        //cell.backgroundColor = .black
-        return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return films.count
-    }
-
-    
-}
-
