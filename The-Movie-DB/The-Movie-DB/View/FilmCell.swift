@@ -77,7 +77,6 @@ class FilmCell: UICollectionViewCell {
     
     func configure(with film: Displayable) {
         imageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(film.poster)"))
-       // imageView.image = UIImage(named: film.poster)
         review.text = film.review
         titleLabel.text = film.titleName
         rating.text = String(film.rating)

@@ -13,19 +13,21 @@ class APICaller {
     
     static let shared = APICaller()
 
-    private var isPageRefreshing: Bool = false
+     var isPageRefreshing: Bool = false
     private var page = 1
 
     
     func fetchFilms(pagination: Bool = false, completion: @escaping (Result<[Film], Error>) -> Void) {
-   
-        if pagination {
-            isPageRefreshing = true
+
+            print(page)
+        
+        if pagination{
             page += 1
+            isPageRefreshing = true
         }
         
         let url = "https://api.themoviedb.org/3/movie/popular?api_key=a5ac3411803536cfb4b1cd90557dc8a7&language=en-US&page=\(page)"
-         
+       
         AF.request(url, method: .get)
             .validate()
             .responseDecodable(of: Films.self) { (response) in
@@ -36,6 +38,7 @@ class APICaller {
                 if pagination {
                     self.isPageRefreshing = false
                 }
+              
             }
         }
     
