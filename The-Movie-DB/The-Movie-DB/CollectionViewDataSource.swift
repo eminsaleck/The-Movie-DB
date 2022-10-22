@@ -1,9 +1,3 @@
-//
-//  CollectionViewDataSource.swift
-//  The-Movie-DB
-//
-//  Created by LEMIN DAHOVICH on 21.10.2022.
-//
 
 //
 //  CollectionDataSource.swift
@@ -15,23 +9,21 @@ import UIKit
 
 class CollectionDataSource: NSObject, UICollectionViewDataSource{
 
-    var films: [Film] = []  // Realm
+    
     var dataArray: [Film] = []
-//    var items: [Displayable] = [] //dataArr
-//    var selectedItem: Displayable?
+    var selectedItem: Film?
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCell.reuseId, for: indexPath) as! FilmCell
-        cell.configure(with: films[indexPath.item])
+        cell.configure(with: dataArray[indexPath.item]) 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return films.count
+        return dataArray.count
     }
 
-    func fromRealmToArray(){
-        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     //   selectedItem = dataArray[indexPath.item]
     }
 }

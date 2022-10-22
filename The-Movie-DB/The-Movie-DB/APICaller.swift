@@ -35,6 +35,7 @@ class APICaller {
                 guard let originalData = response.value else { return }
                 
                 completion(.success(originalData.results))
+               
                 if pagination {
                     self.isPageRefreshing = false
                 }

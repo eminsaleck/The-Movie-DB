@@ -6,12 +6,10 @@
 //var data: Displayable? (DetailVC)
 
 //DiffableDataSource + Realm    2 hourss
-
-import Alamofire
 import UIKit
-
 class ViewController: UIViewController, UICollectionViewDelegate {
     
+    //    var films = DataManager.shared.films // Realm instance
     private var dataSource =  CollectionDataSource()
     
     lazy var collectionView : UICollectionView = {
@@ -26,7 +24,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     override func loadView() {
         super.loadView()
         view = collectionView
-
+        
     }
     
     
@@ -40,14 +38,16 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
     
 }
-// MARK: Network 
+// MARK:  - Network
 extension ViewController{
+    
     private func fetchData(){
         APICaller.shared.fetchFilms{ [weak self] result in
             switch result{
             case .success(let film):
-
-               self?.dataSource.films.append(contentsOf: film)
+                for i in film{
+                    DataManager.shared.save(i)
+                }
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
@@ -58,30 +58,37 @@ extension ViewController{
     }
 }
 
-// MARK: Pagination
+// MARK: - Pagination
 extension ViewController: UIScrollViewDelegate{
     func scrollViewDidScroll( _ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (collectionView.contentSize.height-100-scrollView.frame.size.height){
-            APICaller.shared.fetchFilms(pagination: true) { [weak self] result in
+            
+            APICaller.shared.fetchFilms(pagination: true) {  result in
                 switch result{
                 case .success(let film):
-                    self?.dataSource.films.append(contentsOf: film)
-
-                    DispatchQueue.main.async {
-                        self?.collectionView.reloadData()
+                    
+                    for i in film{
+                        DataManager.shared.save(i)
                     }
                     
                 case .failure(_):
                     break
                 }
             }
+            self.dataSource.dataArray = DataManager.shared.getFilms()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            //       DataManager.shared.getFilms()
+            
         }
     }
     
+    
 }
 
-// MARK: CompositionalLayout + SpinnerFooter
+// MARK: - CompositionalLayout + SpinnerFooter
 extension ViewController{
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
