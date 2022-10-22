@@ -1,6 +1,8 @@
 
-//Realm + DataManager           1.5   hours
-//Coordinator + selectedItem -> 1 hours
+//Realm  |->| [Film]
+//dataArr|->| [Displayable]
+
+//Coordinator + selectedItem -> 2 hours
 //var data: Displayable? (DetailVC)
 
 //DiffableDataSource + Realm    2 hourss
@@ -38,18 +40,18 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
     
 }
-
+// MARK: Network 
 extension ViewController{
     private func fetchData(){
         APICaller.shared.fetchFilms{ [weak self] result in
             switch result{
             case .success(let film):
-                self?.dataSource.films.append(contentsOf: film)
-                
+
+               self?.dataSource.films.append(contentsOf: film)
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
-            case .failure(let film):
+            case .failure:
                 break
             }
         }

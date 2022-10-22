@@ -19,7 +19,7 @@ class APICaller {
     
     func fetchFilms(pagination: Bool = false, completion: @escaping (Result<[Film], Error>) -> Void) {
 
-            print(page)
+      
         
         if pagination{
             page += 1

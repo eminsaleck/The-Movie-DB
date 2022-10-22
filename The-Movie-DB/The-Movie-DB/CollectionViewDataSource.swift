@@ -15,20 +15,23 @@ import UIKit
 
 class CollectionDataSource: NSObject, UICollectionViewDataSource{
 
-    var films: [Film] = []
-    var items: [Displayable] = [] //from Realm to Items -> reloadData()
-    var selectedItem: Displayable?
-  
+    var films: [Film] = []  // Realm
+    var dataArray: [Film] = []
+//    var items: [Displayable] = [] //dataArr
+//    var selectedItem: Displayable?
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCell.reuseId, for: indexPath) as! FilmCell
         cell.configure(with: films[indexPath.item])
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return films.count
     }
 
-    
+    func fromRealmToArray(){
+        
+    }
 }
