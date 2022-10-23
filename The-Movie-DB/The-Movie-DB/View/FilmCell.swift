@@ -13,7 +13,7 @@ class FilmCell: UICollectionViewCell {
     
     static var reuseId: String = "FilmCell"
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layoutIfNeeded()
         imageView.layer.masksToBounds = true
@@ -24,7 +24,7 @@ class FilmCell: UICollectionViewCell {
         return imageView
     }()
     
-    let review: UILabel = {
+    private let review: UILabel = {
         let review = UILabel()
         review.textAlignment = .center
         review.numberOfLines = 10
@@ -33,7 +33,7 @@ class FilmCell: UICollectionViewCell {
         return review
     }()
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
@@ -42,7 +42,7 @@ class FilmCell: UICollectionViewCell {
         return label
     }()
     
-    let rating: UILabel = {
+    private let rating: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 1
@@ -86,7 +86,7 @@ class FilmCell: UICollectionViewCell {
 }
 
 extension FilmCell {
-    func setupConstraints() {
+    private func setupConstraints() {
 
         NSLayoutConstraint.activate([review.leadingAnchor.constraint(equalTo: centerXAnchor, constant: -20),
                                      review.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),

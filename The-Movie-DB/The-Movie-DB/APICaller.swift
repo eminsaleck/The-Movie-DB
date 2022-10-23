@@ -13,7 +13,7 @@ class APICaller {
     
     static let shared = APICaller()
 
-     var isPageRefreshing: Bool = false
+    private var isPageRefreshing: Bool = false
     private var page = 1
 
     

@@ -30,6 +30,7 @@
 		ACD7098F2901390400A1116C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7098E2901390400A1116C /* DetailViewController.swift */; };
 		ACD7099929015C2D00A1116C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = ACD7099829015C2D00A1116C /* SDWebImage */; };
 		ACD7099D29026F3400A1116C /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7099C29026F3400A1116C /* APICaller.swift */; };
+		ACF312CF29052118008D7D09 /* CompositionalLayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF312CE29052118008D7D09 /* CompositionalLayoutExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		ACD7098529011F8400A1116C /* FilmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
 		ACD7098E2901390400A1116C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ACD7099C29026F3400A1116C /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		ACF312CE29052118008D7D09 /* CompositionalLayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayoutExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				ACD7094C290117BB00A1116C /* ViewController.swift */,
 				ACD7098E2901390400A1116C /* DetailViewController.swift */,
+				ACF312CE29052118008D7D09 /* CompositionalLayoutExtension.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				ACD7097929011A2500A1116C /* Film.swift in Sources */,
 				AC36277A2902ACB200DFFE22 /* CollectionViewDataSource.swift in Sources */,
 				ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */,
+				ACF312CF29052118008D7D09 /* CompositionalLayoutExtension.swift in Sources */,
 				ACD7097D29011A3600A1116C /* Displayable.swift in Sources */,
 				ACD7094B290117BB00A1116C /* SceneDelegate.swift in Sources */,
 			);

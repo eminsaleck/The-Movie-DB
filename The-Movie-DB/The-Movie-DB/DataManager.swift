@@ -17,7 +17,7 @@ class DataManager{
 
 
     func save(_ film: Film){
-        var filmRealm = FilmRealm()
+        let filmRealm = FilmRealm()
         
         filmRealm.id = film.id
         filmRealm.adult = film.adult
