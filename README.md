@@ -1,1 +1,1 @@
-# The Movie DB
+# The MovieDB
