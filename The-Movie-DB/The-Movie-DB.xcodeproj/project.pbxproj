@@ -129,13 +129,13 @@
 		ACD70947290117BB00A1116C /* The-Movie-DB */ = {
 			isa = PBXGroup;
 			children = (
+				ACD7099C29026F3400A1116C /* NetworkManager.swift */,
 				AC9950CE2903D6C700619B1E /* DataManager.swift */,
 				AC3627792902ACB200DFFE22 /* CollectionViewDataSource.swift */,
 				ACD7098929012F3100A1116C /* Models */,
 				ACD7098829012F1F00A1116C /* View */,
 				ACD7098729012F1600A1116C /* Controllers */,
 				ACD70948290117BB00A1116C /* AppDelegate.swift */,
-				ACD7099C29026F3400A1116C /* NetworkManager.swift */,
 				ACD7094A290117BB00A1116C /* SceneDelegate.swift */,
 				ACD7098329011F0700A1116C /* Extension Anchor.swift */,
 				ACD7094E290117BB00A1116C /* Main.storyboard */,

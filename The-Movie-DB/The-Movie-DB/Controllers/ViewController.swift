@@ -8,8 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate {
-
+    
     private var dataSource =  CollectionDataSource()
+    
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -26,21 +27,21 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
         collectionView.dataSource = dataSource
         collectionView.delegate = self
+        fetchData()
     }
 }
 // MARK:  - Network
 extension ViewController{
-    
     private func fetchData(){
         NetworkManager.shared.fetchFilms{ [weak self] result in
             switch result{
-            case .success(let film):
-                for i in film{
-                    DataManager.shared.save(i)
+            case .success(let filmArray):
+                for film in filmArray{
+                    DataManager.shared.save(film)
                 }
+                self?.dataSource.dataArray = DataManager.shared.getFilms()
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                 }
@@ -56,19 +57,22 @@ extension ViewController: UIScrollViewDelegate{
     func scrollViewDidScroll( _ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (collectionView.contentSize.height-100-scrollView.frame.size.height){
+            guard NetworkManager.shared.isPageRefreshing == false else {return}
             NetworkManager.shared.fetchFilms(pagination: true) {  result in
                 switch result{
-                case .success(let film):
-                    for i in film{
-                        DataManager.shared.save(i)
-                        //NetworkManager.shared.page = i.id
+                case .success(let filmArray):
+                    for film in filmArray{
+                        DataManager.shared.save(film)
+                    }
+                    self.dataSource.dataArray = DataManager.shared.getFilms()
+                    DispatchQueue.main.async{
+                        self.collectionView.reloadData()
                     }
                 case .failure(_):
                     break
                 }
             }
-            self.dataSource.dataArray = DataManager.shared.getFilms()
-            DispatchQueue.main.async {
+            DispatchQueue.main.async{
                 self.collectionView.reloadData()
             }
         }

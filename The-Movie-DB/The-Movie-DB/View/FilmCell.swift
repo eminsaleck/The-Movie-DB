@@ -75,11 +75,11 @@ class FilmCell: UICollectionViewCell {
         
     }
     
-    func configure(with film: Displayable) {
-        imageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(film.poster)"))
-        review.text = film.review
-        titleLabel.text = film.titleName
-        rating.text = String(film.rating)
+    func configure(with film: Film) {
+        imageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(film.posterPath)"))
+        review.text = film.overview
+        titleLabel.text = film.title
+        rating.text = String(film.voteCount)
     }
     
     

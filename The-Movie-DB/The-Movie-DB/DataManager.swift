@@ -14,8 +14,8 @@ class DataManager{
     static var shared = DataManager()
     private var filmsToPresent = [Film]()
     private var iterationCounter = 0
-
-
+    private var filmsInBase = 0
+    
     func save(_ film: Film){
         let filmRealm = FilmRealm()
         
@@ -35,15 +35,16 @@ class DataManager{
     func getFilms() -> [Film]{
         var count = 0
         let allFilms = appendMovieFromCache()
-       
+        filmsInBase = allFilms.count
+        print("FILMS IN DATABASE: \(filmsInBase)")
         for _ in allFilms {
             filmsToPresent.append(allFilms[iterationCounter])
-            iterationCounter += 1            
-            count += 1
-            if count == 20{
-                break
+                iterationCounter += 1
+                count += 1
+                if count == 20{
+                    break
+                }
             }
-        }
         return filmsToPresent
     }
     
@@ -56,7 +57,7 @@ class DataManager{
                                    backdropPath: film.backdropPath,
                                    genreIDS: [],
                                    id: film.id,
-                                   originalLanguage: .en,
+                                   originalLanguage: "en",
                                    originalTitle: film.originalTitle,
                                    overview: film.overview,
                                    popularity: film.popularity,
@@ -68,6 +69,8 @@ class DataManager{
                                    voteCount: film.voteCount)
             allFilms.append(filmElement)
         }
+      //  print(allFilms.count)
+
         return allFilms
     }
     

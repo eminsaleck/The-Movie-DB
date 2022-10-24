@@ -8,18 +8,17 @@
 import Foundation
 
 struct Film: Codable, Hashable {
-    var adult: Bool
-    var backdropPath: String
-    var genreIDS: [Int]
-    var id: Int
-    var originalLanguage: OriginalLanguage
-    var originalTitle, overview: String
-    var popularity: Double
-    var posterPath, releaseDate, title: String
-    var video: Bool
-    var voteAverage: Double
-    var voteCount: Int
-
+    let adult: Bool
+    let backdropPath: String
+    let genreIDS: [Int]
+    let id: Int
+    let originalLanguage, originalTitle, overview: String
+    let popularity: Double
+    let posterPath, releaseDate, title: String
+    let video: Bool
+    let voteAverage: Double
+    let voteCount: Int
+    
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
@@ -34,36 +33,4 @@ struct Film: Codable, Hashable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-    
-    subscript(index: Int) -> Int {
-        get {
-          return index
-        }
-    }
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case es = "es"
-    case fr = "fr"
-    case ja = "ja"
-}
-
-extension Film: Displayable {
-    var poster: String {
-        posterPath
-    }
-    
-    var review: String {
-        overview
-    }
-    
-    var titleName: String {
-        title
-    }
-    
-    var rating: Double {
-        voteAverage
-    }
-    
 }
