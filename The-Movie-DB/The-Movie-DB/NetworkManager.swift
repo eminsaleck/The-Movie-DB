@@ -9,9 +9,9 @@ import Foundation
 import Alamofire
 
 
-class APICaller {
+class NetworkManager {
     
-    static let shared = APICaller()
+    static let shared = NetworkManager()
 
     private var isPageRefreshing: Bool = false
     private var page = 1

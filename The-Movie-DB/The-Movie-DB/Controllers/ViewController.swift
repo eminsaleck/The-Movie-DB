@@ -42,7 +42,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 extension ViewController{
     
     private func fetchData(){
-        APICaller.shared.fetchFilms{ [weak self] result in
+        NetworkManager.shared.fetchFilms{ [weak self] result in
             switch result{
             case .success(let film):
                 for i in film{
@@ -64,7 +64,7 @@ extension ViewController: UIScrollViewDelegate{
         let position = scrollView.contentOffset.y
         if position > (collectionView.contentSize.height-100-scrollView.frame.size.height){
             
-            APICaller.shared.fetchFilms(pagination: true) {  result in
+            NetworkManager.shared.fetchFilms(pagination: true) {  result in
                 switch result{
                 case .success(let film):
                     
