@@ -65,24 +65,19 @@ class FilmCell: UICollectionViewCell {
     
     func setupElements() {
         self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
         self.clipsToBounds = true
-        
         contentView.addSubview(imageView)
         contentView.addSubview(review)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(rating)
-        
+        contentView.addSubview(rating)        
     }
     
     func configure(with film: Film) {
-        imageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(film.posterPath)"))
+        imageView.loadImage(imagePath: "https://image.tmdb.org/t/p/w500\(film.posterPath)")
         review.text = film.overview
         titleLabel.text = film.title
         rating.text = String(film.voteCount)
     }
-    
-    
 }
 
 extension FilmCell {
@@ -110,3 +105,4 @@ extension FilmCell {
         
     }
 }
+
