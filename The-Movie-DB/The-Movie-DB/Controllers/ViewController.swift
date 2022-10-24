@@ -1,17 +1,15 @@
+//
+//
+//  The-Movie-DB
+//
+//  Created by LEMIN DAHOVICH on 20.10.2022.
+//
 
-//Realm  |->| [Film]
-//dataArr|->| [Displayable]
-
-//Coordinator + selectedItem -> 2 hours
-//var data: Displayable? (DetailVC)
-
-//DiffableDataSource + Realm    2 hourss
 import UIKit
+
 class ViewController: UIViewController, UICollectionViewDelegate {
-    
-    //    var films = DataManager.shared.films // Realm instance
+
     private var dataSource =  CollectionDataSource()
-    
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -24,19 +22,14 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     override func loadView() {
         super.loadView()
         view = collectionView
-        
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-        
     }
-    
 }
 // MARK:  - Network
 extension ViewController{
@@ -63,15 +56,13 @@ extension ViewController: UIScrollViewDelegate{
     func scrollViewDidScroll( _ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (collectionView.contentSize.height-100-scrollView.frame.size.height){
-            
             NetworkManager.shared.fetchFilms(pagination: true) {  result in
                 switch result{
                 case .success(let film):
-                    
                     for i in film{
                         DataManager.shared.save(i)
+                        //NetworkManager.shared.page = i.id
                     }
-                    
                 case .failure(_):
                     break
                 }
@@ -80,11 +71,7 @@ extension ViewController: UIScrollViewDelegate{
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
-            //       DataManager.shared.getFilms()
-            
         }
     }
-    
-    
 }
 
