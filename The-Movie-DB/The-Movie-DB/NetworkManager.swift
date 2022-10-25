@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 
-class NetworkManager {
+final class NetworkManager {
     
     static let shared = NetworkManager()
     var isPageRefreshing: Bool = false
@@ -38,7 +38,7 @@ class NetworkManager {
             }
         }
     }
-    func incrementPage(_ pagination: Bool) -> Int{
+    private func incrementPage(_ pagination: Bool) -> Int{
         if pagination == true{
             page += 1
             return page

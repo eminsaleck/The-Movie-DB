@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class DataManager{
+final class DataManager{
     
     private  let realm = try! Realm()
     static var shared = DataManager()
