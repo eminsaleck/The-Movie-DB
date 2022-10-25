@@ -4,8 +4,6 @@
 //
 //  Created by LEMIN DAHOVICH on 20.10.2022.
 //
-
-import Foundation
 import SDWebImage
 import UIKit
 

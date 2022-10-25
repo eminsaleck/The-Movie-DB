@@ -69,8 +69,6 @@ class DataManager{
                                    voteCount: film.voteCount)
             allFilms.append(filmElement)
         }
-      //  print(allFilms.count)
-
         return allFilms
     }
     

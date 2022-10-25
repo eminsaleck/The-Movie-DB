@@ -8,8 +8,6 @@
 import UIKit
 
 class CollectionDataSource: NSObject, UICollectionViewDataSource{
-
-    
     var dataArray: [Film] = []
     var selectedItem: Film?
     
