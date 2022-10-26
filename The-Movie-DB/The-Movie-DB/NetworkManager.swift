@@ -14,8 +14,9 @@ final class NetworkManager {
     static let shared = NetworkManager()
     var isPageRefreshing: Bool = false
     var page = 1
-
-    func fetchFilms(pagination: Bool = false, completion: @escaping (Result<[Film], Error>) -> Void) {
+    typealias Movie = Result<[Film], Error>
+    
+    func fetchFilms(pagination: Bool = false, completion: @escaping (Movie) -> Void) {
         if pagination{
             incrementPage(pagination)
             print("PAGE WE ARE ON: \(page)")
