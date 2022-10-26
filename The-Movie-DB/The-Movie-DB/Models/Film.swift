@@ -34,3 +34,23 @@ struct Film: Codable, Hashable {
         case voteCount = "vote_count"
     }
 }
+
+extension Film: Displayable{
+    var poster: String {
+        posterPath
+    }
+    
+    var review: String {
+        overview
+    }
+    
+    var titleName: String {
+        title
+    }
+    
+    var rating: Double {
+        voteAverage
+    }
+    
+    
+}

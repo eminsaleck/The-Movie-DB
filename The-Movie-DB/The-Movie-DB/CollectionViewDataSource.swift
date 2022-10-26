@@ -8,7 +8,7 @@
 import UIKit
 
 final class CollectionDataSource: NSObject, UICollectionViewDataSource{
-    var dataArray: [Film] = []
+    var dataArray: [Displayable] = []
     var selectedItem: Film?
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
