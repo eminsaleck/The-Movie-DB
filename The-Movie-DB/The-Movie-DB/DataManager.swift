@@ -16,7 +16,6 @@ protocol DataManagerProtocol{
 final class DataManager{
     
     private  let realm = try! Realm()
-    static var shared = DataManager()
     private var filmsToPresent = [Film]()
     private var iterationCounter = 0
     private var filmsInBase = 0

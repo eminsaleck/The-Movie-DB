@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate {
     
     private var dataSource =  CollectionDataSource()
+    private var dataManager = DataManager()
     
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
@@ -36,14 +37,15 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 extension ViewController{
     private func fetchData(){
         NetworkManager.shared.fetchFilms{ [weak self] result in
+            guard let self = self else { return }
             switch result{
             case .success(let filmArray):
                 for film in filmArray{
-                    DataManager.shared.save(film)
+                    self.dataManager.save(film)
                 }
-                self?.dataSource.dataArray = DataManager.shared.getFilms()
+                self.dataSource.dataArray = self.dataManager.getFilms()
                 DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
+                    self.collectionView.reloadData()
                 }
             case .failure:
                 break
@@ -62,9 +64,9 @@ extension ViewController: UIScrollViewDelegate{
                 switch result{
                 case .success(let filmArray):
                     for film in filmArray{
-                        DataManager.shared.save(film)
+                        self.dataManager.save(film)
                     }
-                    self.dataSource.dataArray = DataManager.shared.getFilms()
+                    self.dataSource.dataArray = self.dataManager.getFilms()
                     DispatchQueue.main.async{
                         self.collectionView.reloadData()
                     }
