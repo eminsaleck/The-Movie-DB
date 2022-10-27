@@ -8,11 +8,6 @@
 import Foundation
 import RealmSwift
 
-protocol DataManagerProtocol{
-    func save(_ film: Film)
-    func getFilms() -> [Film]
-}
-
 final class DataManager{
     
     private  let realm = try! Realm()
@@ -77,3 +72,10 @@ extension DataManager: DataManagerProtocol{
         return filmsToPresent
     }
 }
+
+
+protocol DataManagerProtocol{
+    func save(_ film: Film)
+    func getFilms() -> [Film]
+}
+
