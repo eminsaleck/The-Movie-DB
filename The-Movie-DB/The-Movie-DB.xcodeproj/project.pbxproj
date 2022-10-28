@@ -10,11 +10,14 @@
 		AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6A290C06F4005AE287 /* AppCoordinator.swift */; };
 		AC268D6D290C0714005AE287 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6C290C0714005AE287 /* Coordinator.swift */; };
 		AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6E290C0C46005AE287 /* MainCoordinator.swift */; };
-		AC268D73290C115F005AE287 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D72290C115F005AE287 /* MainViewModel.swift */; };
 		AC268D7B290C1530005AE287 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D7A290C1530005AE287 /* RxBlocking */; };
 		AC268D7D290C1530005AE287 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D7C290C1530005AE287 /* RxCocoa */; };
 		AC268D7F290C1530005AE287 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D7E290C1530005AE287 /* RxRelay */; };
 		AC268D81290C1530005AE287 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D80290C1530005AE287 /* RxSwift */; };
+		AC7D685E290C246900819AB9 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D685D290C246900819AB9 /* MovieListViewModel.swift */; };
+		AC7D6860290C25D300819AB9 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D685F290C25D300819AB9 /* MovieViewModel.swift */; };
+		AC7D6862290C297700819AB9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D6861290C297700819AB9 /* Assembler.swift */; };
+		AC7D6864290C299C00819AB9 /* MainAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D6863290C299C00819AB9 /* MainAssembler.swift */; };
 		AC9950CF2903D6C700619B1E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9950CE2903D6C700619B1E /* DataManager.swift */; };
 		AC9950D22903DC5C00619B1E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AC9950D12903DC5C00619B1E /* Realm */; };
 		AC9950D42903DC5C00619B1E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC9950D32903DC5C00619B1E /* RealmSwift */; };
@@ -75,7 +78,10 @@
 		AC268D6A290C06F4005AE287 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AC268D6C290C0714005AE287 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AC268D6E290C0C46005AE287 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		AC268D72290C115F005AE287 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		AC7D685D290C246900819AB9 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
+		AC7D685F290C25D300819AB9 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		AC7D6861290C297700819AB9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		AC7D6863290C299C00819AB9 /* MainAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembler.swift; sourceTree = "<group>"; };
 		AC9950CE2903D6C700619B1E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		AC9950D52903DC8800619B1E /* FilmRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRealm.swift; sourceTree = "<group>"; };
 		AC9DC46E290BD6220019FCD1 /* Screenshot 2022-10-28 at 12.18.23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2022-10-28 at 12.18.23.png"; sourceTree = "<group>"; };
@@ -156,11 +162,13 @@
 		AC268D71290C113C005AE287 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				AC7D685F290C25D300819AB9 /* MovieViewModel.swift */,
 				AC268D74290C1233005AE287 /* MainViews */,
 				ACF312CE29052118008D7D09 /* CompositionalLayout.swift */,
 				ACD7094C290117BB00A1116C /* MainController.swift */,
 				AC268D6E290C0C46005AE287 /* MainCoordinator.swift */,
-				AC268D72290C115F005AE287 /* MainViewModel.swift */,
+				AC7D685D290C246900819AB9 /* MovieListViewModel.swift */,
+				AC7D6863290C299C00819AB9 /* MainAssembler.swift */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -258,6 +266,7 @@
 				ACD70951290117BD00A1116C /* Assets.xcassets */,
 				ACD70953290117BD00A1116C /* LaunchScreen.storyboard */,
 				ACD70956290117BD00A1116C /* Info.plist */,
+				AC7D6861290C297700819AB9 /* Assembler.swift */,
 			);
 			path = "The-Movie-DB";
 			sourceTree = "<group>";
@@ -447,6 +456,7 @@
 			files = (
 				ACD7098F2901390400A1116C /* DetailViewController.swift in Sources */,
 				AC9950CF2903D6C700619B1E /* DataManager.swift in Sources */,
+				AC7D685E290C246900819AB9 /* MovieListViewModel.swift in Sources */,
 				ACC08A0929073AC400A87127 /* UIImageView + LoadImage.swift in Sources */,
 				ACD7098629011F8400A1116C /* FilmCell.swift in Sources */,
 				AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */,
@@ -455,10 +465,12 @@
 				AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */,
 				AC9950D62903DC8800619B1E /* FilmRealm.swift in Sources */,
 				ACD7098429011F0700A1116C /* UIView + Anchor.swift in Sources */,
+				AC7D6860290C25D300819AB9 /* MovieViewModel.swift in Sources */,
 				ACD7097B29011A2C00A1116C /* Films.swift in Sources */,
+				AC7D6864290C299C00819AB9 /* MainAssembler.swift in Sources */,
 				AC268D6D290C0714005AE287 /* Coordinator.swift in Sources */,
 				ACD7097929011A2500A1116C /* Film.swift in Sources */,
-				AC268D73290C115F005AE287 /* MainViewModel.swift in Sources */,
+				AC7D6862290C297700819AB9 /* Assembler.swift in Sources */,
 				ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */,
 				ACF312CF29052118008D7D09 /* CompositionalLayout.swift in Sources */,
 				ACD7097D29011A3600A1116C /* Displayable.swift in Sources */,

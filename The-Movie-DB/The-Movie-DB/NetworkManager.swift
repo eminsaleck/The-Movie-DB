@@ -9,8 +9,12 @@ import Foundation
 import Alamofire
 import RxSwift
 
+protocol NetworkManagerProtocol{
+    func fetchMovies(pagination: Bool) -> Observable<[Film]>
 
-final class NetworkManager {
+}
+
+final class NetworkManager: NetworkManagerProtocol {
     
     static let shared = NetworkManager()
     var isPageRefreshing: Bool = false

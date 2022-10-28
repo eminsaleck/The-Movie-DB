@@ -7,13 +7,15 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class MainController: UIViewController, UICollectionViewDelegate {
     
     let bag = DisposeBag()
     var coordinator: MainFlow?
-    private var dataSource =  CollectionDataSource()
-    private var dataManager = DataManager()
+    var viewModel: MovieListViewModel!
+    //    private var dataSource =  CollectionDataSource()
+    //    private var dataManager = DataManager()
     
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
@@ -31,80 +33,79 @@ final class MainController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
-        fetchData()
-//        
-//        let service = NetworkManager()
-//        service.fetchMovies().subscribe { film in
-//            print(film)
-//        }.disposed(by: bag)
-
+        fetchIntoCollectionView()
     }
+    func fetchIntoCollectionView(){
+        viewModel.fetchMoviesViewModels()
+            .bind(to: collectionView.rx.items(cellIdentifier: FilmCell.reuseId, cellType: FilmCell.self)) { index, viewModel, cell in
+                cell.configure(with: viewModel)
+            }.disposed(by: bag)
+    }
+    
 }
 // MARK:  - Network
-extension MainController{
-    private func fetchData(){
-        NetworkManager.shared.fetchFilms{ [weak self] result in
-            guard let self = self else { return }
-            switch result{
-            case .success(let filmArray):
-                for film in filmArray{
-                    self.dataManager.save(film)
-                }
-                self.dataSource.dataArray = self.dataManager.getFilms()
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            case .failure:
-                break
-            }
-        }
-    }
-}
+//extension MainController{
+//    private func fetchData(){
+//        NetworkManager.shared.fetchFilms{ [weak self] result in
+//            guard let self = self else { return }
+//            switch result{
+//            case .success(let filmArray):
+//                for film in filmArray{
+//                    self.dataManager.save(film)
+//                }
+//                self.dataSource.dataArray = self.dataManager.getFilms()
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+//            case .failure:
+//                break
+//            }
+//        }
+//    }
+//}
 
 // MARK: - Pagination
-extension MainController: UIScrollViewDelegate{
-    func scrollViewDidScroll( _ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > (collectionView.contentSize.height-100-scrollView.frame.size.height){
-            guard NetworkManager.shared.isPageRefreshing == false else {return}
-            NetworkManager.shared.fetchFilms(pagination: true) {  result in
-                switch result{
-                case .success(let filmArray):
-                    for film in filmArray{
-                        self.dataManager.save(film)
-                    }
-                    self.dataSource.dataArray = self.dataManager.getFilms()
-                    DispatchQueue.main.async{
-                        self.collectionView.reloadData()
-                    }
-                case .failure(_):
-                    break
-                }
-            }
-            DispatchQueue.main.async{
-                self.collectionView.reloadData()
-            }
-        }
-    }
-}
+//extension MainController: UIScrollViewDelegate{
+//    func scrollViewDidScroll( _ scrollView: UIScrollView) {
+//        let position = scrollView.contentOffset.y
+//        if position > (collectionView.contentSize.height-100-scrollView.frame.size.height){
+//            guard NetworkManager.shared.isPageRefreshing == false else {return}
+//            NetworkManager.shared.fetchFilms(pagination: true) {  result in
+//                switch result{
+//                case .success(let filmArray):
+//                    for film in filmArray{
+//                        self.dataManager.save(film)
+//                    }
+//                    self.dataSource.dataArray = self.dataManager.getFilms()
+//                    DispatchQueue.main.async{
+//                        self.collectionView.reloadData()
+//                    }
+//                case .failure(_):
+//                    break
+//                }
+//            }
+//            DispatchQueue.main.async{
+//                self.collectionView.reloadData()
+//            }
+//        }
+//    }
+//}
 //MARK: - DataSource
-final class CollectionDataSource: NSObject, UICollectionViewDataSource{
-    var dataArray: [Displayable] = []
-    var selectedItem: Film?
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCell.reuseId, for: indexPath) as! FilmCell
-        cell.configure(with: dataArray[indexPath.item])
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataArray.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     //   selectedItem = dataArray[indexPath.item]
-    }
-}
+//final class CollectionDataSource: NSObject, UICollectionViewDataSource{
+//    var dataArray: [Displayable] = []
+//    var selectedItem: Film?
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCell.reuseId, for: indexPath) as! FilmCell
+//        cell.configure(with: dataArray[indexPath.item])
+//        return cell
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return dataArray.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//     //   selectedItem = dataArray[indexPath.item]
+//    }
+//}
