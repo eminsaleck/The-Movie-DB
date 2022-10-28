@@ -137,6 +137,7 @@
 		AC268D71290C113C005AE287 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				AC268D74290C1233005AE287 /* MainViews */,
 				ACF312CE29052118008D7D09 /* CompositionalLayoutExtension.swift */,
 				ACD7094C290117BB00A1116C /* MainController.swift */,
 				AC3627792902ACB200DFFE22 /* CollectionViewDataSource.swift */,
@@ -144,6 +145,30 @@
 				AC268D72290C115F005AE287 /* MainViewModel.swift */,
 			);
 			path = MainModule;
+			sourceTree = "<group>";
+		};
+		AC268D74290C1233005AE287 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				ACD7098529011F8400A1116C /* FilmCell.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
+		AC268D76290C125F005AE287 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AC862FAF290BF38B009A3217 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AC268D77290C126E005AE287 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				ACD7098E2901390400A1116C /* DetailViewController.swift */,
+			);
+			path = DetailModule;
 			sourceTree = "<group>";
 		};
 		AC862FAF290BF38B009A3217 /* Extensions */ = {
@@ -187,15 +212,15 @@
 		ACD70947290117BB00A1116C /* The-Movie-DB */ = {
 			isa = PBXGroup;
 			children = (
+				AC268D77290C126E005AE287 /* DetailModule */,
+				AC268D76290C125F005AE287 /* Helpers */,
 				AC268D71290C113C005AE287 /* MainModule */,
 				AC268D69290C0676005AE287 /* Coordinator */,
 				AC268D68290BF3DF005AE287 /* App */,
-				AC862FAF290BF38B009A3217 /* Extensions */,
 				ACD7099C29026F3400A1116C /* NetworkManager.swift */,
 				AC9950CE2903D6C700619B1E /* DataManager.swift */,
 				ACD7098929012F3100A1116C /* Models */,
 				ACD7098829012F1F00A1116C /* View */,
-				ACD7098729012F1600A1116C /* Controllers */,
 				ACD70951290117BD00A1116C /* Assets.xcassets */,
 				ACD70953290117BD00A1116C /* LaunchScreen.storyboard */,
 				ACD70956290117BD00A1116C /* Info.plist */,
@@ -220,18 +245,9 @@
 			path = "The-Movie-DBUITests";
 			sourceTree = "<group>";
 		};
-		ACD7098729012F1600A1116C /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				ACD7098E2901390400A1116C /* DetailViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		ACD7098829012F1F00A1116C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ACD7098529011F8400A1116C /* FilmCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
