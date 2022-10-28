@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainController: UIViewController, UICollectionViewDelegate {
+final class MainController: UIViewController, UICollectionViewDelegate {
     
     var coordinator: MainFlow?
     private var dataSource =  CollectionDataSource()
