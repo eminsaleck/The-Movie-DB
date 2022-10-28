@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate {
+class MainController: UIViewController, UICollectionViewDelegate {
     
     var coordinator: MainFlow?
     private var dataSource =  CollectionDataSource()
@@ -35,7 +35,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
 }
 // MARK:  - Network
-extension ViewController{
+extension MainController{
     private func fetchData(){
         NetworkManager.shared.fetchFilms{ [weak self] result in
             guard let self = self else { return }
@@ -56,7 +56,7 @@ extension ViewController{
 }
 
 // MARK: - Pagination
-extension ViewController: UIScrollViewDelegate{
+extension MainController: UIScrollViewDelegate{
     func scrollViewDidScroll( _ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (collectionView.contentSize.height-100-scrollView.frame.size.height){

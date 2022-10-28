@@ -7,7 +7,7 @@
 
 import UIKit
 // MARK: - CompositionalLayout + SpinnerFooter
-extension ViewController{
+extension MainController{
      func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             return self.createPopularSection()

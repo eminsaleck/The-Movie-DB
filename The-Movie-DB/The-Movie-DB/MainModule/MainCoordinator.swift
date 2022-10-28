@@ -18,7 +18,7 @@ final class MainCoordinator: CoordinatorProtocol, MainFlow {
     }
     
     func start() {
-        let viewController = ViewController()
+        let viewController = MainController()
         viewController.coordinator = self
         window.rootViewController = viewController
         window.makeKeyAndVisible()
