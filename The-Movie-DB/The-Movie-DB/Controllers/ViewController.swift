@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate {
     
+    var coordinator: MainFlow?
     private var dataSource =  CollectionDataSource()
     private var dataManager = DataManager()
     
