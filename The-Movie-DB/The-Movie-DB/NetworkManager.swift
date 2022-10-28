@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 
 final class NetworkManager {
@@ -15,6 +16,36 @@ final class NetworkManager {
     var isPageRefreshing: Bool = false
     var page = 1
     typealias Movie = Result<[Film], Error>
+    
+    func fetchMovies(pagination: Bool = false) -> Observable<[Film]> {
+        
+        return Observable.create { observer -> Disposable in
+            if pagination{
+                self.incrementPage(pagination)
+                print("PAGE WE ARE ON: \(self.page)")
+                self.isPageRefreshing = true
+            }
+            let url = "https://api.themoviedb.org/3/movie/popular?api_key=a5ac3411803536cfb4b1cd90557dc8a7&language=en-US&page=\(self.page)"
+            
+            AF.request(url, method: .get).responseJSON { responseJSON in
+                let decoder = JSONDecoder()
+                guard let responseData = responseJSON.data else {return}
+                do {
+                    let data = try decoder.decode(Films.self, from: responseData)
+                    let filmArray = data.results
+                    observer.onNext(filmArray)
+                } catch {
+                    print("nooo")
+                }
+                if pagination {
+                    self.isPageRefreshing = false
+                }
+            }
+            return Disposables.create {
+                
+            }
+        }
+    }
     
     func fetchFilms(pagination: Bool = false, completion: @escaping (Movie) -> Void) {
         if pagination{
@@ -30,7 +61,7 @@ final class NetworkManager {
                 let data = try decoder.decode(Films.self, from: responseData)
                 let filmArray = data.results
                 completion(.success(filmArray))
-             //   print(filmArray)
+                //   print(filmArray)
             } catch {
                 print("nooo")
             }
@@ -50,13 +81,3 @@ final class NetworkManager {
         return page
     }
 }
-
-
-
-//        AF.request(url, method: .get)
-//            .validate()
-//            .responseDecodable(of: Films.self) { (response) in
-//                guard let originalData = response.value else { return }
-//
-//                completion(.success(originalData.results))
-//            }

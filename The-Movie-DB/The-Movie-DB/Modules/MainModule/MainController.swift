@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import RxSwift
 
 final class MainController: UIViewController, UICollectionViewDelegate {
     
+    let bag = DisposeBag()
     var coordinator: MainFlow?
     private var dataSource =  CollectionDataSource()
     private var dataManager = DataManager()
@@ -32,6 +34,12 @@ final class MainController: UIViewController, UICollectionViewDelegate {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         fetchData()
+//        
+//        let service = NetworkManager()
+//        service.fetchMovies().subscribe { film in
+//            print(film)
+//        }.disposed(by: bag)
+
     }
 }
 // MARK:  - Network
@@ -81,4 +89,22 @@ extension MainController: UIScrollViewDelegate{
         }
     }
 }
+//MARK: - DataSource
+final class CollectionDataSource: NSObject, UICollectionViewDataSource{
+    var dataArray: [Displayable] = []
+    var selectedItem: Film?
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCell.reuseId, for: indexPath) as! FilmCell
+        cell.configure(with: dataArray[indexPath.item])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataArray.count
+    }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     //   selectedItem = dataArray[indexPath.item]
+    }
+}
