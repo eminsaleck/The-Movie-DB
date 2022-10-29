@@ -319,7 +319,6 @@
 				AC268D76290C125F005AE287 /* Helpers */,
 				AC268D69290C0676005AE287 /* Coordinator */,
 				AC268D68290BF3DF005AE287 /* App */,
-				ACD7098829012F1F00A1116C /* View */,
 				ACD70951290117BD00A1116C /* Assets.xcassets */,
 				ACD70953290117BD00A1116C /* LaunchScreen.storyboard */,
 				ACD70956290117BD00A1116C /* Info.plist */,
@@ -342,13 +341,6 @@
 				ACD7096B290117BD00A1116C /* The_Movie_DBUITestsLaunchTests.swift */,
 			);
 			path = "The-Movie-DBUITests";
-			sourceTree = "<group>";
-		};
-		ACD7098829012F1F00A1116C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		ACD7098929012F3100A1116C /* VO */ = {
