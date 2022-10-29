@@ -10,20 +10,18 @@ import UIKit
 protocol DetailsCoordinatorFlow { }
 
 final class DetailCoordinator: CoordinatorProtocol, DetailsCoordinatorFlow {
-  
-  let navController: UINavigationController
-  let movie: Film
-  
-  init(navController: UINavigationController, movie: Film) {
-    self.navController = navController
-    self.movie = movie
+    
+    let movie: Film
+    
+    init(movie: Film) {
+        self.movie = movie
+        
+    }
+    
+    func start() {
+        let detailsVC = DetailsAssembler(movie: movie).assembly()
+        print("safr")
+        detailsVC.coordinator = self
+    }
 
-  }
-  
-  func start() {
-    let detailsVC = DetailsAssembler(movie: movie).assembly()
-      print("safr")
-    detailsVC.coordinator = self
-    navController.pushViewController(detailsVC, animated: true)
-  }
 }
