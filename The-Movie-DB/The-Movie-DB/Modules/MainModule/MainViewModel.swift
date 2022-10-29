@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-final class MovieListViewModel{
+final class MainViewModel{
     
     var dataArray: [Displayable] = []
     
@@ -17,10 +17,9 @@ final class MovieListViewModel{
     init(networkManager: NetworkManagerProtocol = NetworkManager()){
         self.networkManager = networkManager
     }
-    
-    func fetchMoviesViewModels() -> Observable<[MovieViewModel]> {
-        networkManager.fetchMovies(pagination: true).map { $0.map {
-            MovieViewModel(movie: $0)  } }
+
+    func fetchMoviesViewModels() -> Observable<[Film]> {
+        networkManager.fetchMovies(pagination: false).map { $0.map {
+            $0  } }
     }
-    
 }

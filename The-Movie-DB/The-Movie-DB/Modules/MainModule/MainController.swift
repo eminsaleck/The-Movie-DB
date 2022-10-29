@@ -12,8 +12,8 @@ import RxCocoa
 final class MainController: UIViewController, UICollectionViewDelegate {
     
     let bag = DisposeBag()
-    var coordinator: MainFlow?
-    var viewModel: MovieListViewModel!
+    var coordinator: MainFlow!
+    var viewModel: MainViewModel!
     
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
@@ -31,21 +31,23 @@ final class MainController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchIntoCollectionView()
-        selectedItem()
+        collectionView.rx.setDelegate(self).disposed(by: bag)
+        bindCollectionView()
     }
     
-    func fetchIntoCollectionView(){
+    private func bindCollectionView() {
+        
         viewModel.fetchMoviesViewModels()
             .bind(to: collectionView.rx.items(cellIdentifier: FilmCell.reuseId, cellType: FilmCell.self)) { index, viewModel, cell in
                 cell.configure(with: viewModel)
             }.disposed(by: bag)
-    }
-    func selectedItem(){
+        
         collectionView.rx.modelSelected(Film.self).subscribe { item in
-            print(item)
+         //   self.coordinator.coordinateToDetails(with: item, navController: )
+            
         }.disposed(by: bag)
     }
+    
 }
 // MARK: - Pagination
 //extension MainController: UIScrollViewDelegate{

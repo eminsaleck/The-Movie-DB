@@ -10,9 +10,9 @@ import Foundation
 final class MainAssembler: AssemblerProtocol {
     
   func assembly() -> MainController {
-    let movieListViewModel = MovieListViewModel()
+    let mainViewModel = MainViewModel()
     let mainController = MainController()
-      mainController.viewModel = movieListViewModel
+      mainController.viewModel = mainViewModel
     
     return mainController
   }
