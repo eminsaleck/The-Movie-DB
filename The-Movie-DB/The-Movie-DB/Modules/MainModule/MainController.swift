@@ -43,7 +43,7 @@ final class MainController: UIViewController, UICollectionViewDelegate {
             }.disposed(by: bag)
         
         collectionView.rx.modelSelected(Film.self).subscribe { item in
-         //   self.coordinator.coordinateToDetails(with: item, navController: )
+            self.coordinator.coordinateToDetails(with: item)
             
         }.disposed(by: bag)
     }

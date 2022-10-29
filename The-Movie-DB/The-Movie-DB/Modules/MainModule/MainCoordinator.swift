@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainFlow {
-    func coordinateToDetails(with movie: Film, navController: UINavigationController)
+    func coordinateToDetails(with movie: Film)
 }
 
 final class MainCoordinator: CoordinatorProtocol, MainFlow {
@@ -28,8 +28,8 @@ final class MainCoordinator: CoordinatorProtocol, MainFlow {
         window.makeKeyAndVisible()
     }
     
-    func coordinateToDetails(with movie: Film, navController: UINavigationController = UINavigationController()) {
-      let detailsCoordinator = DetailCoordinator(navController: navController, movie: movie)
+    func coordinateToDetails(with movie: Film) {
+      let detailsCoordinator = DetailCoordinator(window: window, movie: movie)
       coordinate(to: detailsCoordinator)
     }
 }
