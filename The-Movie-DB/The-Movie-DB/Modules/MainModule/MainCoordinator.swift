@@ -12,10 +12,11 @@ protocol MainFlow {
 }
 
 final class MainCoordinator: CoordinatorProtocol, MainFlow {
-
+    
+    let navController: UINavigationController
+    
     let window: UIWindow
 
-    
     init(window: UIWindow) {
         self.window = window
     }

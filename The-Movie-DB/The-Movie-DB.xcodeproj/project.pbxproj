@@ -219,6 +219,57 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC382BC8290D511F00B84F66 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				AC382BC9290D514300B84F66 /* Codable */,
+				ACD7098929012F3100A1116C /* VO */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		AC382BC9290D514300B84F66 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				ACD7097829011A2500A1116C /* Film.swift */,
+				ACD7097A29011A2C00A1116C /* Films.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
+		AC382BCA290D517200B84F66 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				AC7D6861290C297700819AB9 /* Assembler.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		AC382BCB290D519B00B84F66 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC382BCD290D51B700B84F66 /* Storage */,
+				AC382BCC290D51A100B84F66 /* Network */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		AC382BCC290D51A100B84F66 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				ACD7099C29026F3400A1116C /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AC382BCD290D51B700B84F66 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				AC9950CE2903D6C700619B1E /* DataManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		AC862FAF290BF38B009A3217 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,18 +312,17 @@
 		ACD70947290117BB00A1116C /* The-Movie-DB */ = {
 			isa = PBXGroup;
 			children = (
+				AC382BCB290D519B00B84F66 /* NetworkManager */,
+				AC382BCA290D517200B84F66 /* DI */,
+				AC382BC8290D511F00B84F66 /* DTOs */,
 				AC268D78290C12EE005AE287 /* Modules */,
 				AC268D76290C125F005AE287 /* Helpers */,
 				AC268D69290C0676005AE287 /* Coordinator */,
 				AC268D68290BF3DF005AE287 /* App */,
-				ACD7099C29026F3400A1116C /* NetworkManager.swift */,
-				AC9950CE2903D6C700619B1E /* DataManager.swift */,
-				ACD7098929012F3100A1116C /* Models */,
 				ACD7098829012F1F00A1116C /* View */,
 				ACD70951290117BD00A1116C /* Assets.xcassets */,
 				ACD70953290117BD00A1116C /* LaunchScreen.storyboard */,
 				ACD70956290117BD00A1116C /* Info.plist */,
-				AC7D6861290C297700819AB9 /* Assembler.swift */,
 			);
 			path = "The-Movie-DB";
 			sourceTree = "<group>";
@@ -301,15 +351,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		ACD7098929012F3100A1116C /* Models */ = {
+		ACD7098929012F3100A1116C /* VO */ = {
 			isa = PBXGroup;
 			children = (
 				ACD7097C29011A3600A1116C /* Displayable.swift */,
-				ACD7097829011A2500A1116C /* Film.swift */,
-				ACD7097A29011A2C00A1116C /* Films.swift */,
 				AC9950D52903DC8800619B1E /* FilmRealm.swift */,
 			);
-			path = Models;
+			path = VO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
