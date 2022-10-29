@@ -1,5 +1,5 @@
 # The Movie DB
-App which is aimed to find a movie for tonight 
+App which is aimed to find a movie for you
 
 # Tech stack:
 >1. UIKit
