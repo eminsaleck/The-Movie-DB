@@ -14,7 +14,7 @@
 		AC268D7D290C1530005AE287 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D7C290C1530005AE287 /* RxCocoa */; };
 		AC268D7F290C1530005AE287 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D7E290C1530005AE287 /* RxRelay */; };
 		AC268D81290C1530005AE287 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D80290C1530005AE287 /* RxSwift */; };
-		AC7D685E290C246900819AB9 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D685D290C246900819AB9 /* MovieListViewModel.swift */; };
+		AC7D685E290C246900819AB9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D685D290C246900819AB9 /* MainViewModel.swift */; };
 		AC7D6860290C25D300819AB9 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D685F290C25D300819AB9 /* MovieViewModel.swift */; };
 		AC7D6862290C297700819AB9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D6861290C297700819AB9 /* Assembler.swift */; };
 		AC7D6864290C299C00819AB9 /* MainAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D6863290C299C00819AB9 /* MainAssembler.swift */; };
@@ -78,7 +78,7 @@
 		AC268D6A290C06F4005AE287 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AC268D6C290C0714005AE287 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AC268D6E290C0C46005AE287 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		AC7D685D290C246900819AB9 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
+		AC7D685D290C246900819AB9 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		AC7D685F290C25D300819AB9 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		AC7D6861290C297700819AB9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		AC7D6863290C299C00819AB9 /* MainAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembler.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 				ACF312CE29052118008D7D09 /* CompositionalLayout.swift */,
 				ACD7094C290117BB00A1116C /* MainController.swift */,
 				AC268D6E290C0C46005AE287 /* MainCoordinator.swift */,
-				AC7D685D290C246900819AB9 /* MovieListViewModel.swift */,
+				AC7D685D290C246900819AB9 /* MainViewModel.swift */,
 				AC7D6863290C299C00819AB9 /* MainAssembler.swift */,
 			);
 			path = MainModule;
@@ -456,7 +456,7 @@
 			files = (
 				ACD7098F2901390400A1116C /* DetailViewController.swift in Sources */,
 				AC9950CF2903D6C700619B1E /* DataManager.swift in Sources */,
-				AC7D685E290C246900819AB9 /* MovieListViewModel.swift in Sources */,
+				AC7D685E290C246900819AB9 /* MainViewModel.swift in Sources */,
 				ACC08A0929073AC400A87127 /* UIImageView + LoadImage.swift in Sources */,
 				ACD7098629011F8400A1116C /* FilmCell.swift in Sources */,
 				AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */,

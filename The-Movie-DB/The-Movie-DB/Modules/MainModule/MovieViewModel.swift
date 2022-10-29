@@ -7,14 +7,19 @@
 
 import Foundation
 
-struct MovieViewModel: Displayable {
-
+struct MovieViewModel{
+    
     private let movie: Film
-
+    
     
     init(movie: Film){
         self.movie = movie
     }
+}
+
+
+extension MovieViewModel: Displayable {
+    
     var poster: String{
         movie.posterPath
     }
@@ -30,5 +35,4 @@ struct MovieViewModel: Displayable {
     var rating: Double{
         movie.voteAverage
     }
-    
 }
