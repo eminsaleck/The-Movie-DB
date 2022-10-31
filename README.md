@@ -8,7 +8,9 @@ App which is aimed to find a movie for you
 >4. RxSwift/RxCocoa
 >5. SDWebImage
 >6. Realm 
->7. CocoaLumberjack
+>7. PopupView
+>8. CocoaLumberjack
+>9. Lottie
 
 
 <img src="https://github.com/lemin07/The-Movie-DB/blob/main/The-Movie-DB/screen/Screenshot%202022-10-28%20at%2012.18.23.png" width="200px" />
