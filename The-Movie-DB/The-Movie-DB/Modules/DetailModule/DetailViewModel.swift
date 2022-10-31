@@ -11,6 +11,7 @@ protocol DetailViewModelProtocol {
   var movie: Film? { get }
     //var detailsVO: Observable<DetailsVO> { get }
 }
+
 final class DetailViewModel: DetailViewModelProtocol {
     var movie: Film?
     

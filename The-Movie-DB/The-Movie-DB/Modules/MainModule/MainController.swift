@@ -14,13 +14,14 @@ final class MainController: UIViewController, UICollectionViewDelegate {
     let bag = DisposeBag()
     var coordinator: MainFlow!
     var viewModel: MainViewModel!
+    let mainNavController = UINavigationController()
+
     
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
         cv.backgroundColor =  #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        
         return cv
     }()
     
@@ -43,8 +44,7 @@ final class MainController: UIViewController, UICollectionViewDelegate {
             }.disposed(by: bag)
         
         collectionView.rx.modelSelected(Film.self).subscribe { item in
-            self.coordinator.coordinateToDetails(with: item)
-            
+            self.coordinator.openHome(navController: self.mainNavController, movie: item.element!)
         }.disposed(by: bag)
     }
     
