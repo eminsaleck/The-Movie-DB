@@ -13,7 +13,7 @@ protocol MainFlow {
 
 final class MainCoordinator: CoordinatorProtocol, MainFlow {
     
-    let navController: UINavigationController
+    
     
     let window: UIWindow
 
@@ -35,7 +35,8 @@ final class MainCoordinator: CoordinatorProtocol, MainFlow {
 //    }
 //
     func coordinateToDetails(navController: UINavigationController) -> DetailViewController {
+        let navController = UINavigationController()
         let detailCoordinator = DetailCoordinator(navController: navController, movie: Film)
-        return homeCoordinator.openHome()
+        return detailCoordinator
     }
 }

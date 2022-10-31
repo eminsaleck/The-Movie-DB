@@ -245,13 +245,13 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
-		AC382BCB290D519B00B84F66 /* NetworkManager */ = {
+		AC382BCB290D519B00B84F66 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				AC382BCD290D51B700B84F66 /* Storage */,
 				AC382BCC290D51A100B84F66 /* Network */,
 			);
-			path = NetworkManager;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		AC382BCC290D51A100B84F66 /* Network */ = {
@@ -312,7 +312,7 @@
 		ACD70947290117BB00A1116C /* The-Movie-DB */ = {
 			isa = PBXGroup;
 			children = (
-				AC382BCB290D519B00B84F66 /* NetworkManager */,
+				AC382BCB290D519B00B84F66 /* Models */,
 				AC382BCA290D517200B84F66 /* DI */,
 				AC382BC8290D511F00B84F66 /* DTOs */,
 				AC268D78290C12EE005AE287 /* Modules */,

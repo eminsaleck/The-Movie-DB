@@ -13,7 +13,7 @@ final class DetailCoordinator: CoordinatorProtocol, DetailsCoordinatorFlow {
     
     let movie: Film
     
-    init(movie: Film) {
+    init(navController: UINavigationController, movie: Film) {
         self.movie = movie
         
     }
