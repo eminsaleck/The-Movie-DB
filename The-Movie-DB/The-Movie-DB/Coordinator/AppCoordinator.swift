@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 final class AppCoordinator: CoordinatorProtocol {
   
   let window: UIWindow
@@ -16,7 +17,8 @@ final class AppCoordinator: CoordinatorProtocol {
   }
   
   func start() {
-    let mainCoordinator = MainCoordinator(window: window)
-    coordinate(to: mainCoordinator)
+    let authCoordinator = AuthCoordinator(window: window)
+    coordinate(to: authCoordinator)
   }
 }
+

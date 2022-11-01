@@ -8,28 +8,32 @@
 import UIKit
 
 protocol MainFlow {
-    func openHome(navController: UINavigationController, movie: Film)
-    
+  func coordinateToDetails(with movie: Film, navController: UINavigationController)
+  func openHome() -> MainController
 }
 
 final class MainCoordinator: CoordinatorProtocol, MainFlow {
-
-    let window: UIWindow
-
-    init(window: UIWindow) {
-        self.window = window
-    }
-    
-    func start() {
-        let viewController = MainAssembler().assembly()
-       viewController.coordinator = self
-        window.rootViewController = viewController
-        window.makeKeyAndVisible()
-    }
-    
-    func openHome(navController: UINavigationController, movie: Film){
-        
-      let detailCoordinator = DetailCoordinator(navController: navController, movie: movie)
-        coordinate(to: detailCoordinator)
-    }
+  
+  let navController: UINavigationController
+  
+  init(navController: UINavigationController) {
+    self.navController = navController
+  }
+  
+  func start() {
+    let mainVC = MainAssembler().assembly()
+    mainVC.coordinator = self
+    navController.pushViewController(mainVC, animated: false)
+  }
+  
+  func openHome() -> MainController {
+    let mainVC = MainAssembler().assembly()
+      mainVC.coordinator = self
+    return mainVC
+  }
+  
+  func coordinateToDetails(with movie: Film, navController: UINavigationController) {
+    let detailsCoordinator = DetailsCoordinator(navController: navController, movie: movie)
+    coordinate(to: detailsCoordinator)
+  }
 }

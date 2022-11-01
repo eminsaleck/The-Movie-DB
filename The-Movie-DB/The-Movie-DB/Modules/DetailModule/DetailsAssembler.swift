@@ -7,21 +7,20 @@
 
 import Foundation
 
+
 final class DetailsAssembler: AssemblerProtocol {
-    
-    
-    let movie: Film
-    
-    init(movie: Film) {
-        self.movie = movie
-    }
-    
-    func assembly() -> DetailViewController {
-        let detailsViewController = DetailViewController()
-        let detailsViewModel = DetailViewModel()
-        detailsViewModel.movie = movie
-        print(movie.titleName)
-        detailsViewController.viewModel = detailsViewModel
-        return detailsViewController
-    }
+  
+  let movie: Film
+  
+  init(movie: Film) {
+    self.movie = movie
+  }
+  
+  func assembly() -> DetailViewController {
+    let detailsController = DetailViewController()
+    let detailsViewModel = DetailViewModel()
+    detailsViewModel.movie = movie
+    detailsController.viewModel = detailsViewModel
+    return detailsController
+  }
 }
