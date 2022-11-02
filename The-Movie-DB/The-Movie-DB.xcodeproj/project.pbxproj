@@ -14,6 +14,7 @@
 		AC0F35A52912787500BB05AF /* SearchAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A42912787500BB05AF /* SearchAssembler.swift */; };
 		AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA3291286D20085017B /* SceneDelegate.swift */; };
 		AC1DBBA7291293810085017B /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA6291293810085017B /* ProfileController.swift */; };
+		AC1DBBA92912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png in Resources */ = {isa = PBXBuildFile; fileRef = AC1DBBA82912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png */; };
 		AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6A290C06F4005AE287 /* AppCoordinator.swift */; };
 		AC268D6D290C0714005AE287 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6C290C0714005AE287 /* Coordinator.swift */; };
 		AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6E290C0C46005AE287 /* MainCoordinator.swift */; };
@@ -31,7 +32,6 @@
 		AC9950D22903DC5C00619B1E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AC9950D12903DC5C00619B1E /* Realm */; };
 		AC9950D42903DC5C00619B1E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC9950D32903DC5C00619B1E /* RealmSwift */; };
 		AC9950D62903DC8800619B1E /* FilmRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9950D52903DC8800619B1E /* FilmRealm.swift */; };
-		AC9DC46F290BD6220019FCD1 /* Screenshot 2022-10-28 at 12.18.23.png in Resources */ = {isa = PBXBuildFile; fileRef = AC9DC46E290BD6220019FCD1 /* Screenshot 2022-10-28 at 12.18.23.png */; };
 		ACC08A0929073AC400A87127 /* UIImageView + LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */; };
 		ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD70948290117BB00A1116C /* AppDelegate.swift */; };
 		ACD7094D290117BB00A1116C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7094C290117BB00A1116C /* MainController.swift */; };
@@ -96,6 +96,7 @@
 		AC0F35AA2912843C00BB05AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1DBBA3291286D20085017B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC1DBBA6291293810085017B /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		AC1DBBA82912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2022-10-28 at 12.18.23.png"; sourceTree = "<group>"; };
 		AC268D6A290C06F4005AE287 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AC268D6C290C0714005AE287 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AC268D6E290C0C46005AE287 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		AC929771290D37A800243B56 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AC9950CE2903D6C700619B1E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		AC9950D52903DC8800619B1E /* FilmRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRealm.swift; sourceTree = "<group>"; };
-		AC9DC46E290BD6220019FCD1 /* Screenshot 2022-10-28 at 12.18.23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2022-10-28 at 12.18.23.png"; sourceTree = "<group>"; };
 		ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + LoadImage.swift"; sourceTree = "<group>"; };
 		ACD70945290117BB00A1116C /* The-Movie-DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Movie-DB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD70948290117BB00A1116C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 		AC9DC46D290BD60E0019FCD1 /* screen */ = {
 			isa = PBXGroup;
 			children = (
-				AC9DC46E290BD6220019FCD1 /* Screenshot 2022-10-28 at 12.18.23.png */,
+				AC1DBBA82912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png */,
 			);
 			path = screen;
 			sourceTree = "<group>";
@@ -539,8 +539,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD70955290117BD00A1116C /* LaunchScreen.storyboard in Resources */,
+				AC1DBBA92912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png in Resources */,
 				ACD70952290117BD00A1116C /* Assets.xcassets in Resources */,
-				AC9DC46F290BD6220019FCD1 /* Screenshot 2022-10-28 at 12.18.23.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

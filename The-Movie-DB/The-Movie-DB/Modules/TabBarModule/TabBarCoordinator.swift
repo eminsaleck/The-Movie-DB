@@ -27,7 +27,7 @@ class TabCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        let pages: [TabBarPage] = [.profile, .search, .main]
+        let pages: [TabBarPage] = [.profile, .favourites, .search, .main]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         
         // Initialization of ViewControllers or these pages
@@ -59,8 +59,9 @@ class TabCoordinator: NSObject, Coordinator {
         switch page {
         case .main:
             // If needed: Each tab bar flow can have it's own Coordinator.
-            let mainVC = MainCoordinator(navController).start()
-
+            let mainVC = MainCoordinator(navController)         
+            mainVC.start()
+           
         case .search:
             let searchVC = SearchController()
             searchVC.didSendEventClosure = { [weak self] event in
@@ -70,6 +71,10 @@ class TabCoordinator: NSObject, Coordinator {
                 }
             }
             navController.pushViewController(searchVC, animated: true)
+            
+        case .favourites:
+            let mainVC = MainCoordinator(navController)
+            mainVC.start()
             
         case .profile:
             let profileVC = ProfileController()

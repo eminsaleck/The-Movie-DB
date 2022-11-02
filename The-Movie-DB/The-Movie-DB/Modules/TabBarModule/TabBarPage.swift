@@ -11,6 +11,7 @@ enum TabBarPage {
     case main
     case search
     case profile
+    case favourites
 
     init?(index: Int) {
         switch index {
@@ -19,6 +20,8 @@ enum TabBarPage {
         case 1:
             self = .search
         case 2:
+            self = .favourites
+        case 3:
             self = .profile
         default:
             return nil
@@ -31,6 +34,8 @@ enum TabBarPage {
             return "Main"
         case .search:
             return "Search"
+        case .favourites:
+            return "Favourites"
         case .profile:
             return "Profile"
         }
@@ -42,8 +47,10 @@ enum TabBarPage {
             return 0
         case .search:
             return 1
-        case .profile:
+        case .favourites:
             return 2
+        case .profile:
+            return 3
         }
     }
 
