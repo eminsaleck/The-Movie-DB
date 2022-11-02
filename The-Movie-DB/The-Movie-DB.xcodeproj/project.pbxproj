@@ -14,7 +14,6 @@
 		AC0F35A52912787500BB05AF /* SearchAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A42912787500BB05AF /* SearchAssembler.swift */; };
 		AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA3291286D20085017B /* SceneDelegate.swift */; };
 		AC1DBBA7291293810085017B /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA6291293810085017B /* ProfileController.swift */; };
-		AC1DBBA92912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png in Resources */ = {isa = PBXBuildFile; fileRef = AC1DBBA82912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png */; };
 		AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6A290C06F4005AE287 /* AppCoordinator.swift */; };
 		AC268D6D290C0714005AE287 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6C290C0714005AE287 /* Coordinator.swift */; };
 		AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6E290C0C46005AE287 /* MainCoordinator.swift */; };
@@ -96,7 +95,6 @@
 		AC0F35AA2912843C00BB05AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1DBBA3291286D20085017B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC1DBBA6291293810085017B /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		AC1DBBA82912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2022-10-28 at 12.18.23.png"; sourceTree = "<group>"; };
 		AC268D6A290C06F4005AE287 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AC268D6C290C0714005AE287 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AC268D6E290C0C46005AE287 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -324,18 +322,9 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		AC9DC46D290BD60E0019FCD1 /* screen */ = {
-			isa = PBXGroup;
-			children = (
-				AC1DBBA82912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png */,
-			);
-			path = screen;
-			sourceTree = "<group>";
-		};
 		ACD7093C290117BB00A1116C = {
 			isa = PBXGroup;
 			children = (
-				AC9DC46D290BD60E0019FCD1 /* screen */,
 				ACD70947290117BB00A1116C /* The-Movie-DB */,
 				ACD7095E290117BD00A1116C /* The-Movie-DBTests */,
 				ACD70968290117BD00A1116C /* The-Movie-DBUITests */,
@@ -539,7 +528,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD70955290117BD00A1116C /* LaunchScreen.storyboard in Resources */,
-				AC1DBBA92912AFE10085017B /* Screenshot 2022-10-28 at 12.18.23.png in Resources */,
 				ACD70952290117BD00A1116C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:The-Movie-DB/../screen"
+      name = "screen">
+      <FileRef
+         location = "group:screen/Screenshot 2022-10-28 at 12.18.23.png">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "container:The-Movie-DB/The-Movie-DB.xcodeproj">
+   </FileRef>
+</Workspace>
