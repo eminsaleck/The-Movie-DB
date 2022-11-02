@@ -14,4 +14,4 @@ App which is aimed to find a movie for you
 >9. Lottie
 
 
-<img src="https://github.com/lemin07/The-Movie-DB/blob/main/The-Movie-DB/screen/Screenshot%202022-10-28%20at%2012.18.23.png" width="200px" />
+<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/Screenshot%202022-10-28%20at%2012.18.23.png" width="200px" />
