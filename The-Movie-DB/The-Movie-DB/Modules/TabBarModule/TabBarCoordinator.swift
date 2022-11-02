@@ -53,7 +53,7 @@ class TabCoordinator: NSObject, Coordinator {
         navController.setNavigationBarHidden(false, animated: false)
         
         navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
-                                                     image: nil,
+                                                     image: page.icon(),
                                                      tag: page.pageOrderNumber())
         
         switch page {
@@ -107,6 +107,6 @@ class TabCoordinator: NSObject, Coordinator {
 extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
-        
+        tabBarController.tabBar.backgroundColor = .red
     }
 }

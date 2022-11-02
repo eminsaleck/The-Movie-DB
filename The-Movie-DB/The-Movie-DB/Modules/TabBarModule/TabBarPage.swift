@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
-enum TabBarPage {
+enum TabBarPage: String, CaseIterable  {
     case main
     case search
     case profile
@@ -40,7 +41,34 @@ enum TabBarPage {
             return "Profile"
         }
     }
-
+    
+    func icon() -> UIImage? {
+        switch self {
+        case .main:
+            return UIImage(systemName: "magnifyingglass.circle")?.withTintColor(.black.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+        case .search:
+            return UIImage(systemName: "magnifyingglass.circle")?.withTintColor(.black.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+        case .favourites:
+            return UIImage(systemName: "heart.circle")?.withTintColor(.black.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+        case .profile:
+            return UIImage(systemName: "person.crop.circle")?.withTintColor(.black.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+        }
+    }
+    
+    
+    func selectedIcon() -> UIImage? {
+          switch self {
+          case .main:
+              return UIImage(systemName: "person.crop.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+          case .search:
+              return UIImage(systemName: "magnifyingglass.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+          case .favourites:
+              return UIImage(systemName: "heart.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+          case .profile:
+              return UIImage(systemName: "person.crop.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+          }
+      }
+    
     func pageOrderNumber() -> Int {
         switch self {
         case .main:
@@ -54,9 +82,4 @@ enum TabBarPage {
         }
     }
 
-    // Add tab icon value
-    
-    // Add tab icon selected / deselected color
-    
-    // etc
 }

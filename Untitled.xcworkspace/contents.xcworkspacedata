@@ -5,7 +5,7 @@
       location = "group:The-Movie-DB/../screen"
       name = "screen">
       <FileRef
-         location = "group:screen/Screenshot 2022-10-28 at 12.18.23.png">
+         location = "group:/Users/lemindahovich/Desktop/Moview/The-Movie-DB/The-Movie-DB.xcodeproj/screen/Screenshot 2022-10-28 at 12.18.23.png">
       </FileRef>
    </Group>
    <FileRef

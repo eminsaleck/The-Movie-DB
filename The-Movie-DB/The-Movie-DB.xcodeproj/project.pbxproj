@@ -13,7 +13,8 @@
 		AC0F35A32912786C00BB05AF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A22912786C00BB05AF /* SearchViewModel.swift */; };
 		AC0F35A52912787500BB05AF /* SearchAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A42912787500BB05AF /* SearchAssembler.swift */; };
 		AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA3291286D20085017B /* SceneDelegate.swift */; };
-		AC1DBBA7291293810085017B /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA6291293810085017B /* ProfileController.swift */; };
+		AC1DBBAB2912B7B60085017B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBAA2912B7B60085017B /* CustomTabBar.swift */; };
+		AC1DBC3B2912D7880085017B /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBC3A2912D7880085017B /* ProfileController.swift */; };
 		AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6A290C06F4005AE287 /* AppCoordinator.swift */; };
 		AC268D6D290C0714005AE287 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6C290C0714005AE287 /* Coordinator.swift */; };
 		AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6E290C0C46005AE287 /* MainCoordinator.swift */; };
@@ -43,7 +44,7 @@
 		ACD7097B29011A2C00A1116C /* Films.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7097A29011A2C00A1116C /* Films.swift */; };
 		ACD7097D29011A3600A1116C /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7097C29011A3600A1116C /* Displayable.swift */; };
 		ACD7098029011A8C00A1116C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ACD7097F29011A8C00A1116C /* Alamofire */; };
-		ACD7098429011F0700A1116C /* UIView + Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7098329011F0700A1116C /* UIView + Anchor.swift */; };
+		ACD7098429011F0700A1116C /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7098329011F0700A1116C /* UIView + Extension.swift */; };
 		ACD7098629011F8400A1116C /* FilmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7098529011F8400A1116C /* FilmCell.swift */; };
 		ACD7098F2901390400A1116C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7098E2901390400A1116C /* DetailViewController.swift */; };
 		ACD7099929015C2D00A1116C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = ACD7099829015C2D00A1116C /* SDWebImage */; };
@@ -94,7 +95,8 @@
 		AC0F35A42912787500BB05AF /* SearchAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembler.swift; sourceTree = "<group>"; };
 		AC0F35AA2912843C00BB05AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1DBBA3291286D20085017B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AC1DBBA6291293810085017B /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		AC1DBBAA2912B7B60085017B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		AC1DBC3A2912D7880085017B /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		AC268D6A290C06F4005AE287 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AC268D6C290C0714005AE287 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AC268D6E290C0C46005AE287 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 		ACD7097829011A2500A1116C /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		ACD7097A29011A2C00A1116C /* Films.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Films.swift; sourceTree = "<group>"; };
 		ACD7097C29011A3600A1116C /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
-		ACD7098329011F0700A1116C /* UIView + Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Anchor.swift"; sourceTree = "<group>"; };
+		ACD7098329011F0700A1116C /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		ACD7098529011F8400A1116C /* FilmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCell.swift; sourceTree = "<group>"; };
 		ACD7098E2901390400A1116C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ACD7099C29026F3400A1116C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -176,10 +178,10 @@
 			path = SearchModule;
 			sourceTree = "<group>";
 		};
-		AC1DBBA5291293340085017B /* ProfileModule */ = {
+		AC1DBC3C2912D78F0085017B /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
-				AC1DBBA6291293810085017B /* ProfileController.swift */,
+				AC1DBC3A2912D7880085017B /* ProfileController.swift */,
 			);
 			path = ProfileModule;
 			sourceTree = "<group>";
@@ -245,7 +247,7 @@
 		AC268D78290C12EE005AE287 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				AC1DBBA5291293340085017B /* ProfileModule */,
+				AC1DBC3C2912D78F0085017B /* ProfileModule */,
 				AC0F359D2912784700BB05AF /* SearchModule */,
 				ACDAFACB2911A91300EAE7CA /* TabBarModule */,
 				ACDAFAC12911A67900EAE7CA /* LoginModule */,
@@ -317,7 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */,
-				ACD7098329011F0700A1116C /* UIView + Anchor.swift */,
+				ACD7098329011F0700A1116C /* UIView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -402,6 +404,7 @@
 			children = (
 				ACDAFACC2911A92C00EAE7CA /* TabBarCoordinator.swift */,
 				AC0F359B2912774200BB05AF /* TabBarPage.swift */,
+				AC1DBBAA2912B7B60085017B /* CustomTabBar.swift */,
 			);
 			path = TabBarModule;
 			sourceTree = "<group>";
@@ -568,13 +571,15 @@
 				ACD7094D290117BB00A1116C /* MainController.swift in Sources */,
 				AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */,
 				AC9950D62903DC8800619B1E /* FilmRealm.swift in Sources */,
-				ACD7098429011F0700A1116C /* UIView + Anchor.swift in Sources */,
+				ACD7098429011F0700A1116C /* UIView + Extension.swift in Sources */,
+				AC1DBBAB2912B7B60085017B /* CustomTabBar.swift in Sources */,
 				ACD7097B29011A2C00A1116C /* Films.swift in Sources */,
 				AC0F359F2912785800BB05AF /* SearchController.swift in Sources */,
 				AC7D6864290C299C00819AB9 /* MainAssembler.swift in Sources */,
 				AC0F359C2912774200BB05AF /* TabBarPage.swift in Sources */,
 				ACDAFACA2911A7A500EAE7CA /* LoginViewModel.swift in Sources */,
 				ACDAFAC82911A77D00EAE7CA /* LoginController.swift in Sources */,
+				AC1DBC3B2912D7880085017B /* ProfileController.swift in Sources */,
 				AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */,
 				AC268D6D290C0714005AE287 /* Coordinator.swift in Sources */,
 				ACD7097929011A2500A1116C /* Film.swift in Sources */,
@@ -586,7 +591,6 @@
 				ACDAFAC62911A71F00EAE7CA /* LoginAssembler.swift in Sources */,
 				AC0F35A12912786100BB05AF /* SearchCoordinator.swift in Sources */,
 				ACD7097D29011A3600A1116C /* Displayable.swift in Sources */,
-				AC1DBBA7291293810085017B /* ProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
