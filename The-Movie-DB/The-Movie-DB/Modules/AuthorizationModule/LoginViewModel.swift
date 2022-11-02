@@ -8,10 +8,10 @@
 import Foundation
 
 
-protocol AuthViewModelProtocol: class {
+protocol LoginViewModelProtocol: class {
   
 }
 
-final class AuthViewModel: AuthViewModelProtocol {
+final class LoginViewModel: LoginViewModelProtocol {
   
 }
