@@ -12,7 +12,7 @@ class DetailViewController: UIViewController{
     
 
 
-//    var coordinator: DetailsCoordinator!
+    var coordinator: DetailsCoordinator!
     var viewModel: DetailViewModelProtocol?
     
     override func viewDidLoad() {

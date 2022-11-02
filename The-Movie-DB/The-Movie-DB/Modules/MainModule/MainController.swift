@@ -12,9 +12,8 @@ import RxCocoa
 final class MainController: UIViewController, UICollectionViewDelegate {
     
     var didSendEventClosure: ((MainController.Event) -> Void)?
-    
+    var coordinator: MainFlow!
     let bag = DisposeBag()
-//    var coordinator: MainFlow!
     var viewModel: MainViewModel!
     
     
@@ -47,8 +46,7 @@ final class MainController: UIViewController, UICollectionViewDelegate {
                 cell.configure(with: viewModel)
             }.disposed(by: bag)
         collectionView.rx.modelSelected(Film.self).subscribe { item in
-//            self.coordinrator?.coordinateToDetails(with: item, navController: self.navigationController!)
-            
+            self.coordinator.coordinateToDetails(with: item.element!, navigationController: self.navigationController!)
         }.disposed(by: bag)
     }
     

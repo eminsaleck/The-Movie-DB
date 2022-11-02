@@ -11,8 +11,6 @@ import UIKit
 class LoginController: UIViewController {
     
     weak var viewModel: LoginViewModelProtocol?
-    var coordinator: LoginCoordinatorProtocol?
-    
     var didSendEventClosure: ((LoginController.Event) -> Void)?
 
     private let loginButton: UIButton = {

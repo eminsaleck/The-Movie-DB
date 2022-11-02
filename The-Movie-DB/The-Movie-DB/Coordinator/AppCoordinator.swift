@@ -8,7 +8,7 @@ import UIKit
 
 protocol AppCoordinatorProtocol: Coordinator {
     func showLoginFlow()
-    func showMainFlow()
+    func showTabBarFlow()
 }
 
 class AppCoordinator: AppCoordinatorProtocol {
@@ -38,8 +38,7 @@ class AppCoordinator: AppCoordinatorProtocol {
         childCoordinators.append(loginCoordinator)
     }
 
-    func showMainFlow() {
-        // Implementation Main (Tab bar) FLow
+    func showTabBarFlow() {
         let tabCoordinator = TabCoordinator.init(navigationController)
         tabCoordinator.finishDelegate = self
         tabCoordinator.start()
@@ -59,7 +58,7 @@ extension AppCoordinator: CoordinatorFinishDelegate {
         case .login:
             navigationController.viewControllers.removeAll()
 
-            showMainFlow()
+            showTabBarFlow()
         default:
             break
         }

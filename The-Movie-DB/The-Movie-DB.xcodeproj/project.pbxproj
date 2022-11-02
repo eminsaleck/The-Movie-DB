@@ -250,7 +250,7 @@
 				AC1DBBA5291293340085017B /* ProfileModule */,
 				AC0F359D2912784700BB05AF /* SearchModule */,
 				ACDAFACB2911A91300EAE7CA /* TabBarModule */,
-				ACDAFAC12911A67900EAE7CA /* AuthorizationModule */,
+				ACDAFAC12911A67900EAE7CA /* LoginModule */,
 				AC268D71290C113C005AE287 /* MainModule */,
 				AC268D77290C126E005AE287 /* DetailModule */,
 			);
@@ -397,7 +397,7 @@
 			path = VO;
 			sourceTree = "<group>";
 		};
-		ACDAFAC12911A67900EAE7CA /* AuthorizationModule */ = {
+		ACDAFAC12911A67900EAE7CA /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
 				ACDAFAC32911A6E300EAE7CA /* LoginCoordinator.swift */,
@@ -405,7 +405,7 @@
 				ACDAFAC72911A77D00EAE7CA /* LoginController.swift */,
 				ACDAFAC92911A7A500EAE7CA /* LoginViewModel.swift */,
 			);
-			path = AuthorizationModule;
+			path = LoginModule;
 			sourceTree = "<group>";
 		};
 		ACDAFACB2911A91300EAE7CA /* TabBarModule */ = {

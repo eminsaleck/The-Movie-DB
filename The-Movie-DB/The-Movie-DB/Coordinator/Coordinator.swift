@@ -43,5 +43,5 @@ protocol CoordinatorFinishDelegate: class {
 
 /// Using this structure we can define what type of flow we can use in-app.
 enum CoordinatorType {
-    case app, login, tab
+    case app, login, tab, detail
 }

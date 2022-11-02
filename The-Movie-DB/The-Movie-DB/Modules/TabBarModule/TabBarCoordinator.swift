@@ -59,15 +59,8 @@ class TabCoordinator: NSObject, Coordinator {
         switch page {
         case .main:
             // If needed: Each tab bar flow can have it's own Coordinator.
-            let mainVC = MainAssembler().assembly()
-            mainVC.didSendEventClosure = { [weak self] event in
-                switch event {
-                case .main:
-                    self?.selectPage(.search)
-                }
-            }
-            navController.pushViewController(mainVC, animated: true)
-            
+            let mainVC = MainCoordinator(navController).start()
+
         case .search:
             let searchVC = SearchController()
             searchVC.didSendEventClosure = { [weak self] event in
