@@ -13,7 +13,6 @@
 		AC0F35A32912786C00BB05AF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A22912786C00BB05AF /* SearchViewModel.swift */; };
 		AC0F35A52912787500BB05AF /* SearchAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A42912787500BB05AF /* SearchAssembler.swift */; };
 		AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA3291286D20085017B /* SceneDelegate.swift */; };
-		AC1DBBAB2912B7B60085017B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBAA2912B7B60085017B /* CustomTabBar.swift */; };
 		AC1DBC3B2912D7880085017B /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBC3A2912D7880085017B /* ProfileController.swift */; };
 		AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6A290C06F4005AE287 /* AppCoordinator.swift */; };
 		AC268D6D290C0714005AE287 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6C290C0714005AE287 /* Coordinator.swift */; };
@@ -95,7 +94,6 @@
 		AC0F35A42912787500BB05AF /* SearchAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembler.swift; sourceTree = "<group>"; };
 		AC0F35AA2912843C00BB05AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC1DBBA3291286D20085017B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AC1DBBAA2912B7B60085017B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		AC1DBC3A2912D7880085017B /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		AC268D6A290C06F4005AE287 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AC268D6C290C0714005AE287 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -404,7 +402,6 @@
 			children = (
 				ACDAFACC2911A92C00EAE7CA /* TabBarCoordinator.swift */,
 				AC0F359B2912774200BB05AF /* TabBarPage.swift */,
-				AC1DBBAA2912B7B60085017B /* CustomTabBar.swift */,
 			);
 			path = TabBarModule;
 			sourceTree = "<group>";
@@ -572,7 +569,6 @@
 				AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */,
 				AC9950D62903DC8800619B1E /* FilmRealm.swift in Sources */,
 				ACD7098429011F0700A1116C /* UIView + Extension.swift in Sources */,
-				AC1DBBAB2912B7B60085017B /* CustomTabBar.swift in Sources */,
 				ACD7097B29011A2C00A1116C /* Films.swift in Sources */,
 				AC0F359F2912785800BB05AF /* SearchController.swift in Sources */,
 				AC7D6864290C299C00819AB9 /* MainAssembler.swift in Sources */,

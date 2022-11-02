@@ -22,6 +22,7 @@ class AppCoordinator: AppCoordinatorProtocol {
         
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        navigationController.navigationBar.backgroundColor = .darkGray
         navigationController.setNavigationBarHidden(true, animated: true)
     }
 

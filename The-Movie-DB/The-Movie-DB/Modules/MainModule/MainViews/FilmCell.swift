@@ -27,6 +27,7 @@ class FilmCell: UICollectionViewCell {
         review.textAlignment = .center
         review.numberOfLines = 10
         review.font = .systemFont(ofSize: 10)
+        review.tintColor = .white
         review.translatesAutoresizingMaskIntoConstraints = false
         return review
     }()
@@ -36,6 +37,7 @@ class FilmCell: UICollectionViewCell {
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 15)
+        label.tintColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,6 +47,7 @@ class FilmCell: UICollectionViewCell {
         label.textAlignment = .center
         label.numberOfLines = 1
         label.font = .systemFont(ofSize: 13)
+        label.tintColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -52,7 +55,6 @@ class FilmCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(white: 1, alpha: 1)
         setupElements()
         setupConstraints()
     }
@@ -62,7 +64,8 @@ class FilmCell: UICollectionViewCell {
     }
     
     func setupElements() {
-        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        self.layer.cornerRadius = 15
         self.clipsToBounds = true
         contentView.addSubview(imageView)
         contentView.addSubview(review)
@@ -80,7 +83,8 @@ class FilmCell: UICollectionViewCell {
 
 extension FilmCell {
     private func setupConstraints() {
-
+        
+        
         NSLayoutConstraint.activate([review.leadingAnchor.constraint(equalTo: centerXAnchor, constant: -20),
                                      review.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
                                      review.topAnchor.constraint(equalTo: topAnchor, constant: 10),

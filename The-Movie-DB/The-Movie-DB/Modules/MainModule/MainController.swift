@@ -20,7 +20,7 @@ final class MainController: UIViewController, UICollectionViewDelegate {
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
         cv.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
-        cv.backgroundColor =  #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+        cv.backgroundColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return cv
     }()
     
@@ -31,6 +31,7 @@ final class MainController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Main"
         setupCollectionView()
         collectionView.rx.setDelegate(self).disposed(by: bag)
         bindCollectionView()

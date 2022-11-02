@@ -45,13 +45,13 @@ enum TabBarPage: String, CaseIterable  {
     func icon() -> UIImage? {
         switch self {
         case .main:
-            return UIImage(systemName: "magnifyingglass.circle")?.withTintColor(.black.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+            return UIImage(systemName: "magnifyingglass.circle")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         case .search:
-            return UIImage(systemName: "magnifyingglass.circle")?.withTintColor(.black.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+            return UIImage(systemName: "magnifyingglass.circle")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         case .favourites:
-            return UIImage(systemName: "heart.circle")?.withTintColor(.black.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+            return UIImage(systemName: "heart.circle")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         case .profile:
-            return UIImage(systemName: "person.crop.circle")?.withTintColor(.black.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+            return UIImage(systemName: "person.crop.circle")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         }
     }
     
@@ -59,13 +59,13 @@ enum TabBarPage: String, CaseIterable  {
     func selectedIcon() -> UIImage? {
           switch self {
           case .main:
-              return UIImage(systemName: "person.crop.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+              return UIImage(systemName: "person.crop.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
           case .search:
-              return UIImage(systemName: "magnifyingglass.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+              return UIImage(systemName: "magnifyingglass.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
           case .favourites:
-              return UIImage(systemName: "heart.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+              return UIImage(systemName: "heart.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
           case .profile:
-              return UIImage(systemName: "person.crop.circle.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+              return UIImage(systemName: "person.crop.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
           }
       }
     

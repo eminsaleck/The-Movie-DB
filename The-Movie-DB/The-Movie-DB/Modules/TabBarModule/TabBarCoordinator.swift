@@ -30,9 +30,9 @@ class TabCoordinator: NSObject, Coordinator {
         let pages: [TabBarPage] = [.profile, .favourites, .search, .main]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         
-        // Initialization of ViewControllers or these pages
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
         
+        //titleAppearance()
         prepareTabBarController(withTabControllers: controllers)
     }
     
@@ -42,6 +42,7 @@ class TabCoordinator: NSObject, Coordinator {
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         tabBarController.delegate = self
+        tabBarController.tabBar.barTintColor = #colorLiteral(red: 0.149019599, green: 0.149019599, blue: 0.149019599, alpha: 1)
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.selectedIndex = TabBarPage.main.pageOrderNumber()
         tabBarController.tabBar.isTranslucent = false
@@ -54,7 +55,8 @@ class TabCoordinator: NSObject, Coordinator {
         
         navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
                                                      image: page.icon(),
-                                                     tag: page.pageOrderNumber())
+                                                     selectedImage: page.selectedIcon())
+                                            
         
         switch page {
         case .main:
@@ -101,12 +103,13 @@ class TabCoordinator: NSObject, Coordinator {
         guard let page = TabBarPage.init(index: index) else { return }
         tabBarController.selectedIndex = page.pageOrderNumber()
     }
+
 }
 
 // MARK: - UITabBarControllerDelegate
 extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
-        tabBarController.tabBar.backgroundColor = .red
+        
     }
 }

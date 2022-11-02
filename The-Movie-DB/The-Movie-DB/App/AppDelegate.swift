@@ -17,7 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-                
+        let navigationBarAppearace = UINavigationBar.appearance()
+
+        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.barTintColor = #colorLiteral(red: 0.149019599, green: 0.149019599, blue: 0.149019599, alpha: 1)
+        navigationBarAppearace.titleTextAttributes = [.foregroundColor : UIColor.white, .font: UIFont(name: "AppleSDGothicNeo-Bold", size: 24)!]
+        
+        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
         let navigationController: UINavigationController = .init()
