@@ -42,7 +42,7 @@ class TabCoordinator: NSObject, Coordinator {
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         tabBarController.delegate = self
-        tabBarController.tabBar.barTintColor = #colorLiteral(red: 0.149019599, green: 0.149019599, blue: 0.149019599, alpha: 1)
+        tabBarController.tabBar.barTintColor = #colorLiteral(red: 0.06846003234, green: 0.06846003234, blue: 0.06846003234, alpha: 1)
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.selectedIndex = TabBarPage.main.pageOrderNumber()
         tabBarController.tabBar.isTranslucent = false
