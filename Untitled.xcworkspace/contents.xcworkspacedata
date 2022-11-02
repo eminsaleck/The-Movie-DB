@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <Group
-      location = "group:The-Movie-DB/../screen"
+      location = "group:screen"
       name = "screen">
       <FileRef
-         location = "group:/Users/lemindahovich/Desktop/Moview/The-Movie-DB/The-Movie-DB.xcodeproj/screen/Screenshot 2022-10-28 at 12.18.23.png">
+         location = "group:../../../screen/Screenshot 2022-10-28 at 12.18.23.png">
       </FileRef>
    </Group>
    <FileRef
