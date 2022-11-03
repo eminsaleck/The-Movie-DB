@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class MainViewController: UIViewController, UICollectionViewDelegate {
-    
+     
     let bag = DisposeBag()
     var viewModel: MainViewModelProtocol!    
     
@@ -28,7 +28,10 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
         collectionView.rx.setDelegate(self).disposed(by: bag)
         bindCollectionView()
     }
+}
 
+extension MainViewController{
+    
     private func bindCollectionView() {
         
         viewModel.fetchMoviesViewModels()
@@ -40,22 +43,20 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
             self.viewModel.coordinator.coordinateToDetails(with: item.element!, navigationController: self.navigationController!)
         }.disposed(by: bag)
     }
+}
+
+extension MainViewController{
     
-    func setupCollectionView(){
+    private func setupCollectionView(){
+        view.backgroundColor = .white
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-         view.backgroundColor = .white
-         view.addSubview(collectionView)
-         collectionView.translatesAutoresizingMaskIntoConstraints = false
-         
-         NSLayoutConstraint.activate([
-             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-         ])
-    }
-    
-    deinit {
-        print("GoViewController deinit")
+        NSLayoutConstraint.activate([
+            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }

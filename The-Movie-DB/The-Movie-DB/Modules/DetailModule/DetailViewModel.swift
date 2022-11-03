@@ -8,15 +8,19 @@
 import Foundation
 
 protocol DetailViewModelProtocol {
-  var movie: Film? { get }
+    var movie: Film? { get }
     var coordinator: DetailsCoordinator! { get set }
-    //var detailsVO: Observable<DetailsVO> { get }
+    func getPicture() -> String
 }
 
 final class DetailViewModel: DetailViewModelProtocol {
+    
     var coordinator: DetailsCoordinator!
     var movie: Film?
     
+    func getPicture() -> String {
+        movie?.posterPath ?? ""
+    }
 
 }
-    
+

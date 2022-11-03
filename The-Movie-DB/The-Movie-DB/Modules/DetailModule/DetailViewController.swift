@@ -19,14 +19,17 @@ class DetailViewController: UIViewController{
         return titleLabel
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
+        print(viewModel.getPicture())
     }
+}
+
+
+extension DetailViewController{
     
-    func setupUI(){
+   private func setupUI(){
         view.backgroundColor = .brown
         view.addSubview(titleLabel)
         print(viewModel.movie!.title)
@@ -41,9 +44,4 @@ class DetailViewController: UIViewController{
             titleLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
-    deinit {
-        print("DetailViewController deinit")
-    }
 }
-

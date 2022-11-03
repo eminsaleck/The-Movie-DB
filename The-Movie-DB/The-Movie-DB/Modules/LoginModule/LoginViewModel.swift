@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol LoginViewModelProtocol: class {
+protocol LoginViewModelProtocol: AnyObject {
   
 }
 

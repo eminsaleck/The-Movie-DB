@@ -10,7 +10,7 @@ import Foundation
 final class MainAssembler: AssemblerProtocol {
     
   func assembly() -> MainViewController {
-    let mainViewModel = MainViewModel()
+      let mainViewModel = MainViewModel(networkManager: NetworkManager())
     let mainViewController = MainViewController()
       mainViewController.viewModel = mainViewModel
     

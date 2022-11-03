@@ -20,7 +20,7 @@ final class MainViewModel: MainViewModelProtocol{
     
     private let networkManager: NetworkManagerProtocol
     
-    init(networkManager: NetworkManagerProtocol = NetworkManager()){
+    init(networkManager: NetworkManagerProtocol){
         self.networkManager = networkManager
     }
 
