@@ -20,6 +20,7 @@ class DetailViewController: UIViewController{
         return titleLabel
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .brown
