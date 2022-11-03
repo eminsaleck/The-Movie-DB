@@ -14,7 +14,7 @@ protocol TabCoordinatorProtocol: Coordinator {
     func currentPage() -> TabBarPage?
 }
 
-class TabCoordinator: NSObject, Coordinator {
+final class TabCoordinator: NSObject, Coordinator {
     weak var finishDelegate: CoordinatorFinishDelegate?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
@@ -56,8 +56,7 @@ class TabCoordinator: NSObject, Coordinator {
         navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
                                                      image: page.icon(),
                                                      selectedImage: page.selectedIcon())
-                                            
-        
+   
         switch page {
         case .main:
             let mainVC = MainCoordinator(navController)

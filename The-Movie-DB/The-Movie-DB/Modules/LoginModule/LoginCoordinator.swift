@@ -10,7 +10,7 @@ protocol LoginCoordinatorProtocol: Coordinator {
     func showLoginViewController()
 }
 
-class LoginCoordinator: LoginCoordinatorProtocol {
+final class LoginCoordinator: LoginCoordinatorProtocol {
     
     weak var finishDelegate: CoordinatorFinishDelegate?
     

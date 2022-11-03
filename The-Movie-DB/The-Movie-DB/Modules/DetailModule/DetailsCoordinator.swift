@@ -10,7 +10,7 @@ protocol DetailsCoordinatorProtocol{
     
 }
 
-class DetailsCoordinator: DetailsCoordinatorProtocol{
+final class DetailsCoordinator: DetailsCoordinatorProtocol{
     
     var navigationController: UINavigationController
     var movie: Film!

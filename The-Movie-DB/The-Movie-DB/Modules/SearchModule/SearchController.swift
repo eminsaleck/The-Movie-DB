@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchController: UIViewController {
+final class SearchController: UIViewController {
 
     var didSendEventClosure: ((SearchController.Event) -> Void)?
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileController: UIViewController {
+final class ProfileController: UIViewController {
 
     var didSendEventClosure: ((ProfileController.Event) -> Void)?
 

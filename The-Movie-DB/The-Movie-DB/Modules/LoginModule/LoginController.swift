@@ -8,7 +8,7 @@
 import UIKit
 
 
-class LoginController: UIViewController {
+final class LoginController: UIViewController {
     
     weak var viewModel: LoginViewModelProtocol?
     var didSendEventClosure: ((LoginController.Event) -> Void)?
