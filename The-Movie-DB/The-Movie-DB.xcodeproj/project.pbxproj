@@ -193,13 +193,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		AC268D69290C0676005AE287 /* Coordinator */ = {
+		AC268D69290C0676005AE287 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				AC268D6A290C06F4005AE287 /* AppCoordinator.swift */,
+				ACD70953290117BD00A1116C /* LaunchScreen.storyboard */,
 				AC268D6C290C0714005AE287 /* Coordinator.swift */,
 			);
-			path = Coordinator;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		AC268D71290C113C005AE287 /* MainModule */ = {
@@ -351,11 +352,10 @@
 				AC382BC8290D511F00B84F66 /* DTOs */,
 				AC268D78290C12EE005AE287 /* Modules */,
 				AC268D76290C125F005AE287 /* Helpers */,
-				AC268D69290C0676005AE287 /* Coordinator */,
+				AC268D69290C0676005AE287 /* Scenes */,
 				AC268D68290BF3DF005AE287 /* App */,
 				ACD70951290117BD00A1116C /* Assets.xcassets */,
 				AC0F35AA2912843C00BB05AF /* Info.plist */,
-				ACD70953290117BD00A1116C /* LaunchScreen.storyboard */,
 			);
 			path = "The-Movie-DB";
 			sourceTree = "<group>";

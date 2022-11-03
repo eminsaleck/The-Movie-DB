@@ -45,7 +45,7 @@ enum TabBarPage: String, CaseIterable  {
     func icon() -> UIImage? {
         switch self {
         case .main:
-            return UIImage(systemName: "magnifyingglass.circle")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
+            return UIImage(systemName: "m.circle")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         case .search:
             return UIImage(systemName: "magnifyingglass.circle")?.withTintColor(.white.withAlphaComponent(0.4), renderingMode: .alwaysOriginal)
         case .favourites:
@@ -59,7 +59,7 @@ enum TabBarPage: String, CaseIterable  {
     func selectedIcon() -> UIImage? {
           switch self {
           case .main:
-              return UIImage(systemName: "person.crop.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+              return UIImage(systemName: "m.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
           case .search:
               return UIImage(systemName: "magnifyingglass.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
           case .favourites:

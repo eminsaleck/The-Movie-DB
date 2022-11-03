@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Coordinator
-protocol Coordinator: class {
+protocol Coordinator: AnyObject {
     var finishDelegate: CoordinatorFinishDelegate? { get set }
     var navigationController: UINavigationController { get set }
     var childCoordinators: [Coordinator] { get set }
@@ -29,11 +29,10 @@ extension Coordinator {
 }
 
 // MARK: - CoordinatorOutput
-protocol CoordinatorFinishDelegate: class {
+protocol CoordinatorFinishDelegate: AnyObject {
     func coordinatorDidFinish(childCoordinator: Coordinator)
 }
 
-// MARK: - CoordinatorType
 enum CoordinatorType {
     case app, login, tab, detail
 }

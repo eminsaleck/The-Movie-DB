@@ -34,7 +34,7 @@ final class MainCoordinator: MainFlow {
     }
     
     func coordinateToDetails(with movie: Film, navigationController: UINavigationController) {
-        let detailsCoordinator = DetailsCoordinator(navigationController, movie: movie).start()
+        DetailsCoordinator(navigationController, movie: movie).start()
     }
 }
 //  
