@@ -17,19 +17,21 @@ final class MainCoordinator: MainFlow {
     
     var type = CoordinatorType.detail
     
-    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
         let mainVC = MainAssembler().assembly()
-        mainVC.coordinator = self
+        mainVC.viewModel.coordinator = self
         navigationController.pushViewController(mainVC, animated: false)
     }
-    func openMain() -> MainController {
+}
+
+extension MainCoordinator{
+    func openMain() -> MainViewController {
         let mainVC = MainAssembler().assembly()
-        mainVC.coordinator = self
+        mainVC.viewModel.coordinator = self
         return mainVC
     }
     
@@ -37,15 +39,3 @@ final class MainCoordinator: MainFlow {
         DetailsCoordinator(navigationController, movie: movie).start()
     }
 }
-//  
-//  func openHome() -> MainController {
-//    let mainVC = MainAssembler().assembly()
-//      mainVC.coordinator = self
-//    return mainVC
-//  }
-//  
-//  func coordinateToDetails(with movie: Film, navController: UINavigationController) {
-//    let detailsCoordinator = DetailsCoordinator(navController: navController, movie: movie)
-//    coordinate(to: detailsCoordinator)
-//  }
-//}

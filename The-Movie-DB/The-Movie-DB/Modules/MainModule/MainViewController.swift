@@ -9,13 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class MainController: UIViewController, UICollectionViewDelegate {
+final class MainViewController: UIViewController, UICollectionViewDelegate {
     
-    var didSendEventClosure: ((MainController.Event) -> Void)?
-    var coordinator: MainFlow!
     let bag = DisposeBag()
-    var viewModel: MainViewModel!
-    
+    var viewModel: MainViewModelProtocol!    
     
     lazy var collectionView : UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
@@ -24,11 +21,6 @@ final class MainController: UIViewController, UICollectionViewDelegate {
         return cv
     }()
     
-    override func loadView() {
-        super.loadView()
-//        view = collectionView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Main"
@@ -36,10 +28,7 @@ final class MainController: UIViewController, UICollectionViewDelegate {
         collectionView.rx.setDelegate(self).disposed(by: bag)
         bindCollectionView()
     }
-    deinit {
-        print("GoViewController deinit")
-    }
-    
+
     private func bindCollectionView() {
         
         viewModel.fetchMoviesViewModels()
@@ -47,11 +36,13 @@ final class MainController: UIViewController, UICollectionViewDelegate {
                 cell.configure(with: viewModel)
             }.disposed(by: bag)
         collectionView.rx.modelSelected(Film.self).subscribe { item in
-            self.coordinator.coordinateToDetails(with: item.element!, navigationController: self.navigationController!)
+            
+            self.viewModel.coordinator.coordinateToDetails(with: item.element!, navigationController: self.navigationController!)
         }.disposed(by: bag)
     }
     
     func setupCollectionView(){
+        
          view.backgroundColor = .white
          view.addSubview(collectionView)
          collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,29 +53,9 @@ final class MainController: UIViewController, UICollectionViewDelegate {
              collectionView.topAnchor.constraint(equalTo: view.topAnchor),
              collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
          ])
-         
     }
     
-}
-extension MainController {
-    enum Event {
-        case main
+    deinit {
+        print("GoViewController deinit")
     }
 }
-
-// MARK: - Pagination
-//extension MainController: UIScrollViewDelegate{
-//    func scrollViewDidScroll( _ scrollView: UIScrollView) {
-//        let position = scrollView.contentOffset.y
-//        if position > (collectionView.contentSize.height-100-scrollView.frame.size.height){
-//            guard NetworkManager.shared.isPageRefreshing == false else {return}
-//            viewModel.fetchMoviesViewModels(pagination: true)
-//                .bind(to: collectionView.rx.items(cellIdentifier: FilmCell.reuseId, cellType: FilmCell.self)) { index, viewModel, cell in
-//                    cell.configure(with: viewModel)
-//                }.disposed(by: bag)
-//        }
-//    }
-//
-//}
-
-

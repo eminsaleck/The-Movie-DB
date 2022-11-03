@@ -9,11 +9,11 @@ import Foundation
 
 final class MainAssembler: AssemblerProtocol {
     
-  func assembly() -> MainController {
+  func assembly() -> MainViewController {
     let mainViewModel = MainViewModel()
-    let mainController = MainController()
-      mainController.viewModel = mainViewModel
+    let mainViewController = MainViewController()
+      mainViewController.viewModel = mainViewModel
     
-    return mainController
+    return mainViewController
   }
 }

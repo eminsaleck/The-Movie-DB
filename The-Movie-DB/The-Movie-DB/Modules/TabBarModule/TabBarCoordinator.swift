@@ -60,8 +60,7 @@ class TabCoordinator: NSObject, Coordinator {
         
         switch page {
         case .main:
-            // If needed: Each tab bar flow can have it's own Coordinator.
-            let mainVC = MainCoordinator(navController)         
+            let mainVC = MainCoordinator(navController)
             mainVC.start()
            
         case .search:

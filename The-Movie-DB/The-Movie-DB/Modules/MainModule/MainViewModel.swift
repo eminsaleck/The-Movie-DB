@@ -8,8 +8,14 @@
 import Foundation
 import RxSwift
 
-final class MainViewModel{
+protocol MainViewModelProtocol{
+    func fetchMoviesViewModels() -> Observable<[Film]>
+    var coordinator: MainFlow! { get set }
+}
+
+final class MainViewModel: MainViewModelProtocol{
     
+    var coordinator: MainFlow!
     var dataArray: [Displayable] = []
     
     private let networkManager: NetworkManagerProtocol

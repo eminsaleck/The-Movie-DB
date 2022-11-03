@@ -10,7 +10,6 @@ import UIKit
 
 class DetailViewController: UIViewController{
     
-    var coordinator: DetailsCoordinator!
     var viewModel: DetailViewModelProtocol!
     
     private let titleLabel: UILabel = {
@@ -23,6 +22,11 @@ class DetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    func setupUI(){
         view.backgroundColor = .brown
         view.addSubview(titleLabel)
         print(viewModel.movie!.title)
@@ -41,7 +45,5 @@ class DetailViewController: UIViewController{
     deinit {
         print("DetailViewController deinit")
     }
-    
-    
 }
 

@@ -33,7 +33,7 @@
 		AC9950D62903DC8800619B1E /* FilmRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9950D52903DC8800619B1E /* FilmRealm.swift */; };
 		ACC08A0929073AC400A87127 /* UIImageView + LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */; };
 		ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD70948290117BB00A1116C /* AppDelegate.swift */; };
-		ACD7094D290117BB00A1116C /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7094C290117BB00A1116C /* MainController.swift */; };
+		ACD7094D290117BB00A1116C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7094C290117BB00A1116C /* MainViewController.swift */; };
 		ACD70952290117BD00A1116C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD70951290117BD00A1116C /* Assets.xcassets */; };
 		ACD70955290117BD00A1116C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD70953290117BD00A1116C /* LaunchScreen.storyboard */; };
 		ACD70960290117BD00A1116C /* The_Movie_DBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7095F290117BD00A1116C /* The_Movie_DBTests.swift */; };
@@ -109,7 +109,7 @@
 		ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + LoadImage.swift"; sourceTree = "<group>"; };
 		ACD70945290117BB00A1116C /* The-Movie-DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Movie-DB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD70948290117BB00A1116C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ACD7094C290117BB00A1116C /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		ACD7094C290117BB00A1116C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ACD70951290117BD00A1116C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACD70954290117BD00A1116C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACD7095B290117BD00A1116C /* The-Movie-DBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The-Movie-DBTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,7 +208,7 @@
 			children = (
 				AC268D74290C1233005AE287 /* MainViews */,
 				ACF312CE29052118008D7D09 /* CompositionalLayout.swift */,
-				ACD7094C290117BB00A1116C /* MainController.swift */,
+				ACD7094C290117BB00A1116C /* MainViewController.swift */,
 				AC268D6E290C0C46005AE287 /* MainCoordinator.swift */,
 				AC7D685D290C246900819AB9 /* MainViewModel.swift */,
 				AC7D6863290C299C00819AB9 /* MainAssembler.swift */,
@@ -565,7 +565,7 @@
 				AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */,
 				ACDAFACD2911A92C00EAE7CA /* TabBarCoordinator.swift in Sources */,
 				ACD7099D29026F3400A1116C /* NetworkManager.swift in Sources */,
-				ACD7094D290117BB00A1116C /* MainController.swift in Sources */,
+				ACD7094D290117BB00A1116C /* MainViewController.swift in Sources */,
 				AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */,
 				AC9950D62903DC8800619B1E /* FilmRealm.swift in Sources */,
 				ACD7098429011F0700A1116C /* UIView + Extension.swift in Sources */,
