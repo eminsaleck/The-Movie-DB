@@ -82,7 +82,6 @@ final class DetailsContentView: UIView {
         super.init(coder: coder)
     }
     
-    
     func setTrailer(key: String){
         if key != nil{
             youtubeView.addSubview(trailerYT)
