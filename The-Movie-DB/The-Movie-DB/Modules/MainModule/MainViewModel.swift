@@ -23,9 +23,9 @@ final class MainViewModel: MainViewModelProtocol{
     init(networkManager: NetworkManagerProtocol){
         self.networkManager = networkManager
     }
+    
 
     func fetchMoviesViewModels() -> Observable<[Film]> {
-        networkManager.fetchMovies(pagination: false).map { $0.map {
-            $0  } }
+        networkManager.fetchMovies(pagination: false).map { $0.map { $0 } }
     }
 }

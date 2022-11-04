@@ -52,5 +52,12 @@ extension Film: Displayable{
         voteAverage
     }
     
+    var idTrailer: Int {
+        id
+    }
+    
+    var vote: Double {
+        voteAverage
+    }
     
 }

@@ -12,45 +12,41 @@ class FilmCell: UICollectionViewCell {
     static var reuseId: String = "FilmCell"
     
     private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layoutIfNeeded()
-        imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .black
-        imageView.layer.cornerRadius = 10
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+        $0.layoutIfNeeded()
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = .black
+        $0.layer.cornerRadius = 10
+        $0.clipsToBounds = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIImageView())
     
     private let review: UILabel = {
-        let review = UILabel()
-        review.textAlignment = .center
-        review.numberOfLines = 10
-        review.font = .systemFont(ofSize: 10)
-        review.tintColor = .white
-        review.translatesAutoresizingMaskIntoConstraints = false
-        return review
-    }()
+        $0.textAlignment = .center
+        $0.numberOfLines = 10
+        $0.font = .systemFont(ofSize: 10)
+        $0.tintColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UILabel())
     
     private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 15)
-        label.tintColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+        $0.textAlignment = .center
+        $0.adjustsFontSizeToFitWidth = true
+        $0.font = .systemFont(ofSize: 15)
+        $0.tintColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UILabel())
     
     private let rating: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.font = .systemFont(ofSize: 13)
-        label.tintColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+        $0.textAlignment = .center
+        $0.numberOfLines = 1
+        $0.font = .systemFont(ofSize: 13)
+        $0.tintColor = .white
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UILabel())
     
     
     override init(frame: CGRect) {

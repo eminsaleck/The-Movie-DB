@@ -13,14 +13,12 @@ final class SearchController: UIViewController {
     var didSendEventClosure: ((SearchController.Event) -> Void)?
 
     private let searchButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Search", for: .normal)
-        button.backgroundColor = .systemYellow
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 8.0
-
-        return button
-    }()
+        $0.setTitle("Search", for: .normal)
+        $0.backgroundColor = .systemYellow
+        $0.setTitleColor(.white, for: .normal)
+        $0.layer.cornerRadius = 8.0
+        return $0
+    }(UIButton())
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -6,21 +6,38 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol DetailViewModelProtocol {
-    var movie: Film? { get }
-    var coordinator: DetailsCoordinator! { get set }
-    func getPicture() -> String
+    var movie: Displayable? { get }
+    var coordinator: DetailsCoordinatorProtocol! { get set }
+    func getTrailerKey() -> Observable<[String]>
+    func getTitle() -> String
+    func getImage() -> String
 }
 
 final class DetailViewModel: DetailViewModelProtocol {
-    
-    var coordinator: DetailsCoordinator!
-    var movie: Film?
-    
-    func getPicture() -> String {
-        movie?.posterPath ?? ""
-    }
 
+
+    var coordinator: DetailsCoordinatorProtocol!
+    var movie: Displayable?
+    
+    func getTitle() -> String{
+        movie?.titleName ?? ""
+    }
+    
+    func getImage() -> String{
+        "https://image.tmdb.org/t/p/w500\(movie!.poster)"
+    }
+    func getIn() -> String{
+        movie?.review ?? ""
+    }
+    func getTrailerKey() -> Observable<[String]>{
+        guard let movieId = movie?.idTrailer else {
+            fatalError()
+        }
+        return NetworkManager.shared.fetchTrailer(movieID: movieId).map { $0.results.map { $0.key } }
+    }
+    
 }
 

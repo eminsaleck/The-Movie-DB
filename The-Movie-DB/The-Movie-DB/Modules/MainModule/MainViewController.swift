@@ -28,6 +28,9 @@ final class MainViewController: UIViewController, UICollectionViewDelegate {
         collectionView.rx.setDelegate(self).disposed(by: bag)
         bindCollectionView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+    }
+
 }
 
 extension MainViewController{
@@ -38,9 +41,12 @@ extension MainViewController{
             .bind(to: collectionView.rx.items(cellIdentifier: FilmCell.reuseId, cellType: FilmCell.self)) { index, viewModel, cell in
                 cell.configure(with: viewModel)
             }.disposed(by: bag)
+        
         collectionView.rx.modelSelected(Film.self).subscribe { item in
-            
-            self.viewModel.coordinator.coordinateToDetails(with: item.element!, navigationController: self.navigationController!)
+            self.viewModel
+                .coordinator
+                .coordinateToDetails(with: item.element!,
+                navigationController: self.navigationController!)
         }.disposed(by: bag)
     }
 }

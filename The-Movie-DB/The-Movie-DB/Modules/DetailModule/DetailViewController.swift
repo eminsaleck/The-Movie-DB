@@ -6,42 +6,128 @@
 //
 
 import UIKit
+import RxSwift
 
 
-final class DetailViewController: UIViewController{
+final class DetailViewController: UIViewController {
     
-    var viewModel: DetailViewModelProtocol!
+    var viewModel: DetailViewModelProtocol?
+    let bag = DisposeBag()
+
     
-    private let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.backgroundColor = .systemYellow
-        titleLabel.layer.cornerRadius = 8.0
-        return titleLabel
-    }()
+    private let scrollView: UIScrollView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.contentInsetAdjustmentBehavior = .never
+        $0.showsVerticalScrollIndicator = false
+        $0.backgroundColor = .black
+        return $0
+    }(UIScrollView())
+    
+    private let imageContainer: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIView())
+    
+    private let detailsContentView: DetailsContentView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(DetailsContentView())
+    
+    
+    private lazy var imageView: UIImageView = {
+        $0.contentMode = .scaleAspectFill
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIImageView())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        print(viewModel.getPicture())
+        bindData()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.scrollIndicatorInsets = view.safeAreaInsets
+        scrollView.contentInset = UIEdgeInsets(top: 0,
+                                               left: 0,
+                                               bottom: view.safeAreaInsets.bottom,
+                                               right: 0)
+    }
+    
+    private func bindData() {
+        
+        imageView.loadImage(imagePath: viewModel?.getImage() ?? "")
+        detailsContentView.setContent(info: viewModel?.movie!)
+        viewModel?.getTrailerKey().bind(onNext: { [weak self] key in
+            self?.detailsContentView.setTrailer(key: key[0])
+        }).disposed(by: bag)
+    }
+    
+    private func setupUI() {
+        setupScrollView()
+        setupImageContainerView()
+        setupDetailsContentView()
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.topItem?.title = " "
+        navigationController?.navigationBar.barTintColor = .clear
+    }
+    
 }
 
-
+//MARK: - Constraints
 extension DetailViewController{
     
-   private func setupUI(){
-        view.backgroundColor = .brown
-        view.addSubview(titleLabel)
-        print(viewModel.movie!.title)
+    private func setupScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(imageContainer)
+        scrollView.addSubview(detailsContentView)
+        scrollView.addSubview(imageView)
         
-        titleLabel.text = viewModel.movie!.title
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            titleLabel.widthAnchor.constraint(equalToConstant: 200),
-            titleLabel.heightAnchor.constraint(equalToConstant: 50)
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setupDetailsContentView() {
+        NSLayoutConstraint.activate([
+            detailsContentView.topAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: 1),
+            detailsContentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailsContentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailsContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ])
+    }
+    
+    private func setupImageContainerView() {
+        let gradientView = GradientView(frame: imageView.bounds)
+        imageView.addSubview(gradientView)
+        
+        NSLayoutConstraint.activate([
+            imageContainer.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 400),
+            imageContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageContainer.heightAnchor.constraint(equalTo: imageContainer.widthAnchor, multiplier: 0.7),
+        ])
+        
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(equalTo: imageContainer.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: imageContainer.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: imageContainer.bottomAnchor)
+        ])
+        
+        let topImageConstraint = imageView.topAnchor.constraint(equalTo: view.topAnchor)
+        topImageConstraint.isActive = true
+        topImageConstraint.priority = .defaultLow
+        
+        let heightImageConstraint = imageView.heightAnchor.constraint(greaterThanOrEqualTo: imageContainer.heightAnchor, constant: 330)
+        heightImageConstraint.isActive = true
+        heightImageConstraint.priority = .required
     }
 }

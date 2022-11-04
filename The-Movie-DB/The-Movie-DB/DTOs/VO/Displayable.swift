@@ -11,5 +11,7 @@ protocol Displayable {
     var review: String { get }
     var titleName: String { get }
     var rating: Double { get }
+    var idTrailer: Int { get }
+    var vote: Double { get }
 }
 

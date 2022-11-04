@@ -22,7 +22,7 @@ final class DetailsCoordinator: DetailsCoordinatorProtocol{
 
     func start() {
         let detailVC = DetailsAssembler(movie: movie).assembly()
-        detailVC.viewModel.coordinator = self
+        detailVC.viewModel?.coordinator = self
         navigationController.pushViewController(detailVC, animated: true)
     }
     
