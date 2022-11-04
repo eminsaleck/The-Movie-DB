@@ -51,14 +51,21 @@ final class DetailsContentView: UIView {
     }(UIImageView())
     
     private  var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.backgroundColor = .clear
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .center
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+        $0.backgroundColor = .clear
+        $0.axis = .horizontal
+        $0.distribution = .fillProportionally
+        $0.alignment = .center
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UIStackView())
+    
+    private var trailerYT = YTPlayerView()
+    
+    private var youtubeView: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .white
+        return $0
+    }(UIView())
     
     private var yearView = InfoView()
     private var countryView = InfoView()
@@ -77,6 +84,11 @@ final class DetailsContentView: UIView {
     
     
     func setTrailer(key: String){
+        if key != nil{
+            youtubeView.addSubview(trailerYT)
+            trailerYT.frame = youtubeView.bounds
+            trailerYT.load(withVideoId: key)
+        }
         print(key)
     }
     
@@ -99,6 +111,7 @@ final class DetailsContentView: UIView {
         addSubview(stackView)
         addSubview(overviewLabel)
         addSubview(starLabel)
+        addSubview(youtubeView)
         setupStackView()
         setupConstraints()
     }
@@ -126,6 +139,7 @@ final class DetailsContentView: UIView {
 extension DetailsContentView{
     
     private func setupConstraints(){
+        youtubeView.backgroundColor = .white
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -148,7 +162,13 @@ extension DetailsContentView{
             overviewLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor),
             overviewLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             overviewLabel.widthAnchor.constraint(equalToConstant: 300),
-            overviewLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            overviewLabel.bottomAnchor.constraint(equalTo: youtubeView.topAnchor),
+            
+            youtubeView.topAnchor.constraint(equalTo: overviewLabel.bottomAnchor),
+            youtubeView.heightAnchor.constraint(equalToConstant: 300),
+            youtubeView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            youtubeView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            youtubeView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
