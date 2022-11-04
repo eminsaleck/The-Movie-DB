@@ -59,7 +59,6 @@ final class DetailsContentView: UIView {
         return $0
     }(UIStackView())
     
-    private var trailerYT = YTPlayerView()
     
     private var youtubeView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -67,11 +66,11 @@ final class DetailsContentView: UIView {
         return $0
     }(UIView())
     
+    private var trailerYT = YTPlayerView()
     private var yearView = InfoView()
     private var countryView = InfoView()
     private var durationView = InfoView()
     
-
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,12 +82,9 @@ final class DetailsContentView: UIView {
     }
     
     func setTrailer(key: String){
-        if key != nil{
-            youtubeView.addSubview(trailerYT)
-            trailerYT.frame = youtubeView.bounds
-            trailerYT.load(withVideoId: key)
-        }
-        print(key)
+        youtubeView.addSubview(trailerYT)
+        trailerYT.frame = youtubeView.bounds
+        trailerYT.load(withVideoId: key)
     }
     
     func setContent(info: Displayable?) {
@@ -103,6 +99,18 @@ final class DetailsContentView: UIView {
         durationView.configure(item: .duration, value: "122 m")
     }
     
+    private func setupRatingColor(_ vote: Double){
+        if vote >= 7 {
+            voteLabel.textColor = .systemGreen
+        } else if vote >= 5 {
+            voteLabel.textColor = #colorLiteral(red: 0.9981393218, green: 0.7549400926, blue: 0.03443264216, alpha: 1)
+        } else if vote >= 3 {
+            voteLabel.textColor = .systemOrange
+        } else if vote < 3 {
+            voteLabel.textColor = .systemRed
+        }
+    }
+    
     private func commonInit() {
         addSubview(titleLabel)
         addSubview(taglineLabel)
@@ -114,18 +122,6 @@ final class DetailsContentView: UIView {
         setupStackView()
         setupConstraints()
     }
-    
-    private func setupRatingColor(_ vote: Double){
-        if vote >= 7 {
-            voteLabel.textColor = .systemGreen
-        } else if vote >= 5 {
-            voteLabel.textColor = #colorLiteral(red: 0.9981393218, green: 0.7549400926, blue: 0.03443264216, alpha: 1)
-        } else if vote >= 3 {
-            voteLabel.textColor = .systemOrange
-        } else if vote < 3 {
-            voteLabel.textColor = .systemRed
-        }
-      }
     
     private func setupStackView() {
         stackView.addArrangedSubview(yearView)
@@ -163,7 +159,7 @@ extension DetailsContentView{
             overviewLabel.widthAnchor.constraint(equalToConstant: 300),
             overviewLabel.bottomAnchor.constraint(equalTo: youtubeView.topAnchor),
             
-            youtubeView.topAnchor.constraint(equalTo: overviewLabel.bottomAnchor),
+            youtubeView.topAnchor.constraint(equalTo: overviewLabel.bottomAnchor, constant: 20),
             youtubeView.heightAnchor.constraint(equalToConstant: 300),
             youtubeView.trailingAnchor.constraint(equalTo: trailingAnchor),
             youtubeView.leadingAnchor.constraint(equalTo: leadingAnchor),
