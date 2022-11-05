@@ -36,6 +36,8 @@ final class NetworkManager: NetworkManagerProtocol {
                     let data = try decoder.decode(DetailsData.self, from: responseData)
                     let detailsData = data
                     observer.onNext(detailsData)
+                    observer.onCompleted()
+
                 } catch {
                     print("nooo")
                 }
