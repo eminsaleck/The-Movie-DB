@@ -7,9 +7,9 @@
 
 import Foundation
 
+//Заменить на func fetchGenresFromInterner
 
-
-enum Genre: Hashable, CaseIterable{
+enum Genre: Codable, Hashable, CaseIterable{
     case action
     case adventure
     case animation

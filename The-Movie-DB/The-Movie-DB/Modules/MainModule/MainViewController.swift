@@ -74,7 +74,6 @@ final class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate{
     
     func addItems(items: [Film], to section: Genre) {
-        print(items.count)
         var snapshot = dataSource.snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(items, toSection: section)
