@@ -11,7 +11,7 @@ extension UIImageView {
     func loadImage(imagePath: String) {
         guard let imageURL = URL(string: imagePath) else { return }
             DispatchQueue.main.async {
-            UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve) { [weak self] in
+            UIView.transition(with: self, duration: 0.1, options: .transitionCrossDissolve) { [weak self] in
                 self?.sd_setImage(with: imageURL)
             }
         }

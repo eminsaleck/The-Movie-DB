@@ -9,10 +9,10 @@ import Foundation
 
 struct DetailsData: Codable {
     let id: Int
-    let results: [Result]
+    let results: [ResultData]
 }
 
-struct Result: Codable {
+struct ResultData: Codable {
     let iso639_1, iso3166_1, name, key: String
     let site: String
     let size: Int
