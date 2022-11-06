@@ -6,48 +6,88 @@
 //
 
 import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
 
-final class MainViewController: UIViewController, UICollectionViewDelegate {
-     
-    let bag = DisposeBag()
-    var viewModel: MainViewModelProtocol!    
+final class MainViewController: UIViewController {
+    
+    
+    static let sectionHeaderElementKind = "section-header-element-kind"
+    
+    
+    var viewModel: MainViewModelProtocol!
+    
+    
+    var dataSource: UICollectionViewDiffableDataSource<Genre, Film>! = nil
+
     
     lazy var collectionView : UICollectionView = {
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
-        cv.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
-        cv.backgroundColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        return cv
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
+        collectionView.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
+        collectionView.register(
+            HeaderView.self,
+            forSupplementaryViewOfKind: MainViewController.sectionHeaderElementKind,
+            withReuseIdentifier: HeaderView.reuseIdentifier)
+        collectionView.backgroundColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
         title = "Main"
         setupCollectionView()
-        collectionView.rx.setDelegate(self).disposed(by: bag)
-        bindCollectionView()
+        configureDataSource()
+        for genre in Genre.allCases{
+            NetworkManager().fetchMovieListByGenre(genre: genre.id) { [weak self] result in
+                result.map { filmsArray in
+                    self?.addItems(items: filmsArray, to: genre)
+                }
+            }
+        }
     }
-    override func viewWillAppear(_ animated: Bool) {
+
+    
+    func configureDataSource(){
+        
+        dataSource = UICollectionViewDiffableDataSource<Genre, Film>(collectionView: collectionView) { collectionView, indexPath, item in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCell.reuseId, for: indexPath) as! FilmCell
+            cell.configure(with: item)
+            return cell
+        }
+        
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+             let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: HeaderView.reuseIdentifier,
+                for: indexPath) as! HeaderView
+            var name = String(describing: Genre.allCases[indexPath.section]).capitalized
+            sectionHeader.label.text = name
+                 return sectionHeader
+             }
+        let snapshot = dataSource.snapshot()
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 
 }
 
-extension MainViewController{
+extension MainViewController: UICollectionViewDelegate{
     
-    private func bindCollectionView() {
-        
-        viewModel.fetchMoviesViewModels()
-            .bind(to: collectionView.rx.items(cellIdentifier: FilmCell.reuseId, cellType: FilmCell.self)) { index, viewModel, cell in
-                cell.configure(with: viewModel)
-            }.disposed(by: bag)
-        
-        collectionView.rx.modelSelected(Film.self).subscribe { item in
-            self.viewModel
-                .coordinator
-                .coordinateToDetails(with: item.element!,
-                navigationController: self.navigationController!)
-        }.disposed(by: bag)
+    func addItems(items: [Film], to section: Genre) {
+        print(items.count)
+        var snapshot = dataSource.snapshot()
+        snapshot.appendSections([section])
+        snapshot.appendItems(items, toSection: section)
+        dataSource.apply(snapshot)
+    }
+    
+}
+
+extension MainViewController{
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let model = dataSource.itemIdentifier(for: indexPath) else { return }
+        viewModel.coordinator.coordinateToDetails(with: model, navigationController: navigationController!)
     }
 }
 

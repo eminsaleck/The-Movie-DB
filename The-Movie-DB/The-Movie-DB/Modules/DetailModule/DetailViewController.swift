@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 
 final class DetailViewController: UIViewController {
@@ -59,8 +60,9 @@ final class DetailViewController: UIViewController {
         
         imageView.loadImage(imagePath: viewModel?.getImage() ?? "")
         detailsContentView.setContent(info: viewModel?.movie!)
+        
         viewModel?.getTrailerKey().bind(onNext: { [weak self] key in
-            self?.detailsContentView.setTrailer(key: key[0])
+            self?.detailsContentView.setTrailer(key: key.first!)
         }).disposed(by: bag)
     }
     

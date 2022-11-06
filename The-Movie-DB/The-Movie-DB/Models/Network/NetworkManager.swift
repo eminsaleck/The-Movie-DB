@@ -12,8 +12,7 @@ import RxSwift
 //typealias TrailerHandler = ((DetailsData) -> Void)?
 
 protocol NetworkManagerProtocol{
-    func fetchMovies(pagination: Bool) -> Observable<[Film]>
-
+    func fetchMovieListByGenre(genre: Int, completion: @escaping (Result<[Film], Error>) -> Void)
 }
 
 final class NetworkManager: NetworkManagerProtocol {
@@ -22,6 +21,8 @@ final class NetworkManager: NetworkManagerProtocol {
     static let shared = NetworkManager()
     var isPageRefreshing: Bool = false
     var page = 1
+
+
     
     func fetchTrailer(movieID: Int) -> Observable<DetailsData>{
 
@@ -45,48 +46,28 @@ final class NetworkManager: NetworkManagerProtocol {
             return Disposables.create {
                 
             }
-        }
+        }.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
         
     }
-    
-    func fetchMovies(pagination: Bool = false) -> Observable<[Film]> {
-        
-        return Observable.create { observer -> Disposable in
-            if pagination{
-                self.incrementPage(pagination)
-                print("PAGE WE ARE ON: \(self.page)")
-                self.isPageRefreshing = true
-            }
-            let url = "https://api.themoviedb.org/3/movie/popular?api_key=\(self.apiKey)&language=en-US&page=\(self.page)"
+    func fetchMovieListByGenre(genre: Int, completion: @escaping (Result<[Film], Error>) -> Void){
+
+            let url = "https://api.themoviedb.org/3/discover/movie?api_key=\(self.apiKey)&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=\(genre)&with_watch_monetization_types=flatrate"
             
             AF.request(url, method: .get).responseJSON { responseJSON in
                 let decoder = JSONDecoder()
                 guard let responseData = responseJSON.data else {return}
                 do {
                     let data = try decoder.decode(Films.self, from: responseData)
-                    let filmArray = data.results
-                    observer.onNext(filmArray)
+                     let filmArray = data.results
+                    
+                    completion(.success(filmArray))
                 } catch {
                     print("nooo")
                 }
-                if pagination {
-                    self.isPageRefreshing = false
-                }
             }
-            return Disposables.create {
-                
-            }
+        
         }
+        
     }
 
-    private func incrementPage(_ pagination: Bool) -> Int{
-        if pagination == true{
-            page += 1
-            return page
-        }
-        if pagination == false{
-            page -= 1
-        }
-        return page
-    }
-}
+

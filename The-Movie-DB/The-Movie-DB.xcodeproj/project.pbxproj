@@ -27,6 +27,8 @@
 		AC69C51429153B15008404B5 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AC69C51329153B15008404B5 /* YouTubeiOSPlayerHelper */; };
 		AC69C51729156C3F008404B5 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69C51629156C3F008404B5 /* InfoView.swift */; };
 		AC69C51929157752008404B5 /* InfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69C51829157752008404B5 /* InfoType.swift */; };
+		AC69C5232916F3F0008404B5 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69C5222916F3F0008404B5 /* Genre.swift */; };
+		AC69C52529170FAC008404B5 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69C52429170FAC008404B5 /* HeaderView.swift */; };
 		AC7D685E290C246900819AB9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D685D290C246900819AB9 /* MainViewModel.swift */; };
 		AC7D6862290C297700819AB9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D6861290C297700819AB9 /* Assembler.swift */; };
 		AC7D6864290C299C00819AB9 /* MainAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D6863290C299C00819AB9 /* MainAssembler.swift */; };
@@ -109,6 +111,8 @@
 		AC69C51029152568008404B5 /* DetailsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsData.swift; sourceTree = "<group>"; };
 		AC69C51629156C3F008404B5 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		AC69C51829157752008404B5 /* InfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoType.swift; sourceTree = "<group>"; };
+		AC69C5222916F3F0008404B5 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		AC69C52429170FAC008404B5 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		AC7D685D290C246900819AB9 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		AC7D6861290C297700819AB9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		AC7D6863290C299C00819AB9 /* MainAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembler.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD7098529011F8400A1116C /* FilmCell.swift */,
+				AC69C52429170FAC008404B5 /* HeaderView.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 				ACD7097829011A2500A1116C /* Film.swift */,
 				ACD7097A29011A2C00A1116C /* Films.swift */,
 				AC69C51029152568008404B5 /* DetailsData.swift */,
+				AC69C5222916F3F0008404B5 /* Genre.swift */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -585,10 +591,12 @@
 				ACD7098F2901390400A1116C /* DetailViewController.swift in Sources */,
 				AC9950CF2903D6C700619B1E /* DataManager.swift in Sources */,
 				AC7D685E290C246900819AB9 /* MainViewModel.swift in Sources */,
+				AC69C5232916F3F0008404B5 /* Genre.swift in Sources */,
 				AC92976E290D35B500243B56 /* DetailsCoordinator.swift in Sources */,
 				ACC08A0929073AC400A87127 /* UIImageView + LoadImage.swift in Sources */,
 				ACD7098629011F8400A1116C /* FilmCell.swift in Sources */,
 				AC929772290D37A800243B56 /* DetailViewModel.swift in Sources */,
+				AC69C52529170FAC008404B5 /* HeaderView.swift in Sources */,
 				AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */,
 				AC69C51929157752008404B5 /* InfoType.swift in Sources */,
 				ACDAFACD2911A92C00EAE7CA /* TabBarCoordinator.swift in Sources */,

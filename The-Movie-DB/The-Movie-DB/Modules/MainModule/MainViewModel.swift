@@ -9,14 +9,17 @@ import Foundation
 import RxSwift
 
 protocol MainViewModelProtocol{
-    func fetchMoviesViewModels() -> Observable<[Film]>
+    func fetchMoviesViewModels() -> [Film]
     var coordinator: MainFlow! { get set }
+    var dataArray: [Film] { get set }
+
 }
 
 final class MainViewModel: MainViewModelProtocol{
     
     var coordinator: MainFlow!
-    var dataArray: [Displayable] = []
+    var dataArray: [Film] = []
+   
     
     private let networkManager: NetworkManagerProtocol
     
@@ -25,7 +28,14 @@ final class MainViewModel: MainViewModelProtocol{
     }
     
 
-    func fetchMoviesViewModels() -> Observable<[Film]> {
-        networkManager.fetchMovies(pagination: false).map { $0.map { $0 } }
-    }
+    func fetchMoviesViewModels() -> [Film] {
+        for genre in Genre.allCases{
+            networkManager.fetchMovieListByGenre(genre: genre.id) { result in
+                result.map { filmArr in
+                    return filmArr
+                }
+            }
+        }
+        return [Film]()
+    } 
 }
