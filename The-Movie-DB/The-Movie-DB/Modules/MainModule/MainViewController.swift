@@ -19,7 +19,11 @@ final class MainViewController: UIViewController {
     
     
     var dataSource: UICollectionViewDiffableDataSource<Genre, Film>! = nil
-
+    
+    private let viewForSwitch: SegmentedView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(SegmentedView())
     
     lazy var collectionView : UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
@@ -29,12 +33,16 @@ final class MainViewController: UIViewController {
             forSupplementaryViewOfKind: MainViewController.sectionHeaderElementKind,
             withReuseIdentifier: HeaderView.reuseIdentifier)
         collectionView.backgroundColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.delegate = self
+        viewForSwitch.delegate = self
+        
         title = "Main"
         setupCollectionView()
         configureDataSource()
@@ -46,7 +54,9 @@ final class MainViewController: UIViewController {
             }
         }
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
     
     func configureDataSource(){
         
@@ -93,15 +103,28 @@ extension MainViewController{
 extension MainViewController{
     
     private func setupCollectionView(){
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(viewForSwitch)
+
         
         NSLayoutConstraint.activate([
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            viewForSwitch.topAnchor.constraint(equalTo: view.topAnchor),
+            viewForSwitch.rightAnchor.constraint(equalTo: view.rightAnchor),
+            viewForSwitch.leftAnchor.constraint(equalTo: view.leftAnchor),
+            viewForSwitch.bottomAnchor.constraint(equalTo: collectionView.topAnchor)
         ])
+    }
+}
+
+extension MainViewController: SegmentedViewPressed{
+    func pressed(_ value: Int) {
+        print("Selected Segment Index is : \(value)")
+        collectionView.reloadData()
     }
 }

@@ -12,6 +12,7 @@
 		AC0F35A12912786100BB05AF /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A02912786100BB05AF /* SearchCoordinator.swift */; };
 		AC0F35A32912786C00BB05AF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A22912786C00BB05AF /* SearchViewModel.swift */; };
 		AC0F35A52912787500BB05AF /* SearchAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F35A42912787500BB05AF /* SearchAssembler.swift */; };
+		AC15F6B429176A5400DFDE55 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15F6B329176A5400DFDE55 /* SegmentedView.swift */; };
 		AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA3291286D20085017B /* SceneDelegate.swift */; };
 		AC1DBC3B2912D7880085017B /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBC3A2912D7880085017B /* ProfileController.swift */; };
 		AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC268D6A290C06F4005AE287 /* AppCoordinator.swift */; };
@@ -101,6 +102,7 @@
 		AC0F35A22912786C00BB05AF /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AC0F35A42912787500BB05AF /* SearchAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAssembler.swift; sourceTree = "<group>"; };
 		AC0F35AA2912843C00BB05AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC15F6B329176A5400DFDE55 /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
 		AC1DBBA3291286D20085017B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AC1DBC3A2912D7880085017B /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		AC268D6A290C06F4005AE287 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				ACD7098529011F8400A1116C /* FilmCell.swift */,
+				AC15F6B329176A5400DFDE55 /* SegmentedView.swift */,
 				AC69C52429170FAC008404B5 /* HeaderView.swift */,
 			);
 			path = MainViews;
@@ -621,6 +624,7 @@
 				ACD7097929011A2500A1116C /* Film.swift in Sources */,
 				AC0F35A52912787500BB05AF /* SearchAssembler.swift in Sources */,
 				AC7D6862290C297700819AB9 /* Assembler.swift in Sources */,
+				AC15F6B429176A5400DFDE55 /* SegmentedView.swift in Sources */,
 				ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */,
 				ACF312CF29052118008D7D09 /* CompositionalLayout.swift in Sources */,
 				ACDAFAC42911A6E300EAE7CA /* LoginCoordinator.swift in Sources */,
