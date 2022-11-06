@@ -14,4 +14,4 @@ App which is aimed to find a movie for you
 
 
 
-<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif2.gif" width="200px" />
+<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif2.gif" width="200px" /> | <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif.gif" width="200px" />
