@@ -17,18 +17,16 @@ protocol NetworkManagerProtocol{
 
 final class NetworkManager: NetworkManagerProtocol {
     var apiKey = "a5ac3411803536cfb4b1cd90557dc8a7"
-    
     static let shared = NetworkManager()
     var isPageRefreshing: Bool = false
     var page = 1
 
-
-    
+        
     func fetchTrailer(movieID: Int) -> Observable<DetailsData>{
 
         return Observable.create { observer -> Disposable in
 
-            let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=\(self.apiKey)&language=en-US"
+            let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=a5ac3411803536cfb4b1cd90557dc8a7&language=en-US"
             
             AF.request(url, method: .get).responseJSON { responseJSON in
                 let decoder = JSONDecoder()
@@ -62,7 +60,9 @@ final class NetworkManager: NetworkManagerProtocol {
                     
                     completion(.success(filmArray))
                 } catch {
-                    print("nooo")
+                    
+                    print("FAIL : GENRE(\(genre)) ")
+                  
                 }
             }
         

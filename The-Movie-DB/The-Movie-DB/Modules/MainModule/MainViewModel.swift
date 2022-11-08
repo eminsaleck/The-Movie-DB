@@ -8,7 +8,10 @@
 
 import UIKit
 
-class LibraryViewModel: CollectionViewModel<FilmCell> {
+class MainViewModel: CollectionViewModel<FilmCell> {
+    private var coordinator:  MainFlow!
+    public var viewModelNetwork: MainNetworkViewModelProtocol!
+    
 
     init(collectionView: UICollectionView) {
         super.init(collectionView: collectionView, cellReuseIdentifier: FilmCell.reuseId)
@@ -16,8 +19,9 @@ class LibraryViewModel: CollectionViewModel<FilmCell> {
 
 }
 
-extension LibraryViewModel: UICollectionViewDelegate {
+extension MainViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        print("didSelect")
     }
 }
+

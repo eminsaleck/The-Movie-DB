@@ -22,6 +22,17 @@ class SegmentedView: UIView{
         super.init(coder: coder)
     }
     
+    @objc func segmentedValueChanged(_ sender:UISegmentedControl!) {
+        delegate?.pressed(sender.selectedSegmentIndex)
+    }
+}
+
+protocol SegmentedViewPressed: AnyObject{
+    func pressed(_ value: Int)
+}
+
+extension SegmentedView{
+    
     func commonInit(){
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         addSubview(segmentedControl)
@@ -42,12 +53,4 @@ class SegmentedView: UIView{
         segmentedControl.setTitleTextAttributes([ .foregroundColor : UIColor.white ], for: .normal)
         segmentedControl.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
     }
-    
-    @objc func segmentedValueChanged(_ sender:UISegmentedControl!) {
-        delegate?.pressed(sender.selectedSegmentIndex)
-    }
-}
-
-protocol SegmentedViewPressed: AnyObject{
-    func pressed(_ value: Int)
 }

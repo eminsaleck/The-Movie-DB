@@ -9,12 +9,13 @@ import Foundation
 
 final class MainAssembler: AssemblerProtocol {
     
-  func assembly() -> MainViewController {
-      let networkManager = NetworkManager()
-      let mainViewModel = MainViewModel(networkManager: networkManager)
-    let mainViewController = MainViewController()
-      mainViewController.viewModel = mainViewModel
-    
-    return mainViewController
-  }
+    func assembly() -> MainViewController {
+        let networkManager = NetworkManager()
+        let mainNetworkViewModel = MainNetworkViewModel(networkManager: networkManager)
+        let mainViewController = MainViewController()
+        
+        mainViewController.viewModelNetwork = mainNetworkViewModel
+        
+        return mainViewController
+    }
 }

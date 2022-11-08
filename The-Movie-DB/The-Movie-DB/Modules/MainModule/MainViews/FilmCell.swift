@@ -31,30 +31,34 @@ class FilmCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupElements() {
-        self.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        self.layer.cornerRadius = 12
-        self.clipsToBounds = true
-        contentView.addSubview(imageView)
-   
-    }
+
+}
+
+extension FilmCell: Providable{
     
-    func configure(with film: Displayable) {
-        imageView.loadImage(imagePath: "https://image.tmdb.org/t/p/w500\(film.poster)")
+    typealias ProvidedItem = Film
+
+    func provide(_ item: Film) {
+        imageView.loadImage(imagePath: "https://image.tmdb.org/t/p/w500\(item.poster)")
     }
 }
 
 extension FilmCell {
+    
+    private func setupElements() {
+        self.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        self.layer.cornerRadius = 12
+        self.clipsToBounds = true
+        contentView.addSubview(imageView)
+    }
+    
     private func setupConstraints() {
-        
-        
         NSLayoutConstraint.activate([
                                      imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
                                      imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
                                      imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
                                      imageView.topAnchor.constraint(equalTo: topAnchor)                                     
                                     ])
-        
     }
 }
 

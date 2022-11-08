@@ -8,8 +8,9 @@
 import Foundation
 
 struct Film: Codable, Hashable {
+    var uniqueID = UUID().uuidString
     let adult: Bool
-    let backdropPath: String
+    let backdropPath: String?
     let genreIDS: [Int]
     let id: Int
     let originalLanguage, originalTitle, overview: String
@@ -34,6 +35,12 @@ struct Film: Codable, Hashable {
         case voteCount = "vote_count"
     }
 }
+enum OriginalLanguage: String, Codable {
+    case en = "en"
+    case es = "es"
+    case fr = "fr"
+}
+
 
 extension Film: Displayable{
     var poster: String {
