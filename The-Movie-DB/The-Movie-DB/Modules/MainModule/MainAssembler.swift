@@ -13,9 +13,7 @@ final class MainAssembler: AssemblerProtocol {
         let networkManager = NetworkManager()
         let mainNetworkViewModel = MainNetworkViewModel(networkManager: networkManager)
         let mainViewController = MainViewController()
-        
         mainViewController.viewModelNetwork = mainNetworkViewModel
-        
         return mainViewController
     }
 }

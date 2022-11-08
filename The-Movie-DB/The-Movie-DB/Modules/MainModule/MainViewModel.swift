@@ -9,19 +9,22 @@
 import UIKit
 
 class MainViewModel: CollectionViewModel<FilmCell> {
-    private var coordinator:  MainFlow!
     public var viewModelNetwork: MainNetworkViewModelProtocol!
-    
+    var coordinator:  MainFlow!
+    var navigationController:  UINavigationController?
 
     init(collectionView: UICollectionView) {
         super.init(collectionView: collectionView, cellReuseIdentifier: FilmCell.reuseId)
+   
     }
 
 }
 
 extension MainViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       print("didSelect")
+    let film = items.value[indexPath.item]
+        print(film)
+        coordinator.coordinateToDetails(with: film, navigationController: navigationController!)
     }
 }
 

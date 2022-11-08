@@ -6,18 +6,16 @@
 //
 
 import UIKit
-import Combine
+import RxCocoa
+import RxSwift
 
 class MainViewController: UIViewController {
     
-    
     static let sectionHeaderElementKind = "section-header-element-kind"
+    let bag = DisposeBag()
     
-    
-    private let viewForSwitch: SegmentedView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        return $0
-    }(SegmentedView())
+    lazy var viewModel = MainViewModel(collectionView: collectionView)
+    public var viewModelNetwork: MainNetworkViewModelProtocol!
     
     lazy var collectionView: UICollectionView =  {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
@@ -30,34 +28,29 @@ class MainViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    private var tokens = [AnyCancellable]()
     
-    private lazy var viewModel = MainViewModel(collectionView: collectionView)
-    public var viewModelNetwork: MainNetworkViewModelProtocol!
+    private let viewForSwitch: SegmentedView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(SegmentedView())
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        bindData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
-    
-    private func configureCollectionView() {
-        collectionView.dataSource = viewModel.makeDataSource()
-        collectionView.delegate = viewModel
-        setupCollectionView()
-        viewForSwitch.delegate = self
-        
-        for genre in Genre.allCases{
-            getDataForEverySection(genre)
-        }
-  
-    }
-    func getDataForEverySection(_ genre: Genre){
-        viewModelNetwork.fetchMoviesViewModels(genre: genre) { [weak self] film in
-            self?.viewModel.addItems(items: film, to: genre)
+}
+
+extension MainViewController{
+    func bindData(){
+        Genre.allCases.map { genre in
+            viewModelNetwork.reactiveFetch(genre: genre).bind { items in
+                self.viewModel.addItems(items: items, to: genre)
+            }.disposed(by: bag)
         }
     }
 }
@@ -71,13 +64,19 @@ extension MainViewController: SegmentedViewPressed{
 }
 
 extension MainViewController{
+    private func configureCollectionView() {
+        viewModel.navigationController = navigationController!
+        collectionView.dataSource = viewModel.makeDataSource()
+        collectionView.delegate = viewModel
+        setupCollectionView()
+        viewForSwitch.delegate = self
+    }
     
     private func setupCollectionView(){
         view.backgroundColor = .black
         view.addSubview(collectionView)
         view.addSubview(viewForSwitch)
-        
-        
+    
         NSLayoutConstraint.activate([
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),

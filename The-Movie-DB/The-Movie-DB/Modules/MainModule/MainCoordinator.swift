@@ -24,7 +24,7 @@ final class MainCoordinator: MainFlow {
     
     func start() {
         let mainVC = MainAssembler().assembly()
-//        mainVC.viewModel.coordinator = self
+        mainVC.viewModel.coordinator = self
         navigationController.pushViewController(mainVC, animated: false)
     }
 }
@@ -32,7 +32,7 @@ final class MainCoordinator: MainFlow {
 extension MainCoordinator{
     func openMain() -> MainViewController {
         let mainVC = MainAssembler().assembly()
-//        mainVC.viewModel.coordinator = self
+        mainVC.viewModel.coordinator = self
         return mainVC
     }
     

@@ -6,14 +6,14 @@
 //
 
 import UIKit
+import RxSwift
 
 class CollectionViewModel<CellType: UICollectionViewCell & Providable>: NSObject {
     
     typealias Item = CellType.ProvidedItem
     typealias DataSource = UICollectionViewDiffableDataSource<Genre, Item>
     
-    private weak var collectionView: UICollectionView?
-    
+    private weak var collectionView: UICollectionView?    
     public var items: Binding<[Item]> = .init([])
     
     private var dataSource: DataSource?
@@ -25,15 +25,17 @@ class CollectionViewModel<CellType: UICollectionViewCell & Providable>: NSObject
         self.collectionView = collectionView
         super.init()
     }
-    
+}
+
+extension CollectionViewModel{
    public func addItems(items: [Item], to section: Genre) {
+       items.forEach { self.items.value.append($0) }
        guard let dataSource = dataSource else { return }
        var snapshot = dataSource.snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(items, toSection: section)
         dataSource.apply(snapshot)
     }
-
 }
 
 extension CollectionViewModel {

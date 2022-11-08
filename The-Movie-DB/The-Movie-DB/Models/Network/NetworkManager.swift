@@ -13,6 +13,7 @@ import RxSwift
 
 protocol NetworkManagerProtocol{
     func fetchMovieListByGenre(genre: Int, completion: @escaping (Result<[Film], Error>) -> Void)
+    func fetchMovieList(genre: Int) -> Observable<[Film]>
 }
 
 final class NetworkManager: NetworkManagerProtocol {
@@ -20,12 +21,12 @@ final class NetworkManager: NetworkManagerProtocol {
     static let shared = NetworkManager()
     var isPageRefreshing: Bool = false
     var page = 1
-
-        
+    
+    
     func fetchTrailer(movieID: Int) -> Observable<DetailsData>{
-
+        
         return Observable.create { observer -> Disposable in
-
+            
             let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=a5ac3411803536cfb4b1cd90557dc8a7&language=en-US"
             
             AF.request(url, method: .get).responseJSON { responseJSON in
@@ -36,7 +37,7 @@ final class NetworkManager: NetworkManagerProtocol {
                     let detailsData = data
                     observer.onNext(detailsData)
                     observer.onCompleted()
-
+                    
                 } catch {
                     print("nooo")
                 }
@@ -47,8 +48,10 @@ final class NetworkManager: NetworkManagerProtocol {
         }.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
         
     }
-    func fetchMovieListByGenre(genre: Int, completion: @escaping (Result<[Film], Error>) -> Void){
-
+    func fetchMovieList(genre: Int) -> Observable<[Film]>{
+        
+        return Observable.create { observer -> Disposable in
+            
             let url = "https://api.themoviedb.org/3/discover/movie?api_key=\(self.apiKey)&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=\(genre)&with_watch_monetization_types=flatrate"
             
             AF.request(url, method: .get).responseJSON { responseJSON in
@@ -56,18 +59,40 @@ final class NetworkManager: NetworkManagerProtocol {
                 guard let responseData = responseJSON.data else {return}
                 do {
                     let data = try decoder.decode(Films.self, from: responseData)
-                     let filmArray = data.results
-                    
-                    completion(.success(filmArray))
+                    let films = data.results
+                    observer.onNext(films)
                 } catch {
-                    
-                    print("FAIL : GENRE(\(genre)) ")
-                  
+                    print("nooo")
                 }
             }
+            return Disposables.create {
+                
+            }
+        }.subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
         
+    }
+    
+    func fetchMovieListByGenre(genre: Int, completion: @escaping (Result<[Film], Error>) -> Void){
+        
+        let url = "https://api.themoviedb.org/3/discover/movie?api_key=\(self.apiKey)&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=\(genre)&with_watch_monetization_types=flatrate"
+        
+        AF.request(url, method: .get).responseJSON { responseJSON in
+            let decoder = JSONDecoder()
+            guard let responseData = responseJSON.data else {return}
+            do {
+                let data = try decoder.decode(Films.self, from: responseData)
+                let filmArray = data.results
+                
+                completion(.success(filmArray))
+            } catch {
+                
+                print("FAIL : GENRE(\(genre)) ")
+                
+            }
         }
         
     }
+    
+}
 
 

@@ -9,7 +9,7 @@ class HeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        setup()
     }
     
     required init?(coder: NSCoder) {
@@ -19,7 +19,7 @@ class HeaderView: UICollectionReusableView {
 }
 
 extension HeaderView {
-    func configure() {
+    func setup() {
         backgroundColor = .systemBackground
         self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         addSubview(label)
