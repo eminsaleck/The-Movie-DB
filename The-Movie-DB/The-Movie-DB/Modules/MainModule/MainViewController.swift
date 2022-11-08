@@ -1,31 +1,25 @@
 //
-//
+//  MainViewControllerV2.swift
 //  The-Movie-DB
 //
-//  Created by LEMIN DAHOVICH on 20.10.2022.
+//  Created by LEMIN DAHOVICH on 08.11.2022.
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
+import Combine
 
-final class MainViewController: UIViewController {
+class MainViewController: UIViewController {
     
     
     static let sectionHeaderElementKind = "section-header-element-kind"
     
-    
-    var viewModel: MainViewModelProtocol!
-    
-    
-    var dataSource: UICollectionViewDiffableDataSource<Genre, Film>! = nil
     
     private let viewForSwitch: SegmentedView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(SegmentedView())
     
-    lazy var collectionView : UICollectionView = {
+    lazy var collectionView: UICollectionView =  {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
         collectionView.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
         collectionView.register(
@@ -36,68 +30,51 @@ final class MainViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    private var tokens = [AnyCancellable]()
+    
+    private lazy var viewModel = LibraryViewModel(collectionView: collectionView)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView.delegate = self
-        viewForSwitch.delegate = self
-        
-        title = "Main"
-        setupCollectionView()
-        configureDataSource()
-        for genre in Genre.allCases{
-            NetworkManager().fetchMovieListByGenre(genre: genre.id) { [weak self] result in
-                result.map { filmsArray in
-                    self?.addItems(items: filmsArray, to: genre)
-                }
-            }
-        }
+        configureCollectionView()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
     
-    func configureDataSource(){
+    private func configureCollectionView() {
+        collectionView.dataSource = viewModel.makeDataSource()
+        collectionView.delegate = viewModel
+        setupCollectionView()
+        viewForSwitch.delegate = self
         
-        dataSource = UICollectionViewDiffableDataSource<Genre, Film>(collectionView: collectionView) { collectionView, indexPath, item in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCell.reuseId, for: indexPath) as! FilmCell
-            cell.configure(with: item)
-            return cell
+        getDataForEverySection()
+    }
+    
+    func getDataForEverySection(){
+        for genre in Genre.allCases{
+            NetworkManager().fetchMovieListByGenre(genre: genre.id) { [weak self] result in
+                switch result{
+                case .success(let items):
+                    print(items)
+                    self?.viewModel.addItems(items: items.reversed(), to: genre)
+                case .failure(_):
+                    print(result)
+                }
+            }
         }
-        
-        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-             let sectionHeader = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: HeaderView.reuseIdentifier,
-                for: indexPath) as! HeaderView
-            var name = String(describing: Genre.allCases[indexPath.section]).capitalized
-            sectionHeader.label.text = name
-                 return sectionHeader
-             }
-        let snapshot = dataSource.snapshot()
-        dataSource.apply(snapshot, animatingDifferences: false)
-    }
-
-}
-
-extension MainViewController: UICollectionViewDelegate{
-    
-    func addItems(items: [Film], to section: Genre) {
-        var snapshot = dataSource.snapshot()
-        snapshot.appendSections([section])
-        snapshot.appendItems(items, toSection: section)
-        dataSource.apply(snapshot)
     }
     
-}
-
-extension MainViewController{
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let model = dataSource.itemIdentifier(for: indexPath) else { return }
-        viewModel.coordinator.coordinateToDetails(with: model, navigationController: navigationController!)
-    }
+    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        guard let nav = segue.destination as? UINavigationController, let dest = nav.viewControllers.first as? NewNoteViewController else { fatalError() }
+    //
+    //        dest.notePublisher.sink { [unowned self] note in
+    //            viewModel.addItems(items: <#T##[Item]#>, to: <#T##Genre#>)
+    //        }
+    //        .store(in: &tokens)
+    //    }
 }
 
 extension MainViewController{
@@ -106,7 +83,7 @@ extension MainViewController{
         view.backgroundColor = .black
         view.addSubview(collectionView)
         view.addSubview(viewForSwitch)
-
+        
         
         NSLayoutConstraint.activate([
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -122,7 +99,47 @@ extension MainViewController{
     }
 }
 
+extension MainViewController{
+    func createCompositionalLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            return self.createSection()
+        }
+        return layout
+    }
+    
+    private func createSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8),
+                                              heightDimension: .fractionalHeight(1))
+        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 5, bottom: 0, trailing: 5)
+        
+        
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .estimated(170),
+                                                     heightDimension: .estimated(180))
+        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
+        
+        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+        layoutSection.orthogonalScrollingBehavior = .continuous
+        layoutSection.contentInsets = NSDirectionalEdgeInsets.init(top: 10, leading: 12, bottom: 40, trailing: 12)
+        
+        let headerFooterSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(20)
+        )
+        
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerFooterSize,
+            elementKind: MainViewController.sectionHeaderElementKind,
+            alignment: .top
+        )
+        layoutSection.boundarySupplementaryItems = [sectionHeader]
+        
+        return layoutSection
+    }
+}
+
 extension MainViewController: SegmentedViewPressed{
+    
     func pressed(_ value: Int) {
         print("Selected Segment Index is : \(value)")
         collectionView.reloadData()
