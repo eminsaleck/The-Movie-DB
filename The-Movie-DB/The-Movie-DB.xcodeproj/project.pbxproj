@@ -37,6 +37,9 @@
 		AC74B717291AD2B900895C84 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74B716291AD2B900895C84 /* MainViewController.swift */; };
 		AC74B719291ADA7F00895C84 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74B718291ADA7F00895C84 /* Binding.swift */; };
 		AC74B71D291ADD0700895C84 /* MainNetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74B71C291ADD0700895C84 /* MainNetworkViewModel.swift */; };
+		AC74B720291B071100895C84 /* FavouriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74B71F291B071100895C84 /* FavouriteCoordinator.swift */; };
+		AC74B722291B074200895C84 /* FavouriteAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74B721291B074200895C84 /* FavouriteAssembler.swift */; };
+		AC74B724291B077300895C84 /* FavouriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC74B723291B077300895C84 /* FavouriteController.swift */; };
 		AC7D6862290C297700819AB9 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D6861290C297700819AB9 /* Assembler.swift */; };
 		AC7D6864290C299C00819AB9 /* MainAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D6863290C299C00819AB9 /* MainAssembler.swift */; };
 		AC92976E290D35B500243B56 /* DetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC92976D290D35B500243B56 /* DetailsCoordinator.swift */; };
@@ -126,6 +129,9 @@
 		AC74B716291AD2B900895C84 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AC74B718291ADA7F00895C84 /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		AC74B71C291ADD0700895C84 /* MainNetworkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNetworkViewModel.swift; sourceTree = "<group>"; };
+		AC74B71F291B071100895C84 /* FavouriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCoordinator.swift; sourceTree = "<group>"; };
+		AC74B721291B074200895C84 /* FavouriteAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteAssembler.swift; sourceTree = "<group>"; };
+		AC74B723291B077300895C84 /* FavouriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteController.swift; sourceTree = "<group>"; };
 		AC7D6861290C297700819AB9 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		AC7D6863290C299C00819AB9 /* MainAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembler.swift; sourceTree = "<group>"; };
 		AC92976D290D35B500243B56 /* DetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoordinator.swift; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 		AC268D78290C12EE005AE287 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				AC74B71E291B06BA00895C84 /* FavouriteModule */,
 				AC1DBC3C2912D78F0085017B /* ProfileModule */,
 				AC0F359D2912784700BB05AF /* SearchModule */,
 				ACDAFACB2911A91300EAE7CA /* TabBarModule */,
@@ -366,6 +373,16 @@
 				AC74B718291ADA7F00895C84 /* Binding.swift */,
 			);
 			path = TopLevel;
+			sourceTree = "<group>";
+		};
+		AC74B71E291B06BA00895C84 /* FavouriteModule */ = {
+			isa = PBXGroup;
+			children = (
+				AC74B71F291B071100895C84 /* FavouriteCoordinator.swift */,
+				AC74B721291B074200895C84 /* FavouriteAssembler.swift */,
+				AC74B723291B077300895C84 /* FavouriteController.swift */,
+			);
+			path = FavouriteModule;
 			sourceTree = "<group>";
 		};
 		AC862FAF290BF38B009A3217 /* Extensions */ = {
@@ -611,9 +628,11 @@
 			files = (
 				AC929770290D376300243B56 /* DetailsAssembler.swift in Sources */,
 				AC74B715291AD23F00895C84 /* MainViewModel.swift in Sources */,
+				AC74B720291B071100895C84 /* FavouriteCoordinator.swift in Sources */,
 				AC0F35A32912786C00BB05AF /* SearchViewModel.swift in Sources */,
 				ACD7098F2901390400A1116C /* DetailViewController.swift in Sources */,
 				AC74B719291ADA7F00895C84 /* Binding.swift in Sources */,
+				AC74B722291B074200895C84 /* FavouriteAssembler.swift in Sources */,
 				AC9950CF2903D6C700619B1E /* DataManager.swift in Sources */,
 				AC69C5232916F3F0008404B5 /* Genre.swift in Sources */,
 				AC92976E290D35B500243B56 /* DetailsCoordinator.swift in Sources */,
@@ -648,6 +667,7 @@
 				AC7D6862290C297700819AB9 /* Assembler.swift in Sources */,
 				AC15F6B429176A5400DFDE55 /* SegmentedView.swift in Sources */,
 				AC74B71D291ADD0700895C84 /* MainNetworkViewModel.swift in Sources */,
+				AC74B724291B077300895C84 /* FavouriteController.swift in Sources */,
 				ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */,
 				ACF312CF29052118008D7D09 /* CompositionalLayout.swift in Sources */,
 				AC74B70E291AC84D00895C84 /* Providable.swift in Sources */,

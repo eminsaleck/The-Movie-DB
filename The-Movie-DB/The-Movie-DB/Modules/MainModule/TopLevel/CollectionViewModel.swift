@@ -13,7 +13,7 @@ class CollectionViewModel<CellType: UICollectionViewCell & Providable>: NSObject
     typealias Item = CellType.ProvidedItem
     typealias DataSource = UICollectionViewDiffableDataSource<Genre, Item>
     
-    private weak var collectionView: UICollectionView?    
+    private weak var collectionView: UICollectionView?
     public var items: Binding<[Item]> = .init([])
     
     private var dataSource: DataSource?
@@ -39,7 +39,10 @@ extension CollectionViewModel{
 }
 
 extension CollectionViewModel {
-    private func cellProvider(_ collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? {
+    private func cellProvider(_ collectionView: UICollectionView,
+                              indexPath: IndexPath,
+                              item: Item) -> UICollectionViewCell?
+    {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CellType
         cell.provide(item)
         return cell
@@ -59,7 +62,8 @@ extension CollectionViewModel {
     
     public func makeDataSource() -> DataSource {
         guard let collectionView = collectionView else { fatalError("CollectionView isn't here :(") }
-        let dataSource = DataSource(collectionView: collectionView, cellProvider: cellProvider)
+        let dataSource = DataSource(collectionView: collectionView,
+                                    cellProvider: cellProvider)
         supplementaryViewProviderFor(dataSource)
         self.dataSource = dataSource
         return dataSource
