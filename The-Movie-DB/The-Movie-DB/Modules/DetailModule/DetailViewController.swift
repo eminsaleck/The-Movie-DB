@@ -78,7 +78,7 @@ final class DetailViewController: UIViewController {
         navigationController?.navigationBar.topItem?.title = " "
         navigationController?.navigationBar.barTintColor = .clear
     }
-    
+
 }
 
 //MARK: - Constraints

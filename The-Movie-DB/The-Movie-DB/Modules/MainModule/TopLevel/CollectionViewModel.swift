@@ -50,16 +50,26 @@ extension CollectionViewModel {
     
     private func supplementaryViewProviderFor(_ dataSource: DataSource) {
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-             let sectionHeader = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: HeaderView.reuseIdentifier,
-                for: indexPath) as! HeaderView
-            let name = String(describing: Genre.allCases[indexPath.section]).capitalized
-            sectionHeader.label.text = name
-                 return sectionHeader
-             }
+            if indexPath.section == 0{
+                let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: TopHeaderView.reuseIdentifier,
+                    for: indexPath) as! TopHeaderView
+                let name = String(describing: Genre.allCases[indexPath.section]).capitalized
+                sectionHeader.label.text = name
+                return sectionHeader
+            } else {
+                
+                let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: HeaderView.reuseIdentifier,
+                    for: indexPath) as! HeaderView
+                let name = String(describing: Genre.allCases[indexPath.section]).capitalized
+                sectionHeader.label.text = name
+                return sectionHeader
+            }
+        }
     }
-    
     public func makeDataSource() -> DataSource {
         guard let collectionView = collectionView else { fatalError("CollectionView isn't here :(") }
         let dataSource = DataSource(collectionView: collectionView,

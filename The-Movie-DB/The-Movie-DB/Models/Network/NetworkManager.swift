@@ -14,6 +14,9 @@ import RxSwift
 protocol NetworkManagerProtocol{
     func fetchMovieListByGenre(genre: Int, completion: @escaping (Result<[Film], Error>) -> Void)
     func fetchMovieList(genre: Int) -> Observable<[Film]>
+    func fetchDiscoverMovies(completion: @escaping (Result<[Film], Error>) -> Void)
+    func search(with query: String, completion: @escaping (Result<[Film], Error>) -> Void)
+
 }
 
 final class NetworkManager: NetworkManagerProtocol {
@@ -87,6 +90,47 @@ final class NetworkManager: NetworkManagerProtocol {
             } catch {
                 
                 print("FAIL : GENRE(\(genre)) ")
+                
+            }
+        }
+        
+    }
+    func search(with query: String, completion: @escaping (Result<[Film], Error>) -> Void) {
+        
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {return}
+         let url = "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(query)"
+        
+        AF.request(url, method: .get).responseJSON { responseJSON in
+            let decoder = JSONDecoder()
+            guard let responseData = responseJSON.data else {return}
+            do {
+                let data = try decoder.decode(Films.self, from: responseData)
+                let filmArray = data.results
+                print(filmArray)
+                completion(.success(filmArray))
+            } catch {
+                
+                print("FAIL : search")
+                
+            }
+        }
+    }
+    
+    func fetchDiscoverMovies(completion: @escaping (Result<[Film], Error>) -> Void){
+        
+         let url =  "https://api.themoviedb.org/3/discover/movie?api_key=a5ac3411803536cfb4b1cd90557dc8a7&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate"
+
+        
+        AF.request(url, method: .get).responseJSON { responseJSON in
+            let decoder = JSONDecoder()
+            guard let responseData = responseJSON.data else {return}
+            do {
+                let data = try decoder.decode(Films.self, from: responseData)
+                let filmArray = data.results
+                completion(.success(filmArray))
+            } catch {
+                
+                print("FAIL :fetchDiscoverMovies ")
                 
             }
         }
