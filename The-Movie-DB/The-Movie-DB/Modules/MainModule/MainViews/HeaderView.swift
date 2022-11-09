@@ -44,7 +44,7 @@ extension HeaderView {
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
             label.topAnchor.constraint(equalTo: topAnchor, constant: inset),
             label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset),
-            
+                        
             label2.trailingAnchor.constraint(equalTo: trailingAnchor),
             label2.centerYAnchor.constraint(equalTo: label.centerYAnchor)
         ])

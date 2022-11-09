@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     static let sectionHeaderElementKind = "section-header-element-kind"
     let bag = DisposeBag()
@@ -18,8 +18,12 @@ class MainViewController: UIViewController {
     public var viewModelNetwork: MainNetworkViewModelProtocol!
     
     lazy var collectionView: UICollectionView =  {
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())        
         collectionView.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
+        collectionView.register(
+            TopHeaderView.self,
+            forSupplementaryViewOfKind: MainViewController.sectionHeaderElementKind,
+            withReuseIdentifier: TopHeaderView.reuseIdentifier)
         collectionView.register(
             HeaderView.self,
             forSupplementaryViewOfKind: MainViewController.sectionHeaderElementKind,
@@ -64,12 +68,14 @@ extension MainViewController: SegmentedViewPressed{
 }
 
 extension MainViewController{
+
     private func configureCollectionView() {
         viewModel.navigationController = navigationController!
         collectionView.dataSource = viewModel.makeDataSource()
         collectionView.delegate = viewModel
         setupCollectionView()
         viewForSwitch.delegate = self
+        
     }
     
     private func setupCollectionView(){

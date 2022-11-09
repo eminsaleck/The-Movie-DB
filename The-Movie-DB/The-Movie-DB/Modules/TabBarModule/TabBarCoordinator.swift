@@ -63,18 +63,12 @@ final class TabCoordinator: NSObject, Coordinator {
             mainVC.start()
            
         case .search:
-            let searchVC = SearchController()
-            searchVC.didSendEventClosure = { [weak self] event in
-                switch event {
-                case .search:
-                    self?.selectPage(.profile)
-                }
-            }
-            navController.pushViewController(searchVC, animated: true)
+            let searchVC = SearchCoordinator(navController)
+            searchVC.start()
             
         case .favourites:
-            let mainVC = MainCoordinator(navController)
-            mainVC.start()
+            let favVC = FavouriteCoordinator(navController)
+            favVC.start()
             
         case .profile:
             let profileVC = ProfileController()

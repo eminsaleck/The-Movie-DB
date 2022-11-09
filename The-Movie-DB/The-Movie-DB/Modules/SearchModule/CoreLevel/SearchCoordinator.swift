@@ -6,11 +6,11 @@
 //
 import UIKit
 
-protocol FavouriteCoordinatorFlow {
+protocol SearchCoordinatorFlow {
     func coordinateToDetails(with movie: Film, navigationController: UINavigationController)
 }
 
-final class FavouriteCoordinator: FavouriteCoordinatorFlow {
+final class SearchCoordinator: SearchCoordinatorFlow {
   
   let navController: UINavigationController
   
@@ -19,13 +19,13 @@ final class FavouriteCoordinator: FavouriteCoordinatorFlow {
   }
   
   func start() {
-    let favController = FavouriteAssembler().assembly()
-    favController.coordinator = self
-    navController.pushViewController(favController, animated: true)      
+    let searchController = SearchAssembler().assembly()
+      searchController.coordinator = self
+    navController.pushViewController(searchController, animated: true)
   }
 }
 
-extension FavouriteCoordinator{
+extension SearchCoordinator{
     func coordinateToDetails(with movie: Film, navigationController: UINavigationController) {
         DetailsCoordinator(navigationController, movie: movie).start()
     }

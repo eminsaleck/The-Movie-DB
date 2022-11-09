@@ -46,7 +46,7 @@ extension FilmCell: Providable{
 extension FilmCell {
     
     private func setupElements() {
-        self.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        self.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         self.layer.cornerRadius = 12
         self.clipsToBounds = true
         contentView.addSubview(imageView)

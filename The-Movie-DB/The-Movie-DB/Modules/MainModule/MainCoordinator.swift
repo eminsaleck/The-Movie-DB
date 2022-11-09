@@ -16,8 +16,6 @@ final class MainCoordinator: MainFlow {
     
     var navigationController: UINavigationController
     
-    var type = CoordinatorType.detail
-    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

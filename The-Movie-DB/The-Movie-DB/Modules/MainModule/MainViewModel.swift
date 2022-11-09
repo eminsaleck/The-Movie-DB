@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewModel: CollectionViewModel<FilmCell> {
+final class MainViewModel: CollectionViewModel<FilmCell> {
     public var viewModelNetwork: MainNetworkViewModelProtocol!
     var coordinator:  MainFlow!
     var navigationController:  UINavigationController?
