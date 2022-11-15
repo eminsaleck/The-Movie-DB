@@ -1,6 +1,7 @@
 # The Movie DB
 App which is aimed to find a movie for you
 
+*Currently in development
 
 # Tech stack:
 >1. UIKit
