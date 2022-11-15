@@ -9,8 +9,6 @@ App which is aimed to find a movie for you
 >4. RxSwift/RxCocoa
 >5. SDWebImage
 >6. Realm 
->7. PopupView
->8. Lottie
 
 
 
