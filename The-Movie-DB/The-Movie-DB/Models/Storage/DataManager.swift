@@ -14,7 +14,46 @@ final class DataManager{
     private var filmsToPresent = [Film]()
     private var iterationCounter = 0
     private var filmsInBase = 0
+}
+ 
+extension DataManager: DataManagerProtocol{
+    func save(_ film: Film){
+        let filmRealm = FilmRealm()
+        filmRealm.id = film.id
+        filmRealm.adult = film.adult
+        filmRealm.title = film.title
+        filmRealm.overview = film.overview
+        filmRealm.posterPath = film.posterPath
+        filmRealm.popularity = film.popularity
+        filmRealm.voteCount = film.voteCount
+        
+        do {
+            try? realm.write {
+                realm.add(filmRealm, update: .all)
+            }
+            
+        } catch{
+            print("failed")
+        }
+    }
 
+    
+    func getFilms() -> [Film]{
+        var count = 0
+        let allFilms = appendMovieFromCache()
+        filmsInBase = allFilms.count
+        print("FILMS IN DATABASE: \(filmsInBase)")
+        for _ in allFilms {
+            filmsToPresent.append(allFilms[iterationCounter])
+                //iterationCounter += 1
+                count += 1
+                if count == 20{
+                    break
+                }
+            }
+        return allFilms
+    }
+    
     private func appendMovieFromCache() -> [Film]{
         let arrayOfData = realm.objects(FilmRealm.self)
         var allFilms = [Film]()
@@ -37,39 +76,6 @@ final class DataManager{
             allFilms.append(filmElement)
         }
         return allFilms
-    }
-    
-}
- 
-extension DataManager: DataManagerProtocol{
-    func save(_ film: Film){
-        let filmRealm = FilmRealm()
-        filmRealm.id = film.id
-        filmRealm.adult = film.adult
-        filmRealm.title = film.title
-        filmRealm.overview = film.overview
-        filmRealm.posterPath = film.posterPath
-        filmRealm.popularity = film.popularity
-        filmRealm.voteCount = film.voteCount
-        try? realm.write {
-            realm.add(filmRealm, update: .all)
-        }
-    }
-    
-    func getFilms() -> [Film]{
-        var count = 0
-        let allFilms = appendMovieFromCache()
-        filmsInBase = allFilms.count
-        print("FILMS IN DATABASE: \(filmsInBase)")
-        for _ in allFilms {
-            filmsToPresent.append(allFilms[iterationCounter])
-                iterationCounter += 1
-                count += 1
-                if count == 20{
-                    break
-                }
-            }
-        return filmsToPresent
     }
 }
 

@@ -18,7 +18,7 @@ class CollectionViewModel<CellType: UICollectionViewCell & Providable>: NSObject
     
     private var dataSource: DataSource?
     private var cellIdentifier: String
-
+    
     
     init(collectionView: UICollectionView, cellReuseIdentifier: String) {
         self.cellIdentifier = cellReuseIdentifier
@@ -28,10 +28,12 @@ class CollectionViewModel<CellType: UICollectionViewCell & Providable>: NSObject
 }
 
 extension CollectionViewModel{
-   public func addItems(items: [Item], to section: Genre) {
-       items.forEach { self.items.value.append($0) }
-       guard let dataSource = dataSource else { return }
-       var snapshot = dataSource.snapshot()
+    
+    
+    public func addItems(items: [Item], to section: Genre) {
+        items.forEach { self.items.value.append($0) }
+        guard let dataSource = dataSource else { return }
+        var snapshot = dataSource.snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(items, toSection: section)
         dataSource.apply(snapshot)

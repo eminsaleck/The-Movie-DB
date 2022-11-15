@@ -13,17 +13,18 @@ protocol SearchResultsViewControllerDelegate: AnyObject {
 
 class SearchResultsController: UIViewController {
     
-   
-    public var movies: [Film] = [Film]()
     
+    public var movies: [Film] = [Film]()
+    let dataManager = DataManager()
+
     public weak var delegate: SearchResultsViewControllerDelegate?
     
     public let searchResultsCollectionView: UICollectionView = {
-       
+        
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 10, height: 200)
         layout.minimumInteritemSpacing = 0
-
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
         return collectionView
@@ -32,7 +33,7 @@ class SearchResultsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         view.backgroundColor = .systemBackground
         view.addSubview(searchResultsCollectionView)
@@ -48,9 +49,9 @@ class SearchResultsController: UIViewController {
         searchResultsCollectionView.frame = view.bounds
     }
     
-
     
-
+    
+    
 }
 
 
@@ -71,7 +72,7 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
     
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
@@ -81,4 +82,22 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
         delegate?.searchResultsViewControllerDidTapItem(title)
     }
     
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        configureContextMenu(index: indexPath.row)
+    }
+    func configureContextMenu(index: Int) -> UIContextMenuConfiguration{
+        let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
+            
+            let edit = UIAction(title: "Like", image: UIImage(systemName: "heart"), identifier: nil, discoverabilityTitle: nil, state: .off) {  _ in
+                self.dataManager.save(self.movies[index])
+            }
+            
+            let delete = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in
+                print("Share button clicked")
+                //add tasks...
+            }
+            return UIMenu(title: "Option:", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [edit,delete])
+        }
+        return context
+    }
 }

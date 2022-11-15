@@ -18,7 +18,7 @@ final class MainViewController: UIViewController {
     public var viewModelNetwork: MainNetworkViewModelProtocol!
     
     lazy var collectionView: UICollectionView =  {
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())        
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: createCompositionalLayout())
         collectionView.register(FilmCell.self, forCellWithReuseIdentifier: FilmCell.reuseId)
         collectionView.register(
             TopHeaderView.self,
@@ -33,11 +33,12 @@ final class MainViewController: UIViewController {
         return collectionView
     }()
     
+    
     private let viewForSwitch: SegmentedView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(SegmentedView())
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
@@ -47,9 +48,13 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
+    
 }
 
+
+
 extension MainViewController{
+    
     func bindData(){
         Genre.allCases.map { genre in
             viewModelNetwork.reactiveFetch(genre: genre).bind { items in
@@ -68,7 +73,7 @@ extension MainViewController: SegmentedViewPressed{
 }
 
 extension MainViewController{
-
+    
     private func configureCollectionView() {
         viewModel.navigationController = navigationController!
         collectionView.dataSource = viewModel.makeDataSource()
@@ -82,7 +87,7 @@ extension MainViewController{
         view.backgroundColor = .black
         view.addSubview(collectionView)
         view.addSubview(viewForSwitch)
-    
+        
         NSLayoutConstraint.activate([
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),

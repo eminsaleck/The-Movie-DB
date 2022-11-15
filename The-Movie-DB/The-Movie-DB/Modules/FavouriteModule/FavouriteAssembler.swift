@@ -12,8 +12,11 @@ final class FavouriteAssembler: AssemblerProtocol {
   
   func assembly() -> FavouriteController {
     let favouriteController = FavouriteController()
-    let favouriteViewModel = FavouriteViewModel()
+      let networkManager = NetworkManager()
+      let dataManager = DataManager()
+    let favouriteViewModel = FavouriteViewModel(networkManager: networkManager, dataManager: dataManager)
     favouriteController.viewModel = favouriteViewModel
     return favouriteController
   }
 }
+

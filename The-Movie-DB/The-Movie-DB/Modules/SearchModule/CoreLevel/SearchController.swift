@@ -42,9 +42,7 @@ final class SearchController: UIViewController {
         super.viewDidLayoutSubviews()
         discoverTable.frame = view.bounds
     }
-}
-
-extension SearchController{
+    
     private func setup(){
         navigationItem.searchController = searchController
         
@@ -55,6 +53,10 @@ extension SearchController{
         view.backgroundColor = .black
     }
     
+}
+
+extension SearchController{
+
     private func fetchDiscoverMovies(){
         NetworkManager().fetchDiscoverMovies { [weak self] result in
             switch result{
