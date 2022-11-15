@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC08FCAD2923DFAE007E2C54 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AC08FCAC2923DFAE007E2C54 /* Lottie */; };
+		AC08FCB02923E09D007E2C54 /* loginLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = AC08FCAF2923E09D007E2C54 /* loginLottie.json */; };
 		AC0F359C2912774200BB05AF /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F359B2912774200BB05AF /* TabBarPage.swift */; };
 		AC15F6B429176A5400DFDE55 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC15F6B329176A5400DFDE55 /* SegmentedView.swift */; };
 		AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DBBA3291286D20085017B /* SceneDelegate.swift */; };
@@ -107,6 +109,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC08FCAF2923E09D007E2C54 /* loginLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginLottie.json; sourceTree = "<group>"; };
 		AC0F359B2912774200BB05AF /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
 		AC0F35AA2912843C00BB05AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC15F6B329176A5400DFDE55 /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
@@ -181,6 +184,7 @@
 				AC268D7F290C1530005AE287 /* RxRelay in Frameworks */,
 				AC9950D22903DC5C00619B1E /* Realm in Frameworks */,
 				ACD7099929015C2D00A1116C /* SDWebImage in Frameworks */,
+				AC08FCAD2923DFAE007E2C54 /* Lottie in Frameworks */,
 				ACD7098029011A8C00A1116C /* Alamofire in Frameworks */,
 				AC268D81290C1530005AE287 /* RxSwift in Frameworks */,
 				AC268D7B290C1530005AE287 /* RxBlocking in Frameworks */,
@@ -205,6 +209,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC08FCAE2923E08B007E2C54 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AC08FCAF2923E09D007E2C54 /* loginLottie.json */,
+				ACD70951290117BD00A1116C /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		AC0F359D2912784700BB05AF /* SearchModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,7 +475,7 @@
 				AC268D76290C125F005AE287 /* Helpers */,
 				AC268D69290C0676005AE287 /* Scenes */,
 				AC268D68290BF3DF005AE287 /* App */,
-				ACD70951290117BD00A1116C /* Assets.xcassets */,
+				AC08FCAE2923E08B007E2C54 /* Assets */,
 				AC0F35AA2912843C00BB05AF /* Info.plist */,
 			);
 			path = "The-Movie-DB";
@@ -540,6 +553,7 @@
 				AC268D7E290C1530005AE287 /* RxRelay */,
 				AC268D80290C1530005AE287 /* RxSwift */,
 				AC69C51329153B15008404B5 /* YouTubeiOSPlayerHelper */,
+				AC08FCAC2923DFAE007E2C54 /* Lottie */,
 			);
 			productName = "The-Movie-DB";
 			productReference = ACD70945290117BB00A1116C /* The-Movie-DB.app */;
@@ -619,6 +633,7 @@
 				AC9950D02903DC5C00619B1E /* XCRemoteSwiftPackageReference "realm-swift" */,
 				AC268D79290C1530005AE287 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				AC69C51229153B15008404B5 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
+				AC08FCAB2923DFAE007E2C54 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = ACD70946290117BB00A1116C /* Products */;
 			projectDirPath = "";
@@ -637,6 +652,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD70955290117BD00A1116C /* LaunchScreen.storyboard in Resources */,
+				AC08FCB02923E09D007E2C54 /* loginLottie.json in Resources */,
 				ACD70952290117BD00A1116C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1048,6 +1064,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AC08FCAB2923DFAE007E2C54 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		AC268D79290C1530005AE287 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -1091,6 +1115,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AC08FCAC2923DFAE007E2C54 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC08FCAB2923DFAE007E2C54 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		AC268D7A290C1530005AE287 /* RxBlocking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AC268D79290C1530005AE287 /* XCRemoteSwiftPackageReference "RxSwift" */;

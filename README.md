@@ -10,8 +10,10 @@ App which is aimed to find a movie for you
 >4. RxSwift/RxCocoa
 >5. SDWebImage
 >6. Realm 
+>7. Lottie
 
 
 
-<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif2.gif" width="200px" /> | <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif.gif" width="200px" />
+<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif4.gif" width="200px" /> | <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif.gif" width="200px" />
 <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif3.gif" width="200px" /> | <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif1.gif" width="200px" />
+<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif2.gif" width="200px" />
