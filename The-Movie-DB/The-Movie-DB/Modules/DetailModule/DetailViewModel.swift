@@ -11,7 +11,7 @@ import RxSwift
 protocol DetailViewModelProtocol {
     var movie: Displayable? { get }
     var coordinator: DetailsCoordinatorProtocol! { get set }
-    func getTrailerKey() -> Observable<[String]>
+//    func getTrailerKey() -> Observable<[String]>
     func getTitle() -> String
     func getImage() -> String
 }
@@ -32,12 +32,12 @@ final class DetailViewModel: DetailViewModelProtocol {
     func getIn() -> String{
         movie?.review ?? ""
     }
-    func getTrailerKey() -> Observable<[String]>{
-        guard let movieId = movie?.idTrailer else {
-            fatalError()
-        }
-        return NetworkManager.shared.fetchTrailer(movieID: movieId).map { $0.results.map { $0.key } }
-    }
+//    func getTrailerKey() -> Observable<[String]>{
+//        guard let movieId = movie?.idTrailer else {
+//            fatalError()
+//        }
+//        return NetworkManager.shared.fetchTrailer(movieID: movieId).map { $0.results.map { $0.key } }
+//    }
     
 }
 

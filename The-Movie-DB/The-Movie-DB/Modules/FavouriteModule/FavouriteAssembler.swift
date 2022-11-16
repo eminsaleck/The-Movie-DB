@@ -13,7 +13,7 @@ final class FavouriteAssembler: AssemblerProtocol {
   func assembly() -> FavouriteController {
     let favouriteController = FavouriteController()
       let networkManager = NetworkManager()
-      let dataManager = DataManager()
+      let dataManager = StorageManager()
     let favouriteViewModel = FavouriteViewModel(networkManager: networkManager, dataManager: dataManager)
     favouriteController.viewModel = favouriteViewModel
     return favouriteController

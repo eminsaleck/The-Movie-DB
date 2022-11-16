@@ -36,6 +36,7 @@ class FilmCell: UICollectionViewCell {
 
 extension FilmCell: Providable{
     
+    
     typealias ProvidedItem = MovieVO
 
     func provide(_ item: MovieVO) {

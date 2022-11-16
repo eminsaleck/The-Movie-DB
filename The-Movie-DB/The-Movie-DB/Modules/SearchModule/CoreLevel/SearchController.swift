@@ -58,17 +58,17 @@ final class SearchController: UIViewController {
 extension SearchController{
 
     private func fetchDiscoverMovies(){
-        NetworkManager().fetchDiscoverMovies { [weak self] result in
-            switch result{
-            case .success(let films):
-                self?.movies = films
-                DispatchQueue.main.async {
-                    self?.discoverTable.reloadData()
-                }
-            case .failure(let erro):
-                print("\(erro.localizedDescription)")
-            }
-        }
+//        NetworkManager().fetchDiscoverMovies { [weak self] result in
+//            switch result{
+//            case .success(let films):
+//                self?.movies = films
+//                DispatchQueue.main.async {
+//                    self?.discoverTable.reloadData()
+//                }
+//            case .failure(let erro):
+//                print("\(erro.localizedDescription)")
+//            }
+//        }
     }
 }
 
@@ -79,7 +79,7 @@ extension SearchController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DiscoverViewCell.reuseIdentifier, for: indexPath) as? DiscoverViewCell else { return UITableViewCell()}
-        cell.configure(with: movies[indexPath.row])
+//        cell.configure(with: movies[indexPath.row])
         return cell
     }
     
@@ -94,25 +94,25 @@ extension SearchController: UITableViewDataSource, UITableViewDelegate{
 
 extension SearchController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        guard let query = searchBar.text,
-              !query.trimmingCharacters(in: .whitespaces).isEmpty,
-              query.trimmingCharacters(in: .whitespaces).count >= 3,
-              let resultController = searchController.searchResultsController as? SearchResultsController else {
-            return
-            
-        }
-        NetworkManager().search(with: query) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let films):
-                    resultController.movies = films
-                    resultController.searchResultsCollectionView.reloadData()
-                case .failure(_):
-                    print("SS")
-                }
-            }
-        }
+//        let searchBar = searchController.searchBar
+//        guard let query = searchBar.text,
+//              !query.trimmingCharacters(in: .whitespaces).isEmpty,
+//              query.trimmingCharacters(in: .whitespaces).count >= 3,
+//              let resultController = searchController.searchResultsController as? SearchResultsController else {
+//            return
+//
+//        }
+//        NetworkManager().search(with: query) { result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let films):
+//                    resultController.movies = films
+//                    resultController.searchResultsCollectionView.reloadData()
+//                case .failure(_):
+//                    print("SS")
+//                }
+//            }
+//        }
     }
 }
 

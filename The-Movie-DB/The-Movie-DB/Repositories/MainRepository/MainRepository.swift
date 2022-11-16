@@ -100,6 +100,6 @@ final class HomeRepository: HomeRepositoryProtocol {
   }
   
   func fetchMovieFromDB() {
-    storageManager.fetchData()
+//    storageManager.fetchData()
   }
 }

@@ -19,7 +19,7 @@ final class DetailsAssembler: AssemblerProtocol {
   func assembly() -> DetailViewController {
     let detailsController = DetailViewController()
     let detailsViewModel = DetailViewModel()
-    detailsViewModel.movie = movie
+//    detailsViewModel.movie = movie
     detailsController.viewModel = detailsViewModel
     return detailsController
   }

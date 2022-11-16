@@ -56,11 +56,11 @@ final class MainViewController: UIViewController {
 extension MainViewController{
     
     func bindData(){
-        Genre.allCases.map { genre in
-            viewModelNetwork.reactiveFetch(genre: genre).bind { items in
-                self.viewModel.addItems(items: items, to: genre)
-            }.disposed(by: bag)
-        }
+//        Genre.allCases.map { genre in
+//            viewModelNetwork.reactiveFetch(genre: genre).bind { items in
+//                self.viewModel.addItems(items: items, to: genre)
+//            }.disposed(by: bag)
+//        }
     }
 }
 

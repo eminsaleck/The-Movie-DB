@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol MainNetworkViewModelProtocol{
-    func reactiveFetch(genre: Genre) -> Observable<[Film]>
+//    func reactiveFetch(genre: Genre) -> Observable<[Film]>
 }
 
 final class MainNetworkViewModel: MainNetworkViewModelProtocol{
@@ -25,7 +25,7 @@ final class MainNetworkViewModel: MainNetworkViewModelProtocol{
 }
 
 extension MainNetworkViewModel{
-    func reactiveFetch(genre: Genre) -> Observable<[Film]>{
-        return networkManager.fetchMovieList(genre: genre.id)
-    }
+//    func reactiveFetch(genre: Genre) -> Observable<[Film]>{
+//        return networkManager.fetchMovieList(genre: genre.id)
+//    }
 }

@@ -11,7 +11,7 @@ final class MainAssembler: AssemblerProtocol {
     
     func assembly() -> MainViewController {
         let networkManager = NetworkManager()
-        let dataManager = DataManager()
+        let dataManager = StorageManager()
         let mainNetworkViewModel = MainNetworkViewModel(networkManager: networkManager)
         let mainViewController = MainViewController()
         mainViewController.viewModel.dataManager = dataManager

@@ -54,7 +54,7 @@ extension FavouriteController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DiscoverViewCell.reuseIdentifier, for: indexPath) as? DiscoverViewCell else { return UITableViewCell()}
-        cell.configure(with: movies[indexPath.row])
+//        cell.configure(with: movies[indexPath.row])
         return cell
     }
     

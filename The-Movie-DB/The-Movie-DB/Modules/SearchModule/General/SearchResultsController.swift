@@ -15,7 +15,7 @@ class SearchResultsController: UIViewController {
     
     
     public var movies: [Film] = [Film]()
-    let dataManager = DataManager()
+    let dataManager = StorageManager()
 
     public weak var delegate: SearchResultsViewControllerDelegate?
     
@@ -68,7 +68,7 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
         
         
         let movie = movies[indexPath.row]
-        cell.provide(movie)
+//        cell.provide(movie)
         return cell
     }
     
@@ -77,7 +77,7 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
         collectionView.deselectItem(at: indexPath, animated: true)
         
         let title = movies[indexPath.row]
-        let titleName = title.title
+//        let titleName = title.title
         print("didSelectItemAt")
         delegate?.searchResultsViewControllerDidTapItem(title)
     }
@@ -89,7 +89,7 @@ extension SearchResultsController: UICollectionViewDelegate, UICollectionViewDat
         let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
             
             let edit = UIAction(title: "Like", image: UIImage(systemName: "heart"), identifier: nil, discoverabilityTitle: nil, state: .off) {  _ in
-                self.dataManager.save(self.movies[index])
+//                self.dataManager.save(self.movies[index])
             }
             
             let delete = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up"), identifier: nil, discoverabilityTitle: nil, state: .off) { (_) in

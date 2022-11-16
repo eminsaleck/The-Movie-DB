@@ -61,10 +61,10 @@ final class DetailViewController: UIViewController {
         
         imageView.loadImage(imagePath: viewModel?.getImage() ?? "")
         detailsContentView.setContent(info: viewModel?.movie!)
-        
-        viewModel?.getTrailerKey().bind(onNext: { [weak self] key in
-            self?.detailsContentView.setTrailer(key: key.first!)
-        }).disposed(by: bag)
+//        
+//        viewModel?.getTrailerKey().bind(onNext: { [weak self] key in
+//            self?.detailsContentView.setTrailer(key: key.first!)
+//        }).disposed(by: bag)
     }
     
     private func setupUI() {

@@ -21,14 +21,14 @@ final class SearchViewModel: SearchViewModelProtocol {
     
     func getData() -> [Film]{
         var films = [Film]()
-        networkManager.fetchDiscoverMovies { [weak self] result in
-            switch result {
-            case .success(let filmArray):
-                films = filmArray
-            case .failure(_):
-                print("fail")
-            }
-        }
+//        networkManager.fetchDiscoverMovies { [weak self] result in
+//            switch result {
+//            case .success(let filmArray):
+//                films = filmArray
+//            case .failure(_):
+//                print("fail")
+//            }
+//        }
         return films
     }
     

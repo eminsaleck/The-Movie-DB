@@ -8,16 +8,16 @@
 import Foundation
 import RealmSwift
 
-final class DataManager{
+final class StorageManager{
     
     private  let realm = try! Realm()
-    private var filmsToPresent = [Film]()
+    private var filmsToPresent = [MovieVO]()
     private var iterationCounter = 0
     private var filmsInBase = 0
 }
  
-extension DataManager: DataManagerProtocol{
-    func save(_ film: Film){
+extension StorageManager: StorageManagerProtocol{
+    func save(_ film: MovieVO){
 //        let filmRealm = FilmRealm()
 //        filmRealm.id = film.id
 //        filmRealm.adult = film.adult
@@ -38,7 +38,7 @@ extension DataManager: DataManagerProtocol{
     }
 
     
-    func getFilms() -> [Film]{
+    func getFilms() -> [MovieVO]{
         var count = 0
         let allFilms = appendMovieFromCache()
         filmsInBase = allFilms.count
@@ -54,9 +54,9 @@ extension DataManager: DataManagerProtocol{
         return allFilms
     }
     
-    private func appendMovieFromCache() -> [Film]{
+    private func appendMovieFromCache() -> [MovieVO]{
         let arrayOfData = realm.objects(FilmRealm.self)
-        var allFilms = [Film]()
+        var allFilms = [MovieVO]()
 //        
 //        for film in arrayOfData{
 //            let filmElement = Film(adult: film.adult,
@@ -80,8 +80,8 @@ extension DataManager: DataManagerProtocol{
 }
 
 
-protocol DataManagerProtocol{
-    func save(_ film: Film)
-    func getFilms() -> [Film]
+protocol StorageManagerProtocol{
+    func save(_ film: MovieVO)
+    func getFilms() -> [MovieVO]
 }
 

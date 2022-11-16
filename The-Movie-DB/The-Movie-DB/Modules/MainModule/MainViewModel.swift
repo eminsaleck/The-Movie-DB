@@ -12,7 +12,7 @@ final class MainViewModel: CollectionViewModel<FilmCell> {
     public var viewModelNetwork: MainNetworkViewModelProtocol!
     var coordinator:  MainFlow!
     var navigationController:  UINavigationController?
-     var dataManager:  DataManagerProtocol!
+     var dataManager:  StorageManagerProtocol!
 
     init(collectionView: UICollectionView) {
         super.init(collectionView: collectionView, cellReuseIdentifier: FilmCell.reuseId)
@@ -25,7 +25,7 @@ extension MainViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let film = items.value[indexPath.item]
         print(film)
-        coordinator.coordinateToDetails(with: film, navigationController: navigationController!)
+//        coordinator.coordinateToDetails(with: film, navigationController: navigationController!)
     }
 }
 

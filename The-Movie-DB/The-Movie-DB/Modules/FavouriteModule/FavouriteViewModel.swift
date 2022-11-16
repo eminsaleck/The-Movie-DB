@@ -14,15 +14,17 @@ protocol FavouriteViewModelProtocol {
 final class FavouriteViewModel: FavouriteViewModelProtocol {
   
     private let networkManager: NetworkManagerProtocol
-    private let dataManager: DataManagerProtocol
+    private let dataManager: StorageManagerProtocol!
     
-    init(networkManager: NetworkManagerProtocol, dataManager: DataManagerProtocol) {
+    init(networkManager: NetworkManagerProtocol, dataManager: StorageManagerProtocol) {
         self.networkManager = networkManager
         self.dataManager = dataManager
     }
     
     func getData() -> [Film]{
-        dataManager.getFilms()
+         var films = [Film]()
+        return films
+//        dataManager.getFilms()
     }
     
 }

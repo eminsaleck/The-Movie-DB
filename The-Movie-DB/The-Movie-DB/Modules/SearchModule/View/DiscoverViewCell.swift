@@ -69,10 +69,10 @@ class DiscoverViewCell: UITableViewCell {
     
     
     
-    public func configure(with item: Film) {
+    public func configure(with item: MovieVO) {
 
-        posterImageView.loadImage(imagePath: "https://image.tmdb.org/t/p/w500\(item.poster)")
-        titleLabel.text = item.titleName
+        posterImageView.loadImage(imagePath: "https://image.tmdb.org/t/p/w500\(item.imageUrlPath)")
+        titleLabel.text = item.original_title
     }
     
     
