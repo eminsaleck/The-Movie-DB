@@ -6,11 +6,10 @@ App which is aimed to find a movie for you
 # Tech stack:
 >1. UIKit
 >2. MVVM + Coordinator
->3. Alamofire
->4. RxSwift/RxCocoa
->5. SDWebImage
->6. Realm 
->7. Lottie
+>3. RxSwift/RxCocoa
+>4. SDWebImage
+>5. Realm 
+>6. Lottie
 
 
 
