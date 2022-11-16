@@ -36,10 +36,10 @@ class FilmCell: UICollectionViewCell {
 
 extension FilmCell: Providable{
     
-    typealias ProvidedItem = Film
+    typealias ProvidedItem = MovieVO
 
-    func provide(_ item: Film) {
-        imageView.loadImage(imagePath: "https://image.tmdb.org/t/p/w500\(item.poster)")
+    func provide(_ item: MovieVO) {
+        imageView.loadImage(imagePath: "https://image.tmdb.org/t/p/w500\(item.imageUrlPath)")
     }
 }
 

@@ -41,7 +41,6 @@ final class TabCoordinator: NSObject, Coordinator {
     }
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
-        tabBarController.delegate = self
         tabBarController.tabBar.barTintColor = #colorLiteral(red: 0.06846003234, green: 0.06846003234, blue: 0.06846003234, alpha: 1)
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.selectedIndex = TabBarPage.main.pageOrderNumber()
@@ -96,12 +95,4 @@ final class TabCoordinator: NSObject, Coordinator {
         tabBarController.selectedIndex = page.pageOrderNumber()
     }
 
-}
-
-// MARK: - UITabBarControllerDelegate
-extension TabCoordinator: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController,
-                          didSelect viewController: UIViewController) {
-        
-    }
 }

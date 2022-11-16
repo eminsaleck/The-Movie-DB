@@ -32,13 +32,13 @@ enum TabBarPage: String, CaseIterable  {
     func pageTitleValue() -> String {
         switch self {
         case .main:
-            return "Main"
+            return Constants.ScreenTitles.main.rawValue
         case .search:
-            return "Search"
+            return Constants.ScreenTitles.search.rawValue
         case .favourites:
-            return "Favourites"
+            return Constants.ScreenTitles.favourites.rawValue
         case .profile:
-            return "Profile"
+            return Constants.ScreenTitles.profile.rawValue
         }
     }
     
