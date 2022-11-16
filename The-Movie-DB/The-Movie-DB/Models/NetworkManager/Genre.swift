@@ -7,7 +7,6 @@
 
 import Foundation
 
-//Заменить на func fetchGenresFromInterner
 
 enum Genre: Codable, Hashable, CaseIterable{
     case action
