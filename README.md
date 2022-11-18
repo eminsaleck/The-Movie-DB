@@ -3,6 +3,9 @@ App which is aimed to find a movie for you
 
 *Currently in development
 
+TODO:
+1. Refactor to Clean Swift Architecture
+
 # Tech stack:
 >1. UIKit
 >2. MVVM + Coordinator
