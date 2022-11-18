@@ -57,7 +57,7 @@ extension StorageManager: StorageManagerProtocol{
     private func appendMovieFromCache() -> [MovieVO]{
         let arrayOfData = realm.objects(FilmRealm.self)
         var allFilms = [MovieVO]()
-//        
+//
 //        for film in arrayOfData{
 //            let filmElement = Film(adult: film.adult,
 //                                   backdropPath: film.backdropPath,

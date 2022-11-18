@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum Genre: Codable, Hashable, CaseIterable{
     case action
     case adventure

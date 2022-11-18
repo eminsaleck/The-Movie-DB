@@ -78,23 +78,7 @@ final class NetworkManager: NSObject, NetworkManagerProtocol {
       task?.resume()
     }
   }
-  
-  fileprivate func constructURLFromEndpoints(endPoint: EndPointType) -> URL? {
-    var components = URLComponents()
-    components.scheme = endPoint.scheme
-    components.host = endPoint.host
-    components.path = endPoint.path
-    
-    if let queryParameters = endPoint.queryParameters {
-      components.queryItems = queryParameters.map { URLQueryItem(name: $0.key, value: $0.value) }
-    }
-    
-    if let url = components.url {
-      return url
-    }
-    return nil
-  }
-  
+
   fileprivate func buildRequestWithURL(endPoint: EndPointType) -> URLRequest? {
     if let url = constructURLFromEndpoints(endPoint: endPoint) {
       var request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: requestTimeout)
@@ -112,6 +96,23 @@ final class NetworkManager: NSObject, NetworkManagerProtocol {
     
     return nil
   }
+    
+    fileprivate func constructURLFromEndpoints(endPoint: EndPointType) -> URL? {
+      var components = URLComponents()
+      components.scheme = endPoint.scheme
+      components.host = endPoint.host
+      components.path = endPoint.path
+      
+      if let queryParameters = endPoint.queryParameters {
+        components.queryItems  = queryParameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+      }
+      
+      if let url = components.url {
+        return url
+      }
+      return nil
+    }
+    
 }
 
 
