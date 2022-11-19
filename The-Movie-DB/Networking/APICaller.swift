@@ -7,22 +7,36 @@
 
 import Foundation
 
-protocol APIClient {
+protocol APICaller {
 
     var session: URLSession { get }
 
     func fetch<T: Decodable>(with request: URLRequest,
-                             decode: @escaping (Decodable) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
+                             decode: @escaping (Decodable) -> T?,
+                             completion: @escaping (Result<T, APIError>) -> Void)
 }
 
-extension APIClient {
+extension APICaller {
 
-    typealias JSONTaskCompletionHandler = (Result<Decodable, APIError>) -> Void
+    typealias JSONHandler = (Result<Decodable, APIError>) -> Void
 
     private func decodingTask<T: Decodable>(with request: URLRequest,
                                             decodingType: T.Type,
-                                            completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
+                                            completion: @escaping JSONHandler) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { data, response, _ in
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let jsonDecoder = JSONDecoder()
+                let genericModel = try jsonDecoder.decode(decodingType, from: data)
+                completion(.success(genericModel))
+            } catch {
+                completion(.failure(.requestFailed))
+            }
+            
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(.requestFailed))
                 return
@@ -31,17 +45,7 @@ extension APIClient {
                 completion(.failure(APIError(response: httpResponse)))
                 return
             }
-            guard let data = data else {
-                completion(.failure(.invalidData))
-                return
-            }
-            do {
-                let decoder = JSONDecoder()
-                let genericModel = try decoder.decode(decodingType, from: data)
-                completion(.success(genericModel))
-            } catch {
-                completion(.failure(.requestFailed))
-            }
+            
         }
         return task
     }

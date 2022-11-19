@@ -5,4 +5,10 @@
 //  Created by LEMIN DAHOVICH on 19.11.2022.
 //
 
-import Foundation
+protocol UseCasesConvertible {
+
+    associatedtype Domain
+
+    func asDomain() -> Domain
+
+}

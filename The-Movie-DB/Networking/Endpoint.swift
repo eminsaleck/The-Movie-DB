@@ -13,10 +13,22 @@ protocol Endpoint {
     var path: String { get }
     var headers: [String: String]? { get }
     var params: [String: Any]? { get }
-    var parameterEncoding: ParameterEnconding { get }
+    var encoding: EncondingParam { get }
     var method: HTTPMethod { get }
 
 }
+
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+}
+
+enum EncondingParam {
+    case defaultEncoding
+    case jsonEncoding
+    case compositeEncoding
+}
+
 
 extension Endpoint {
 
@@ -29,7 +41,7 @@ extension Endpoint {
         components.path = path
         var queryItems = [URLQueryItem(name: "api_key", value: apiKey),
                           URLQueryItem(name: "language", value: LocalizationHelper.getCurrentLanguageCode())]
-        switch parameterEncoding {
+        switch encoding {
         case .defaultEncoding:
             if let params = params, method == .get {
                 queryItems.append(contentsOf: params.map {
@@ -64,7 +76,7 @@ extension Endpoint {
 
         guard let params = params, method != .get else { return request }
 
-        switch parameterEncoding {
+        switch encoding {
         case .defaultEncoding:
             request.httpBody = params.percentEscaped().data(using: .utf8)
         case .jsonEncoding:
@@ -82,15 +94,4 @@ extension Endpoint {
         return request
     }
 
-}
-
-enum HTTPMethod: String {
-    case get = "GET"
-    case post = "POST"
-}
-
-enum ParameterEnconding {
-    case defaultEncoding
-    case jsonEncoding
-    case compositeEncoding
 }

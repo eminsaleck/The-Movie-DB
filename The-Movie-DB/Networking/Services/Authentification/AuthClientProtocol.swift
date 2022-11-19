@@ -5,4 +5,16 @@
 //  Created by LEMIN DAHOVICH on 19.11.2022.
 //
 
-import Foundation
+protocol AuthClientProtocol {
+
+    func getRequestToken(with readAccessToken: String,
+                         completion: @escaping (Result<RequestTokenResult, APIError>) -> Void)
+
+    func getAccessToken(with readAccessToken: String,
+                        requestToken: String,
+                        completion: @escaping (Result<AccessToken, APIError>) -> Void)
+
+    func createSessionId(with accessToken: String,
+                         completion: @escaping (Result<SessionResult, APIError>) -> Void)
+
+}

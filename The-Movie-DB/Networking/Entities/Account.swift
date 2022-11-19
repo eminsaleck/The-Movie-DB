@@ -5,4 +5,7 @@
 //  Created by LEMIN DAHOVICH on 19.11.2022.
 //
 
-import Foundation
+struct Account {
+    let accountId: Int
+    let sessionId: String
+}
