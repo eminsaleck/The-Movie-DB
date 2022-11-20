@@ -5,6 +5,7 @@ App which is aimed to find a movie for you
 
 TODO:
 1. Refactor to Clean Architecture | MVVM+C
+2. Configure Networking
 
 # Tech stack:
 >1. UIKit
