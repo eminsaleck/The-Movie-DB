@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import Data
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,15 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let navigationBarAppearace = UINavigationBar.appearance()
-
-        navigationBarAppearace.tintColor = .white
-        navigationBarAppearace.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        navigationBarAppearace.titleTextAttributes
-        = [.foregroundColor : UIColor.white, .font: UIFont(name: "AppleSDGothicNeo-Bold", size: 24)!]
+        configureAppearance()
         
-        UITabBarItem.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
+        let baseConfig: BaseConfig = PropertyListHelper.decode()
+        let remoteDataSource: RemoteDataSourceProtocol = DIContainer.shared.resolve()
+        remoteDataSource.configure(with: baseConfig.keys.apiKey,
+                                   readAccessToken: baseConfig.keys.readAccessToken)
+        
         window = UIWindow.init(frame: UIScreen.main.bounds)
         
         let navigationController: UINavigationController = .init()

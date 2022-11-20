@@ -5,7 +5,6 @@
 //  Created by LEMIN DAHOVICH on 08.11.2022.
 //
 
-import The_Movie_DBNetworking
 import Foundation
 
 final class FavouriteAssembler: AssemblerProtocol {

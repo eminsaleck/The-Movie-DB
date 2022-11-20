@@ -34,9 +34,11 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     
     func showLoginViewController() {
         let loginVC: LoginController = LoginController()
-        loginVC.didSendEventClosure = { [weak self] event in
-            self?.finish()
-        }
         navigationController.pushViewController(loginVC, animated: true)
     }
+    
+    func startAuthorization(){
+        
+    }
 }
+

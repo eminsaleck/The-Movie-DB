@@ -70,15 +70,9 @@ final class TabCoordinator: NSObject, Coordinator {
             favVC.start()
             
         case .profile:
-            let profileVC = ProfileController()
-            profileVC.didSendEventClosure = { [weak self] event in
-                switch event {
-                case .profile:
-                    self?.finish()
-                }
-            }
-            
-            navController.pushViewController(profileVC, animated: true)
+            let vc = UIViewController()
+//            let profileVC = AuthCoordinator(navController)
+//            profileVC.start()
         }
         
         return navController

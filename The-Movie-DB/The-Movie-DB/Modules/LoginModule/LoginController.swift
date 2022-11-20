@@ -8,11 +8,17 @@
 import UIKit
 import Lottie
 
+protocol SignInViewControllerDelegate: UIViewController {
+
+    func signInViewController(_ loginController: LoginController, didTapSignInButton tapped: Bool)
+
+}
+
 final class LoginController: UIViewController {
     
     weak var viewModel: LoginViewModelProtocol?
-    var didSendEventClosure: ((LoginController.Event) -> Void)?
-    
+    weak var delegate: SignInViewControllerDelegate?
+
     private let loginButton: UIButton = {
         $0.setTitle("Login", for: .normal)
         $0.backgroundColor = .systemBlue
@@ -89,7 +95,7 @@ final class LoginController: UIViewController {
     }
     
     @objc private func didTapLoginButton(_ sender: Any) {
-        didSendEventClosure?(.login)
+        delegate?.signInViewController(self, didTapSignInButton: true)
     }
 }
 
@@ -134,12 +140,6 @@ extension LoginController{
             animationView.bottomAnchor.constraint(equalTo: labelWelcome.bottomAnchor, constant: -offset)
             
         ])
-    }
-}
-
-extension LoginController {
-    enum Event {
-        case login
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Foundation
 import Swinject
 
 final class AuthenticationAssembly: Assembly {
