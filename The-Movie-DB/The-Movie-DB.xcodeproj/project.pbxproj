@@ -704,14 +704,14 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
-		AC382BCA290D517200B84F66 /* DI */ = {
+		AC382BCA290D517200B84F66 /* DIManager */ = {
 			isa = PBXGroup;
 			children = (
 				AC555957292A2A57005B37FA /* DIAssemblers */,
 				AC55595029295162005B37FA /* DIContainer.swift */,
 				AC555979292A3547005B37FA /* AssemblerPRotocol.swift */,
 			);
-			path = DI;
+			path = DIManager;
 			sourceTree = "<group>";
 		};
 		AC382BCB290D519B00B84F66 /* Models */ = {
@@ -883,6 +883,13 @@
 			path = AuthPermission;
 			sourceTree = "<group>";
 		};
+		AC555989292A51E1005B37FA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		AC5A0D1A29282E9900A4CA80 /* NetworkInfrastructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,7 +1025,7 @@
 				AC5A0D1A29282E9900A4CA80 /* NetworkInfrastructure */,
 				AC08FCBE2925129D007E2C54 /* Repositories */,
 				AC382BCB290D519B00B84F66 /* Models */,
-				AC382BCA290D517200B84F66 /* DI */,
+				AC382BCA290D517200B84F66 /* DIManager */,
 				AC382BC8290D511F00B84F66 /* DTOs */,
 				AC268D78290C12EE005AE287 /* Modules */,
 				AC268D76290C125F005AE287 /* Helpers */,
@@ -1042,6 +1049,7 @@
 		ACDAFAC12911A67900EAE7CA /* LoginModule */ = {
 			isa = PBXGroup;
 			children = (
+				AC555989292A51E1005B37FA /* Profile */,
 				AC55597B292A35BF005B37FA /* AuthPermission */,
 				ACDAFAC32911A6E300EAE7CA /* LoginCoordinator.swift */,
 				ACDAFAC52911A71F00EAE7CA /* LoginAssembler.swift */,

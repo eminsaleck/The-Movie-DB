@@ -12,11 +12,13 @@ final class SceneAssembly: Assembly {
 
     func assemble(container: Container) {
         let assemblies: [Assembly] = [
-           // AccountAssembly(),
+            AccountAssembly(),
             AuthenticationAssembly()
-          //  ProfileAssembly(),
+            ProfileAssembly(),
         ]
         assemblies.forEach { $0.assemble(container: container) }
     }
+    
+ 
 
 }
