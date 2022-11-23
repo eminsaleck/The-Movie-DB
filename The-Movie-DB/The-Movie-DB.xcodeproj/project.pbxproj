@@ -114,6 +114,9 @@
 		AC555983292A38E2005B37FA /* AuthPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC555982292A38E2005B37FA /* AuthPermissionViewController.swift */; };
 		AC555985292A391A005B37FA /* AuthPermissionWebViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC555984292A391A005B37FA /* AuthPermissionWebViewNavigation.swift */; };
 		AC555988292A40B6005B37FA /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = AC555987292A40B6005B37FA /* Swinject */; };
+		AC55598C292D495C005B37FA /* NavigationHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55598B292D495C005B37FA /* NavigationHandlerProtocol.swift */; };
+		AC55598E292D49BA005B37FA /* NavigationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55598D292D49BA005B37FA /* NavigationHandler.swift */; };
+		AC555992292D6C3C005B37FA /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC555991292D6C3C005B37FA /* RootCoordinator.swift */; };
 		AC69C50D29150D30008404B5 /* DetailsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69C50C29150D30008404B5 /* DetailsContentView.swift */; };
 		AC69C50F29150DD5008404B5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69C50E29150DD5008404B5 /* GradientView.swift */; };
 		AC69C51429153B15008404B5 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AC69C51329153B15008404B5 /* YouTubeiOSPlayerHelper */; };
@@ -311,6 +314,9 @@
 		AC555980292A38CB005B37FA /* AuthPermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPermissionViewModel.swift; sourceTree = "<group>"; };
 		AC555982292A38E2005B37FA /* AuthPermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPermissionViewController.swift; sourceTree = "<group>"; };
 		AC555984292A391A005B37FA /* AuthPermissionWebViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPermissionWebViewNavigation.swift; sourceTree = "<group>"; };
+		AC55598B292D495C005B37FA /* NavigationHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHandlerProtocol.swift; sourceTree = "<group>"; };
+		AC55598D292D49BA005B37FA /* NavigationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHandler.swift; sourceTree = "<group>"; };
+		AC555991292D6C3C005B37FA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		AC69C50C29150D30008404B5 /* DetailsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsContentView.swift; sourceTree = "<group>"; };
 		AC69C50E29150DD5008404B5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AC69C51629156C3F008404B5 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -646,13 +652,13 @@
 		AC268D76290C125F005AE287 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AC555990292D6C2E005B37FA /* Protocols */,
 				AC55595E292A2B35005B37FA /* Handlers */,
 				AC69C51829157752008404B5 /* InfoType.swift */,
 				AC862FAF290BF38B009A3217 /* Extensions */,
 				AC08FCBA2925056F007E2C54 /* Constants.swift */,
 				AC555948292944D0005B37FA /* PropertyListHelper.swift */,
 				AC55594C292945B1005B37FA /* BaseConfig.swift */,
-				AC55594E29294F26005B37FA /* AppDelegate+Appearence.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -839,6 +845,7 @@
 		AC55595E292A2B35005B37FA /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				AC55598A292D4941005B37FA /* Navigation */,
 				AC555963292A2C30005B37FA /* Auth */,
 			);
 			path = Handlers;
@@ -888,6 +895,23 @@
 			children = (
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		AC55598A292D4941005B37FA /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				AC55598B292D495C005B37FA /* NavigationHandlerProtocol.swift */,
+				AC55598D292D49BA005B37FA /* NavigationHandler.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		AC555990292D6C2E005B37FA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AC555991292D6C3C005B37FA /* RootCoordinator.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		AC5A0D1A29282E9900A4CA80 /* NetworkInfrastructure */ = {
@@ -991,6 +1015,7 @@
 				ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */,
 				AC69C50E29150DD5008404B5 /* GradientView.swift */,
 				ACD7098329011F0700A1116C /* UIView + Extension.swift */,
+				AC55594E29294F26005B37FA /* AppDelegate+Appearence.swift */,
 				AC55594A29294513005B37FA /* URL+Extension.swift */,
 			);
 			path = Extensions;
@@ -1380,6 +1405,7 @@
 				AC0587C6292830DE004E669E /* EndPointType.swift in Sources */,
 				AC555968292A2E06005B37FA /* AuthenticationAssembly.swift in Sources */,
 				AC08FCC229251308007E2C54 /* DetailsRepository.swift in Sources */,
+				AC555992292D6C3C005B37FA /* RootCoordinator.swift in Sources */,
 				AC555949292944D0005B37FA /* PropertyListHelper.swift in Sources */,
 				AC268D6B290C06F4005AE287 /* AppCoordinator.swift in Sources */,
 				AC69C51929157752008404B5 /* InfoType.swift in Sources */,
@@ -1412,6 +1438,7 @@
 				AC74B717291AD2B900895C84 /* MainViewController.swift in Sources */,
 				AC0587C02928307B004E669E /* RequestItem.swift in Sources */,
 				AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */,
+				AC55598C292D495C005B37FA /* NavigationHandlerProtocol.swift in Sources */,
 				AC69C50F29150DD5008404B5 /* GradientView.swift in Sources */,
 				AC268D6D290C0714005AE287 /* Coordinator.swift in Sources */,
 				AC74B726291B098800895C84 /* FavouriteViewModel.swift in Sources */,
@@ -1424,6 +1451,7 @@
 				AC15F6B429176A5400DFDE55 /* SegmentedView.swift in Sources */,
 				AC55595129295162005B37FA /* DIContainer.swift in Sources */,
 				AC74B71D291ADD0700895C84 /* MainNetworkViewModel.swift in Sources */,
+				AC55598E292D49BA005B37FA /* NavigationHandler.swift in Sources */,
 				AC74B724291B077300895C84 /* FavouriteController.swift in Sources */,
 				AC0587C2292830AA004E669E /* ImageManager.swift in Sources */,
 				ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */,

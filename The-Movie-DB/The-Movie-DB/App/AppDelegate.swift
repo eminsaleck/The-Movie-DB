@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let baseConfig: BaseConfig = PropertyListHelper.decode()
         let remoteDataSource: RemoteDataSourceProtocol = DIContainer.shared.resolve()
+       // print("\(baseConfig)")
         remoteDataSource.configure(with: baseConfig.keys.apiKey,
                                    readAccessToken: baseConfig.keys.readAccessToken)
         

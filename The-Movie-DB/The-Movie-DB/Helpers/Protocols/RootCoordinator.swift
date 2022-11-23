@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol RootCoordinator: Coordinator {
+
+    var rootIdentifier: String { get }
+
+}

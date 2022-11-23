@@ -20,6 +20,13 @@ final class HandlerAssembly: Assembly {
                                          userUseCase: useCaseProvider.userUseCase())
         }.inObjectScope(.container)
 
+        
+        container.register(NavigationHandlerProtocol.self) { _ in
+            NavigationHandler()
+        }.inObjectScope(.container)
+
     }
+    
+    
 
 }
