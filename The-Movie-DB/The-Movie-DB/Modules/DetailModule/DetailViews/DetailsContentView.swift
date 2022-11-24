@@ -112,21 +112,24 @@ final class DetailsContentView: UIView {
     }
     
     private func commonInit() {
-        addSubview(titleLabel)
-        addSubview(taglineLabel)
-        addSubview(voteLabel)
-        addSubview(stackView)
-        addSubview(overviewLabel)
-        addSubview(starLabel)
-        addSubview(youtubeView)
+        let _ = [titleLabel,
+                 taglineLabel,
+                 voteLabel,
+                 stackView,
+                 overviewLabel,
+                 starLabel,
+                 youtubeView
+        ].map { sub in addSubview(sub)}
+        
         setupStackView()
         setupConstraints()
     }
     
     private func setupStackView() {
-        stackView.addArrangedSubview(yearView)
-        stackView.addArrangedSubview(countryView)
-        stackView.addArrangedSubview(durationView)
+        let _ = [yearView,
+                 countryView,
+                 durationView]
+            .map { sub in stackView.addArrangedSubview(sub)}
     }
 }
 
