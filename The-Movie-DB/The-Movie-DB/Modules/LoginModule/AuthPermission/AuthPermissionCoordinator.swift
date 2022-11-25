@@ -8,7 +8,7 @@
 import UIKit
 
 final class AuthPermissionCoordinator: AuthPermissionCoordinatorProtocol {
-    var type: CoordinatorType = .login
+    var type: CoordinatorType = .auth
     
     var finishDelegate: CoordinatorFinishDelegate?
     
@@ -27,14 +27,13 @@ final class AuthPermissionCoordinator: AuthPermissionCoordinatorProtocol {
 
     func start() {
         let viewController = AuthPermissionViewController()
-
-        viewController.viewModel = DIContainer.shared.resolve(argument: authPermissionURL)
-        viewController.delegate = authPermissionDelegate
+        viewController.viewModel = AuthPermissionViewModel(authPermissionURL: authPermissionURL)
+         viewController.delegate = authPermissionDelegate
         viewController.coordinator = self
 
         navigationController.pushViewController(viewController, animated: false)
 
-        presentingViewController.present(navigationController, animated: true, completion: nil)
+    presentingViewController.present(viewController, animated: true, completion: nil)
     }
 
     func dismiss(completion: (() -> Void)? = nil) {

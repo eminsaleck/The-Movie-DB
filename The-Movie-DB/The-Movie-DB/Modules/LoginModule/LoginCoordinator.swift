@@ -8,6 +8,7 @@ import UIKit
 
 protocol LoginCoordinatorProtocol: Coordinator {
     func showLoginViewController()
+    func showAuth()
 }
 
 final class LoginCoordinator: LoginCoordinatorProtocol {
@@ -34,11 +35,13 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     
     func showLoginViewController() {
         let loginVC: LoginController = LoginController()
+        loginVC.coordinator = self
         navigationController.pushViewController(loginVC, animated: true)
     }
     
-    func startAuthorization(){
-        
+    func showAuth(){
+        let coordinator = AuthPermissionCoordinator(navigationController)
+        coordinator.start()
     }
 }
 

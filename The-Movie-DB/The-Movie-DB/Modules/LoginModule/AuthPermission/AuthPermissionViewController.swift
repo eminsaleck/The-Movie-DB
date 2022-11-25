@@ -18,28 +18,20 @@ protocol AuthPermissionViewControllerDelegate: AnyObject {
 
 class AuthPermissionViewController: UIViewController {
     
-    private var webView: WKWebView?
-    private weak var backButton: UIBarButtonItem!
-    private weak var forwardButton: UIBarButtonItem!
-    
-    
-    private var estimatedProgressObserver: NSKeyValueObservation!
+    private var webView = WKWebView()
+
     private var webViewNavigationDelegate: AuthPermissionWebViewNavigationDelegate!
     
     var viewModel: AuthPermissionViewModelProtocol?
     weak var coordinator: AuthPermissionCoordinatorProtocol?
     weak var delegate: AuthPermissionViewControllerDelegate?
     
-    // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupBindables()
     }
-    
-    // MARK: - Private
-    
+
     private func setupUI() {
         setupNavigationBar()
         setupWebView()
@@ -56,14 +48,9 @@ class AuthPermissionViewController: UIViewController {
     private func setupWebView() {
         webView = WKWebView(frame: view.bounds)
 
-        let didFinishNavigation = { [unowned self] in
-            self.checkNavigationButtonsState()
-        }
-        navigationItem.leftBarButtonItem = backButton
-        navigationItem.leftBarButtonItem = forwardButton
-        webViewNavigationDelegate = AuthPermissionWebViewNavigation(didFinishNavigation: didFinishNavigation)
-        webView!.navigationDelegate = webViewNavigationDelegate
-        webView!.allowsBackForwardNavigationGestures = true
+
+        webView.navigationDelegate = webViewNavigationDelegate
+        webView.allowsBackForwardNavigationGestures = true
     }
     
     private func setupBindables() {
@@ -72,7 +59,7 @@ class AuthPermissionViewController: UIViewController {
     
     private func loadURL() {
         guard let urlRequest = viewModel?.authPermissionURLRequest else { return }
-        webView!.load(urlRequest)
+        webView.load(urlRequest)
     }
     
     private func dismiss() {
@@ -80,12 +67,6 @@ class AuthPermissionViewController: UIViewController {
             self.delegate?.authPermissionViewController(self, didReceiveAuthorization: true)
         })
     }
-    
-    private func checkNavigationButtonsState() {
-        backButton.isEnabled = webView!.canGoBack
-        forwardButton.isEnabled = webView!.canGoForward
-    }
-    
     
     @objc func closeBarButtonAction() {
         dismiss()
