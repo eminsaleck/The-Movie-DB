@@ -19,7 +19,6 @@ final class DIContainer {
             [
                 DataSourceAssembly(),
                 ProviderAssembly(),
-                HandlerAssembly(),
                 SceneAssembly()
             ],
             container: container)
