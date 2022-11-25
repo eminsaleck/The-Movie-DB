@@ -8,114 +8,48 @@
 
 import UIKit
 
-class AccountViewController: UIViewController {
+final class ProfileController: UIViewController {
 
-    private var signInViewController: SignInViewController?
-    private var profileViewController: ProfileViewController?
+    var didSendEventClosure: ((ProfileController.Event) -> Void)?
 
-    var viewModel: AccountViewModelProtocol!
-    weak var coordinator: AccountCoordinatorProtocol?
-
-    // MARK: - Lifecycle
-
+    private let logout: UIButton = {
+        $0.setTitle("logout", for: .normal)
+        $0.backgroundColor = .systemGreen
+        $0.setTitleColor(.white, for: .normal)
+        $0.layer.cornerRadius = 8.0
+        return $0
+    }(UIButton())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        setupBindables()
+
+        view.backgroundColor = .white
+        
+        view.addSubview(logout)
+
+        logout.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            logout.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logout.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            logout.widthAnchor.constraint(equalToConstant: 200),
+            logout.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        logout.addTarget(self, action: #selector(didTapGoButton(_:)), for: .touchUpInside)
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.barStyle = .default
-        navigationController?.navigationBar.tintColor = view.tintColor
+    
+    deinit {
+        print("GoViewController deinit")
     }
-
-    // MARK: - Private
-
-    private func setupUI() {
-        title = LocalizedStrings.accountTabBarTitle()
-        setupContainerView()
-        setupNavigationBar()
+    
+    @objc private func didTapGoButton(_ sender: Any) {
+        didSendEventClosure?(.profile)
     }
-
-    private func setupContainerView() {
-        viewModel.isUserSignedIn() ? showProfileView() : showSignInView()
-    }
-
-    private func setupNavigationBar() {
-        navigationItem.title = LocalizedStrings.accountTitle()
-    }
-
-    private func showSignInView(withAnimatedNavigationBar animated: Bool = false) {
-        signInViewController = coordinator?.embedSignInViewController(on: self)
-        coordinator?.removeChildViewController(&profileViewController, from: self)
-    }
-
-    private func showProfileView(withAnimatedNavigationBar animated: Bool = false) {
-        guard let viewModel = viewModel else { return }
-        profileViewController = coordinator?.embedProfileViewController(on: self,
-                                                                        for: viewModel.currentUser())
-
-        coordinator?.removeChildViewController(&signInViewController, from: self)
-    }
-
-    // MARK: - Reactive Behavior
-
-    private func setupBindables() {
-        viewModel.showAuthPermission.bind { [weak self] authPermissionURL in
-            guard let self = self else { return }
-            self.coordinator?.showAuthPermission(for: authPermissionURL,
-                                                       and: self)
-        }
-        viewModel.didSignIn = { [weak self] in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.showProfileView(withAnimatedNavigationBar: true)
-            }
-        }
-        viewModel.didReceiveError = { [weak self] in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.signInViewController?.stopLoading()
-            }
-        }
-    }
-
 }
 
-// MARK: - SignInViewControllerDelegate
-
-extension AccountViewController: SignInViewControllerDelegate {
-
-    func signInViewController(_ signInViewController: SignInViewController, didTapSignInButton tapped: Bool) {
-        signInViewController.startLoading()
-        viewModel.startAuthorizationProcess()
+extension ProfileController {
+    enum Event {
+        case profile
     }
-
-}
-
-// MARK: - ProfileViewControllerDelegate
-
-extension AccountViewController: ProfileViewControllerDelegate {
-
-    func profileViewController(didTapProfileOption option: ProfileOptionProtocol) {
-        coordinator?.showProfileOption(option)
-    }
-
-    func profileViewController(didSignOut signedOut: Bool) {
-        viewModel.signOutCurrentUser()
-        showSignInView(withAnimatedNavigationBar: true)
-    }
-
-}
-
-// MARK: - AuthPermissionViewControllerDelegate
-
-extension AccountViewController: AuthPermissionViewControllerDelegate {
-
-    func authPermissionViewController(_ authPermissionViewController: AuthPermissionViewController,
-                                      didReceiveAuthorization authorized: Bool) {
-        if authorized { viewModel.signInUser() }
-    }
-
 }

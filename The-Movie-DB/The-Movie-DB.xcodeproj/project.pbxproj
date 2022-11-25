@@ -114,12 +114,7 @@
 		AC555985292A391A005B37FA /* AuthPermissionWebViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC555984292A391A005B37FA /* AuthPermissionWebViewNavigation.swift */; };
 		AC555988292A40B6005B37FA /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = AC555987292A40B6005B37FA /* Swinject */; };
 		AC555992292D6C3C005B37FA /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC555991292D6C3C005B37FA /* RootCoordinator.swift */; };
-		AC55599429311E5C005B37FA /* AccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55599329311E5C005B37FA /* AccountInteractor.swift */; };
-		AC55599629311E93005B37FA /* AccountProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55599529311E93005B37FA /* AccountProtocols.swift */; };
-		AC55599929311F09005B37FA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55599829311F09005B37FA /* SignInViewController.swift */; };
-		AC55599B29311F3C005B37FA /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55599A29311F3C005B37FA /* AuthViewController.swift */; };
-		AC55599D29311F4C005B37FA /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55599C29311F4C005B37FA /* AuthViewModel.swift */; };
-		AC55599F29311F78005B37FA /* AuthWebViewNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55599E29311F78005B37FA /* AuthWebViewNav.swift */; };
+		AC5559A3293121F0005B37FA /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5559A2293121F0005B37FA /* Bindable.swift */; };
 		AC69C50D29150D30008404B5 /* DetailsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69C50C29150D30008404B5 /* DetailsContentView.swift */; };
 		AC69C50F29150DD5008404B5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC69C50E29150DD5008404B5 /* GradientView.swift */; };
 		AC69C51429153B15008404B5 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = AC69C51329153B15008404B5 /* YouTubeiOSPlayerHelper */; };
@@ -317,12 +312,7 @@
 		AC555982292A38E2005B37FA /* AuthPermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPermissionViewController.swift; sourceTree = "<group>"; };
 		AC555984292A391A005B37FA /* AuthPermissionWebViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPermissionWebViewNavigation.swift; sourceTree = "<group>"; };
 		AC555991292D6C3C005B37FA /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		AC55599329311E5C005B37FA /* AccountInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInteractor.swift; sourceTree = "<group>"; };
-		AC55599529311E93005B37FA /* AccountProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountProtocols.swift; sourceTree = "<group>"; };
-		AC55599829311F09005B37FA /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		AC55599A29311F3C005B37FA /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		AC55599C29311F4C005B37FA /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		AC55599E29311F78005B37FA /* AuthWebViewNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebViewNav.swift; sourceTree = "<group>"; };
+		AC5559A2293121F0005B37FA /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		AC69C50C29150D30008404B5 /* DetailsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsContentView.swift; sourceTree = "<group>"; };
 		AC69C50E29150DD5008404B5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AC69C51629156C3F008404B5 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -605,10 +595,8 @@
 		AC1DBC3C2912D78F0085017B /* AccountModule */ = {
 			isa = PBXGroup;
 			children = (
-				AC55599729311EF9005B37FA /* Auth */,
 				AC1DBC3A2912D7880085017B /* AccountController.swift */,
-				AC55599329311E5C005B37FA /* AccountInteractor.swift */,
-				AC55599529311E93005B37FA /* AccountProtocols.swift */,
+				AC55599729311EF9005B37FA /* Auth */,
 			);
 			path = AccountModule;
 			sourceTree = "<group>";
@@ -908,6 +896,7 @@
 			isa = PBXGroup;
 			children = (
 				AC555991292D6C3C005B37FA /* RootCoordinator.swift */,
+				AC5559A2293121F0005B37FA /* Bindable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -915,10 +904,6 @@
 		AC55599729311EF9005B37FA /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				AC55599829311F09005B37FA /* SignInViewController.swift */,
-				AC55599A29311F3C005B37FA /* AuthViewController.swift */,
-				AC55599C29311F4C005B37FA /* AuthViewModel.swift */,
-				AC55599E29311F78005B37FA /* AuthWebViewNav.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1421,7 +1406,6 @@
 				AC55597A292A3547005B37FA /* AssemblerPRotocol.swift in Sources */,
 				AC555983292A38E2005B37FA /* AuthPermissionViewController.swift in Sources */,
 				ACDAFACD2911A92C00EAE7CA /* TabBarCoordinator.swift in Sources */,
-				AC55599D29311F4C005B37FA /* AuthViewModel.swift in Sources */,
 				AC0587C8292830F5004E669E /* HTTPMethod.swift in Sources */,
 				AC0587C4292830C7004E669E /* StorageManager.swift in Sources */,
 				AC268D6F290C0C46005AE287 /* MainCoordinator.swift in Sources */,
@@ -1441,13 +1425,10 @@
 				AC55597F292A373F005B37FA /* AuthPermissionCoordinator.swift in Sources */,
 				AC55597D292A35F0005B37FA /* AuthPermissionProtocols.swift in Sources */,
 				AC69C51729156C3F008404B5 /* InfoView.swift in Sources */,
-				AC55599429311E5C005B37FA /* AccountInteractor.swift in Sources */,
-				AC55599F29311F78005B37FA /* AuthWebViewNav.swift in Sources */,
 				AC69C50D29150D30008404B5 /* DetailsContentView.swift in Sources */,
 				AC08FCCA29251487007E2C54 /* DetailsData.swift in Sources */,
 				AC55594F29294F26005B37FA /* AppDelegate+Appearence.swift in Sources */,
 				AC08FCCD292514E6007E2C54 /* MovieVO.swift in Sources */,
-				AC55599929311F09005B37FA /* SignInViewController.swift in Sources */,
 				AC74B717291AD2B900895C84 /* MainViewController.swift in Sources */,
 				AC0587C02928307B004E669E /* RequestItem.swift in Sources */,
 				AC1DBBA4291286D20085017B /* SceneDelegate.swift in Sources */,
@@ -1461,12 +1442,11 @@
 				AC0587BC29283031004E669E /* Genre.swift in Sources */,
 				AC15F6B429176A5400DFDE55 /* SegmentedView.swift in Sources */,
 				AC55595129295162005B37FA /* DIContainer.swift in Sources */,
-				AC55599629311E93005B37FA /* AccountProtocols.swift in Sources */,
 				AC74B71D291ADD0700895C84 /* MainNetworkViewModel.swift in Sources */,
-				AC55599B29311F3C005B37FA /* AuthViewController.swift in Sources */,
 				AC74B724291B077300895C84 /* FavouriteController.swift in Sources */,
 				AC0587C2292830AA004E669E /* ImageManager.swift in Sources */,
 				ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */,
+				AC5559A3293121F0005B37FA /* Bindable.swift in Sources */,
 				ACF312CF29052118008D7D09 /* CompositionalLayout.swift in Sources */,
 				AC74B72C291B0D7900895C84 /* SearchController.swift in Sources */,
 				AC74B70E291AC84D00895C84 /* Providable.swift in Sources */,

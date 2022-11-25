@@ -12,9 +12,9 @@ final class SceneAssembly: Assembly {
 
     func assemble(container: Container) {
         let assemblies: [Assembly] = [
-            AccountAssembly(),
-            AuthenticationAssembly()
-            ProfileAssembly(),
+       //     AccountAssembly(),
+            AuthenticationAssembly(),
+      //      ProfileAssembly(),
         ]
         assemblies.forEach { $0.assemble(container: container) }
     }
