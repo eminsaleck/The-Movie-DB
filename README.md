@@ -3,9 +3,9 @@ App which is aimed to find a movie for you
 
 *Currently in development
 
-September'22: Monolith
-October  '22: Decoupled, MVVM
-November '22: Clean, MVVM, RxSwift, UI 
+> September'22: Monolith
+> October  '22: Decoupled, MVVM
+> November '22: Clean, MVVM, RxSwift, UI 
 
 
 # Tech stack:
