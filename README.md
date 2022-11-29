@@ -6,7 +6,7 @@ App which is aimed to find a movie for you
 
 # Development Process
 > (September'22: Monolith). 
-> (October  '22: Decoupled, MVVM). 
+> (October  '22: Decoupled, DDD, MVVM). 
 > (November '22: Clean, MVVM, RxSwift, State programming). 
 
 
