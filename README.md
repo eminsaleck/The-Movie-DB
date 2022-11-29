@@ -3,6 +3,7 @@ App which is aimed to find a movie for you
 
 *Currently in development
 
+
 # Development Process
 > (September'22: Monolith). 
 > (October  '22: Decoupled, MVVM). 
