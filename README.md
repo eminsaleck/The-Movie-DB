@@ -3,9 +3,11 @@ App which is aimed to find a movie for you
 
 *Currently in development
 
-TODO:
-1. Refactor to Clean Architecture | MVVM+C
-2. Configure Networking
+# Development Process
+>(September'22: Monolith). 
+> (October  '22: Decoupled, MVVM). 
+> (November '22: Clean, MVVM, RxSwift, UI). 
+
 
 # Tech stack:
 >1. UIKit
