@@ -42,3 +42,4 @@ extension MainCoordinator{
        // DetailsCoordinator(navigationController, movie: movie).start()
     }
 }
+ 

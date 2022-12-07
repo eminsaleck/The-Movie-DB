@@ -1,13 +1,12 @@
 //
-//  UserLocalDataSourceProtocol.swift
-//  Data
+//  UserUseCaseProtocol.swift
+//  Domain
+//
 //
 //  Created by LEMIN DAHOVICH on 19.11.2022.
 //
 
-import Domain
-
-public protocol UserLocalDataSourceProtocol {
+public protocol UserUseCaseProtocol {
 
     var didUpdateUser: (() -> Void)? { get set }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-import UseCases
+import Domain
 
 protocol AuthenticationHandlerProtocol {
 
