@@ -1,14 +1,11 @@
 //
-//  AccountRemoteDataSourceProtocol.swift
-//  UpcomingMoviesData
-//  Data
+//  AccountUseCaseProtocol.swift
+//  Domain
 //
 //  Created by LEMIN DAHOVICH on 19.11.2022.
 //
 
-import Domain
-
-public protocol AccountRemoteDataSourceProtocol {
+public protocol AccountUseCaseProtocol {
 
     func getFavoriteList(page: Int?, completion: @escaping (Result<[Movie], Error>) -> Void)
 

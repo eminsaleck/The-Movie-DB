@@ -6,7 +6,7 @@
 //
 
 
-import UseCases
+import Domain
 
 final class AuthenticationHandler: AuthenticationHandlerProtocol {
 

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UseCases
+import Domain
 import Data
 import Networking
 import Swinject
