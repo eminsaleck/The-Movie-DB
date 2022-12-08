@@ -14,14 +14,11 @@
 		AC0587C4292830C7004E669E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587C3292830C7004E669E /* StorageManager.swift */; };
 		AC0587C6292830DE004E669E /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587C5292830DE004E669E /* EndPointType.swift */; };
 		AC0587C8292830F5004E669E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587C7292830F5004E669E /* HTTPMethod.swift */; };
-<<<<<<< HEAD
-=======
 		AC0587DE2928315D004E669E /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = AC0587D02928315D004E669E /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC0587EA292831C1004E669E /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587E9292831C1004E669E /* APICaller.swift */; };
 		AC0587EC29283202004E669E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587EB29283202004E669E /* APIError.swift */; };
 		AC0587EE29283399004E669E /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587ED29283399004E669E /* NetworkConfiguration.swift */; };
 		AC0587F2292833EA004E669E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587F1292833EA004E669E /* Endpoint.swift */; };
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		AC08FCAD2923DFAE007E2C54 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AC08FCAC2923DFAE007E2C54 /* Lottie */; };
 		AC08FCB02923E09D007E2C54 /* loginLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = AC08FCAF2923E09D007E2C54 /* loginLottie.json */; };
 		AC08FCBB2925056F007E2C54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08FCBA2925056F007E2C54 /* Constants.swift */; };
@@ -44,8 +41,6 @@
 		AC268D7D290C1530005AE287 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D7C290C1530005AE287 /* RxCocoa */; };
 		AC268D7F290C1530005AE287 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D7E290C1530005AE287 /* RxRelay */; };
 		AC268D81290C1530005AE287 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AC268D80290C1530005AE287 /* RxSwift */; };
-<<<<<<< HEAD
-=======
 		AC49F38E2940EBF5000B9940 /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49F3862940EBF5000B9940 /* LocalizationHelper.swift */; };
 		AC49F38F2940EBF5000B9940 /* Paginable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49F3882940EBF5000B9940 /* Paginable.swift */; };
 		AC49F3902940EBF5000B9940 /* UseCasesConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49F3892940EBF5000B9940 /* UseCasesConvertible.swift */; };
@@ -56,7 +51,6 @@
 		AC55590F2928F7EC005B37FA /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5559092928F7EC005B37FA /* Data.framework */; };
 		AC5559102928F7EC005B37FA /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC5559092928F7EC005B37FA /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC5559152928F82C005B37FA /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5559142928F82C005B37FA /* UseCaseProvider.swift */; };
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		AC55593729291228005B37FA /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = AC55593629291228005B37FA /* KeychainAccess */; };
 		AC555949292944D0005B37FA /* PropertyListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC555948292944D0005B37FA /* PropertyListHelper.swift */; };
 		AC55594B29294513005B37FA /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC55594A29294513005B37FA /* URL+Extension.swift */; };
@@ -229,8 +223,6 @@
 		ACF312CF29052118008D7D09 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF312CE29052118008D7D09 /* CompositionalLayout.swift */; };
 /* End PBXBuildFile section */
 
-<<<<<<< HEAD
-=======
 /* Begin PBXContainerItemProxy section */
 		AC55590D2928F7EC005B37FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -248,7 +240,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 /* Begin PBXCopyFilesBuildPhase section */
 		AC268D94290C1E12005AE287 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -256,11 +247,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-<<<<<<< HEAD
-=======
 				ACB93DA72940DD0300F21C0E /* Domain.framework in Embed Frameworks */,
 				AC5559102928F7EC005B37FA /* Data.framework in Embed Frameworks */,
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,15 +273,12 @@
 		AC0587C3292830C7004E669E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		AC0587C5292830DE004E669E /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		AC0587C7292830F5004E669E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		AC0587CE2928315D004E669E /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0587D02928315D004E669E /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		AC0587E9292831C1004E669E /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		AC0587EB29283202004E669E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		AC0587ED29283399004E669E /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		AC0587F1292833EA004E669E /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		AC08FCAF2923E09D007E2C54 /* loginLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginLottie.json; sourceTree = "<group>"; };
 		AC08FCBA2925056F007E2C54 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AC08FCC129251308007E2C54 /* DetailsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRepository.swift; sourceTree = "<group>"; };
@@ -312,8 +297,6 @@
 		AC268D6A290C06F4005AE287 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		AC268D6C290C0714005AE287 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AC268D6E290C0C46005AE287 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		AC49F3862940EBF5000B9940 /* LocalizationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
 		AC49F3882940EBF5000B9940 /* Paginable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paginable.swift; sourceTree = "<group>"; };
 		AC49F3892940EBF5000B9940 /* UseCasesConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCasesConvertible.swift; sourceTree = "<group>"; };
@@ -323,7 +306,6 @@
 		AC5559092928F7EC005B37FA /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC55590B2928F7EC005B37FA /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		AC5559142928F82C005B37FA /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		AC555948292944D0005B37FA /* PropertyListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListHelper.swift; sourceTree = "<group>"; };
 		AC55594A29294513005B37FA /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		AC55594C292945B1005B37FA /* BaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConfig.swift; sourceTree = "<group>"; };
@@ -373,9 +355,6 @@
 		AC92976F290D376300243B56 /* DetailsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAssembler.swift; sourceTree = "<group>"; };
 		AC929771290D37A800243B56 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AC9950D52903DC8800619B1E /* FilmRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRealm.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		ACB53E3429421D3100716475 /* The-Movie-DB */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "The-Movie-DB"; path = "../../Study/Algorithms/The-Movie-DB"; sourceTree = "<group>"; };
-=======
 		ACB93DA02940DD0300F21C0E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB93DA22940DD0300F21C0E /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		ACB93DAC2940DD5C00F21C0E /* MovieSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearch.swift; sourceTree = "<group>"; };
@@ -420,7 +399,6 @@
 		ACB93E1D2940E43F00F21C0E /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
 		ACB93E1F2940E43F00F21C0E /* MovieSearchLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearchLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
 		ACB93E212940E43F00F21C0E /* AccountRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + LoadImage.swift"; sourceTree = "<group>"; };
 		ACD70945290117BB00A1116C /* The-Movie-DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Movie-DB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD70948290117BB00A1116C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -438,8 +416,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-<<<<<<< HEAD
-=======
 		AC0587CB2928315D004E669E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -461,7 +437,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		ACD70942290117BB00A1116C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -472,6 +447,7 @@
 				AC9950D42903DC5C00619B1E /* RealmSwift in Frameworks */,
 				AC268D7F290C1530005AE287 /* RxRelay in Frameworks */,
 				AC9950D22903DC5C00619B1E /* Realm in Frameworks */,
+				AC55590F2928F7EC005B37FA /* Data.framework in Frameworks */,
 				ACD7099929015C2D00A1116C /* SDWebImage in Frameworks */,
 				AC08FCAD2923DFAE007E2C54 /* Lottie in Frameworks */,
 				AC555988292A40B6005B37FA /* Swinject in Frameworks */,
@@ -484,8 +460,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-<<<<<<< HEAD
-=======
 		AC0587CF2928315D004E669E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,7 +473,6 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		AC08FCAE2923E08B007E2C54 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,8 +643,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-=======
 		AC49F3842940EBF5000B9940 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,7 +691,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		AC555957292A2A57005B37FA /* DIAssemblers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1086,15 +1056,10 @@
 		ACD7093C290117BB00A1116C = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				ACB53E3429421D3100716475 /* The-Movie-DB */,
-				ACD70947290117BB00A1116C /* App */,
-=======
 				ACD70947290117BB00A1116C /* The-Movie-DB */,
 				AC0587CF2928315D004E669E /* Networking */,
 				AC55590A2928F7EC005B37FA /* Data */,
 				ACB93DA12940DD0300F21C0E /* Domain */,
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 				ACD70946290117BB00A1116C /* Products */,
 				ACB93DDF2940E34700F21C0E /* Frameworks */,
 			);
@@ -1104,17 +1069,14 @@
 			isa = PBXGroup;
 			children = (
 				ACD70945290117BB00A1116C /* The-Movie-DB.app */,
-<<<<<<< HEAD
-=======
 				AC0587CE2928315D004E669E /* Networking.framework */,
 				AC5559092928F7EC005B37FA /* Data.framework */,
 				ACB93DA02940DD0300F21C0E /* Domain.framework */,
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ACD70947290117BB00A1116C /* App */ = {
+		ACD70947290117BB00A1116C /* The-Movie-DB */ = {
 			isa = PBXGroup;
 			children = (
 				AC0F35AA2912843C00BB05AF /* Info.plist */,
@@ -1129,7 +1091,7 @@
 				AC268D68290BF3DF005AE287 /* App */,
 				AC08FCAE2923E08B007E2C54 /* Assets */,
 			);
-			path = App;
+			path = "The-Movie-DB";
 			sourceTree = "<group>";
 		};
 		ACD7098929012F3100A1116C /* VO */ = {
@@ -1166,9 +1128,6 @@
 		};
 /* End PBXGroup section */
 
-<<<<<<< HEAD
-/* Begin PBXNativeTarget section */
-=======
 /* Begin PBXHeadersBuildPhase section */
 		AC0587C92928315D004E669E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
@@ -1251,7 +1210,6 @@
 			productReference = ACB93DA02940DD0300F21C0E /* Domain.framework */;
 			productType = "com.apple.product-type.framework";
 		};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		ACD70944290117BB00A1116C /* The-Movie-DB */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACD7096F290117BD00A1116C /* Build configuration list for PBXNativeTarget "The-Movie-DB" */;
@@ -1265,11 +1223,8 @@
 			buildRules = (
 			);
 			dependencies = (
-<<<<<<< HEAD
-=======
 				AC55590E2928F7EC005B37FA /* PBXTargetDependency */,
 				ACB93DA52940DD0300F21C0E /* PBXTargetDependency */,
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 			);
 			name = "The-Movie-DB";
 			packageProductDependencies = (
@@ -1299,8 +1254,6 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-<<<<<<< HEAD
-=======
 					AC0587CD2928315D004E669E = {
 						CreatedOnToolsVersion = 14.1;
 						LastSwiftMigration = 1410;
@@ -1312,7 +1265,6 @@
 					ACB93D9F2940DD0300F21C0E = {
 						CreatedOnToolsVersion = 14.1;
 					};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 					ACD70944290117BB00A1116C = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
@@ -1341,19 +1293,14 @@
 			projectRoot = "";
 			targets = (
 				ACD70944290117BB00A1116C /* The-Movie-DB */,
-<<<<<<< HEAD
-=======
 				AC0587CD2928315D004E669E /* Networking */,
 				AC5559082928F7EC005B37FA /* Data */,
 				ACB93D9F2940DD0300F21C0E /* Domain */,
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-<<<<<<< HEAD
-=======
 		AC0587CC2928315D004E669E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1375,7 +1322,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		ACD70943290117BB00A1116C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1389,8 +1335,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-<<<<<<< HEAD
-=======
 		AC0587CA2928315D004E669E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1503,7 +1447,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		ACD70941290117BB00A1116C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1615,8 +1558,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-<<<<<<< HEAD
-=======
 /* Begin PBXTargetDependency section */
 		AC55590E2928F7EC005B37FA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1630,7 +1571,6 @@
 		};
 /* End PBXTargetDependency section */
 
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 /* Begin PBXVariantGroup section */
 		ACD70953290117BD00A1116C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1643,8 +1583,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-<<<<<<< HEAD
-=======
 		AC0587E42928315D004E669E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1853,7 +1791,6 @@
 			};
 			name = Release;
 		};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		ACD7096D290117BD00A1116C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2029,8 +1966,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-<<<<<<< HEAD
-=======
 		AC0587E32928315D004E669E /* Build configuration list for PBXNativeTarget "Networking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2058,7 +1993,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
->>>>>>> 877d6ff71ff498517dab45c1f467bba2de50dad1
 		ACD70940290117BB00A1116C /* Build configuration list for PBXProject "The-Movie-DB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
