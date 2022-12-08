@@ -1,22 +1,14 @@
 # The Movie DB
 App which is aimed to find a movie for you
 
-*Currently in development
+
 
 
 # Development Process
 > (September'22: Monolith). 
 > (October  '22: Decoupled, DDD, MVVM). 
-> (November '22: Clean, MVVM, RxSwift, State programming). 
-
-
-# Tech stack:
->1. UIKit
->2. MVVM + Coordinator
->3. RxSwift/RxCocoa
->4. SDWebImage
->5. Realm 
->6. Lottie
+> (November '22: Clean, MVVM, RxSwift). 
+> (December '22: Clean + SPM, Combine, Modularity). 
 
 
 
