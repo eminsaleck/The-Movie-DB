@@ -7,7 +7,7 @@
 
 import Foundation
 import Swinject
-import UseCases
+import Domain
 
 //final class AccountAssembly: Assembly {
 //

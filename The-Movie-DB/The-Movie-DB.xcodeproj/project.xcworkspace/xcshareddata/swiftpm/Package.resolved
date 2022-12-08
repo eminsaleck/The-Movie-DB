@@ -1,6 +1,8 @@
 {
   "pins" : [
     {
+<<<<<<< HEAD
+=======
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire",
@@ -10,6 +12,7 @@
       }
     },
     {
+>>>>>>> main
       "identity" : "keychainaccess",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
