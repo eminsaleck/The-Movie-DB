@@ -183,7 +183,7 @@
 		AC92976F290D376300243B56 /* DetailsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAssembler.swift; sourceTree = "<group>"; };
 		AC929771290D37A800243B56 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		AC9950D52903DC8800619B1E /* FilmRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRealm.swift; sourceTree = "<group>"; };
-		ACABB54E29436F5200B5B7E4 /* TheMovieDB */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TheMovieDB; path = ../TheMovieDB; sourceTree = "<group>"; };
+		ACABB54E29436F5200B5B7E4 /* TheMovieDB */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TheMovieDB; sourceTree = "<group>"; };
 		ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + LoadImage.swift"; sourceTree = "<group>"; };
 		ACD70945290117BB00A1116C /* The-Movie-DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Movie-DB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD70948290117BB00A1116C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
