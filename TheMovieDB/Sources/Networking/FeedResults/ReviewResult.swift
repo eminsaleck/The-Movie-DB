@@ -7,7 +7,7 @@
 
 import Domain
 
-struct ReviewResult: Decodable, Paginable {
+public struct ReviewResult: Decodable, Paginable {
 
     let results: [Review]
     var currentPage: Int

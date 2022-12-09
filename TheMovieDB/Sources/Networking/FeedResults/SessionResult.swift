@@ -5,7 +5,7 @@
 //  Created by LEMIN DAHOVICH on 09.12.2022.
 //
 
-struct SessionResult: Decodable {
+public struct SessionResult: Decodable {
 
     let success: Bool
     let sessionId: String

@@ -7,18 +7,18 @@
 
 import Foundation
 
-final class NetworkConfiguration {
+public final class NetworkConfiguration {
 
-    static let shared = NetworkConfiguration()
+    public static let shared = NetworkConfiguration()
 
-    private(set) var apiKey = ""
-    private(set) var readAccessToken = ""
+    public internal(set) var apiKey = ""
+    public internal(set) var readAccessToken = ""
 
     var baseAPIURLString: String {
         return "https://api.themoviedb.org"
     }
 
-    private init() {}
+    public init() {}
 
     func configure(with apiKey: String, and readAccessToken: String) {
         self.apiKey = apiKey

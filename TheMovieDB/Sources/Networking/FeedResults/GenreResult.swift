@@ -7,7 +7,7 @@
 
 import Domain
 
-struct GenreResult: Decodable {
+public struct GenreResult: Decodable {
 
     let genres: [Genre]
 

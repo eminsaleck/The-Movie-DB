@@ -6,6 +6,7 @@
 //
 
 import Domain
+import Networking
 
 protocol AuthenticationManagerProtocol {
 

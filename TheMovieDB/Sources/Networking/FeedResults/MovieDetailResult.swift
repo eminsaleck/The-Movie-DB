@@ -7,7 +7,7 @@
 
 import Domain
 
-struct MovieDetailResult: Decodable {
+public struct MovieDetailResult: Decodable {
 
     let id: Int
     let title: String

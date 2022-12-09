@@ -5,7 +5,7 @@
 //  Created by LEMIN DAHOVICH on 09.12.2022.
 //
 
-struct RequestTokenResult: Decodable {
+public struct RequestTokenResult: Decodable {
 
     let success: Bool
     let token: String

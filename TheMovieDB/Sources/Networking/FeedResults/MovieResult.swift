@@ -5,7 +5,7 @@
 //  Created by LEMIN DAHOVICH on 09.12.2022.
 //
 
-struct MovieResult: Decodable, Paginable {
+public struct MovieResult: Decodable, Paginable {
 
     let results: [Movie]
     var currentPage: Int

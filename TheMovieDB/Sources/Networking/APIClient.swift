@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol APICaller {
+protocol APIClient{
 
     var session: URLSession { get }
 
@@ -16,7 +16,7 @@ protocol APICaller {
                              completion: @escaping (Result<T, APIError>) -> Void)
 }
 
-extension APICaller {
+extension APIClient {
 
     typealias JSONHandler = (Result<Decodable, APIError>) -> Void
 

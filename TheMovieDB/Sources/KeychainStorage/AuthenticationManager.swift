@@ -6,6 +6,7 @@
 //
 
 import Domain
+import Networking
 
 final class AuthenticationManager: AuthenticationManagerProtocol {
 
@@ -15,6 +16,14 @@ final class AuthenticationManager: AuthenticationManagerProtocol {
         return NetworkConfiguration.shared.readAccessToken
     }
 
+    struct Constants {
+        static let accessTokenKey = "UpcomingMoviesAccessToken"
+        static let requestTokenKey = "UpcomingMoviesRequestToken"
+        static let accountIdKey = "UpcomingMoviesAccessAccountId"
+        static let sessionIdKey = "UpcomingMoviesSessionId"
+        static let currentUserIdKey = "UpcomingMoviesUserId"
+    }
+    
     @KeychainStorage(key: Constants.sessionIdKey)
     private var sessionId: String?
 
@@ -84,12 +93,6 @@ final class AuthenticationManager: AuthenticationManagerProtocol {
 
 extension AuthenticationManager {
 
-    struct Constants {
-        static let accessTokenKey = "UpcomingMoviesAccessToken"
-        static let requestTokenKey = "UpcomingMoviesRequestToken"
-        static let accountIdKey = "UpcomingMoviesAccessAccountId"
-        static let sessionIdKey = "UpcomingMoviesSessionId"
-        static let currentUserIdKey = "UpcomingMoviesUserId"
-    }
+
 
 }

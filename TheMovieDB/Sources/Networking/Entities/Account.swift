@@ -5,9 +5,13 @@
 //  Created by LEMIN DAHOVICH on 18.11.2022.
 //
 
-struct Account {
+public struct Account {
 
-    let accountId: Int
-    let sessionId: String
+    public let accountId: Int
+    public let sessionId: String
 
+    public init(accountId: Int, sessionId: String) {
+      self.accountId = accountId
+      self.sessionId = sessionId
+    }
 }

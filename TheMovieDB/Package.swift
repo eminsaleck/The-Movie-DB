@@ -13,7 +13,8 @@ let package = Package(
         .library(name: "Domain", targets: ["Domain"]),
         .library(name: "Data", targets: ["Data"]),
         .library(name: "Networking", targets: ["Networking"]),
-        .library(name: "Persistance", targets: ["Persistance"])
+        .library(name: "Persistance", targets: ["Persistance"]),
+        .library(name: "KeychainStorage", targets: ["KeychainStorage"]),
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
@@ -35,6 +36,12 @@ let package = Package(
             dependencies: [
                 "Domain",
                 "Data",
+            ]),
+        .target(
+            name: "KeychainStorage",
+            dependencies: [
+                "Domain",
+                "Networking",
                 .product(name: "KeychainSwift", package: "keychain-swift")
             ]),
         .target(
