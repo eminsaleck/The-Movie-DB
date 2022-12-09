@@ -1,13 +1,13 @@
 # The Movie DB
 App which is aimed to find a movie for you
 
-*Currently in development
 
 
-# Development Process
-> (September'22: Monolith). 
-> (October  '22: Decoupled, DDD, MVVM). 
-> (November '22: Clean, MVVM, RxSwift, State programming). 
+# Tech stack:
+>1. (September'22: Monolith)
+>2. (October'22: Monolith)
+>3. (November'22: Decoupled, DDD, MVVM)
+>4. (December'22: Clean, Modularity, MVVM, Combine). 
 
 
 # Tech stack:
