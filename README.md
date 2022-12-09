@@ -11,6 +11,6 @@ App which is aimed to find a movie for you
 
 
 
-<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screenshots/gif4.gif" width="200px" /> | <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif.gif" width="200px" />
-<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screenshots/gif3.gif" width="200px" /> | <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screen/gif1.gif" width="200px" />
+<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screenshots/gif4.gif" width="200px" /> | <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screenshots/gif.gif" width="200px" />
+<img src="https://github.com/lemin07/The-Movie-DB/blob/main/screenshots/gif3.gif" width="200px" /> | <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screenshots/gif1.gif" width="200px" />
 <img src="https://github.com/lemin07/The-Movie-DB/blob/main/screenshots/gif2.gif" width="200px" />
