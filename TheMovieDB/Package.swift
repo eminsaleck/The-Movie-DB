@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "TheMovieDB",
+    defaultLocalization: "en",
     platforms: [
       .iOS(.v15)
     ],
@@ -50,5 +51,18 @@ let package = Package(
                 "Domain",
                 "Data",
             ]),
+        .target(
+          name: "UI",
+          dependencies: [
+          ]),
+        .target(
+          name: "Helpers",
+          dependencies: [
+          ]),
+        .target(
+          name: "Handlers",
+          dependencies: [
+            "Domain"
+          ]),
     ]
 )

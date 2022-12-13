@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Upcoming movies-->
+        <scene sceneID="8j3-pf-oBs">
+            <objects>
+                <viewController storyboardIdentifier="UpcomingMoviesViewController" id="EZU-as-DXw" customClass="UpcomingMoviesViewController" customModule="UpcomingMovies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6KU-iX-s3v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EKd-qK-aII">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jty-hW-UFu">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fkc-0u-one" firstAttribute="trailing" secondItem="EKd-qK-aII" secondAttribute="trailing" id="8TL-Uk-cXY"/>
+                            <constraint firstItem="fkc-0u-one" firstAttribute="bottom" secondItem="EKd-qK-aII" secondAttribute="bottom" id="Lv5-up-ekW"/>
+                            <constraint firstItem="EKd-qK-aII" firstAttribute="top" secondItem="fkc-0u-one" secondAttribute="top" id="M23-0O-vUv"/>
+                            <constraint firstItem="EKd-qK-aII" firstAttribute="leading" secondItem="fkc-0u-one" secondAttribute="leading" id="gMt-H8-57n"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fkc-0u-one"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Upcoming movies" id="FBi-9u-wKu">
+                        <barButtonItem key="backBarButtonItem" title=" " id="1uH-Ge-Gt9"/>
+                        <barButtonItem key="leftBarButtonItem" image="List" id="JjA-67-2z8" userLabel="Toggle Grid Bar Button Item"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="EKd-qK-aII" id="2u5-5u-0xh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JXE-16-sg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="959" y="87"/>
+        </scene>
+        <!--Upcoming-->
+        <scene sceneID="Mvv-4Q-SfO">
+            <objects>
+                <navigationController storyboardIdentifier="UpcomingMoviesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="IG8-Ti-8Hu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Upcoming" image="Movies" id="D5x-SM-ILe"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hhm-Rf-6aq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EZU-as-DXw" kind="relationship" relationship="rootViewController" id="uVj-sq-eLh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FRw-43-Prx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="86.806596701649184"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="List" width="24" height="24"/>
+        <image name="Movies" width="25" height="25"/>
+    </resources>
+</document>
