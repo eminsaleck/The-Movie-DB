@@ -2,12 +2,12 @@
 //  CustomListsInteractor.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 7/26/20.
-//  Copyright © 2020 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 12.12.2022.
 //
 
+
 import Foundation
-import UpcomingMoviesDomain
+import Domain
 
 class CustomListsInteractor: CustomListsInteractorProtocol {
 

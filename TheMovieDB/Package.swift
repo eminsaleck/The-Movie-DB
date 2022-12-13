@@ -16,9 +16,12 @@ let package = Package(
         .library(name: "Networking", targets: ["Networking"]),
         .library(name: "Persistance", targets: ["Persistance"]),
         .library(name: "KeychainStorage", targets: ["KeychainStorage"]),
+        
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
+        .package(url: "https://github.com/yacir/CollectionViewSlantedLayout.git", from: "3.0.1"),
+
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -56,13 +59,22 @@ let package = Package(
           dependencies: [
           ]),
         .target(
-          name: "Helpers",
+          name: "Shared",
           dependencies: [
           ]),
         .target(
           name: "Handlers",
           dependencies: [
             "Domain"
+          ]),
+        .target(
+          name: "AccountFeature",
+          dependencies: [
+            "Domain",
+            "UI",
+            "Shared",
+            "Handlers",
+            .product(name: "CollectionViewSlantedLayout", package: "CollectionViewSlantedLayout")
           ]),
     ]
 )

@@ -2,11 +2,13 @@
 //  SavedMoviesCoordinator.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 6/25/20.
-//  Copyright © 2020 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 12.12.2022.
 //
 
+
 import UIKit
+import Shared
+import UI
 
 final class FavoritesSavedMoviesCoordinator: SavedMoviesCoordinatorProtocol, Coordinator, MovieDetailCoordinable {
 

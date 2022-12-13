@@ -14,6 +14,7 @@
 		AC0587C4292830C7004E669E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587C3292830C7004E669E /* StorageManager.swift */; };
 		AC0587C6292830DE004E669E /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587C5292830DE004E669E /* EndPointType.swift */; };
 		AC0587C8292830F5004E669E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0587C7292830F5004E669E /* HTTPMethod.swift */; };
+		AC08B63A2948A3F4002ADED9 /* CollectionViewSlantedLayout in Frameworks */ = {isa = PBXBuildFile; productRef = AC08B6392948A3F4002ADED9 /* CollectionViewSlantedLayout */; };
 		AC08FCB02923E09D007E2C54 /* loginLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = AC08FCAF2923E09D007E2C54 /* loginLottie.json */; };
 		AC08FCBB2925056F007E2C54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08FCBA2925056F007E2C54 /* Constants.swift */; };
 		AC08FCC229251308007E2C54 /* DetailsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08FCC129251308007E2C54 /* DetailsRepository.swift */; };
@@ -205,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC08B63A2948A3F4002ADED9 /* CollectionViewSlantedLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,6 +678,7 @@
 			);
 			name = "The-Movie-DB";
 			packageProductDependencies = (
+				AC08B6392948A3F4002ADED9 /* CollectionViewSlantedLayout */,
 			);
 			productName = "The-Movie-DB";
 			productReference = ACD70945290117BB00A1116C /* The-Movie-DB.app */;
@@ -706,6 +709,7 @@
 			);
 			mainGroup = ACD7093C290117BB00A1116C;
 			packageReferences = (
+				AC08B6382948A3F4002ADED9 /* XCRemoteSwiftPackageReference "CollectionViewSlantedLayout" */,
 			);
 			productRefGroup = ACD70946290117BB00A1116C /* Products */;
 			projectDirPath = "";
@@ -1026,6 +1030,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC08B6382948A3F4002ADED9 /* XCRemoteSwiftPackageReference "CollectionViewSlantedLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yacir/CollectionViewSlantedLayout.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC08B6392948A3F4002ADED9 /* CollectionViewSlantedLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC08B6382948A3F4002ADED9 /* XCRemoteSwiftPackageReference "CollectionViewSlantedLayout" */;
+			productName = CollectionViewSlantedLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ACD7093D290117BB00A1116C /* Project object */;
 }

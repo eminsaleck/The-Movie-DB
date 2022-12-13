@@ -2,9 +2,9 @@
 //  ProfileFactory.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 7/18/20.
-//  Copyright © 2020 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 12.12.2022.
 //
+import Shared
 
 final class ProfileFactory: ProfileFactoryProtocol {
 

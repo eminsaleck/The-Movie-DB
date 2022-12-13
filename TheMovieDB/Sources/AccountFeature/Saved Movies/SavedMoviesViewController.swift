@@ -2,13 +2,14 @@
 //  SavedMoviesViewController.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 11/7/18.
-//  Copyright © 2018 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 12.12.2022.
 //
+
 
 import UIKit
 import CollectionViewSlantedLayout
-import UpcomingMoviesDomain
+import Domain
+import UI
 
 class SavedMoviesViewController: UIViewController, Storyboarded, PlaceholderDisplayable, LoadingDisplayable {
 

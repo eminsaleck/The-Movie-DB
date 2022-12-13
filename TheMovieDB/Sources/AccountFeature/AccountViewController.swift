@@ -2,11 +2,12 @@
 //  AccountViewController.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 3/20/19.
-//  Copyright © 2019 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 12.12.2022.
 //
 
 import UIKit
+import UI
+import Shared
 
 class AccountViewController: UIViewController, Storyboarded {
 

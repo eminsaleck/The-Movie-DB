@@ -2,11 +2,13 @@
 //  CustomListDetailViewController.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 4/19/19.
-//  Copyright © 2019 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 12.12.2022.
 //
 
+
 import UIKit
+import UI
+
 
 class CustomListDetailViewController: UIViewController, Storyboarded {
 
