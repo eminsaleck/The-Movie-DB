@@ -1,0 +1,112 @@
+//
+//  MovieVideosViewController.swift
+//  UpcomingMovies
+//
+//  Created by LEMIN DAHOVICH on 15.12.2022.
+//
+
+import UIKit
+import UpcomingMoviesDomain
+
+class MovieVideosViewController: UIViewController, Storyboarded, PlaceholderDisplayable, LoadingDisplayable {
+
+    @IBOutlet private weak var tableView: UITableView!
+
+    static var storyboardName = "MovieDetail"
+
+    private var dataSource: SimpleTableViewDataSource<MovieVideoCellViewModelProtocol>!
+    private var displayedCellsIndexPaths = Set<IndexPath>()
+
+    var viewModel: MovieVideosViewModelProtocol?
+    weak var coordinator: MovieVideosCoordinatorProtocol?
+
+    // MARK: - LoadingDisplayable
+
+    var loaderView: LoadingView = RadarView()
+
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        setupBindables()
+    }
+
+    // MARK: - Private
+
+    private func setupUI() {
+        setupTableView()
+    }
+
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.registerNib(cellType: MovieVideoCell.self)
+    }
+
+    private func reloadTableView() {
+        guard let viewModel = viewModel else { return }
+        dataSource = SimpleTableViewDataSource.make(for: viewModel.videoCells)
+        tableView.dataSource = dataSource
+        tableView.reloadData()
+    }
+
+    /**
+     * Configures the tableview footer given the current state of the view.
+     */
+    private func configureView(withState state: SimpleViewState<Video>) {
+        switch state {
+        case .paging:
+            hideDisplayedPlaceholderView()
+            tableView.tableFooterView = LoadingFooterView()
+        case .populated, .initial:
+            hideDisplayedPlaceholderView()
+            tableView.tableFooterView = UIView()
+        case .empty:
+            presentEmptyView(with: LocalizedStrings.emptyVideoResults())
+        case .error(let error):
+            presentRetryView(with: error.localizedDescription,
+                                       retryHandler: { [weak self] in
+                                        self?.viewModel?.getMovieVideos(showLoader: false)
+            })
+        }
+    }
+
+    // MARK: - Reactive Behavior
+
+    private func setupBindables() {
+        title = viewModel?.movieTitle
+        viewModel?.viewState.bindAndFire({ [weak self] viewState in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.configureView(withState: viewState)
+                self.reloadTableView()
+            }
+        })
+        viewModel?.startLoading.bind({ [weak self] start in
+            start ? self?.showLoader() : self?.hideLoader()
+        })
+        viewModel?.getMovieVideos(showLoader: true)
+    }
+
+}
+
+// MARK: - UITableViewDelegate
+
+extension MovieVideosViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let videoURL = viewModel?.videoURL(at: indexPath.row)
+        openDeepLinkURL(videoURL)
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !displayedCellsIndexPaths.contains(indexPath) {
+            displayedCellsIndexPaths.insert(indexPath)
+            TableViewCellAnimator.fadeAnimate(cell: cell)
+        }
+    }
+
+}
