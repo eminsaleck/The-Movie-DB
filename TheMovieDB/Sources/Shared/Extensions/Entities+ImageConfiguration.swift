@@ -6,39 +6,39 @@
 //
 
 import Foundation
-import UpcomingMoviesDomain
+import Domain
 
-protocol ImageConfigurable {
+public protocol ImageConfigurable {
 
-    var regularImageBaseURLString: String { get }
-    var backdropImageBaseURLString: String { get }
+    public var regularImageBaseURLString: String { get }
+    public var backdropImageBaseURLString: String { get }
 }
 
-extension ImageConfigurable {
+public extension ImageConfigurable {
 
-    var configurationHandler: ConfigurationHandlerProtocol {
+    public var configurationHandler: ConfigurationHandlerProtocol {
         DIContainer.shared.resolve()
     }
 
-    var regularImageBaseURLString: String {
+    public var regularImageBaseURLString: String {
         configurationHandler.regularImageBaseURLString
     }
 
-    var backdropImageBaseURLString: String {
+    public var backdropImageBaseURLString: String {
         configurationHandler.backdropImageBaseURLString
     }
 
 }
 
-extension Movie: ImageConfigurable {
+public extension Movie: ImageConfigurable {
 
-    var posterURL: URL? {
+    public var posterURL: URL? {
         guard let posterPath = posterPath else { return nil }
         let urlString = regularImageBaseURLString.appending(posterPath)
         return URL(string: urlString)
     }
 
-    var backdropURL: URL? {
+    public var backdropURL: URL? {
         guard let backdropPath = backdropPath else { return nil }
         let urlString = backdropImageBaseURLString.appending(backdropPath)
         return URL(string: urlString)
@@ -46,9 +46,9 @@ extension Movie: ImageConfigurable {
 
 }
 
-extension Cast: ImageConfigurable {
+public extension Cast: ImageConfigurable {
 
-    var profileURL: URL? {
+    public var profileURL: URL? {
         guard let photoPath = photoPath else { return nil }
         let urlString = regularImageBaseURLString.appending(photoPath)
         return URL(string: urlString)
@@ -56,9 +56,9 @@ extension Cast: ImageConfigurable {
 
 }
 
-extension Crew: ImageConfigurable {
+public extension Crew: ImageConfigurable {
 
-    var profileURL: URL? {
+    public var profileURL: URL? {
         guard let photoPath = photoPath else { return nil }
         let urlString = regularImageBaseURLString.appending(photoPath)
         return URL(string: urlString)
@@ -66,9 +66,9 @@ extension Crew: ImageConfigurable {
 
 }
 
-extension List: ImageConfigurable {
+public extension List: ImageConfigurable {
 
-    var backdropURL: URL? {
+    public var backdropURL: URL? {
         guard let backdropPath = backdropPath else { return nil }
         let urlString = backdropImageBaseURLString.appending(backdropPath)
         return URL(string: urlString)

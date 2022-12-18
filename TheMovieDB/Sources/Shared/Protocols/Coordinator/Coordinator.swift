@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol Coordinator: AnyObject {
+public protocol Coordinator: AnyObject {
 
     var childCoordinators: [Coordinator] { get set }
     var parentCoordinator: Coordinator? { get set }
@@ -18,7 +18,7 @@ protocol Coordinator: AnyObject {
 
 }
 
-extension Coordinator {
+public extension Coordinator {
 
     /// If we don't have a parent coordinator set up, the parent coordinator is the coordinator itself.
     var unwrappedParentCoordinator: Coordinator {

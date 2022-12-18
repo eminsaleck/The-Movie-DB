@@ -14,7 +14,6 @@ final class AuthPermissionViewModel: AuthPermissionViewModelProtocol {
     // MARK: - Initializers
 
     init(authPermissionURL: URL?) {
-        print("SS")
         self.authPermissionURL = authPermissionURL
     }
 

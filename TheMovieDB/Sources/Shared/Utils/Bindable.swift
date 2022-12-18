@@ -5,7 +5,7 @@
 //  Created by LEMIN DAHOVICH on 13.11.2022.
 //
 
-class Bindable<T> {
+public class Bindable<T> {
 
     typealias Listener = ((T) -> Void)
     var listener: Listener?
@@ -16,7 +16,7 @@ class Bindable<T> {
         }
     }
 
-    init(_ value: T) {
+    public init(_ value: T) {
         self.value = value
     }
 

@@ -7,15 +7,15 @@
 
 import UpcomingMoviesDomain
 
-protocol MovieDetailCoordinable {
+public protocol MovieDetailCoordinable {
 
-    func showMovieDetail(for movie: Movie)
+    public func showMovieDetail(for movie: Movie)
 
 }
 
-extension MovieDetailCoordinable where Self: Coordinator {
+public extension MovieDetailCoordinable where Self: Coordinator {
 
-    func showMovieDetail(for movie: Movie) {
+    public func showMovieDetail(for movie: Movie) {
         let coordinator = MovieDetailCoordinator(navigationController: navigationController)
 
         coordinator.movieInfo = .complete(movie: movie)

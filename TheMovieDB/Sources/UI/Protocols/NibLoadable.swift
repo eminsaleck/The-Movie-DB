@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol NibLoadable: AnyObject {
+public protocol NibLoadable: AnyObject {
 
     static var nib: UINib { get }
 
 }
 
-extension NibLoadable {
+public extension NibLoadable {
 
     static var nib: UINib {
         return UINib(nibName: String(describing: self), bundle: Bundle(for: self))
@@ -24,7 +24,7 @@ extension NibLoadable {
 
 // MARK: - Support for instantiation from NIB
 
-extension NibLoadable where Self: UIView {
+public extension NibLoadable where Self: UIView {
 
     static func loadFromNib() -> Self {
         guard let view = nib.instantiate(withOwner: nil, options: nil).first as? Self else {

@@ -8,26 +8,26 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
 
     /**
      * Frame of the view relative to another view.
      */
-    func absoluteFrame(relativeTo view: UIView?) -> CGRect? {
+    public func absoluteFrame(relativeTo view: UIView?) -> CGRect? {
         return convert(bounds, to: view)
     }
 
     /**
      * Show a single shadow around the border of the view.
      */
-    func setShadowBorder(shadowColor: CGColor = UIColor.black.cgColor, shadowRadious: CGFloat = 5) {
+    public func setShadowBorder(shadowColor: CGColor = UIColor.black.cgColor, shadowRadious: CGFloat = 5) {
         self.layer.shadowColor = shadowColor
         self.layer.shadowOffset = .zero
         self.layer.shadowRadius = shadowRadious
         self.layer.shadowOpacity = 0.5
     }
 
-    func rotate(_ toValue: CGFloat, duration: CFTimeInterval = 0.2) {
+    public func rotate(_ toValue: CGFloat, duration: CFTimeInterval = 0.2) {
         guard duration != .zero else {
             self.layer.removeAllAnimations()
             self.transform = CGAffineTransform(rotationAngle: toValue)
@@ -44,7 +44,7 @@ extension UIView {
     /**
      * Fade in animation.
      */
-    func fadeIn(_ duration: TimeInterval, to alpha: CGFloat = 1.0) {
+    public func fadeIn(_ duration: TimeInterval, to alpha: CGFloat = 1.0) {
       UIView.animate(withDuration: duration, animations: {
         self.alpha = alpha
       })
@@ -53,7 +53,7 @@ extension UIView {
     /**
      * Fade out animation.
      */
-    func fadeOut(_ duration: TimeInterval) {
+    public func fadeOut(_ duration: TimeInterval) {
       UIView.animate(withDuration: duration, animations: {
         self.alpha = 0.0
       })
@@ -61,7 +61,7 @@ extension UIView {
 
     // MARK: - Overlay
 
-    func addOverlay(with backgroundColor: UIColor = .black, and alpha: CGFloat = 0.35) {
+    public func addOverlay(with backgroundColor: UIColor = .black, and alpha: CGFloat = 0.35) {
         let overlayView = UIView()
         overlayView.backgroundColor = backgroundColor
         overlayView.alpha = alpha

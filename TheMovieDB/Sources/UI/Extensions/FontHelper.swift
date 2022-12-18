@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct FontHelper {
+public struct FontHelper {
 
     static func bold(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
         let font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.bold)
@@ -36,7 +36,7 @@ struct FontHelper {
 
 }
 
-extension FontHelper {
+public extension FontHelper {
 
     static let headline = FontHelper.semiBold(withSize: 21.0)
     static let headlineBold = FontHelper.bold(withSize: 21.0)

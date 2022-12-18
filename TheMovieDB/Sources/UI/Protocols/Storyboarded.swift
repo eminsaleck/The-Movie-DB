@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol Storyboarded {
+public protocol Storyboarded {
 
     static var storyboardName: String { get }
     static func instantiate() -> Self
 
 }
 
-extension Storyboarded where Self: UIViewController {
+public extension Storyboarded where Self: UIViewController {
 
     static func instantiate() -> Self {
         let fullName = NSStringFromClass(self)

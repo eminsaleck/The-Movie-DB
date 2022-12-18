@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class ShrinkingButton: UIButton {
+@IBDesignable public class ShrinkingButton: UIButton {
 
     @IBInspectable var spinnerColor: UIColor = UIColor.white {
         didSet {
@@ -112,7 +112,7 @@ import UIKit
 
     // MARK: - Internal
 
-    func startAnimation() {
+   public func startAnimation() {
         isAnimating = true
         isUserInteractionEnabled = false
 
@@ -130,7 +130,7 @@ import UIKit
         })
     }
 
-    func stopAnimation(revertAfterDelay delay: TimeInterval = 1.0, completion: (() -> Void)? = nil) {
+    public func stopAnimation(revertAfterDelay delay: TimeInterval = 1.0, completion: (() -> Void)? = nil) {
         guard isAnimating else { return }
 
         // Delay should have a minimum value

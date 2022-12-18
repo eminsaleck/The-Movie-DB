@@ -9,20 +9,20 @@ import Foundation
 import Shared
 import WebKit
 
-protocol AuthPermissionViewModelProtocol {
+public protocol AuthPermissionViewModelProtocol {
 
     var authPermissionURLRequest: URLRequest? { get }
 
 }
 
-protocol AuthPermissionCoordinatorProtocol: Coordinator {
+public protocol AuthPermissionCoordinatorProtocol: Coordinator {
 
     func dismiss(completion: (() -> Void)?)
     func didDismiss()
 
 }
 
-protocol AuthPermissionWebViewNavigationDelegate: WKNavigationDelegate {
+public protocol AuthPermissionWebViewNavigationDelegate: WKNavigationDelegate {
 
     var didFinishNavigation: () -> Void { get set }
 
