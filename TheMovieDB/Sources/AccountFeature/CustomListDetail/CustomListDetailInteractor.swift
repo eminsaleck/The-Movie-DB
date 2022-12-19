@@ -9,11 +9,11 @@
 import Foundation
 import Domain
 
-final class CustomListDetailInteractor: CustomListDetailInteractorProtocol {
+public final class CustomListDetailInteractor: CustomListDetailInteractorProtocol {
 
     private let accountUseCase: AccountUseCaseProtocol
 
-    init(useCaseProvider: UseCaseProviderProtocol) {
+    public init(useCaseProvider: UseCaseProviderProtocol) {
         self.accountUseCase = useCaseProvider.accountUseCase()
     }
 

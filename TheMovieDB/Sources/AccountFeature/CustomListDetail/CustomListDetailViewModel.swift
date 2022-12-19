@@ -11,7 +11,7 @@ import Domain
 import Shared
 import UI
 
-final class CustomListDetailViewModel: CustomListDetailViewModelProtocol {
+public final class CustomListDetailViewModel: CustomListDetailViewModelProtocol {
 
     // MARK: - Dependencies
 
@@ -20,7 +20,7 @@ final class CustomListDetailViewModel: CustomListDetailViewModelProtocol {
 
     // MARK: - Reactive properties
 
-    private(set) var viewState: Bindable<CustomListDetailViewState> = Bindable(.loading)
+    private(set) public var viewState: Bindable<CustomListDetailViewState> = Bindable(.loading)
 
     // MARK: - Computed properties
 
@@ -28,36 +28,36 @@ final class CustomListDetailViewModel: CustomListDetailViewModelProtocol {
         return viewState.value.currentMovies
     }
 
-    var movieCells: [MovieCellViewModel] {
+    public var movieCells: [MovieCellViewModel] {
         return movies.map { MovieCellViewModel($0) }
     }
 
-    var listName: String? {
+    public var listName: String? {
         return self.list.name
     }
 
     // MARK: - Initializers
 
-    init(_ list: List, interactor: CustomListDetailInteractorProtocol) {
+    public init(_ list: List, interactor: CustomListDetailInteractorProtocol) {
         self.list = list
         self.interactor = interactor
     }
 
     // MARK: - CustomListDetailViewModelProtocol
 
-    func buildHeaderViewModel() -> CustomListDetailHeaderViewModelProtocol {
+    public func buildHeaderViewModel() -> CustomListDetailHeaderViewModelProtocol {
         return CustomListDetailHeaderViewModel(list: list)
     }
 
-    func buildSectionViewModel() -> CustomListDetailSectionViewModel {
+    public func buildSectionViewModel() -> CustomListDetailSectionViewModel {
         return CustomListDetailSectionViewModel(list: list)
     }
 
-    func movie(at index: Int) -> Movie {
+    public func movie(at index: Int) -> Movie {
         return movies[index]
     }
 
-    func getListMovies() {
+    public func getListMovies() {
         interactor.getCustomListMovies(listId: list.id, completion: { result in
             switch result {
             case .success(let movies):

@@ -11,7 +11,7 @@ import Shared
 import UI
 import Domain
 
-protocol CustomListDetailViewModelProtocol {
+public protocol CustomListDetailViewModelProtocol {
 
     var listName: String? { get }
     var viewState: Bindable<CustomListDetailViewState> { get }
