@@ -33,6 +33,7 @@ let package = Package(
                 "Domain",
                 "Data",
                 "Networking",
+                "Swinject",
             ]),
         .target(
             name: "Domain",

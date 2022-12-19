@@ -2,9 +2,9 @@
 //  DIContainer.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 9/13/20.
-//  Copyright © 2020 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 17.12.2022.
 //
+
 
 import Foundation
 import Swinject
