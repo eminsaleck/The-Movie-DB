@@ -10,23 +10,23 @@ import Foundation
 import Domain
 import Shared
 
-final class AccountViewModel: AccountViewModelProtocol {
+public final class AccountViewModel: AccountViewModelProtocol {
 
     private let interactor: AccountInteractorProtocol
 
-    var showAuthPermission: Bindable<URL?> = Bindable(nil)
-    var didSignIn: (() -> Void)?
-    var didReceiveError: (() -> Void)?
+    public var showAuthPermission: Bindable<URL?> = Bindable(nil)
+    public var didSignIn: (() -> Void)?
+    public var didReceiveError: (() -> Void)?
 
     // MARK: - Initializers
 
-    init(interactor: AccountInteractorProtocol) {
+    public init(interactor: AccountInteractorProtocol) {
         self.interactor = interactor
     }
 
     // MARK: - AccountViewModelProtocol
 
-    func startAuthorizationProcess() {
+    public func startAuthorizationProcess() {
         interactor.getAuthPermissionURL { result in
             switch result {
             case .success(let url):
@@ -37,7 +37,7 @@ final class AccountViewModel: AccountViewModelProtocol {
         }
     }
 
-    func signInUser() {
+    public func signInUser() {
         interactor.signInUser { result in
             switch result {
             case .success:
@@ -48,15 +48,15 @@ final class AccountViewModel: AccountViewModelProtocol {
         }
     }
 
-    func signOutCurrentUser() {
+    public func signOutCurrentUser() {
         interactor.signOutUser()
     }
 
-    func isUserSignedIn() -> Bool {
+    public func isUserSignedIn() -> Bool {
         return currentUser() != nil
     }
 
-    func currentUser() -> User? {
+    public func currentUser() -> User? {
         return interactor.currentUser()
     }
 

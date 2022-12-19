@@ -2,8 +2,7 @@
 //  ToastSuccessConfiguration.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 1/04/21.
-//  Copyright © 2021 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 19.12.2022.
 //
 
 import UIKit

@@ -7,7 +7,7 @@
 
 import Domain
 
-protocol AuthenticationHandlerProtocol {
+public protocol AuthenticationHandlerProtocol {
 
     func currentUser() -> User?
     func isUserSignedIn() -> Bool

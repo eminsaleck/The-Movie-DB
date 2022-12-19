@@ -17,6 +17,13 @@ let package = Package(
         .library(name: "Persistance", targets: ["Persistance"]),
         .library(name: "KeychainStorage", targets: ["KeychainStorage"]),
         .library(name: "DependencyInjection", targets: ["DependencyInjection"]),
+        .library(name: "Shared", targets: ["Shared"]),
+        .library(name: "Handlers", targets: ["Handlers"]),
+        .library(name: "AccountFeature", targets: ["AccountFeature"]),
+        .library(name: "TabBarFeature", targets: ["TabBarFeature"]),
+        .library(name: "SplashFeature", targets: ["SplashFeature"]),
+        .library(name: "MoviesFeature", targets: ["MoviesFeature"]),
+        .library(name: "UI", targets: ["UI"]),
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
@@ -27,6 +34,22 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
+            name: "MoviesFeature",
+            dependencies: [
+            ]),
+        .target(
+            name: "SplashFeature",
+            dependencies: [
+                "Handlers",
+                "Domain",
+                "Shared",
+                "UI",
+            ]),
+        .target(
+            name: "TabBarFeature",
+            dependencies: [
+            ]),
+        .target(
             name: "DependencyInjection",
             dependencies: [
                 "Persistance",
@@ -34,6 +57,8 @@ let package = Package(
                 "Data",
                 "Networking",
                 "Swinject",
+                "AccountFeature",
+                "Handlers",
             ]),
         .target(
             name: "Domain",

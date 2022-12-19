@@ -7,7 +7,7 @@
 
 import Domain
 
-protocol ConfigurationHandlerProtocol {
+public protocol ConfigurationHandlerProtocol {
 
     var regularImageBaseURLString: String { get }
     var backdropImageBaseURLString: String { get }

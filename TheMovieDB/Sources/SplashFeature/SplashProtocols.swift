@@ -5,7 +5,7 @@
 //  Created by LEMIN DAHOVICH on 15.12.2022.
 //
 
-import UpcomingMoviesDomain
+import Domain
 
 protocol SplashViewModelProtocol {
 
@@ -15,7 +15,7 @@ protocol SplashViewModelProtocol {
 
 }
 
-protocol SplashInteractorProtocol {
+public protocol SplashInteractorProtocol {
 
     /**
     * Fetch API configurations.

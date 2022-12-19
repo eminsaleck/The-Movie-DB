@@ -7,7 +7,8 @@
 
 import Foundation
 import Swinject
-import UpcomingMoviesDomain
+import Domain
+import AccountFeature
 
 final class CustomListDetailAssembly: Assembly {
 

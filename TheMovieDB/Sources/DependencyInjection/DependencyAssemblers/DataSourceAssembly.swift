@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import UpcomingMoviesData
-import CoreDataInfrastructure
-import NetworkInfrastructure
+import Data
+import Persistance
+import Networking
 import Swinject
 
 final class DataSourceAssembly: Assembly {

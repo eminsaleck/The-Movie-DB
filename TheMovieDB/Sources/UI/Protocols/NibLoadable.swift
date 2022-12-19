@@ -2,8 +2,7 @@
 //  NibLoadable.swift
 //  UpcomingMovies
 //
-//  Created by Alonso on 11/7/18.
-//  Copyright © 2018 Alonso. All rights reserved.
+//  Created by LEMIN DAHOVICH on 19.12.2022.
 //
 
 import UIKit

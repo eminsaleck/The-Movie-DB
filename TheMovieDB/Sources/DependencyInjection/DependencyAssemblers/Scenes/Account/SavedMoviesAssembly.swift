@@ -6,7 +6,7 @@
 //
 
 import Swinject
-import UpcomingMoviesDomain
+import Domain
 
 final class SavedMoviesAssembly: Assembly {
 

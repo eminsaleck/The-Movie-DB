@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UpcomingMoviesDomain
+import Domain
 
 final class SearchOptionsViewModel: SearchOptionsViewModelProtocol {
 

@@ -7,7 +7,7 @@
 
 import Foundation
 import Swinject
-import UpcomingMoviesDomain
+import Domain
 
 final class SearchMoviesAssembly: Assembly {
 

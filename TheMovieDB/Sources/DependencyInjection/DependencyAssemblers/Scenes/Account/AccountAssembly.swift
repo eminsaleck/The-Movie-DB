@@ -7,7 +7,9 @@
 
 import Foundation
 import Swinject
-import UpcomingMoviesDomain
+import Domain
+import AccountFeature
+import Handlers
 
 final class AccountAssembly: Assembly {
 

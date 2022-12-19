@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UpcomingMoviesDomain
+import Domain
 import Swinject
 
 final class HandlerAssembly: Assembly {

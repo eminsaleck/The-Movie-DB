@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import UpcomingMoviesDomain
+import Domain
+import Handlers
+import Shared
 
 final class SplashViewModel: SplashViewModelProtocol {
 

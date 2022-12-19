@@ -11,7 +11,7 @@ import Domain
 import Shared
 import UI
 
-protocol AccountViewModelProtocol {
+public protocol AccountViewModelProtocol {
 
     var showAuthPermission: Bindable<URL?> { get }
     var didSignIn: (() -> Void)? { get set }
@@ -26,7 +26,7 @@ protocol AccountViewModelProtocol {
 
 }
 
-protocol AccountInteractorProtocol {
+public protocol AccountInteractorProtocol {
 
     func getAuthPermissionURL(completion: @escaping (Result<URL, Error>) -> Void)
     func signInUser(completion: @escaping (Result<User, Error>) -> Void)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Result {
+public extension Result {
 
     func getWrappedValue() -> Success? {
         return try? get()

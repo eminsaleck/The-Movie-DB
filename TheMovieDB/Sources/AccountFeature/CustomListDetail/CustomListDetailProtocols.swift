@@ -26,7 +26,7 @@ protocol CustomListDetailViewModelProtocol {
 
 }
 
-protocol CustomListDetailInteractorProtocol {
+public protocol CustomListDetailInteractorProtocol {
 
     func getCustomListMovies(listId: String, completion: @escaping (Result<[Movie], Error>) -> Void)
 

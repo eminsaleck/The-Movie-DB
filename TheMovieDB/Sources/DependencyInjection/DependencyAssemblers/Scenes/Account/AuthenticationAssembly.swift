@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import AccountFeature
 
 final class AuthenticationAssembly: Assembly {
 

@@ -10,7 +10,7 @@ import Foundation
 import Domain
 import Handlers
 
-class AccountInteractor: AccountInteractorProtocol {
+public class AccountInteractor: AccountInteractorProtocol {
 
     private let userUseCase: UserUseCaseProtocol
     private let authUseCase: AuthUseCaseProtocol
@@ -18,7 +18,7 @@ class AccountInteractor: AccountInteractorProtocol {
 
     private let authHandler: AuthenticationHandlerProtocol
 
-    init(useCaseProvider: UseCaseProviderProtocol,
+   public init(useCaseProvider: UseCaseProviderProtocol,
          authHandler: AuthenticationHandlerProtocol) {
         self.userUseCase = useCaseProvider.userUseCase()
         self.accountUseCase = useCaseProvider.accountUseCase()
@@ -26,11 +26,11 @@ class AccountInteractor: AccountInteractorProtocol {
         self.authHandler = authHandler
     }
 
-    func getAuthPermissionURL(completion: @escaping (Result<URL, Error>) -> Void) {
+    public func getAuthPermissionURL(completion: @escaping (Result<URL, Error>) -> Void) {
         authUseCase.getAuthURL(completion: completion)
     }
 
-    func signInUser(completion: @escaping (Result<User, Error>) -> Void) {
+    public func signInUser(completion: @escaping (Result<User, Error>) -> Void) {
         authUseCase.signInUser { result in
             switch result {
             case .success(let user):
@@ -42,11 +42,11 @@ class AccountInteractor: AccountInteractorProtocol {
         }
     }
 
-    func signOutUser() {
+    public func signOutUser() {
         authHandler.deleteCurrentUser()
     }
 
-    func currentUser() -> User? {
+    public func currentUser() -> User? {
         authHandler.currentUser()
     }
 
