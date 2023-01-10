@@ -66,7 +66,6 @@ let package = Package(
                 "Data",
                 "Networking",
                 "Swinject",
-                "AccountFeature",
                 "Handlers",
             ]),
         .target(
@@ -112,6 +111,7 @@ let package = Package(
           dependencies: [
             "Domain",
             "Shared",
+            "TabBarFeature",
           ]),
         .target(
           name: "AccountFeature",

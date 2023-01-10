@@ -9,5 +9,15 @@
 		<key>ReadAccessToken</key>
 		<string>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMWU2NDY5YjljODQxZGJmODIxZjRlZjU3ZjRkNzRmMCIsInN1YiI6IjYwMzM1OGY5OWFmMTcxMDAzZjQ1YjNiNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.H-f-0iZNchiOoPmJc42k5p7vszMqsvOqd9K-6p1JiL0</string>
 	</dict>
+	<key>API_BASE_URL</key>
+	<string>$(API_BASE_URL)</string>
+	<key>IMAGE_BASE_URL</key>
+	<string>$(IMAGE_BASE_URL)</string>
+	<key>AUTHENTICATE_BASE_URL</key>
+	<string>$(AUTHENTICATE_BASE_URL)</string>
+	<key>GRAVATAR_BASE_URL</key>
+	<string>$(GRAVATAR_BASE_URL)</string>
+	<key>API_KEY</key>
+	<string>$(API_KEY)</string>
 </dict>
 </plist>

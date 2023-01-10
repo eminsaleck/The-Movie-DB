@@ -10,7 +10,7 @@ import UIKit
 import Shared
 import TabBarFeature
 
-final class NavigationHandler: NavigationHandlerProtocol {
+public final class NavigationHandler: NavigationHandlerProtocol {
 
     private var currentSelectedIndex: Int = 0
     private var rootCoordinators: [RootCoordinator]!

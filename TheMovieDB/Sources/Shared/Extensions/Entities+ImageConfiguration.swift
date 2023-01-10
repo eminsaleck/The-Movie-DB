@@ -10,21 +10,21 @@ import Domain
 
 public protocol ImageConfigurable {
 
-    public var regularImageBaseURLString: String { get }
-    public var backdropImageBaseURLString: String { get }
+     var regularImageBaseURLString: String { get }
+     var backdropImageBaseURLString: String { get }
 }
 
 public extension ImageConfigurable {
 
-    public var configurationHandler: ConfigurationHandlerProtocol {
+     var configurationHandler: ConfigurationHandlerProtocol {
         DIContainer.shared.resolve()
     }
 
-    public var regularImageBaseURLString: String {
+     var regularImageBaseURLString: String {
         configurationHandler.regularImageBaseURLString
     }
 
-    public var backdropImageBaseURLString: String {
+     var backdropImageBaseURLString: String {
         configurationHandler.backdropImageBaseURLString
     }
 

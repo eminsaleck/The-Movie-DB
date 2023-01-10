@@ -9,7 +9,7 @@ import Domain
 
 public protocol MovieDetailCoordinable {
 
-    public func showMovieDetail(for movie: Movie)
+     func showMovieDetail(for movie: Movie)
 
 }
 
