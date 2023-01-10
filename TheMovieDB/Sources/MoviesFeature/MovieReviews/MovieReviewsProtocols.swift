@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import UpcomingMoviesDomain
+import Domain
+import Shared
+import UI
 
 protocol MovieReviewsViewModelProtocol {
 

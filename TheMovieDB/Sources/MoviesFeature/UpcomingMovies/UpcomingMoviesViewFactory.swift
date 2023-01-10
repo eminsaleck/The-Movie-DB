@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UI
 
 final class UpcomingMoviesViewFactory {
 

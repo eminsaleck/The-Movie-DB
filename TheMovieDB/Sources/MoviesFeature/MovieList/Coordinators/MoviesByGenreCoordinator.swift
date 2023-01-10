@@ -6,7 +6,10 @@
 //
 
 import UIKit
-import UpcomingMoviesDomain
+import Domain
+import Shared
+import UI
+import DependencyInjection
 
 final class MoviesByGenreCoordinator: MovieListCoordinatorProtocol, Coordinator, MovieDetailCoordinable {
 

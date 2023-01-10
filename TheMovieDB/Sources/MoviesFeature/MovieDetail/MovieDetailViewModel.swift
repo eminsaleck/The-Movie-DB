@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import UpcomingMoviesDomain
+import Domain
+import Shared
 
 final class MovieDetailViewModel: MovieDetailViewModelProtocol {
 

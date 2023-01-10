@@ -5,7 +5,9 @@
 //  Created by LEMIN DAHOVICH on 15.12.2022.
 //
 
-import UpcomingMoviesDomain
+import Shared
+import Domain
+import UI
 
 final class MovieReviewsViewModel: MovieReviewsViewModelProtocol, SimpleViewStateProcessable {
 

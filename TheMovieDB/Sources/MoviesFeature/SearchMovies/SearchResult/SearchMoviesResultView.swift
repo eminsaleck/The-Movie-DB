@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UI
 
 class SearchMoviesResultView: UIView {
 

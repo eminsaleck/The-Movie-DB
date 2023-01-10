@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import UpcomingMoviesDomain
+import Domain
+import UI
+import Shared
 
 protocol SearchMoviesCoordinatorProtocol: AnyObject {
 

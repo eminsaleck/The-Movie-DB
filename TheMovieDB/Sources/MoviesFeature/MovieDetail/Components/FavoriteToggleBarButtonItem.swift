@@ -5,6 +5,8 @@
 //  Created by LEMIN DAHOVICH on 15.12.2022.
 //
 import UIKit
+import UI
+import Shared
 
 class FavoriteToggleBarButtonItem: ToggleBarButtonItem {
 

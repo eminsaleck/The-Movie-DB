@@ -5,7 +5,9 @@
 //  Created by LEMIN DAHOVICH on 15.12.2022.
 //
 import UIKit
-import UpcomingMoviesDomain
+import Domain
+import Shared
+import DependencyInjection
 
 final class SimilarMoviesCoordinator: MovieListCoordinatorProtocol, Coordinator, MovieDetailCoordinable {
 

@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import UpcomingMoviesDomain
+import Domain
+import Handlers
 
 class SearchMoviesResultInteractor: SearchMoviesResultInteractorProtocol {
 

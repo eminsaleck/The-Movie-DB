@@ -5,6 +5,8 @@
 //  Created by LEMIN DAHOVICH on 15.12.2022.
 //
 
+import Shared
+
 enum MovieDetailOption {
 
     case trailers, reviews, credits, similarMovies

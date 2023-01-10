@@ -6,7 +6,10 @@
 //
 
 import UIKit
-import UpcomingMoviesDomain
+import UI
+import Shared
+import DependencyInjection
+import Domain
 
 struct UpcomingMoviesNavigationConfiguration {
 

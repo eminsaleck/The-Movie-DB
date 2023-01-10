@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Shared
+import UI
+import DependencyInjection
 
 final class MovieCreditsCoordinator: Coordinator, MovieCreditsCoordinatorProtocol {
 

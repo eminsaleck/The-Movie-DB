@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import UpcomingMoviesDomain
+import Domain
+import UI
 
 protocol MovieCreditsViewModelProtocol {
 

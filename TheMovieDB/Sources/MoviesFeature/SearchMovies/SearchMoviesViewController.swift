@@ -5,7 +5,9 @@
 //  Created by LEMIN DAHOVICH on 15.12.2022.
 //
 
+import UI
 import UIKit
+import Shared
 
 class SearchMoviesViewController: UIViewController, Storyboarded {
 

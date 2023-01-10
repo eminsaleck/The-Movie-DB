@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import UpcomingMoviesDomain
+import Domain
+import UI
+import Shared
 
 protocol MovieVideosViewModelProtocol {
 

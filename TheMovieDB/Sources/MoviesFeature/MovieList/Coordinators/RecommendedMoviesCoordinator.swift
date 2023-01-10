@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import UpcomingMoviesDomain
+import Domain
+import DependencyInjection
 
 final class RecommendedMoviesCoordinator: MovieListCoordinatorProtocol, Coordinator, MovieDetailCoordinable {
 

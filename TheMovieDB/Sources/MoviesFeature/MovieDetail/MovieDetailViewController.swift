@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import UI
+import Shared
 
 class MovieDetailViewController: UIViewController, Storyboarded, Transitionable {
 

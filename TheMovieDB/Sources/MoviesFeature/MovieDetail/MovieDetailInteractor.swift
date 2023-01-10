@@ -5,7 +5,8 @@
 //  Created by LEMIN DAHOVICH on 15.12.2022.
 //
 
-import UpcomingMoviesDomain
+import Domain
+import Handlers
 
 class MovieDetailInteractor: MovieDetailInteractorProtocol {
 

@@ -36,6 +36,11 @@ let package = Package(
         .target(
             name: "MoviesFeature",
             dependencies: [
+                "Shared",
+                "UI",
+                "DependencyInjection",
+                "Domain",
+                "Handlers",
             ]),
         .target(
             name: "SplashFeature",
@@ -48,6 +53,8 @@ let package = Package(
         .target(
             name: "TabBarFeature",
             dependencies: [
+                "Shared",
+                "Domain", "MoviesFeature",
             ]),
         .target(
             name: "DependencyInjection",

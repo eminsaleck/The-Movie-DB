@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Shared
+import DependencyInjection
 
 final class MovieVideosCoordinator: Coordinator, MovieVideosCoordinatorProtocol {
 

@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import UpcomingMoviesDomain
+import Domain
+import UI
+import DependencyInjection
 
 final class SearchMoviesCoordinator: NSObject, SearchMoviesCoordinatorProtocol, RootCoordinator, MovieDetailCoordinable {
 

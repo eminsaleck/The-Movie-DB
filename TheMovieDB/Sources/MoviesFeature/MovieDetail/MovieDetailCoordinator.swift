@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import UpcomingMoviesDomain
+import Shared
+import Domain
+import DependencyInjection
 
 enum MovieDetailInfo {
 

@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import UpcomingMoviesDomain
+import Domain
+import Shared
+import UI
 
 final class MovieVideosViewModel: MovieVideosViewModelProtocol, SimpleViewStateProcessable {
 
