@@ -49,12 +49,14 @@ let package = Package(
                 "Domain",
                 "Shared",
                 "UI",
+                "DependencyInjection",
             ]),
         .target(
             name: "TabBarFeature",
             dependencies: [
                 "Shared",
-                "Domain", "MoviesFeature",
+                "Domain",
+                "MoviesFeature",
             ]),
         .target(
             name: "DependencyInjection",
@@ -103,11 +105,13 @@ let package = Package(
           name: "Shared",
           dependencies: [
             "Domain",
+            
           ]),
         .target(
           name: "Handlers",
           dependencies: [
-            "Domain"
+            "Domain",
+            "Shared",
           ]),
         .target(
           name: "AccountFeature",

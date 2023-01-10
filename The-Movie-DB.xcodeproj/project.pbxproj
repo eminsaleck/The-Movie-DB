@@ -82,6 +82,9 @@
 		AC929772290D37A800243B56 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC929771290D37A800243B56 /* DetailViewModel.swift */; };
 		AC9950D62903DC8800619B1E /* FilmRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9950D52903DC8800619B1E /* FilmRealm.swift */; };
 		ACC08A0929073AC400A87127 /* UIImageView + LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC08A0829073AC400A87127 /* UIImageView + LoadImage.swift */; };
+		ACCF60E9296D818A002AFF57 /* Handlers in Frameworks */ = {isa = PBXBuildFile; productRef = ACCF60E8296D818A002AFF57 /* Handlers */; };
+		ACCF60EB296D81E4002AFF57 /* SplashFeature in Frameworks */ = {isa = PBXBuildFile; productRef = ACCF60EA296D81E4002AFF57 /* SplashFeature */; };
+		ACCF60ED296D8204002AFF57 /* DependencyInjection in Frameworks */ = {isa = PBXBuildFile; productRef = ACCF60EC296D8204002AFF57 /* DependencyInjection */; };
 		ACD70949290117BB00A1116C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD70948290117BB00A1116C /* AppDelegate.swift */; };
 		ACD70952290117BD00A1116C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD70951290117BD00A1116C /* Assets.xcassets */; };
 		ACD70955290117BD00A1116C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD70953290117BD00A1116C /* LaunchScreen.storyboard */; };
@@ -206,7 +209,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACCF60EB296D81E4002AFF57 /* SplashFeature in Frameworks */,
+				ACCF60ED296D8204002AFF57 /* DependencyInjection in Frameworks */,
 				AC08B63A2948A3F4002ADED9 /* CollectionViewSlantedLayout in Frameworks */,
+				ACCF60E9296D818A002AFF57 /* Handlers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +685,9 @@
 			name = "The-Movie-DB";
 			packageProductDependencies = (
 				AC08B6392948A3F4002ADED9 /* CollectionViewSlantedLayout */,
+				ACCF60E8296D818A002AFF57 /* Handlers */,
+				ACCF60EA296D81E4002AFF57 /* SplashFeature */,
+				ACCF60EC296D8204002AFF57 /* DependencyInjection */,
 			);
 			productName = "The-Movie-DB";
 			productReference = ACD70945290117BB00A1116C /* The-Movie-DB.app */;
@@ -1047,6 +1056,18 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AC08B6382948A3F4002ADED9 /* XCRemoteSwiftPackageReference "CollectionViewSlantedLayout" */;
 			productName = CollectionViewSlantedLayout;
+		};
+		ACCF60E8296D818A002AFF57 /* Handlers */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Handlers;
+		};
+		ACCF60EA296D81E4002AFF57 /* SplashFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SplashFeature;
+		};
+		ACCF60EC296D8204002AFF57 /* DependencyInjection */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DependencyInjection;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

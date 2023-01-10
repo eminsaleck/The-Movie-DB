@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import DependencyInjection
+import UI
 
 final class SplashBuilder {
 

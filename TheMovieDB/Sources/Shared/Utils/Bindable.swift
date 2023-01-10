@@ -1,6 +1,6 @@
 //
 //  Bindable.swift
-//  UpcomingMovies
+//  TheMovieDB
 //
 //  Created by LEMIN DAHOVICH on 13.11.2022.
 //

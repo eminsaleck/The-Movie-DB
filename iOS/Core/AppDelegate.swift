@@ -1,36 +1,39 @@
 //
-
+//  AppDelegate.swift
+//  Matching game
+//
+//  Created by LEMIN DAHOVICH on 12.09.2022.
 //
 
+
 import UIKit
-//import Data
+import Handlers
+import SplashFeature
+import DependencyInjection
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navigationHandler: NavigationHandlerProtocol?
 
-    var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        configureAppearance()
-//        _ = DIContainer.shared
         
-//        let baseConfig: BaseConfig = PropertyListHelper.decode()
-//        let remoteDataSource: RemoteDataSourceProtocol = DIContainer.shared.resolve()
-//        remoteDataSource.configure(with: baseConfig.keys.apiKey,
-//                                   readAccessToken: baseConfig.keys.readAccessToken)
-        
-        window = UIWindow.init(frame: UIScreen.main.bounds)
-        
-        let navigationController: UINavigationController = .init()
+        _ = DIContainer.shared
 
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-        
-//        appCoordinator = AppCoordinator.init(navigationController)
-//        appCoordinator?.start()
-                
+       navigationHandler = DIContainer.shared.resolve()
+
+        configureGlobalAppearanceIfNeeded()
+
+        // We configure the remote data source with the API key and the read access token
+        let baseConfiguration: BaseConfiguration = PropertyListHelper.decode()
+        let remoteDataSource: RemoteDataSourceProtocol = DIContainer.shared.resolve()
+        remoteDataSource.configure(with: baseConfiguration.keys.apiKey,
+                                   readAccessToken: baseConfiguration.keys.readAccessToken)
+
+        window?.rootViewController = SplashBuilder.buildViewController()
+
         return true
     }
 }
