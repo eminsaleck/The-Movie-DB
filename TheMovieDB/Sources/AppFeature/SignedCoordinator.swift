@@ -22,7 +22,7 @@ public class SignedCoordinator: Coordinator {
   private let DIContainer: DIContainer
 
     
-  public init(tabBarController: UITabBarController, appDIContainer: DIContainer) {
+  public init(tabBarController: UITabBarController, DIContainer: DIContainer) {
     self.tabBarController = tabBarController
     self.DIContainer = DIContainer
   }

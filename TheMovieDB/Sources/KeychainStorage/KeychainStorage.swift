@@ -8,7 +8,7 @@
 import KeychainSwift
 
 @propertyWrapper
-struct KeychainStorage {
+public struct KeychainStorage {
 
     private let key: String
     private lazy var keychain = KeychainSwift()
