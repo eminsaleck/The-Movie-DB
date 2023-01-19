@@ -5,6 +5,7 @@
 //  Created by LEMIN DAHOVICH on 10.01.2023.
 //
 
+import AppFeature
 import Foundation
 
 final class AppConfigurations: AppConfigurationProtocol {
