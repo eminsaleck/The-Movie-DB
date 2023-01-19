@@ -1,8 +1,6 @@
 # The Movie DB
 App which is aimed to find a movie for you
 
-*currently under development
-
 App is being separated into 8 modules and 4 features. [See](https://github.com/eminsaleck/The-Movie-DB/blob/main/TheMovieDB/Package.swift)
 
 # development cycle:
