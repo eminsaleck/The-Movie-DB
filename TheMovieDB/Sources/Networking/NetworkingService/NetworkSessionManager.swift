@@ -11,7 +11,7 @@ import Network
 import Combine
 
 
-public class DefaultNetworkSessionManager: NetworkSessionManager {
+public class NetworkSessionManager: NetworkSessionManagerProtocol {
 
   public init() {}
 

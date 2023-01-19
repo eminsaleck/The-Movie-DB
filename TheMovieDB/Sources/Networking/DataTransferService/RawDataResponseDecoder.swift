@@ -8,7 +8,7 @@
 import Foundation
 import Network
 
-public class RawDataResponseDecoder: ResponseDecoder {
+public class RawDataResponseDecoder: ResponseDecoderProtocol {
 
   public init() { }
 

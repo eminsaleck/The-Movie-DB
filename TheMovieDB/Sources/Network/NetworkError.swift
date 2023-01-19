@@ -15,7 +15,6 @@ public enum NetworkError: Error {
   case urlGeneration
 }
 
-// MARK: - NetworkError extension
 extension NetworkError {
   public var isNotFoundError: Bool {
     return hasStatusCode(404)

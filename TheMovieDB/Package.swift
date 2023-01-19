@@ -16,19 +16,34 @@ let package = Package(
         .library(name: "UI", targets: ["UI"]),
         .library(name: "Network", targets: ["Network"]),
         .library(name: "Networking", targets: ["Networking"]),
+        .library(name: "Persistance", targets: ["Persistance"]),
+        .library(name: "PersistanceRealm", targets: ["PersistanceRealm"]),
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
+        .package(url: "https://github.com/realm/realm-swift.git", from: "10.0.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "Network",
-            dependencies: [
-            ]
-        ),
-        
+            .target(
+                name: "Network",
+                dependencies: [
+                ]
+            ),
+            .target(
+                name: "Persistance",
+                dependencies: [
+                    "Shared"
+                ]
+            ),
+            .target(
+                name: "PersistanceRealm",
+                dependencies: [
+                    "Persistance",
+                    .product(name: "RealmSwift", package: "realm-swift"),
+                ]
+            ),
             .target(
                 name: "Shared",
                 dependencies: [
@@ -64,6 +79,7 @@ let package = Package(
             .target(
                 name: "AppFeature",
                 dependencies: [
+                    "PersistanceRealm",
                     "Shared",
                     "UI",
                     "KeychainStorage",

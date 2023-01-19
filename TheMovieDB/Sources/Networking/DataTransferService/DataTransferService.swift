@@ -9,20 +9,20 @@ import Foundation
 import Combine
 import Network
 
-public final class DefaultDataTransferService {
+public final class DataTransferService {
     
     private let networkService: NetworkService
     private let errorResolver: DataTransferErrorResolver
     
-    public init(with networkService: NetworkService, errorResolver: DataTransferErrorResolver = DefaultDataTransferErrorResolver()) {
+    public init(with networkService: NetworkService, errorResolver: DataTransferErrorResolver = DataTransferErrorResolver()) {
         self.networkService = networkService
         self.errorResolver = errorResolver
     }
 }
 
-extension DefaultDataTransferService: DataTransferService {
+extension DataTransferService: DataTransferServiceProtocol {
     
-    private func decode<T: Decodable>(data: Data, decoder: ResponseDecoder) throws -> T {
+    private func decode<T: Decodable>(data: Data, decoder: ResponseDecoderProtocol) throws -> T {
         do {
             let result: T = try decoder.decode(data)
             return result

@@ -7,7 +7,7 @@
 
 import Network
 
-public class DefaultDataTransferErrorResolver: DataTransferErrorResolver {
+public class DataTransferErrorResolver: DataTransferErrorResolverProtocol {
   public init() { }
 
   public func resolve(error: NetworkError) -> Error {

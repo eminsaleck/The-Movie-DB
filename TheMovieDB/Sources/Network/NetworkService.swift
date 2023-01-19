@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-public protocol NetworkService {
+public protocol NetworkServiceProtocol {
   func request(endpoint: Requestable) -> AnyPublisher<Data, NetworkError>
 }
 
-public protocol NetworkSessionManager {
+public protocol NetworkSessionManagerProtocol {
   typealias NetworkingOutput = (data: Data, response: URLResponse)
   func request(_ request: URLRequest) -> AnyPublisher<NetworkingOutput, URLError>
 }

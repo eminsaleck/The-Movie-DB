@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-public protocol DataTransferService {
+public protocol DataTransferServiceProtocol {
   func request<T: Decodable, E: ResponseRequestable>(with endpoint: E)
     -> AnyPublisher<T, DataTransferError> where E.Response == T
 
@@ -24,11 +24,11 @@ public enum DataTransferError: Error {
 }
 
 
-public protocol ResponseDecoder {
+public protocol ResponseDecoderProtocol {
   func decode<T: Decodable>(_ data: Data) throws -> T
 }
 
 
-public protocol DataTransferErrorResolver {
+public protocol DataTransferErrorResolverProtocol {
   func resolve(error: NetworkError) -> Error
 }

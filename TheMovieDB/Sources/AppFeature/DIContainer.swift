@@ -11,6 +11,7 @@ import UIKit
 import KeychainStorage
 import Network
 import Networking
+import PersistanceRealm
 
 public class DIContainer {
     
@@ -33,12 +34,12 @@ public class DIContainer {
         ],
         queryParameters: queryParameters
       )
-      let networkService = DefaultNetworkService(config: configuration)
-      return DefaultDataTransferService(with: networkService)
+      let networkService = NetworkService(config: configuration)
+      return DataTransferService(with: networkService)
     }()
 
     private lazy var localStorage: LocalStorage = {
-        return LocalStorage(coreDataStorage: .shared)
+        return LocalStorage(realmStorage: .shared)
     }()
 
     lazy var showsPersistence: ShowsVisitedLocalRepositoryProtocol = {

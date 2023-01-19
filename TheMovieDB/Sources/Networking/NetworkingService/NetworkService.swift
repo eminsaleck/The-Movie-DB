@@ -10,13 +10,13 @@ import Foundation
 import Combine
 import Network
 
-public final class DefaultNetworkService: NetworkService {
+public final class NetworkService: NetworkServiceProtocol {
 
   private let config: NetworkConfigurable
-  private let sessionManager: NetworkSessionManager
+  private let sessionManager: NetworkSessionManagerProtocol
 
   public init(config: NetworkConfigurable,
-              sessionManager: NetworkSessionManager = DefaultNetworkSessionManager()) {
+              sessionManager: NetworkSessionManagerProtocol = NetworkSessionManager()) {
     self.sessionManager = sessionManager
     self.config = config
   }
@@ -70,10 +70,4 @@ public final class DefaultNetworkService: NetworkService {
         .eraseToAnyPublisher()
     }
   }
-}
-
-func printIfDebug(_ string: String) {
-  #if DEBUG
-  print(string)
-  #endif
 }
