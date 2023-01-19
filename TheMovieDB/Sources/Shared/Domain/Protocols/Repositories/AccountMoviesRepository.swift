@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Networking
+import Network
 
 public protocol AccountTVShowsRepository {
   func fetchFavoritesShows(page: Int) -> AnyPublisher<TVShowPage, DataTransferError>

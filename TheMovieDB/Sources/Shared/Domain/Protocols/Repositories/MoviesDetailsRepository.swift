@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Networking
+import Network
 
 public protocol TVShowsDetailsRepository {
   func fetchTVShowDetails(with showId: Int) -> AnyPublisher<TVShowDetail, DataTransferError>

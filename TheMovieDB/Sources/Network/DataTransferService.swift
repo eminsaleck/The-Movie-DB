@@ -23,14 +23,12 @@ public enum DataTransferError: Error {
   case resolvedNetworkFailure(Error)
 }
 
-public protocol DataTransferErrorResolver {
-  func resolve(error: NetworkError) -> Error
-}
 
 public protocol ResponseDecoder {
   func decode<T: Decodable>(_ data: Data) throws -> T
 }
 
-public protocol DataTransferErrorLogger {
-  func log(error: Error)
+
+public protocol DataTransferErrorResolver {
+  func resolve(error: NetworkError) -> Error
 }

@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Networking
+import Network
 
 public protocol AccountMoviesDetailsRepository {
   func markAsFavorite(tvShowId: Int, favorite: Bool) -> AnyPublisher<TVShowActionStatus, DataTransferError>

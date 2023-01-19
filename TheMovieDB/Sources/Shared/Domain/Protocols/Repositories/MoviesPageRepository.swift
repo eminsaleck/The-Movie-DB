@@ -7,7 +7,7 @@
 //
 
 import Combine
-import Networking
+import Network
 
 public protocol TVShowsPageRepository {
   func fetchAiringTodayShows(page: Int) -> AnyPublisher<TVShowPage, DataTransferError>

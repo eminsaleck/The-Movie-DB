@@ -17,9 +17,3 @@ public protocol NetworkSessionManager {
   func request(_ request: URLRequest) -> AnyPublisher<NetworkingOutput, URLError>
 }
 
-public protocol NetworkErrorLogger {
-  func log(request: URLRequest)
-  func log(responseData data: Data?, response: URLResponse?)
-  func log(error: Error)
-  func log(responseData data: Data, response: URLResponse)
-}

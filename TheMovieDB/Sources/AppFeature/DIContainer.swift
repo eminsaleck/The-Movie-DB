@@ -9,6 +9,7 @@ import UI
 import Shared
 import UIKit
 import KeychainStorage
+import Network
 import Networking
 
 public class DIContainer {
