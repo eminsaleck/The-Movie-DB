@@ -38,7 +38,7 @@ public enum BodyEncoding {
 public protocol ResponseRequestable: Requestable {
   associatedtype Response
 
-  var responseDecoder: ResponseDecoder { get }
+  var responseDecoder: ResponseDecoderProtocol { get }
 }
 
 public enum RequestGenerationError: Error {

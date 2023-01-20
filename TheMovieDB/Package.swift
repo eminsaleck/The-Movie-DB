@@ -85,6 +85,7 @@ let package = Package(
                     "KeychainStorage",
                     "Network",
                     "Networking",
+                    "Persistance",
                 ]),
         
     ]

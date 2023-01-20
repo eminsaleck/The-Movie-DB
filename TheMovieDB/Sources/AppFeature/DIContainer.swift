@@ -12,6 +12,7 @@ import KeychainStorage
 import Network
 import Networking
 import PersistanceRealm
+import Persistance
 
 public class DIContainer {
     

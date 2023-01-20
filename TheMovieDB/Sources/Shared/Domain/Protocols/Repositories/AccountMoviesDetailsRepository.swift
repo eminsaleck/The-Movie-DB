@@ -9,9 +9,9 @@ import Combine
 import Network
 
 public protocol AccountMoviesDetailsRepository {
-  func markAsFavorite(tvShowId: Int, favorite: Bool) -> AnyPublisher<TVShowActionStatus, DataTransferError>
+  func markAsFavorite(tvShowId: Int, favorite: Bool) -> AnyPublisher<MovieActionStatus, DataTransferError>
 
-  func saveToWatchList(tvShowId: Int, watchedList: Bool) -> AnyPublisher<TVShowActionStatus, DataTransferError>
+  func saveToWatchList(tvShowId: Int, watchedList: Bool) -> AnyPublisher<MovieActionStatus, DataTransferError>
 
-  func fetchTVShowStatus(tvShowId: Int) -> AnyPublisher<TVShowAccountStatus, DataTransferError>
+  func fetchTVShowStatus(tvShowId: Int) -> AnyPublisher<MovieAccountStatus, DataTransferError>
 }

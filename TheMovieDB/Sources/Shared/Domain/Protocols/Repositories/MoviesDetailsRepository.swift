@@ -9,5 +9,5 @@ import Combine
 import Network
 
 public protocol TVShowsDetailsRepository {
-  func fetchTVShowDetails(with showId: Int) -> AnyPublisher<TVShowDetail, DataTransferError>
+  func fetchTVShowDetails(with showId: Int) -> AnyPublisher<MovieDetail, DataTransferError>
 }

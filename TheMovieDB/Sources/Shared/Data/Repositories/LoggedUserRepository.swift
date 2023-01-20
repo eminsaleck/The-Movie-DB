@@ -21,7 +21,7 @@ extension LoggedUserRepository: LoggedUserRepositoryProtocol {
     dataSource.saveUser(userId: userId, sessionId: sessionId)
   }
 
-  public func getUser() -> AccountDomain? {
+  public func getUser() -> Account? {
     return dataSource.getUser()
   }
 

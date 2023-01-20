@@ -10,8 +10,8 @@ import Combine
 import Network
 
 public protocol TVShowsPageRepository {
-  func fetchAiringTodayShows(page: Int) -> AnyPublisher<TVShowPage, DataTransferError>
-  func fetchPopularShows(page: Int) -> AnyPublisher<TVShowPage, DataTransferError>
-  func fetchShowsByGenre(genreId: Int, page: Int) -> AnyPublisher<TVShowPage, DataTransferError>
-  func searchShowsFor(query: String, page: Int) -> AnyPublisher<TVShowPage, DataTransferError>
+  func fetchAiringTodayShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError>
+  func fetchPopularShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError>
+  func fetchShowsByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePage, DataTransferError>
+  func searchShowsFor(query: String, page: Int) -> AnyPublisher<MoviePage, DataTransferError>
 }
