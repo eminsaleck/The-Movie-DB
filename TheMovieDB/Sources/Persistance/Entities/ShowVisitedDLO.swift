@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct ShowVisitedDLO: Hashable {
+public struct ShowVisited: Hashable {
   public let id: Int
-  public let pathImage: String
+  public let pathImage: String  
 
   public init(id: Int, pathImage: String) {
     self.id = id

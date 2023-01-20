@@ -35,7 +35,6 @@ let package = Package(
                 name: "Persistance",
                 dependencies: [
                     "Common",
-                    
                 ]
             ),
             .target(
