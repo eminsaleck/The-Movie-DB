@@ -7,7 +7,7 @@
 
 
 import UIKit
-import Shared
+import Common
 import UI
 
 final class FavoritesSavedMoviesCoordinator: SavedMoviesCoordinatorProtocol, Coordinator, MovieDetailCoordinable {

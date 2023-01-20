@@ -7,7 +7,7 @@
 
 import UI
 import UIKit
-import Shared
+import Common
 
 class SearchMoviesViewController: UIViewController, Storyboarded {
 

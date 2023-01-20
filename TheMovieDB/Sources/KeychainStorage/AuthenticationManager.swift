@@ -5,7 +5,7 @@
 //  Created by LEMIN DAHOVICH on 08.12.2022.
 //
 
-import Shared
+import Common
 
 public final class AuthenticationManager {
     

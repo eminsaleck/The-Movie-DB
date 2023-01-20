@@ -5,7 +5,7 @@
 //  Created by LEMIN DAHOVICH on 15.12.2022.
 //
 
-import Shared
+import Common
 
 enum MovieDetailOption {
 

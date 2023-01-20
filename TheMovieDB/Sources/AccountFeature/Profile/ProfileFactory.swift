@@ -4,7 +4,7 @@
 //
 //  Created by LEMIN DAHOVICH on 12.12.2022.
 //
-import Shared
+import Common
 
 final class ProfileFactory: ProfileFactoryProtocol {
 

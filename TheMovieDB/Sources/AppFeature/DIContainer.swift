@@ -6,7 +6,7 @@
 //
 
 import UI
-import Shared
+import Common
 import UIKit
 import KeychainStorage
 import Network

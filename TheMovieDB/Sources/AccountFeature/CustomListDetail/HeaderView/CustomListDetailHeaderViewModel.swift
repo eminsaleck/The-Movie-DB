@@ -8,7 +8,7 @@
 
 import Foundation
 import Domain
-import Shared
+import Common
 
 protocol CustomListDetailHeaderViewModelProtocol {
 

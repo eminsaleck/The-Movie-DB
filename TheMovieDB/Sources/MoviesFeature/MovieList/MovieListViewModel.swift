@@ -6,7 +6,7 @@
 //
 
 import Domain
-import Shared
+import Common
 
 final class MovieListViewModel: MovieListViewModelProtocol, SimpleViewStateProcessable {
 

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Shared
+import Common
 
 struct MovieCreditsCollapsibleSection {
     let type: MovieCreditsViewSection

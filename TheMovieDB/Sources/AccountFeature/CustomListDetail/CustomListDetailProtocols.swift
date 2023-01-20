@@ -7,7 +7,7 @@
 
 
 import Foundation
-import Shared
+import Common
 import UI
 import Domain
 

@@ -8,7 +8,7 @@
 import UIKit
 import Domain
 import UI
-import Shared
+import Common
 
 class MovieVideosViewController: UIViewController, Storyboarded, PlaceholderDisplayable, LoadingDisplayable {
 

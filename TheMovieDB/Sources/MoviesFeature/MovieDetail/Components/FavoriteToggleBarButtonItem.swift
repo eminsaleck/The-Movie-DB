@@ -6,7 +6,7 @@
 //
 import UIKit
 import UI
-import Shared
+import Common
 
 class FavoriteToggleBarButtonItem: ToggleBarButtonItem {
 

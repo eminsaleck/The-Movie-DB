@@ -8,7 +8,7 @@
 
 import UIKit
 import UI
-import Shared
+import Common
 import Domain
 
 final class CustomListDetailCoordinator: CustomListDetailCoordinatorProtocol, Coordinator, MovieDetailCoordinable {

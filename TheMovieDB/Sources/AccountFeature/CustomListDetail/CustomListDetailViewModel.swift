@@ -8,7 +8,7 @@
 
 import Foundation
 import Domain
-import Shared
+import Common
 import UI
 
 public final class CustomListDetailViewModel: CustomListDetailViewModelProtocol {

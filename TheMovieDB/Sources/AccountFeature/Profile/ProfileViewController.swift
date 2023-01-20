@@ -8,7 +8,7 @@
 
 import UIKit
 import UI
-import Shared
+import Common
 
 class ProfileViewController: UITableViewController, Storyboarded {
 

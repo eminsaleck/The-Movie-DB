@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Shared
+import Common
 
 public protocol ShowsVisitedLocalDataSource {
   func saveShow(id: Int, pathImage: String, userId: Int) -> AnyPublisher<Void, ErrorEnvelope>

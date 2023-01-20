@@ -8,7 +8,7 @@
 
 import Foundation
 import Domain
-import Shared
+import Common
 import UI
 
 final class SavedMoviesViewModel: SavedMoviesViewModelProtocol, SimpleViewStateProcessable {

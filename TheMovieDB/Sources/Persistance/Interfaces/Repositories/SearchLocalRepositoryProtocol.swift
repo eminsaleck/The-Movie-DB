@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Shared
+import Common
 
 public protocol SearchLocalRepositoryProtocol {
   func saveSearch(query: String) -> AnyPublisher<Void, ErrorEnvelope>

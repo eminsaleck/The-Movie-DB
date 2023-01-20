@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Shared
+import Common
 
 public protocol ShowsVisitedLocalRepositoryProtocol {
   func saveShow(id: Int, pathImage: String) -> AnyPublisher<Void, ErrorEnvelope>

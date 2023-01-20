@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Shared
+import Common
 
 public protocol SearchLocalDataSource {
   func saveSearch(query: String, userId: Int) -> AnyPublisher<Void, ErrorEnvelope>

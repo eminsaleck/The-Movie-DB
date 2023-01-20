@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Shared
+import Common
 import TabBarFeature
 
 public final class NavigationHandler: NavigationHandlerProtocol {

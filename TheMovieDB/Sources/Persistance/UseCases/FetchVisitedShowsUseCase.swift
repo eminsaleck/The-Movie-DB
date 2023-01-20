@@ -7,7 +7,7 @@
 
 
 import Combine
-import Shared
+import Common
 
 public protocol FetchVisitedShowsUseCase {
   func execute(requestValue: FetchVisitedShowsUseCaseRequestValue) -> AnyPublisher<[ShowVisited], ErrorEnvelope>

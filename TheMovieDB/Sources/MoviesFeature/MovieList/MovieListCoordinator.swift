@@ -7,7 +7,7 @@
 
 import UIKit
 import Domain
-import Shared
+import Common
 import DependencyInjection
 
 protocol MovieListCoordinatorProtocol: Coordinator {}

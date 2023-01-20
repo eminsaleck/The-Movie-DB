@@ -7,7 +7,7 @@
 
 
 import Combine
-import Shared
+import Common
 
 public protocol FetchSearchesUseCase {
   func execute(requestValue: FetchSearchesUseCaseRequestValue) -> AnyPublisher<[Search], ErrorEnvelope>

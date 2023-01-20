@@ -12,7 +12,7 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(name: "AppFeature", targets: ["AppFeature"]),
-        .library(name: "Shared", targets: ["Shared"]),
+        .library(name: "Common", targets: ["Common"]),
         .library(name: "UI", targets: ["UI"]),
         .library(name: "Network", targets: ["Network"]),
         .library(name: "Networking", targets: ["Networking"]),
@@ -34,7 +34,7 @@ let package = Package(
             .target(
                 name: "Persistance",
                 dependencies: [
-                    "Shared",
+                    "Common",
                     
                 ]
             ),
@@ -46,7 +46,7 @@ let package = Package(
                 ]
             ),
             .target(
-                name: "Shared",
+                name: "Common",
                 dependencies: [
                     .product(name: "KeychainSwift", package: "keychain-swift"),
                 ]
@@ -55,7 +55,7 @@ let package = Package(
             .target(
                 name: "KeychainStorage",
                 dependencies: [
-                    "Shared",
+                    "Common",
                 ]
             ),
         
@@ -69,7 +69,7 @@ let package = Package(
             .target(
                 name: "UI",
                 dependencies: [
-                    "Shared",
+                    "Common",
                     "Network",
                 ],
                 resources: [
@@ -81,7 +81,7 @@ let package = Package(
                 name: "AppFeature",
                 dependencies: [
                     "PersistanceRealm",
-                    "Shared",
+                    "Common",
                     "UI",
                     "KeychainStorage",
                     "Network",

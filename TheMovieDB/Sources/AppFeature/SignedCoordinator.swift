@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Shared
+import Common
 import UI
 
 public enum SignedChildCoordinator {

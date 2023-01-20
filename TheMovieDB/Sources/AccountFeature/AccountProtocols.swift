@@ -8,7 +8,7 @@
 
 import UIKit
 import Domain
-import Shared
+import Common
 import UI
 
 public protocol AccountViewModelProtocol {

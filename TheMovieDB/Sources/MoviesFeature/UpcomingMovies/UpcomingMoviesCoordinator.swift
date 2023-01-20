@@ -7,7 +7,7 @@
 
 import UIKit
 import UI
-import Shared
+import Common
 import DependencyInjection
 import Domain
 

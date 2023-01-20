@@ -8,7 +8,7 @@
 
 import UIKit
 import Domain
-import Shared
+import Common
 import UI
 
 final class AccountCoordinator: NSObject, AccountCoordinatorProtocol, RootCoordinator {

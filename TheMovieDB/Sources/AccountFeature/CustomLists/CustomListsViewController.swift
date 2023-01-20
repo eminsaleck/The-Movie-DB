@@ -9,7 +9,7 @@
 import UIKit
 import Domain
 import UI
-import Shared
+import Common
 
 class CustomListsViewController: UIViewController, Storyboarded, PlaceholderDisplayable, LoadingDisplayable {
 

@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 import Handlers
-import Shared
+import Common
 
 final class SplashViewModel: SplashViewModelProtocol {
 

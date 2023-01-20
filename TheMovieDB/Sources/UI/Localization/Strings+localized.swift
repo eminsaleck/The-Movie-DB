@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Shared
+import Common
 
 func localizeKey(_ key: String, _ locale: Locale) -> String {
   guard let bundle = buildBundleForLocalization(locale) else {

@@ -9,7 +9,7 @@
 import UIKit
 import Domain
 import UI
-import Shared
+import Common
 
 final class CustomListsCoordinator: Coordinator, CustomListsCoordinatorProtocol {
 

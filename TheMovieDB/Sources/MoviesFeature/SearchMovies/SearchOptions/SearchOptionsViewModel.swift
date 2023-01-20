@@ -7,7 +7,7 @@
 
 import Foundation
 import Domain
-import Shared
+import Common
 import UI
 
 final class SearchOptionsViewModel: SearchOptionsViewModelProtocol {

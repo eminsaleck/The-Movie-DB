@@ -6,7 +6,7 @@
 //
 import UIKit
 import Domain
-import Shared
+import Common
 import DependencyInjection
 
 final class SimilarMoviesCoordinator: MovieListCoordinatorProtocol, Coordinator, MovieDetailCoordinable {

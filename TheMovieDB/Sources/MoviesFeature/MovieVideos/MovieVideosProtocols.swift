@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 import UI
-import Shared
+import Common
 
 protocol MovieVideosViewModelProtocol {
 

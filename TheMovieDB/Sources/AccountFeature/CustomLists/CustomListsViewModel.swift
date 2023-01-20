@@ -9,7 +9,7 @@
 import Foundation
 import Domain
 import UI
-import Shared
+import Common
 
 final class CustomListsViewModel: CustomListsViewModelProtocol, SimpleViewStateProcessable {
 

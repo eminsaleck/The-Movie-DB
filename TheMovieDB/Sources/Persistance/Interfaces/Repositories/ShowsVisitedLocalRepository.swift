@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Shared
+import Common
 
 public final class ShowsVisitedLocalRepository {
   private let dataSource: ShowsVisitedLocalDataSource

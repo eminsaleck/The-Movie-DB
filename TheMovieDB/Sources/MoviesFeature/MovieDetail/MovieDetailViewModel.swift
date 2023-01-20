@@ -7,7 +7,7 @@
 
 import Foundation
 import Domain
-import Shared
+import Common
 
 final class MovieDetailViewModel: MovieDetailViewModelProtocol {
 

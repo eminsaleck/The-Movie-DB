@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Shared
+import Common
 
 enum SearchOptionsSection {
     case recentlyVisited, defaultSearches, genres
