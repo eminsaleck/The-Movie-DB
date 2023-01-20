@@ -5,9 +5,7 @@
 //  Created by LEMIN DAHOVICH on 19.01.2023.
 //
 
-
 import Persistance
-import RealmSwift
 
 public protocol LocalDataSourceProtocol {
   func getShowVisitedDataSource(limitStorage: Int) -> ShowsVisitedLocalDataSource
@@ -22,12 +20,12 @@ final public class LocalStorage: LocalDataSourceProtocol {
   }
 
   public func getShowVisitedDataSource(limitStorage: Int) -> ShowsVisitedLocalDataSource {
-    let store: RealmStore<ShowVisited> = RealmStore(realmStorage.realm)
+    let store: PersistenceStore<ShowVisited> = PersistenceStore(realmStorage.realm)
     return RealmShowVisitedStorage(limitStorage: limitStorage, store: store)
   }
 
   public func getRecentSearchesDataSource() -> SearchLocalDataSource {
-    let store: RealmStore<RecentSearch> = RealmStore(realmStorage.realm)
+    let store: PersistenceStore<RecentSearch> = PersistenceStore(realmStorage.realm)
     return RealmSearchQueriesStorage(store: store)
   }
 }

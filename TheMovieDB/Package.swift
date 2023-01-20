@@ -34,7 +34,8 @@ let package = Package(
             .target(
                 name: "Persistance",
                 dependencies: [
-                    "Shared"
+                    "Shared",
+                    
                 ]
             ),
             .target(
