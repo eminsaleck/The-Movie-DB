@@ -10,7 +10,7 @@ import UIKit
 import Network
 import Persistance
 import Common
-//import ShowListFeatureInterface
+import MovieListFeatureInterface
 
 public struct ModuleDependencies {
 
@@ -18,7 +18,7 @@ public struct ModuleDependencies {
   let imagesBaseURL: String
   let authenticateBaseURL: String
   let gravatarBaseURL: String
-  let showListBuilder: ModuleShowListDetailsBuilder
+  let showListBuilder: ModuleMovieListDetailsBuilder
   let requestTokenRepository: RequestTokenRepositoryProtocol
   let accessTokenRepository: AccessTokenRepositoryProtocol
   let userLoggedRepository: LoggedUserRepositoryProtocol
@@ -30,7 +30,7 @@ public struct ModuleDependencies {
               requestTokenRepository: RequestTokenRepositoryProtocol,
               accessTokenRepository: AccessTokenRepositoryProtocol,
               userLoggedRepository: LoggedUserRepositoryProtocol,
-              showListBuilder: ModuleShowListDetailsBuilder
+              showListBuilder: ModuleMovieListDetailsBuilder
   ) {
     self.apiDataTransferService = apiDataTransferService
     self.imagesBaseURL = imagesBaseURL

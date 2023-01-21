@@ -19,6 +19,11 @@ let package = Package(
         .library(name: "Persistance", targets: ["Persistance"]),
         .library(name: "PersistanceRealm", targets: ["PersistanceRealm"]),
         .library(name: "AccountFeature", targets: ["AccountFeature"]),
+        .library(name: "MovieDetailsFeatureInterface", targets: ["MovieDetailsFeatureInterface"]),
+        .library(name: "MovieDetailsFeature", targets: ["MovieDetailsFeature"]),
+        .library(name: "MovieListFeatureInterface", targets: ["MovieListFeatureInterface"]),
+        .library(name: "MovieListFeature", targets: ["MovieListFeature"]),
+
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
@@ -82,6 +87,7 @@ let package = Package(
                     "Common",
                     "Persistance",
                     "Network",
+                    "MovieListFeatureInterface",
                 ]
             ),
         
@@ -108,6 +114,7 @@ let package = Package(
                     "Network",
                     "Persistance",
                     "Common",
+                    "MovieDetailsFeatureInterface",
                 ]
             ),
         .target(
