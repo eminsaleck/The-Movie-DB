@@ -82,7 +82,15 @@ let package = Package(
                     "Common",
                     "Persistance",
                     "Network",
-                    "ShowListFeatureInterface"
+                ]
+            ),
+        
+            .target(
+                name: "MovieDetailsFeatureInterface",
+                dependencies: [
+                    "Network",
+                    "Persistance",
+                    "Network",
                 ]
             ),
         

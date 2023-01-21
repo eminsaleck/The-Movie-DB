@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 import Network
-import Persistence
+import Persistance
 import Common
-import ShowListFeatureInterface
+//import ShowListFeatureInterface
 
 public struct ModuleDependencies {
 
-  let apiDataTransferService: DataTransferService
+  let apiDataTransferService: DataTransferServiceProtocol
   let imagesBaseURL: String
   let authenticateBaseURL: String
   let gravatarBaseURL: String
@@ -23,7 +23,7 @@ public struct ModuleDependencies {
   let accessTokenRepository: AccessTokenRepositoryProtocol
   let userLoggedRepository: LoggedUserRepositoryProtocol
 
-  public init(apiDataTransferService: DataTransferService,
+  public init(apiDataTransferService: DataTransferServiceProtocol,
               imagesBaseURL: String,
               authenticateBaseURL: String,
               gravatarBaseURL: String,
