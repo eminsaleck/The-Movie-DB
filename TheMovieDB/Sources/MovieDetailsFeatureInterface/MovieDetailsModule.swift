@@ -60,13 +60,13 @@ public struct MovieUpdated {
 
 public struct MovieDetailViewModelClosures {
 
-  public let updateFavoritesShows: ( (_ updated: MovieUpdated) -> Void )?
-  public let updateWatchListShows: ( (_ updated: MovieUpdated) -> Void )?
+  public let updateFavoritesMovies: ( (_ updated: MovieUpdated) -> Void )?
+  public let updateWatchListMovies: ( (_ updated: MovieUpdated) -> Void )?
 
-  public init (updateFavoritesShows: ( (_ updated: MovieUpdated) -> Void )? = nil ,
-               updateWatchListShows: ( (_ updated: MovieUpdated) -> Void )? = nil) {
-    self.updateFavoritesShows = updateFavoritesShows
-    self.updateWatchListShows = updateWatchListShows
+  public init (updateFavoritesMovies: ( (_ updated: MovieUpdated) -> Void )? = nil ,
+               updateWatchListMovies: ( (_ updated: MovieUpdated) -> Void )? = nil) {
+    self.updateFavoritesMovies = updateFavoritesMovies
+    self.updateWatchListMovies = updateWatchListMovies
   }
 }
 

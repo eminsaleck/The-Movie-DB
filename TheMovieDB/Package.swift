@@ -89,10 +89,32 @@ let package = Package(
                 name: "MovieDetailsFeatureInterface",
                 dependencies: [
                     "Network",
+                    "Common",
                     "Persistance",
-                    "Network",
                 ]
             ),
+        .target(
+            name: "MovieDetailsFeature",
+            dependencies: [
+                "Common",
+                "MovieDetailsFeatureInterface",
+                "UI",
+            ]
+        ),
+        
+            .target(
+                name: "MovieListFeatureInterface",
+                dependencies: [
+                    "Network",
+                    "Persistance",
+                    "Common",
+                ]
+            ),
+        .target(
+            name: "MovieListFeature",
+            dependencies: [
+            ]
+        ),
         
             .target(
                 name: "AppFeature",
