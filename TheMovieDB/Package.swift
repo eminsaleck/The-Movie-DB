@@ -79,6 +79,10 @@ let package = Package(
             .target(
                 name: "AccountFeature",
                 dependencies: [
+                    "Common",
+                    "Persistance",
+                    "Network",
+                    "ShowListFeatureInterface"
                 ]
             ),
         
