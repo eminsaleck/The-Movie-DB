@@ -35,8 +35,8 @@ extension RealmSearchQueriesStorage: SearchLocalDataSource {
   public func fetchRecentSearches(userId: Int) -> AnyPublisher<[SearchDLO], ErrorEnvelope> {
     return Deferred { [store] in
       return Future<[SearchDLO], ErrorEnvelope> { promise in
-          let results = store.findAll(userId: userId).map { $0.toDomain }
-        promise(.success(results))
+          let results = Array(store.findAll(userId: userId).compactMap { $0.toDomain() })
+          promise(.success(results))
       }
     }
     .eraseToAnyPublisher()

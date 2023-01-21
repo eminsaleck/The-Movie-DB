@@ -20,12 +20,12 @@ final public class LocalStorage: LocalDataSourceProtocol {
   }
 
   public func getShowVisitedDataSource(limitStorage: Int) -> ShowsVisitedLocalDataSource {
-    let store: PersistenceStore<ShowVisited> = PersistenceStore(realmStorage.realm)
+    let store: PersistenceStore<RealmShowVisited> = PersistenceStore(realmStorage.realm)
     return RealmShowVisitedStorage(limitStorage: limitStorage, store: store)
   }
 
   public func getRecentSearchesDataSource() -> SearchLocalDataSource {
-    let store: PersistenceStore<RecentSearch> = PersistenceStore(realmStorage.realm)
+    let store: PersistenceStore<RealmRecentSearch> = PersistenceStore(realmStorage.realm)
     return RealmSearchQueriesStorage(store: store)
   }
 }

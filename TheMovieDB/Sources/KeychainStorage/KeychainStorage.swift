@@ -17,7 +17,7 @@ public struct KeychainStorage {
         self.key = key
     }
 
-    var wrappedValue: String? {
+    public var wrappedValue: String? {
         mutating get {
             return keychain.get(key)
         }
