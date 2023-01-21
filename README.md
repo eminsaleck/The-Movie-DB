@@ -6,7 +6,7 @@ App is being separated into 8 modules and 4 features. [See](https://github.com/e
 # development cycle:
 >1. (September'22: Monolith)
 >2. (October'22: Monolith)
->3. (November'22: Decoupled, DDD, MVVM)
+>3. (November'22: Decoupled, MVVM+C)
 >4. (December'22: Clean, Modularity, MVVM).
 >5. (January'23: Continuation of refactoring to Clean modular architecture, implementing Combine)
 
