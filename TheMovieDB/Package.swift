@@ -18,6 +18,7 @@ let package = Package(
         .library(name: "Networking", targets: ["Networking"]),
         .library(name: "Persistance", targets: ["Persistance"]),
         .library(name: "PersistanceRealm", targets: ["PersistanceRealm"]),
+        .library(name: "AccountFeature", targets: ["AccountFeature"]),
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
@@ -26,30 +27,30 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
-            .target(
-                name: "Network",
-                dependencies: [
-                ]
-            ),
-            .target(
-                name: "Persistance",
-                dependencies: [
-                    "Common",
-                ]
-            ),
-            .target(
-                name: "PersistanceRealm",
-                dependencies: [
-                    "Persistance",
-                    .product(name: "RealmSwift", package: "realm-swift"),
-                ]
-            ),
-            .target(
-                name: "Common",
-                dependencies: [
-                    .product(name: "KeychainSwift", package: "keychain-swift"),
-                ]
-            ),
+        .target(
+            name: "Network",
+            dependencies: [
+            ]
+        ),
+        .target(
+            name: "Persistance",
+            dependencies: [
+                "Common",
+            ]
+        ),
+        .target(
+            name: "PersistanceRealm",
+            dependencies: [
+                "Persistance",
+                .product(name: "RealmSwift", package: "realm-swift"),
+            ]
+        ),
+        .target(
+            name: "Common",
+            dependencies: [
+                .product(name: "KeychainSwift", package: "keychain-swift"),
+            ]
+        ),
         
             .target(
                 name: "KeychainStorage",
@@ -69,10 +70,15 @@ let package = Package(
                 name: "UI",
                 dependencies: [
                     "Common",
-                    "Network",
                 ],
                 resources: [
                     .process("Resources"),
+                ]
+            ),
+        
+            .target(
+                name: "AccountFeature",
+                dependencies: [
                 ]
             ),
         
@@ -86,6 +92,7 @@ let package = Package(
                     "Network",
                     "Networking",
                     "Persistance",
+                    "AccountFeature"
                 ]),
         
     ]

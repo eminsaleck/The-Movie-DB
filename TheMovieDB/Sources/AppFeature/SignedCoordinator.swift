@@ -10,9 +10,6 @@ import Common
 import UI
 
 public enum SignedChildCoordinator {
-  case main
-  case popular
-  case search
   case account
 }
 
@@ -41,7 +38,7 @@ public class SignedCoordinator: Coordinator {
   }
 }
 
-public extension SignedCoordinator {
+extension SignedCoordinator {
     
     // MARK: - Account Scene
     fileprivate func buildAccountCoordinator(in navigation: UINavigationController) {
