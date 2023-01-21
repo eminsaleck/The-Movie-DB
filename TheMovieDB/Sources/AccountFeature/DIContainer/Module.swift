@@ -42,7 +42,7 @@ public struct ModuleDependencies {
     self.userLoggedRepository = userLoggedRepository
   }
 }
-
+ 
 // MARK: - Entry to Module
 public struct Module {
 
