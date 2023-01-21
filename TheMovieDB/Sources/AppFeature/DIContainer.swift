@@ -21,64 +21,66 @@ public class DIContainer {
     private lazy var keyChainStorage = AuthenticationManager()
     
     private let language: Language
-
+    
     private lazy var apiDataTransferService: DataTransferService = {
-      let queryParameters = [
-        "api_key": appConfigurations.apiKey,
-        "language": language.rawValue
-      ]
-
-      let configuration = ApiDataNetworkConfig(
-        baseURL: appConfigurations.apiBaseURL,
-        headers: [
-          "Content-Type": "application/json; charset=utf-8"
-        ],
-        queryParameters: queryParameters
-      )
-      let networkService = NetworkService(config: configuration)
-      return DataTransferService(with: networkService)
+        let queryParameters = [
+            "api_key": appConfigurations.apiKey,
+            "language": language.rawValue
+        ]
+        
+        let configuration = ApiDataNetworkConfig(
+            baseURL: appConfigurations.apiBaseURL,
+            headers: [
+                "Content-Type": "application/json; charset=utf-8"
+            ],
+            queryParameters: queryParameters
+        )
+        let networkService = NetworkService(config: configuration)
+        return DataTransferService(with: networkService)
     }()
-
+    
     private lazy var localStorage: LocalStorage = {
         return LocalStorage(realmStorage: .shared)
     }()
-
+    
     lazy var showsPersistence: ShowsVisitedLocalRepositoryProtocol = {
-      return ShowsVisitedLocalRepository(dataSource: localStorage.getShowVisitedDataSource(limitStorage: 10),
-                                         loggedUserRepository: loggedUserRepository)
+        return ShowsVisitedLocalRepository(dataSource: localStorage.getShowVisitedDataSource(limitStorage: 10),
+                                           loggedUserRepository: loggedUserRepository)
     }()
-
+    
     lazy var searchPersistence: SearchLocalRepository = {
-      return SearchLocalRepository(dataSource: localStorage.getRecentSearchesDataSource(),
-                                   loggedUserRepository: loggedUserRepository)
+        return SearchLocalRepository(dataSource: localStorage.getRecentSearchesDataSource(),
+                                     loggedUserRepository: loggedUserRepository)
     }()
-
+    
     lazy var loggedUserRepository: LoggedUserRepositoryProtocol = {
-      return LoggedUserRepository(dataSource: keyChainStorage)
+        return LoggedUserRepository(dataSource: keyChainStorage)
     }()
-
+    
     lazy var requestTokenRepository: RequestTokenRepositoryProtocol = {
-      return RequestTokenRepository(dataSource: keyChainStorage)
+        return RequestTokenRepository(dataSource: keyChainStorage)
     }()
-
+    
     lazy var accessTokenRepository: AccessTokenRepositoryProtocol = {
-      return AccessTokenRepository(dataSource: keyChainStorage)
+        return AccessTokenRepository(dataSource: keyChainStorage)
     }()
-
+    
     public init(appConfigurations: AppConfigurationProtocol) {
-      self.appConfigurations = appConfigurations
-
-      language = Language(languageStrings: Locale.preferredLanguages) ?? .en
-      Strings.currentLocale = Locale(identifier: language.rawValue)
+        self.appConfigurations = appConfigurations
+        
+        language = Language(languageStrings: Locale.preferredLanguages) ?? .en
+        Strings.currentLocale = Locale(identifier: language.rawValue)
     }
-}
-
-// MARK: - Assembling Modules
-public extension DIContainer {
     
-}
-
-// MARK: - Assembling Module on top 
-public extension DIContainer {
-    
+    // MARK: - Account Module
+    func buildAccountModule() -> AccountFeature.Module {
+        let dependencies = AccountFeature.ModuleDependencies(apiDataTransferService: apiDataTransferService,
+                                                             imagesBaseURL: appConfigurations.imagesBaseURL,
+                                                             authenticateBaseURL: appConfigurations.authenticateBaseURL,
+                                                             gravatarBaseURL: appConfigurations.gravatarBaseURL,
+                                                             requestTokenRepository: requestTokenRepository,
+                                                             accessTokenRepository: accessTokenRepository,
+                                                             userLoggedRepository: loggedUserRepository,showListBuilder: self)
+        return AccountFeature.Module(dependencies: dependencies)
+    }
 }
