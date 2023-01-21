@@ -14,6 +14,10 @@ import Network
 import Networking
 import PersistanceRealm
 import Persistance
+import MovieDetailsFeature
+import MovieDetailsFeatureInterface
+import MovieListFeature
+import MovieListFeatureInterface
 
 public class DIContainer {
     
@@ -84,4 +88,30 @@ public class DIContainer {
                                                              userLoggedRepository: loggedUserRepository,showListBuilder: self)
         return AccountFeature.Module(dependencies: dependencies)
     }
+}
+
+
+extension DIContainer: ModuleMovieDetailsBuilder {
+  public func buildModuleCoordinator(in navigationController: UINavigationController,
+                                     delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol {
+    let dependencies = MovieDetailsFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
+                                                                      imagesBaseURL: appConfigurations.imagesBaseURL,
+                                                                      showsPersistenceRepository: showsPersistence,
+                                                                      loggedUserRepository: loggedUserRepository)
+    let module = MovieDetailsFeature.Module(dependencies: dependencies)
+    return module.buildModuleCoordinator(in: navigationController, delegate: delegate)
+  }
+}
+
+extension DIContainer: ModuleMovieListDetailsBuilder {
+ 
+  public func buildModuleCoordinator(in navigationController: UINavigationController,
+                                     delegate: MovieListCoordinatorDelegate?) -> MovieListCoordinatorProtocol {
+    let dependencies = MovieListFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
+                                                                   imagesBaseURL: appConfigurations.imagesBaseURL,
+                                                                   loggedUserRepository: loggedUserRepository,
+                                                                   showDetailsBuilder: self)
+    let module = MovieListFeature.Module(dependencies: dependencies)
+    return module.buildModuleCoordinator(in: navigationController, delegate: delegate)
+  }
 }
