@@ -28,7 +28,7 @@ public struct ModuleDependencies {
   }
 }
 
-public protocol ModuleMovieListDetailsBuilder {
+public protocol ModuleMovieListDetailsBuilderProtocol {
   func buildModuleCoordinator(in navigationController: UINavigationController,
                               delegate: MovieListCoordinatorDelegate?) -> MovieListCoordinatorProtocol
 }

@@ -122,6 +122,7 @@ let package = Package(
             dependencies: [
                 "MovieListFeatureInterface",
                 "Common",
+                "UI",
                 "MovieDetailsFeatureInterface",
             ]
         ),

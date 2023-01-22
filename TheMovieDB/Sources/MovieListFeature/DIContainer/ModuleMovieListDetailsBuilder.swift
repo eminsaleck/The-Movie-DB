@@ -9,7 +9,7 @@ import UIKit
 import Common
 import MovieListFeatureInterface
 
-public struct Module: ModuleMovieListDetailsBuilder {
+public struct Module: ModuleMovieListDetailsBuilderProtocol {
 
   private let diContainer: DIContainer
 

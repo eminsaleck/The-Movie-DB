@@ -13,7 +13,6 @@ import MovieListFeatureInterface
 final class DIContainer {
     private let dependencies: MovieListFeatureInterface.ModuleDependencies
     
-    // MARK: - Repositories
     private lazy var accountShowsRepository: AccountMovieRepository = {
         return DefaultAccountTVShowsRepository(
             showsPageRemoteDataSource: AccountMovieRemoteDataSource(dataTransferService: dependencies.apiDataTransferService),
@@ -22,9 +21,17 @@ final class DIContainer {
             loggedUserRepository: dependencies.loggedUserRepository
         )
     }()
+
     
-    // MARK: - Initializer
     init(dependencies: MovieListFeatureInterface.ModuleDependencies) {
         self.dependencies = dependencies
+    }
+    
+    func buildModuleCoordinator(navigationController: UINavigationController,
+                                delegate: MovieListCoordinatorDelegate?)
+    -> MovieListCoordinatorProtocol {
+      let coordinator =  MovieListCoordinator(navigationController: navigationController, dependencies: self)
+      coordinator.delegate = delegate
+      return coordinator
     }
 }
