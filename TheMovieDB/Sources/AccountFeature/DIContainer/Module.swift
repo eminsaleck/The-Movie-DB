@@ -18,7 +18,7 @@ public struct ModuleDependencies {
   let imagesBaseURL: String
   let authenticateBaseURL: String
   let gravatarBaseURL: String
-  let showListBuilder: ModuleMovieListDetailsBuilder
+  let showListBuilder: ModuleMovieListDetailsBuilderProtocol
   let requestTokenRepository: RequestTokenRepositoryProtocol
   let accessTokenRepository: AccessTokenRepositoryProtocol
   let userLoggedRepository: LoggedUserRepositoryProtocol
@@ -30,7 +30,7 @@ public struct ModuleDependencies {
               requestTokenRepository: RequestTokenRepositoryProtocol,
               accessTokenRepository: AccessTokenRepositoryProtocol,
               userLoggedRepository: LoggedUserRepositoryProtocol,
-              showListBuilder: ModuleMovieListDetailsBuilder
+              showListBuilder: ModuleMovieListDetailsBuilderProtocol
   ) {
     self.apiDataTransferService = apiDataTransferService
     self.imagesBaseURL = imagesBaseURL

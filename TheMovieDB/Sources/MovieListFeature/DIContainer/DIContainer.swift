@@ -10,7 +10,7 @@ import Common
 import MovieDetailsFeatureInterface
 import MovieListFeatureInterface
 
-final class DIContainer {
+final class DIContainer: MovieListCoordinatorDependencies {
     private let dependencies: MovieListFeatureInterface.ModuleDependencies
     
     private lazy var accountShowsRepository: AccountMovieRepository = {

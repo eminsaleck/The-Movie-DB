@@ -15,12 +15,12 @@ public struct ModuleDependencies {
   public let apiDataTransferService: DataTransferServiceProtocol
   public let imagesBaseURL: String
   public let loggedUserRepository: LoggedUserRepositoryProtocol
-  public let showDetailsBuilder: ModuleMovieDetailsBuilder
+    public let showDetailsBuilder: ModuleMovieDetailsBuilderProtocol
 
   public init(apiDataTransferService: DataTransferServiceProtocol,
               imagesBaseURL: String,
               loggedUserRepository: LoggedUserRepositoryProtocol,
-              showDetailsBuilder: ModuleMovieDetailsBuilder) {
+              showDetailsBuilder: ModuleMovieDetailsBuilderProtocol) {
     self.apiDataTransferService = apiDataTransferService
     self.imagesBaseURL = imagesBaseURL
     self.loggedUserRepository = loggedUserRepository
@@ -34,7 +34,7 @@ public protocol ModuleMovieListDetailsBuilderProtocol {
 }
 
 public protocol MovieListCoordinatorProtocol: NavigationCoordinator {
-  func navigate(to step: MovieListStep)
+  func navigate(to state: MovieListState)
 }
 
 public protocol MovieListCoordinatorDelegate: AnyObject {
@@ -42,7 +42,7 @@ public protocol MovieListCoordinatorDelegate: AnyObject {
 }
 
 // MARK: - Steps
-public enum MovieListStep: Step {
+public enum MovieListState: State {
   case genreList(genreId: Int, title: String?)
   case favoriteList
   case watchList

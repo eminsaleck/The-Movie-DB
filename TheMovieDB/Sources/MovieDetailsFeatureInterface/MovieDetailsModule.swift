@@ -29,7 +29,7 @@ public struct ModuleDependencies {
   }
 }
 
-public protocol ModuleMovieDetailsBuilder {
+public protocol ModuleMovieDetailsBuilderProtocol {
   func buildModuleCoordinator(in navigationController: UINavigationController,
                               delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol
 }
@@ -39,10 +39,10 @@ public protocol MovieDetailCoordinatorDelegate: AnyObject {
 }
 
 public protocol MovieDetailCoordinatorProtocol: NavigationCoordinator {
-  func navigate(to step: ShowDetailsStep)
+  func navigate(to state: ShowDetailsState)
 }
 
-public enum ShowDetailsStep: Step {
+public enum ShowDetailsState: State {
   case showDetailsIsRequired(withId: Int, closures: MovieDetailViewModelClosures? = nil)
   case seasonsAreRequired(withId: Int)
   case detailViewDidFinish

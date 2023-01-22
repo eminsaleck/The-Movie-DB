@@ -91,7 +91,7 @@ public class DIContainer {
 }
 
 
-extension DIContainer: ModuleMovieDetailsBuilder {
+extension DIContainer: ModuleMovieDetailsBuilderProtocol {
   public func buildModuleCoordinator(in navigationController: UINavigationController,
                                      delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol {
     let dependencies = MovieDetailsFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
@@ -103,7 +103,7 @@ extension DIContainer: ModuleMovieDetailsBuilder {
   }
 }
 
-extension DIContainer: ModuleMovieListDetailsBuilder {
+extension DIContainer: ModuleMovieListDetailsBuilderProtocol {
  
   public func buildModuleCoordinator(in navigationController: UINavigationController,
                                      delegate: MovieListCoordinatorDelegate?) -> MovieListCoordinatorProtocol {

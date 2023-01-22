@@ -8,12 +8,12 @@
 import UIKit
 
 public protocol Coordinator: AnyObject {
-    func start(with step: Step)
+    func start(with state: State)
     func start()
 }
 
 public extension Coordinator {
-    func start(with step: Step = DefaultStep() ) { }
+    func start(with state: State = DefaultState() ) { }
     func start() { }
 }
 
@@ -21,9 +21,8 @@ public protocol NavigationCoordinator: Coordinator {
   var navigationController: UINavigationController { get }
 }
 
-// MARK: - Step == State
-public protocol Step { }
+public protocol State { }
 
-public struct DefaultStep: Step {
+public struct DefaultState: State {
   public init() { }
 }
