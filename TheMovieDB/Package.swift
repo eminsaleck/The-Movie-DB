@@ -120,6 +120,9 @@ let package = Package(
         .target(
             name: "MovieListFeature",
             dependencies: [
+                "MovieListFeatureInterface",
+                "Common",
+                "MovieDetailsFeatureInterface",
             ]
         ),
         

@@ -8,7 +8,7 @@
 import Combine
 import Network
 
-public protocol AccountTVShowsRepository {
+public protocol AccountMovieRepository {
   func fetchFavoritesShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError>
   func fetchWatchListShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError>
 }

@@ -1,0 +1,17 @@
+//
+//  File.swift
+//  
+//
+//  Created by LEMIN DAHOVICH on 22.01.2023.
+//
+
+import Foundation
+
+public protocol MoviePageMapperProtocol {
+  func mapTVShowPage(_ page: MoviePageDTO, imageBasePath: String, imageSize: ImageSize) -> MoviePage
+}
+
+public enum ImageSize: String {
+  case small = "w342"
+  case medium = "w780"
+}
