@@ -35,16 +35,15 @@ public protocol ModuleMovieDetailsBuilderProtocol {
 }
 
 public protocol MovieDetailCoordinatorDelegate: AnyObject {
-  func tvShowDetailCoordinatorDidFinish()
+  func movieDetailCoordinatorDidFinish()
 }
 
 public protocol MovieDetailCoordinatorProtocol: NavigationCoordinator {
-  func navigate(to state: ShowDetailsState)
+  func navigate(to state: MovieDetailsState)
 }
 
-public enum ShowDetailsState: State {
+public enum MovieDetailsState: State {
   case showDetailsIsRequired(withId: Int, closures: MovieDetailViewModelClosures? = nil)
-  case seasonsAreRequired(withId: Int)
   case detailViewDidFinish
 }
 

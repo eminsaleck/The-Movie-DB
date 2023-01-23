@@ -15,3 +15,8 @@ public enum ImageSize: String {
   case small = "w342"
   case medium = "w780"
 }
+
+public protocol AccountMovieDetailsMapperProtocol {
+  func mapActionResult(result: MovieActionStatusDTO) -> MovieActionStatus
+  func mapTVShowStatusResult(result: MovieAccountStatusDTO) -> MovieAccountStatus
+}

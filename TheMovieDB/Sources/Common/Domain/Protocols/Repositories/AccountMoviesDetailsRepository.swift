@@ -8,7 +8,7 @@
 import Combine
 import Network
 
-public protocol AccountMoviesDetailsRepository {
+public protocol AccountMovieDetailsRepository {
   func markAsFavorite(tvShowId: Int, favorite: Bool) -> AnyPublisher<MovieActionStatus, DataTransferError>
 
   func saveToWatchList(tvShowId: Int, watchedList: Bool) -> AnyPublisher<MovieActionStatus, DataTransferError>
