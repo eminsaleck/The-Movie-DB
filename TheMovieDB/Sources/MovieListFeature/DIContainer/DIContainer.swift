@@ -22,7 +22,6 @@ final class DIContainer: MovieListCoordinatorDependencies {
         )
     }()
 
-    
     init(dependencies: MovieListFeatureInterface.ModuleDependencies) {
         self.dependencies = dependencies
     }

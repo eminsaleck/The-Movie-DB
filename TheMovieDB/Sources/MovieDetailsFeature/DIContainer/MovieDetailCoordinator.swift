@@ -12,7 +12,7 @@ import MovieDetailsFeatureInterface
 
 public class MovieDetailCoordinator: MovieDetailCoordinatorProtocol {
     
-    public weak var delegate: MovieDetailCoordinatorProtocol?
+    public weak var delegate: MovieDetailCoordinatorDelegate?
     
     public let navigationController: UINavigationController
     

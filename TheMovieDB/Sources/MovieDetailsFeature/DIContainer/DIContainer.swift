@@ -39,3 +39,7 @@ final class DIContainer {
         return detailVC
     }
 }
+
+extension DIContainer: MovieDetailCoordinatorDependencies {
+
+}
