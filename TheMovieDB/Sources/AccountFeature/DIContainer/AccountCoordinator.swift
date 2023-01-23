@@ -28,12 +28,12 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
     }
     
     public func start() {
-        navigate(to: .accountFeatureInit)
+        navigate(with: .accountFeatureInit)
     }
     
     // MARK: - Navigation
     
-    public func navigate(to step: AccountState) {
+    public func navigate(with step: AccountState) {
         switch step {
         case .accountFeatureInit:
             navigateToAccountFeature()

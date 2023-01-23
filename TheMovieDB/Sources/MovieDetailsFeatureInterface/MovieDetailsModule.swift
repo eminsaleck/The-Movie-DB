@@ -39,7 +39,7 @@ public protocol MovieDetailCoordinatorDelegate: AnyObject {
 }
 
 public protocol MovieDetailCoordinatorProtocol: NavigationCoordinator {
-  func navigate(to state: MovieDetailsState)
+  func navigate(with state: MovieDetailsState)
 }
 
 public enum MovieDetailsState: State {

@@ -34,7 +34,7 @@ public protocol ModuleMovieListDetailsBuilderProtocol {
 }
 
 public protocol MovieListCoordinatorProtocol: NavigationCoordinator {
-  func navigate(to state: MovieListState)
+  func navigate(with state: MovieListState)
 }
 
 public protocol MovieListCoordinatorDelegate: AnyObject {

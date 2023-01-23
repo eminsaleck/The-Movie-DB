@@ -10,7 +10,7 @@ import Common
 import MovieListFeatureInterface
 
 protocol AccountCoordinatorProtocol: AnyObject {
-  func navigate(to state: AccountState)
+  func navigate(with state: AccountState)
 }
 
 public enum AccountState: State {

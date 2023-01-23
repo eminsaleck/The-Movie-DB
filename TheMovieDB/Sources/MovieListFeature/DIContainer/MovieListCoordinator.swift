@@ -28,7 +28,7 @@ public class MovieListCoordinator: MovieListCoordinatorProtocol {
     }
     
     
-    public func navigate(to step: MovieListFeatureInterface.MovieListState) {
+    public func navigate(with state: MovieListFeatureInterface.MovieListState) {
         //
     }
 }
