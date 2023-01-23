@@ -11,8 +11,6 @@ import MovieListFeatureInterface
 
 final class DIContainer {
     
-    
-    
     private let dependencies: ModuleDependencies
     
     init(dependencies: ModuleDependencies) {

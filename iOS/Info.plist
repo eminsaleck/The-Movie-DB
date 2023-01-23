@@ -3,21 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>API_BASE_URL</key>
-	<string>$(API_BASE_URL)</string>
+	<string>https://api.themoviedb.org/</string>
 	<key>API_KEY</key>
-	<string>$(API_KEY)</string>
+	<string>a5ac3411803536cfb4b1cd90557dc8a7</string>
 	<key>AUTHENTICATE_BASE_URL</key>
-	<string>$(AUTHENTICATE_BASE_URL)</string>
+	<string>https://themoviedb.org/authenticate</string>
 	<key>GRAVATAR_BASE_URL</key>
-	<string>$(GRAVATAR_BASE_URL)</string>
+	<string>https://gravatar.com/avatar</string>
 	<key>IMAGE_BASE_URL</key>
-	<string>$(IMAGE_BASE_URL)</string>
-	<key>TMDB</key>
-	<dict>
-		<key>ApiKey</key>
-		<string>a1e6469b9c841dbf821f4ef57f4d74f0</string>
-		<key>ReadAccessToken</key>
-		<string>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMWU2NDY5YjljODQxZGJmODIxZjRlZjU3ZjRkNzRmMCIsInN1YiI6IjYwMzM1OGY5OWFmMTcxMDAzZjQ1YjNiNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.H-f-0iZNchiOoPmJc42k5p7vszMqsvOqd9K-6p1JiL0</string>
-	</dict>
+	<string>https://image.tmdb.org</string>
 </dict>
 </plist>
