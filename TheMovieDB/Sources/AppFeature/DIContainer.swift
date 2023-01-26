@@ -27,7 +27,7 @@ public class DIContainer {
     
     private let language: Language
     
-    private lazy var apiDataTransferService: DataTransferService = {
+    private lazy var apiDataTransferService: DataTransferServiceProtocol = {
         let queryParameters = [
             "api_key": appConfigurations.apiKey,
             "language": language.rawValue

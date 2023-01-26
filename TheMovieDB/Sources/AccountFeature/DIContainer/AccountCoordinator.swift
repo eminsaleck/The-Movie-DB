@@ -22,19 +22,15 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
         self.navigationController = navigationController
         self.dependencies = dependencies
     }
-    
-    deinit {
-        print("deinit \(Self.self)")
-    }
-    
+
     public func start() {
         navigate(with: .accountFeatureInit)
     }
     
     // MARK: - Navigation
     
-    public func navigate(with step: AccountState) {
-        switch step {
+    public func navigate(with state: AccountState) {
+        switch state {
         case .accountFeatureInit:
             navigateToAccountFeature()
         }

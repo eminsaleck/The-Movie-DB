@@ -13,6 +13,24 @@ final class DIContainer {
     
     private let dependencies: ModuleDependencies
     
+    private lazy var authRepository: AuthRepository = {
+      return DefaultAuthRepository(
+        remoteDataSource: DefaultAuthRemoteDataSource(dataTransferService: dependencies.apiDataTransferService),
+        requestTokenRepository: dependencies.requestTokenRepository,
+        accessTokenRepository: dependencies.accessTokenRepository,
+        tokenMapper: RequestTokenMapper(authenticateBaseURL: dependencies.authenticateBaseURL)
+      )
+    }()
+
+    private lazy var accountRepository: AccountRepository = {
+      return DefaultAccountRepository(
+        remoteDataSource: DefaultAccountRemoteDataSource(dataTransferService: dependencies.apiDataTransferService),
+        accessTokenRepository: dependencies.accessTokenRepository,
+        userLoggedRepository: dependencies.userLoggedRepository,
+        gravatarBaseURL: dependencies.gravatarBaseURL
+      )
+    }()
+    
     init(dependencies: ModuleDependencies) {
         self.dependencies = dependencies
     }
