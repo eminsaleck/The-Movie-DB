@@ -10,9 +10,9 @@ import Networking
 import Network
 
 final class DefaultAccountRemoteDataSource: AccountRemoteDataSource {
-  private let dataTransferService: DataTransferService
+  private let dataTransferService: DataTransferServiceProtocol
   
-  init(dataTransferService: DataTransferService) {
+  init(dataTransferService: DataTransferServiceProtocol) {
     self.dataTransferService = dataTransferService
   }
   

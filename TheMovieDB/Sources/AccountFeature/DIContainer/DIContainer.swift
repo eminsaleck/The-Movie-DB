@@ -31,6 +31,8 @@ final class DIContainer {
       )
     }()
     
+    private var accountViewModel: AccountViewModel?
+    
     init(dependencies: ModuleDependencies) {
         self.dependencies = dependencies
     }
