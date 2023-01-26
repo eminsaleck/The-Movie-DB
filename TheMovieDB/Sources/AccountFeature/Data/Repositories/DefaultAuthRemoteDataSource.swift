@@ -24,6 +24,7 @@ final class DefaultAuthRemoteDataSource: AuthRemoteDataSource {
     return dataTransferService.request(with: endpoint)
   }
 
+    
   func createSession(requestToken: String) -> AnyPublisher<NewSessionDTO, DataTransferError> {
     let endpoint = Endpoint<NewSessionDTO>(
       path: "3/authentication/session/new",

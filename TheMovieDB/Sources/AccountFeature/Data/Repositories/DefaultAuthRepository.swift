@@ -28,7 +28,6 @@ final class DefaultAuthRepository {
   }
 }
 
-// MARK: - AuthRepository
 extension DefaultAuthRepository: AuthRepository {
 
 

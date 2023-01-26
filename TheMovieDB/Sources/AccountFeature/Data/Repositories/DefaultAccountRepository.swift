@@ -27,7 +27,6 @@ public final class DefaultAccountRepository {
   }
 }
 
-// MARK: - AccountRepository
 extension DefaultAccountRepository: AccountRepository {
 
   public func getAccountDetails() -> AnyPublisher<Account, DataTransferError> {
