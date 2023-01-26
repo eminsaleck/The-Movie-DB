@@ -25,7 +25,7 @@ struct RequestTokenMapper: RequestTokenMapperProtocol {
       return NewRequestToken(token: model.token, url: url)
     } else {
       print("cannot Convert request token= \(model), basePath=\(authenticateBaseURL)")
-      throw DataTransferError.noResponse // MARk: - TODO, change error
+      throw DataTransferError.noResponse 
     }
   }
 }
