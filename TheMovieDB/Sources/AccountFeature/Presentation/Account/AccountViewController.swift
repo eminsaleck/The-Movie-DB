@@ -18,7 +18,7 @@ class AccountViewController: UIViewController {
 
     private let viewModel: AccountViewModelProtocol
     private let viewControllersFactory: AccountViewControllerFactory
-    private var currentChildViewController: UIViewController?
+    private var currentViewController: UIViewController?
     private var disposeBag = Set<AnyCancellable>()
     
     init(viewModel: AccountViewModelProtocol, viewControllersFactory: AccountViewControllerFactory) {
@@ -26,19 +26,62 @@ class AccountViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
-    override func loadView() {
-        view = UIView()
-    }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .blue
+
+        viewModel.isLogged()
+        subscribe()
     }
     
+    override func loadView() {
+        view = UIView()
+    }
+    
+    private func subscribe() {
+      viewModel
+        .viewState
+        .receive(on: DispatchQueue.main)
+        .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] viewState in
+          self?.setupUI(with: viewState)
+        })
+        .store(in: &disposeBag)
+    }
+    
+    private func setupUI(with state: AccountViewState) {
+      switch state {
+      case .login:
+        let loginVC = viewControllersFactory.makeSignInViewController()
+        transition(to: loginVC, with: Strings.accountTitleLogin.localized())
+      case .profile(let account):
+        let profileVC = viewControllersFactory.makeProfileViewController(with: account)
+        transition(to: profileVC, with: Strings.accountTitle.localized())
+      }
+    }
+    
+    private func transition(to viewController: UIViewController, with text: String) {
+      remove(currentViewController)
+      add(viewController)
+      title = text
+      currentViewController = viewController
+    }
+    
+    public func add(_ viewController: UIViewController) {
+      addChild(viewController)
+      view.addSubview(viewController.view)
+      viewController.view.frame = view.bounds
+      viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+      viewController.didMove(toParent: self)
+    }
+
+    private func remove(_ viewController: UIViewController?) {
+      guard let viewController = viewController else { return }
+      viewController.willMove(toParent: nil)
+      viewController.view.removeFromSuperview()
+      viewController.removeFromParent()
+    }
 }

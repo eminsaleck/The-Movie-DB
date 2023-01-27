@@ -14,9 +14,9 @@ class SignInViewController: UIViewController {
 
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
     }
-
     
     func startLoading() {
         signInButton.startAnimation()
