@@ -54,11 +54,11 @@ extension AuthenticationManager: LoggedUserLocalDataSource {
     self.sessionId = sessionId
   }
 
-  public func getUser() -> Account? {
+  public func getUser() -> AccountDomain? {
     guard let currentAccountId = accountId,
           let accountId = Int(currentAccountId),
           let sessionId = sessionId else { return nil }
-    return Account(id: accountId, sessionId: sessionId)
+    return AccountDomain(id: accountId, sessionId: sessionId)
   }
 
   public func deleteUser() {

@@ -9,6 +9,6 @@ import Foundation
 
 public protocol LoggedUserLocalDataSource {
   func saveUser(userId: Int, sessionId: String)
-  func getUser() -> Account?
+  func getUser() -> AccountDomain?
   func deleteUser()
 }

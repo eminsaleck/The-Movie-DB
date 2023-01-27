@@ -7,7 +7,7 @@
 
 
 public protocol FetchLoggedUser {
-  func execute() -> Account?
+  func execute() -> LoggedUserRepositoryProtocol
 }
 
 public final class DefaultFetchLoggedUser: FetchLoggedUser {
@@ -17,7 +17,7 @@ public final class DefaultFetchLoggedUser: FetchLoggedUser {
     self.loggedRepository = loggedRepository
   }
 
-  public func execute() -> Account? {
-    return loggedRepository.getUser() 
+  public func execute() -> LoggedUserRepositoryProtocol {
+    return loggedRepository
   }
 }

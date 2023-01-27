@@ -7,10 +7,11 @@
 
 import Foundation
 import Common
+import Combine
 import Network
 
 protocol FetchAccountDetailsUseCase {
-  func execute() -> AnyPublisher<Account, DataTransferError>
+  func execute() -> AccountRepository
 }
 
 final class DefaultFetchAccountDetailsUseCase: FetchAccountDetailsUseCase {
@@ -20,7 +21,7 @@ final class DefaultFetchAccountDetailsUseCase: FetchAccountDetailsUseCase {
     self.accountRepository = accountRepository
   }
 
-  func execute() -> AnyPublisher<Account, DataTransferError> {
-    return accountRepository.getAccountDetails()
+  func execute() -> AccountRepository{
+      return accountRepository
   }
 }

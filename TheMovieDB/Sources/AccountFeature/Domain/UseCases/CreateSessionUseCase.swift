@@ -10,7 +10,7 @@ import Network
 import Common
 
 protocol CreateSessionUseCase {
-  func execute() -> AnyPublisher<Void, DataTransferError>
+  func execute() -> AuthRepository
 }
 
 final class DefaultCreateSessionUseCase: CreateSessionUseCase {
@@ -20,11 +20,7 @@ final class DefaultCreateSessionUseCase: CreateSessionUseCase {
     self.authRepository = authRepository
   }
 
-  func execute() -> AnyPublisher<Void, DataTransferError> {
-    return authRepository.createSession()
-      .map { _ in
-        return (())
-      }
-      .eraseToAnyPublisher()
+  func execute() -> AuthRepository {
+      authRepository
   }
 }

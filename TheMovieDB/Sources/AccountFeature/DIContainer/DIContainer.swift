@@ -31,10 +31,32 @@ final class DIContainer {
       )
     }()
     
-    private var accountViewModel: AccountViewModel?
+    private var interactor: AccountInteractorProtocol?
     
     init(dependencies: ModuleDependencies) {
         self.dependencies = dependencies
+        
+        func makeCreateSessionUseCase() -> CreateSessionUseCase {
+          return DefaultCreateSessionUseCase(authRepository: authRepository)
+        }
+     
+        func makeFetchAccountDetailsUseCase() -> FetchAccountDetailsUseCase {
+          return DefaultFetchAccountDetailsUseCase(accountRepository: accountRepository)
+        }
+
+        func makeFetchLoggedUserUseCase() -> FetchLoggedUser {
+          return DefaultFetchLoggedUser(loggedRepository: dependencies.userLoggedRepository)
+        }
+
+        func makeDeleteLoggedUserUseCase() -> DeleteLoggedUserUseCase {
+          return DefaultDeleteLoggedUserUseCase(loggedRepository: dependencies.userLoggedRepository)
+        }
+        interactor = AccountInteractor(createNewSession: makeCreateSessionUseCase(),
+                                       fetchAccountDetails: makeFetchAccountDetailsUseCase(),
+                                       fetchLoggedUser: makeFetchLoggedUserUseCase(),
+                                       deleteLoggedUser: makeDeleteLoggedUserUseCase())
+        
+        let viewModel = AccountViewModel(interactor: interactor!)
     }
     
     func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {

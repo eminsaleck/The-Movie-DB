@@ -9,7 +9,7 @@ import Foundation
 import Common
 
 protocol DeleteLoggedUserUseCase {
-  func execute()
+  func execute() -> LoggedUserRepositoryProtocol
 }
 
 final class DefaultDeleteLoggedUserUseCase: DeleteLoggedUserUseCase {
@@ -19,7 +19,7 @@ final class DefaultDeleteLoggedUserUseCase: DeleteLoggedUserUseCase {
     self.loggedRepository = loggedRepository
   }
 
-  func execute() {
-    loggedRepository.deleteUser()
+  func execute() -> LoggedUserRepositoryProtocol{
+    loggedRepository
   }
 }
