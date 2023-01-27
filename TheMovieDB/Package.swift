@@ -89,6 +89,7 @@ let package = Package(
                     "Persistance",
                     "Network",
                     "MovieListFeatureInterface",
+                    "UI",
                     .product(name: "CombineSchedulers", package: "combine-schedulers"),
                 ]
             ),

@@ -70,13 +70,23 @@ extension DIContainer: AccountCoordinatorDependencies {
     func buildAccountViewController(coordinator: AccountCoordinatorProtocol?) -> UIViewController {
         guard let accountViewModel = accountViewModel else { return UIViewController(nibName: nil, bundle: nil) }
         accountViewModel.coordinator = coordinator
-        return AccountViewController(viewModel: accountViewModel)
+        return AccountViewController(viewModel: accountViewModel, viewControllersFactory: self)
     }
     
     func buildAuthPermissionViewController(url: URL, delegate: AuthPermissionViewModelDelegate?) -> AuthPermissionViewController {
         let authViewModel = AuthPermissionViewModel(url: url)
         authViewModel.delegate = delegate
         return AuthPermissionViewController(viewModel: authViewModel)
-    }
-    
+    }    
 }
+
+extension DIContainer: AccountViewControllerFactory {
+  func makeSignInViewController() -> UIViewController {
+    return SignInViewController()
+  }
+
+  func makeProfileViewController(with account: Account) -> UIViewController {
+    return ProfileViewController()
+  }
+}
+

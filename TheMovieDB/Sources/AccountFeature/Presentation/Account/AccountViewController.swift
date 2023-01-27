@@ -9,14 +9,20 @@ import UIKit
 import Combine
 import UI
 
+protocol AccountViewControllerFactory {
+  func makeSignInViewController() -> UIViewController
+  func makeProfileViewController(with account: Account) -> UIViewController
+}
 
 class AccountViewController: UIViewController {
-    
+
     private let viewModel: AccountViewModelProtocol
+    private let viewControllersFactory: AccountViewControllerFactory
     private var currentChildViewController: UIViewController?
     private var disposeBag = Set<AnyCancellable>()
     
-    init(viewModel: AccountViewModelProtocol) {
+    init(viewModel: AccountViewModelProtocol, viewControllersFactory: AccountViewControllerFactory) {
+        self.viewControllersFactory = viewControllersFactory
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

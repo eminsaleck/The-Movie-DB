@@ -17,7 +17,7 @@ enum AccountViewState: Equatable {
 }
 
 protocol AccountViewModelProtocol {
-    func viewDidLoad()
+    func isLogged()
     var viewState: CurrentValueSubject<AccountViewState, Never> { get }
 }
 
@@ -37,7 +37,7 @@ final class AccountViewModel: AccountViewModelProtocol {
         self.scheduler = scheduler
     }
     
-    func viewDidLoad() {
+    func isLogged() {
         checkIsLogged()
     }
     
@@ -93,7 +93,7 @@ final class AccountViewModel: AccountViewModelProtocol {
         return interactor.getDetails()
     }
     
-    private func logoutUser() {
+    private func logout() {
         interactor.deleteUser()
         viewState.send(.login)
     }
