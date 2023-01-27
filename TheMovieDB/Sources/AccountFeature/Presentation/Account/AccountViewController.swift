@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import UI
 
-protocol AccountViewControllerFactory {
+protocol AccountViewControllerDelegate {
   func makeSignInViewController() -> UIViewController
   func makeProfileViewController(with account: Account) -> UIViewController
 }
@@ -17,12 +17,12 @@ protocol AccountViewControllerFactory {
 class AccountViewController: UIViewController {
 
     private let viewModel: AccountViewModelProtocol
-    private let viewControllersFactory: AccountViewControllerFactory
+    private let delegate: AccountViewControllerDelegate
     private var currentViewController: UIViewController?
     private var disposeBag = Set<AnyCancellable>()
     
-    init(viewModel: AccountViewModelProtocol, viewControllersFactory: AccountViewControllerFactory) {
-        self.viewControllersFactory = viewControllersFactory
+    init(viewModel: AccountViewModelProtocol, delegate: AccountViewControllerDelegate) {
+        self.delegate = delegate
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -55,10 +55,10 @@ class AccountViewController: UIViewController {
     private func setupUI(with state: AccountViewState) {
       switch state {
       case .login:
-        let loginVC = viewControllersFactory.makeSignInViewController()
+        let loginVC = delegate.makeSignInViewController()
         transition(to: loginVC, with: Strings.accountTitleLogin.localized())
       case .profile(let account):
-        let profileVC = viewControllersFactory.makeProfileViewController(with: account)
+        let profileVC = delegate.makeProfileViewController(with: account)
         transition(to: profileVC, with: Strings.accountTitle.localized())
       }
     }

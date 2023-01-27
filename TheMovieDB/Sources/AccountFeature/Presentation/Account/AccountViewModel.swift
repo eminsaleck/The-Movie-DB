@@ -27,11 +27,9 @@ final class AccountViewModel: AccountViewModelProtocol {
     weak var coordinator: AccountCoordinatorProtocol?
     private var disposeBag = Set<AnyCancellable>()
     private let scheduler: AnySchedulerOf<DispatchQueue>
-    
-    // MARK: - Public Api
+
     let viewState: CurrentValueSubject<AccountViewState, Never> = .init(.login)
-    
-    // MARK: - Initializers
+
     init(interactor: AccountInteractorProtocol, scheduler: AnySchedulerOf<DispatchQueue> = .main) {
         self.interactor = interactor
         self.scheduler = scheduler
@@ -47,6 +45,10 @@ final class AccountViewModel: AccountViewModelProtocol {
         } else {
             viewState.send(.login)
         }
+    }
+    
+    private func fetchDetailsAccount() -> AnyPublisher<Account, DataTransferError> {
+        return interactor.getDetails()
     }
     
     private func fetchUserDetails() {
@@ -89,17 +91,21 @@ final class AccountViewModel: AccountViewModelProtocol {
             .store(in: &disposeBag)
     }
     
-    private func fetchDetailsAccount() -> AnyPublisher<Account, DataTransferError> {
-        return interactor.getDetails()
-    }
-    
     private func logout() {
         interactor.deleteUser()
         viewState.send(.login)
     }
-    
-    // MARK: - Navigation
-    private func navigateTo(state: AccountState) {
-        coordinator?.navigate(with: state)
-    }
+}
+
+extension AccountViewModel: SignInViewModelDelegate {
+  func signInViewModel(_ signInViewModel: SignInViewModel, didTapSignInButton url: URL) {
+      coordinator?.navigate(with: .signInIsPicked(url: url, delegate: self))
+  }
+}
+
+extension AccountViewModel: AuthPermissionViewModelDelegate {
+  func authPermissionViewModel(didSignedIn signedIn: Bool) {
+    createSession()
+      coordinator?.navigate(with: .authorizationIsComplete)
+  }
 }
