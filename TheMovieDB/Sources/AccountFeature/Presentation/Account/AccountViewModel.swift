@@ -22,8 +22,8 @@ protocol AccountViewModelProtocol {
 }
 
 final class AccountViewModel: AccountViewModelProtocol {
-    private let interactor: AccountInteractorProtocol
     
+    private let interactor: AccountInteractorProtocol
     weak var coordinator: AccountCoordinatorProtocol?
     private var disposeBag = Set<AnyCancellable>()
     private let scheduler: AnySchedulerOf<DispatchQueue>

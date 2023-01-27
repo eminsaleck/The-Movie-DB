@@ -33,11 +33,24 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
         switch state {
         case .accountFeatureInit:
             navigateToAccountFeature()
+        case .signInIsPicked(url: let url, delegate: let delegate):
+            navigateToAuthPermission(url: url, delegate: delegate)
+        case .authorizationIsComplete:
+            navigationController.presentedViewController?.dismiss(animated: true)
         }
     }
     
-    fileprivate func navigateToAccountFeature() {
+    private func navigateToAccountFeature() {
         let accountVC = dependencies.buildAccountViewController(coordinator: self)
         navigationController.pushViewController(accountVC, animated: true)
+    }
+    
+    private func navigateToAuthPermission(url: URL, delegate: AuthPermissionViewModelDelegate?){
+        let authViewController = dependencies.buildAuthPermissionViewController(url: url, delegate: delegate)
+        
+        let embedNavController = UINavigationController(rootViewController: authViewController)
+        embedNavController.presentationController?.delegate = authViewController
+
+        navigationController.present(embedNavController, animated: true)
     }
 }
