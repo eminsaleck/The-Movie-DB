@@ -28,6 +28,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
         .package(url: "https://github.com/realm/realm-swift.git", from: "10.0.0"),
+        .package(url: "https://github.com/pointfreeco/combine-schedulers.git", from: "0.9.1"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -88,6 +89,8 @@ let package = Package(
                     "Persistance",
                     "Network",
                     "MovieListFeatureInterface",
+                    "UI",
+                    .product(name: "CombineSchedulers", package: "combine-schedulers"),
                 ]
             ),
         

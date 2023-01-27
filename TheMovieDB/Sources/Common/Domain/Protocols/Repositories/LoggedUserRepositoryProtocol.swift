@@ -9,6 +9,6 @@ import Foundation
 
 public protocol LoggedUserRepositoryProtocol {
   func saveUser(userId: Int, sessionId: String) // MARK: - TODO, use userId as String
-  func getUser() -> Account?
+  func getUser() -> AccountDomain?
   func deleteUser()
 }

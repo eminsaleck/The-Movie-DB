@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Account {
+public struct AccountDomain {
   public let id: Int
   public let sessionId: String
 
