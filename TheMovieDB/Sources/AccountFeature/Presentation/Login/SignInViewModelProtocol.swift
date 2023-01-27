@@ -23,5 +23,5 @@ protocol SignInViewModelProtocol {
 enum SignInViewState: Equatable {
   case initial
   case loading
-  case error
+    case error
 }

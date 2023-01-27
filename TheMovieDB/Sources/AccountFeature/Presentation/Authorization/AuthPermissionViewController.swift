@@ -14,7 +14,7 @@ class AuthPermissionViewController: UIViewController{
     
     init(viewModel: AuthPermissionViewModelProtocol) {
         self.viewModel = viewModel
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
