@@ -4,7 +4,6 @@
 //
 //  Created by LEMIN DAHOVICH on 27.01.2023.
 //
-
 import UIKit
 
 @IBDesignable public class ShrinkingButton: UIButton {
@@ -33,9 +32,6 @@ import UIKit
         layer.addSublayer(spiner)
         return spiner
     }()
-
-    private var cachedTitle: String?
-    private var cachedImage: UIImage?
 
     private let shrinkCurve: CAMediaTimingFunction = CAMediaTimingFunction(name: .linear)
     private let shrinkDuration: CFTimeInterval = 0.1
@@ -76,8 +72,6 @@ import UIKit
     private func setOriginalState(completion: (() -> Void)?) {
         animateToOriginalWidth(completion: completion)
         spiner.stopAnimation()
-        setTitle(self.cachedTitle, for: .normal)
-        setImage(self.cachedImage, for: .normal)
         isUserInteractionEnabled = true
         layer.cornerRadius = self.cornerRadius
         isAnimating = false
@@ -115,10 +109,6 @@ import UIKit
     public func startAnimation() {
         isAnimating = true
         isUserInteractionEnabled = false
-
-        cachedTitle = title(for: .normal)
-        cachedImage = image(for: .normal)
-
         setTitle("", for: .normal)
         setImage(nil, for: .normal)
 

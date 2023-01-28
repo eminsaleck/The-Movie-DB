@@ -66,7 +66,7 @@ final class DIContainer {
 }
 
 extension DIContainer: AccountCoordinatorDependencies {
-
+    
     func buildAccountViewController(coordinator: AccountCoordinatorProtocol?) -> UIViewController {
         guard let accountViewModel = accountViewModel else { return UIViewController(nibName: nil, bundle: nil) }
         accountViewModel.coordinator = coordinator
@@ -77,16 +77,23 @@ extension DIContainer: AccountCoordinatorDependencies {
         let authViewModel = AuthPermissionViewModel(url: url)
         authViewModel.delegate = delegate
         return AuthPermissionViewController(viewModel: authViewModel)
-    }    
+    }
 }
 
 extension DIContainer: AccountViewControllerDelegate {
-  func makeSignInViewController() -> UIViewController {
-    return SignInViewController()
-  }
-
-  func makeProfileViewController(with account: Account) -> UIViewController {
-    return ProfileViewController()
-  }
+    private func makeCreateTokenUseCase() -> CreateTokenUseCase {
+        return DefaultCreateTokenUseCase(authRepository: authRepository)
+    }
+    func makeSignInViewController() -> UIViewController {
+        let loginInteractor = LoginInteractor(createTokenUseCase: makeCreateTokenUseCase())
+        
+        let loginViewModel = LoginViewModel(interactor: loginInteractor)
+        loginViewModel.delegate = accountViewModel
+        return SignInViewController(viewModel: loginViewModel)
+    }
+    
+    func makeProfileViewController(with account: Account) -> UIViewController {
+        return ProfileViewController()
+    }
 }
 
