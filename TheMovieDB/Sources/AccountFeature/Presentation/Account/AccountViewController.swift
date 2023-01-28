@@ -57,10 +57,10 @@ class AccountViewController: UIViewController {
       switch state {
       case .login:
         let loginVC = delegate.makeSignInViewController()
-        transition(to: loginVC, with: Strings.accountTitleLogin.localized())
+        transition(to: loginVC, with: Localized.accountTitleLogin.localized())
       case .profile(let account):
         let profileVC = delegate.makeProfileViewController(with: account)
-        transition(to: profileVC, with: Strings.accountTitle.localized())
+        transition(to: profileVC, with: Localized.accountTitle.localized())
       }
     }
     

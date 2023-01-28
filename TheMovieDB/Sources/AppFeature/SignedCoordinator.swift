@@ -30,7 +30,7 @@ public class SignedCoordinator: Coordinator {
 
   fileprivate func showMainFeatures() {
     let accountNavigation = UINavigationController()
-    accountNavigation.tabBarItem = UITabBarItem(title: Strings.accountTitle.localized(),
+    accountNavigation.tabBarItem = UITabBarItem(title: Localized.accountTitle.localized(),
                                                 image: UIImage(systemName: "person.crop.circle.fill"), tag: 3)
     buildAccountCoordinator(in: accountNavigation)
 

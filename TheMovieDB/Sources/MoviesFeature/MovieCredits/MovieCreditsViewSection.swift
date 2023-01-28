@@ -19,9 +19,9 @@ enum MovieCreditsViewSection {
     var title: String {
         switch self {
         case .cast:
-            return LocalizedStrings.cast()
+            return Localized.cast()
         case .crew:
-            return LocalizedStrings.crew()
+            return Localized.crew()
         }
     }
 

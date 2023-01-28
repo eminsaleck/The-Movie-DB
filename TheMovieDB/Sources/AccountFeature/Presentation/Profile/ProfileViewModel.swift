@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Combine
 
-protocol AccountViewModelDelegate {
+protocol ProfileViewModelDelegate {
     
 }
 
@@ -18,7 +19,7 @@ protocol ProfileViewModelProtocol {
   var delegate: ProfileViewModelDelegate? { get set }
 
   // MARK: - Output
-  var dataSource: CurrentValueSubject<[ProfileSectionModel], Never> { get }
+  var dataSource: CurrentValueSubject<[ProfileSection], Never> { get }
   var presentSignOutAlert: CurrentValueSubject<Bool, Never> { get }
 }
 
@@ -26,13 +27,13 @@ protocol ProfileViewModelProtocol {
 final class ProfileViewModel{
     
     private let account: Account
-    var delegate: AccountViewModelDelegate
+    var delegate: ProfileViewModelDelegate?
     
     init(_ account: Account){
         self.account = account
     }
 }
 
-extension ProfileViewModel: AccountViewModelDelegate{
+extension ProfileViewModel: ProfileViewModelDelegate{
     
 }

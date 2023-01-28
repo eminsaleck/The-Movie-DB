@@ -18,7 +18,7 @@ class LoginView: UIView{
         $0.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
         $0.titleLabel?.font = .boldSystemFont(ofSize: 15)
         $0.layer.cornerRadius = $0.frame.height / 4
-        $0.setTitle(Strings.accountTitleDetailButton.localized(), for: .normal)
+        $0.setTitle(Localized.accountTitleDetailButton.localized(), for: .normal)
         return $0
     }(ShrinkingButton())
     

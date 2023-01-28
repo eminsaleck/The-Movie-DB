@@ -74,7 +74,7 @@ public class DIContainer {
         self.appConfigurations = appConfigurations
         
         language = Language(languageStrings: Locale.preferredLanguages) ?? .en
-        Strings.currentLocale = Locale(identifier: language.rawValue)
+        Localized.currentLocale = Locale(identifier: language.rawValue)
     }
     
     // MARK: - Account Module
