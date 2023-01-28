@@ -12,19 +12,18 @@ import Network
 enum LoginViewState: Equatable {
   case initial
   case loading
-    case error
-}
-
-protocol LoginViewModelDelegate: AnyObject {
-  func loginViewModel(_ loginViewModel: LoginViewModel, didTapLoginButton url: URL)
+  case error
 }
 
 protocol LoginViewModelProtocol {
   func loginDidTapped()
   func changeState(with state: LoginViewState)
-
   var viewState: CurrentValueSubject<LoginViewState, Never> { get }
   var delegate: LoginViewModelDelegate? { get set }
+}
+
+protocol LoginViewModelDelegate: AnyObject {
+  func loginViewModelDelegate(_ url: URL)
 }
 
 class LoginViewModel: LoginViewModelProtocol {
@@ -35,7 +34,7 @@ class LoginViewModel: LoginViewModelProtocol {
     let viewState: CurrentValueSubject<LoginViewState, Never> = .init(.initial)
     weak var delegate: LoginViewModelDelegate?
 
-    private var disposeBag = Set<AnyCancellable>()
+    private var bag = Set<AnyCancellable>()
     
     init(interactor: LoginInteractorProtocol) {
       self.interactor = interactor
@@ -52,7 +51,8 @@ class LoginViewModel: LoginViewModelProtocol {
     
     private func subscribe() {
       tapButton
-        .flatMap { [viewState, interactor] () -> AnyPublisher<URL, DataTransferError> in
+        .flatMap { [viewState, interactor]
+            () -> AnyPublisher<URL, DataTransferError> in
           viewState.send(.loading)
           return interactor.execute()
         }
@@ -67,8 +67,8 @@ class LoginViewModel: LoginViewModelProtocol {
           }
         },
               receiveValue: { [weak self] url in
-            self?.delegate?.loginViewModel(self!, didTapLoginButton: url)
+            self?.delegate?.loginViewModelDelegate(url)
         })
-        .store(in: &disposeBag)
+        .store(in: &bag)
     }
 }

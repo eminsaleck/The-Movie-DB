@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     
     private let viewModel: LoginViewModelProtocol
     private var loginView: LoginView?
-    private var disposeBag = Set<AnyCancellable>()
+    private var bag = Set<AnyCancellable>()
     
     init(viewModel: LoginViewModelProtocol) {
         self.viewModel = viewModel
@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
             .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] state in
                 self?.setupView(with: state)
             })
-            .store(in: &disposeBag)
+            .store(in: &bag)
     }
     
     private func setupView(with state: LoginViewState) {

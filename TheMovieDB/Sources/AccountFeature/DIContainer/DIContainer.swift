@@ -81,9 +81,11 @@ extension DIContainer: AccountCoordinatorDependencies {
 }
 
 extension DIContainer: AccountViewControllerDelegate {
+    
     private func makeCreateTokenUseCase() -> CreateTokenUseCase {
         return DefaultCreateTokenUseCase(authRepository: authRepository)
     }
+    
     func makeSignInViewController() -> UIViewController {
         let loginInteractor = LoginInteractor(createTokenUseCase: makeCreateTokenUseCase())
         
@@ -91,9 +93,11 @@ extension DIContainer: AccountViewControllerDelegate {
         loginViewModel.delegate = accountViewModel
         return LoginViewController(viewModel: loginViewModel)
     }
-    
+
     func makeProfileViewController(with account: Account) -> UIViewController {
-        return ProfileViewController()
+      let profileViewModel = ProfileViewModel(account)
+      profileViewModel.delegate = profileViewModel
+      return ProfileViewController(viewModel: profileViewModel)
     }
 }
 

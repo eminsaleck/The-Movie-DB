@@ -9,7 +9,12 @@ import UIKit
 import UI
 
 class ProfileViewController: UIViewController {
+    
+    private viewModel: ProfileViewModel
 
+    init(viewModel: ProfileViewModel){
+        self.viewModel = viewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

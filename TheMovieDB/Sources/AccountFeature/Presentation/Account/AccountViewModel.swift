@@ -24,7 +24,7 @@ final class AccountViewModel: AccountViewModelProtocol {
     
     private let interactor: AccountInteractorProtocol
     weak var coordinator: AccountCoordinatorProtocol?
-    private var disposeBag = Set<AnyCancellable>()
+    private var bag = Set<AnyCancellable>()
 
     let viewState: CurrentValueSubject<AccountViewState, Never> = .init(.login)
 
@@ -62,7 +62,7 @@ final class AccountViewModel: AccountViewModelProtocol {
                   receiveValue: { [weak self] accountDetails in
                 self?.viewState.send(.profile(account: accountDetails))
             })
-            .store(in: &disposeBag)
+            .store(in: &bag)
     }
     
     private func createSession() {
@@ -85,7 +85,7 @@ final class AccountViewModel: AccountViewModelProtocol {
                   receiveValue: { [weak self] accountDetails in
                 self?.viewState.send(.profile(account: accountDetails))
             })
-            .store(in: &disposeBag)
+            .store(in: &bag)
     }
     
     private func logout() {
@@ -95,13 +95,13 @@ final class AccountViewModel: AccountViewModelProtocol {
 }
 
 extension AccountViewModel: LoginViewModelDelegate {
-  func loginViewModel(_ loginViewModel: LoginViewModel, didTapLoginButton url: URL) {
+  func loginViewModelDelegate(_ url: URL) {
       coordinator?.navigate(with: .loginInIsPicked(url: url, delegate: self))
   }
 }
 
 extension AccountViewModel: AuthPermissionViewModelDelegate {
-  func authPermissionViewModel(didSignedIn signedIn: Bool) {
+  func authPermissionViewModelDelegate(_ signedIn: Bool) {
     createSession()
       coordinator?.navigate(with: .authorizationIsComplete)
   }
