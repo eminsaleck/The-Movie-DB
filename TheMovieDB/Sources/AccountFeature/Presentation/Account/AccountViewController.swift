@@ -46,7 +46,8 @@ class AccountViewController: UIViewController {
       viewModel
         .viewState
         .receive(on: DispatchQueue.main)
-        .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] viewState in
+        .sink(receiveCompletion: { _ in },
+              receiveValue: { [weak self] viewState in
           self?.setupUI(with: viewState)
         })
         .store(in: &disposeBag)
@@ -70,7 +71,14 @@ class AccountViewController: UIViewController {
       currentViewController = viewController
     }
     
-    public func add(_ viewController: UIViewController) {
+    private func remove(_ viewController: UIViewController?) {
+      guard let viewController = viewController else { return }
+      viewController.willMove(toParent: nil)
+      viewController.view.removeFromSuperview()
+      viewController.removeFromParent()
+    }
+    
+    private func add(_ viewController: UIViewController) {
       addChild(viewController)
       view.addSubview(viewController.view)
       viewController.view.frame = view.bounds
@@ -78,10 +86,4 @@ class AccountViewController: UIViewController {
       viewController.didMove(toParent: self)
     }
 
-    private func remove(_ viewController: UIViewController?) {
-      guard let viewController = viewController else { return }
-      viewController.willMove(toParent: nil)
-      viewController.view.removeFromSuperview()
-      viewController.removeFromParent()
-    }
 }
