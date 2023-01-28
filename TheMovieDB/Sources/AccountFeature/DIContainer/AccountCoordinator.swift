@@ -33,7 +33,7 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
         switch state {
         case .accountFeatureInit:
             navigateToAccountFeature()
-        case .signInIsPicked(url: let url, delegate: let delegate):
+        case .loginInIsPicked(url: let url, delegate: let delegate):
             navigateToAuthPermission(url: url, delegate: delegate)
         case .authorizationIsComplete:
             navigationController.presentedViewController?.dismiss(animated: true)

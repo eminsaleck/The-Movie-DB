@@ -15,7 +15,7 @@ protocol AccountCoordinatorProtocol: AnyObject {
 
 public enum AccountState: State {
     case accountFeatureInit
-    case signInIsPicked(url: URL, delegate: AuthPermissionViewModelDelegate?)
+    case loginInIsPicked(url: URL, delegate: AuthPermissionViewModelDelegate?)
     case authorizationIsComplete
 }
 

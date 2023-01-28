@@ -85,9 +85,11 @@ extension DIContainer: AccountViewControllerDelegate {
         return DefaultCreateTokenUseCase(authRepository: authRepository)
     }
     func makeSignInViewController() -> UIViewController {
-        let signViewModel = SignInViewModel(createTokenUseCase: makeCreateTokenUseCase())
-        signViewModel.delegate = accountViewModel
-        return SignInViewController(viewModel: signViewModel)
+        let loginInteractor = LoginInteractor(createTokenUseCase: makeCreateTokenUseCase())
+        
+        let loginViewModel = LoginViewModel(interactor: loginInteractor)
+        loginViewModel.delegate = accountViewModel
+        return SignInViewController(viewModel: loginViewModel)
     }
     
     func makeProfileViewController(with account: Account) -> UIViewController {

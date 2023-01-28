@@ -22,7 +22,7 @@
 "account_alert_logout" = "Sign out";
 "account_alert_cancel" = "Cancel";
 "account_title_login" = "Login";
-"account_title_detail_button" = "Sign in with TheMovieDB";
+"account_title_detail_button" = "Login with TheMovieDB";
 "account_favorite_list_title" = "Favorites";
 "account_favorite_watchList_title" = "Watch List";
 

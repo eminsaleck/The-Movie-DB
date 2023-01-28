@@ -97,9 +97,9 @@ final class AccountViewModel: AccountViewModelProtocol {
     }
 }
 
-extension AccountViewModel: SignInViewModelDelegate {
-  func signInViewModel(_ signInViewModel: SignInViewModel, didTapSignInButton url: URL) {
-      coordinator?.navigate(with: .signInIsPicked(url: url, delegate: self))
+extension AccountViewModel: LoginViewModelDelegate {
+  func loginViewModel(_ loginViewModel: LoginViewModel, didTapLoginButton url: URL) {
+      coordinator?.navigate(with: .loginInIsPicked(url: url, delegate: self))
   }
 }
 
