@@ -53,8 +53,8 @@ enum UserListType: Hashable {
   
   var localizedDescription: String {
     switch self {
-    case .favorites: return Strings.accountFavoritesCell.localized()
-    case .watchList: return Strings.accountWatchlistCell.localized()
+    case .favorites: return Localized.accountFavoritesCell.localized()
+    case .watchList: return Localized.accountWatchlistCell.localized()
     }
   }
 }
