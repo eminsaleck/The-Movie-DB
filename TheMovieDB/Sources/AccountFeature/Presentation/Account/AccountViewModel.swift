@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import CombineSchedulers
 import Network
 import Common
 
@@ -26,13 +25,11 @@ final class AccountViewModel: AccountViewModelProtocol {
     private let interactor: AccountInteractorProtocol
     weak var coordinator: AccountCoordinatorProtocol?
     private var disposeBag = Set<AnyCancellable>()
-    private let scheduler: AnySchedulerOf<DispatchQueue>
 
     let viewState: CurrentValueSubject<AccountViewState, Never> = .init(.login)
 
-    init(interactor: AccountInteractorProtocol, scheduler: AnySchedulerOf<DispatchQueue> = .main) {
+    init(interactor: AccountInteractorProtocol) {
         self.interactor = interactor
-        self.scheduler = scheduler
     }
     
     func isLogged() {
@@ -53,7 +50,7 @@ final class AccountViewModel: AccountViewModelProtocol {
     
     private func fetchUserDetails() {
         fetchDetailsAccount()
-            .receive(on: scheduler)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .failure:
@@ -76,7 +73,7 @@ final class AccountViewModel: AccountViewModelProtocol {
                 }
                 return self.fetchDetailsAccount()
             }
-            .receive(on: scheduler)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .failure:
