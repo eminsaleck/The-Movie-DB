@@ -7,24 +7,38 @@
 
 import Foundation
 import Combine
-import CombineSchedulers
 import Network
 
+enum LoginViewState: Equatable {
+  case initial
+  case loading
+    case error
+}
+
+protocol LoginViewModelDelegate: AnyObject {
+  func loginViewModel(_ loginViewModel: LoginViewModel, didTapLoginButton url: URL)
+}
+
+protocol LoginViewModelProtocol {
+  func loginDidTapped()
+  func changeState(with state: LoginViewState)
+
+  var viewState: CurrentValueSubject<LoginViewState, Never> { get }
+  var delegate: LoginViewModelDelegate? { get set }
+}
 
 class LoginViewModel: LoginViewModelProtocol {
 
     private let interactor: LoginInteractorProtocol
     private let tapButton = PassthroughSubject<Void, Never>()
     
-    let viewState: CurrentValueSubject<SignInViewState, Never> = .init(.initial)
+    let viewState: CurrentValueSubject<LoginViewState, Never> = .init(.initial)
     weak var delegate: LoginViewModelDelegate?
 
-    private let scheduler: AnySchedulerOf<DispatchQueue>
     private var disposeBag = Set<AnyCancellable>()
     
-    init(interactor: LoginInteractorProtocol, scheduler: AnySchedulerOf<DispatchQueue> = .main) {
+    init(interactor: LoginInteractorProtocol) {
       self.interactor = interactor
-      self.scheduler = scheduler
       subscribe()
     }
     
@@ -32,7 +46,7 @@ class LoginViewModel: LoginViewModelProtocol {
         tapButton.send(())
     }
     
-    func changeState(with state: SignInViewState) {
+    func changeState(with state: LoginViewState) {
         viewState.send(state)
     }
     
@@ -42,7 +56,7 @@ class LoginViewModel: LoginViewModelProtocol {
           viewState.send(.loading)
           return interactor.execute()
         }
-        .receive(on: scheduler)
+        .receive(on: DispatchQueue.main)
         .sink(receiveCompletion: { [weak self] completion in
           switch completion {
           case let .failure(error):

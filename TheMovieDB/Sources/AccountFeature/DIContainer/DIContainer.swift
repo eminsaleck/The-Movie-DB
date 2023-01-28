@@ -89,7 +89,7 @@ extension DIContainer: AccountViewControllerDelegate {
         
         let loginViewModel = LoginViewModel(interactor: loginInteractor)
         loginViewModel.delegate = accountViewModel
-        return SignInViewController(viewModel: loginViewModel)
+        return LoginViewController(viewModel: loginViewModel)
     }
     
     func makeProfileViewController(with account: Account) -> UIViewController {

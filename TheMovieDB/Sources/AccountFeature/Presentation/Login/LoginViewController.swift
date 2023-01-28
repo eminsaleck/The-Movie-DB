@@ -9,10 +9,10 @@ import UIKit
 import Combine
 import UI
 
-class SignInViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     private let viewModel: LoginViewModelProtocol
-    private var rootView: LoginView?
+    private var loginView: LoginView?
     private var disposeBag = Set<AnyCancellable>()
     
     init(viewModel: LoginViewModelProtocol) {
@@ -24,10 +24,9 @@ class SignInViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Lifecycle
     override func loadView() {
-        rootView = LoginView(viewModel: viewModel)
-        view = rootView
+        loginView = LoginView(viewModel: viewModel)
+        view = loginView
     }
     
     override func viewDidLoad() {
@@ -35,7 +34,7 @@ class SignInViewController: UIViewController {
         subscribe()
     }
     
-    fileprivate func subscribe() {
+    private func subscribe() {
         viewModel
             .viewState
             .receive(on: DispatchQueue.main)
@@ -45,14 +44,15 @@ class SignInViewController: UIViewController {
             .store(in: &disposeBag)
     }
     
-    fileprivate func setupView(with state: SignInViewState) {
+    private func setupView(with state: LoginViewState) {
+        guard let loginView = loginView else { return }
         switch state {
         case .initial:
-            rootView?.stopLoading()
+            loginView.stopLoading()
         case .loading:
-            rootView?.startLoading()
+            loginView.startLoading()
         case .error:
-            rootView?.stopLoading()
+            loginView.stopLoading()
         }
     }
 }
