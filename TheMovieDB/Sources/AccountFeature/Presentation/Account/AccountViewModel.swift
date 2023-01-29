@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import CombineSchedulers
 import Network
 import Common
 
@@ -25,14 +24,12 @@ final class AccountViewModel: AccountViewModelProtocol {
     
     private let interactor: AccountInteractorProtocol
     weak var coordinator: AccountCoordinatorProtocol?
-    private var disposeBag = Set<AnyCancellable>()
-    private let scheduler: AnySchedulerOf<DispatchQueue>
+    private var bag = Set<AnyCancellable>()
 
     let viewState: CurrentValueSubject<AccountViewState, Never> = .init(.login)
 
-    init(interactor: AccountInteractorProtocol, scheduler: AnySchedulerOf<DispatchQueue> = .main) {
+    init(interactor: AccountInteractorProtocol) {
         self.interactor = interactor
-        self.scheduler = scheduler
     }
     
     func isLogged() {
@@ -53,7 +50,7 @@ final class AccountViewModel: AccountViewModelProtocol {
     
     private func fetchUserDetails() {
         fetchDetailsAccount()
-            .receive(on: scheduler)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .failure:
@@ -65,7 +62,7 @@ final class AccountViewModel: AccountViewModelProtocol {
                   receiveValue: { [weak self] accountDetails in
                 self?.viewState.send(.profile(account: accountDetails))
             })
-            .store(in: &disposeBag)
+            .store(in: &bag)
     }
     
     private func createSession() {
@@ -76,7 +73,7 @@ final class AccountViewModel: AccountViewModelProtocol {
                 }
                 return self.fetchDetailsAccount()
             }
-            .receive(on: scheduler)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .failure:
@@ -88,7 +85,7 @@ final class AccountViewModel: AccountViewModelProtocol {
                   receiveValue: { [weak self] accountDetails in
                 self?.viewState.send(.profile(account: accountDetails))
             })
-            .store(in: &disposeBag)
+            .store(in: &bag)
     }
     
     private func logout() {
@@ -98,13 +95,13 @@ final class AccountViewModel: AccountViewModelProtocol {
 }
 
 extension AccountViewModel: LoginViewModelDelegate {
-  func loginViewModel(_ loginViewModel: LoginViewModel, didTapLoginButton url: URL) {
+  func loginViewModelDelegate(_ url: URL) {
       coordinator?.navigate(with: .loginInIsPicked(url: url, delegate: self))
   }
 }
 
 extension AccountViewModel: AuthPermissionViewModelDelegate {
-  func authPermissionViewModel(didSignedIn signedIn: Bool) {
+  func authPermissionViewModelDelegate(_ signedIn: Bool) {
     createSession()
       coordinator?.navigate(with: .authorizationIsComplete)
   }

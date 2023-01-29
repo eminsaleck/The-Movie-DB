@@ -9,9 +9,8 @@ import Foundation
 import Combine
 
 public protocol AuthPermissionViewModelDelegate: AnyObject {
-  func authPermissionViewModel(didSignedIn signedIn: Bool)
+  func authPermissionViewModelDelegate(_ signedIn: Bool)
 }
-
 
 protocol AuthPermissionViewModelProtocol {
   func signIn()
@@ -24,7 +23,7 @@ final class AuthPermissionViewModel: AuthPermissionViewModelProtocol {
   weak var delegate: AuthPermissionViewModelDelegate?
   private let didSignIn = PassthroughSubject<Bool, Never>()
   let authPermissionURL: URL
-  private var disposeBag = Set<AnyCancellable>()
+  private var bag = Set<AnyCancellable>()
 
   init(url: URL) {
     authPermissionURL = url
@@ -38,8 +37,8 @@ final class AuthPermissionViewModel: AuthPermissionViewModelProtocol {
   private func subscribe() {
     didSignIn
       .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] signedIn in
-        self?.delegate?.authPermissionViewModel(didSignedIn: signedIn)
+        self?.delegate?.authPermissionViewModelDelegate(signedIn)
       })
-      .store(in: &disposeBag)
+      .store(in: &bag)
   }
 }

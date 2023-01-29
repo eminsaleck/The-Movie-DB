@@ -19,7 +19,7 @@ class AccountViewController: UIViewController {
     private let viewModel: AccountViewModelProtocol
     private let delegate: AccountViewControllerDelegate
     private var currentViewController: UIViewController?
-    private var disposeBag = Set<AnyCancellable>()
+    private var bag = Set<AnyCancellable>()
     
     init(viewModel: AccountViewModelProtocol, delegate: AccountViewControllerDelegate) {
         self.delegate = delegate
@@ -50,17 +50,17 @@ class AccountViewController: UIViewController {
               receiveValue: { [weak self] viewState in
           self?.setupUI(with: viewState)
         })
-        .store(in: &disposeBag)
+        .store(in: &bag)
     }
     
     private func setupUI(with state: AccountViewState) {
       switch state {
       case .login:
         let loginVC = delegate.makeSignInViewController()
-        transition(to: loginVC, with: Strings.accountTitleLogin.localized())
+        transition(to: loginVC, with: Localized.accountTitleLogin.localized())
       case .profile(let account):
         let profileVC = delegate.makeProfileViewController(with: account)
-        transition(to: profileVC, with: Strings.accountTitle.localized())
+        transition(to: profileVC, with: Localized.accountTitle.localized())
       }
     }
     

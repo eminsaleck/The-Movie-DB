@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum Strings: String, CaseIterable {
+public enum Localized: String, CaseIterable {
 
   public static var currentLocale = Locale.current
 
   public func localized() -> String {
-    return localizeKey(self.rawValue, Strings.currentLocale)
+    return localizeKey(self.rawValue, Localized.currentLocale)
   }
     
   case accountAlertCancel = "account_alert_cancel" // Cancel
