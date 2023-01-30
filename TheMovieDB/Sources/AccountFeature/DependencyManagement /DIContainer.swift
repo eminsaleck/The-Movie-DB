@@ -38,22 +38,10 @@ final class DIContainer {
     
     init(dependencies: FeatureDependencies) {
         self.dependencies = dependencies
-        
-        func makeCreateSessionUseCase() -> CreateSessionUseCase {
-            return DefaultCreateSessionUseCase(authRepository: authRepository)
-        }
-        
-        func makeFetchAccountDetailsUseCase() -> FetchAccountDetailsUseCase {
-            return DefaultFetchAccountDetailsUseCase(accountRepository: accountRepository)
-        }
-        
-        func makeFetchLoggedUserUseCase() -> FetchLoggedUser {
-            return DefaultFetchLoggedUser(loggedRepository: dependencies.userLoggedRepository)
-        }
-        
-        func makeDeleteLoggedUserUseCase() -> DeleteLoggedUserUseCase {
-            return DefaultDeleteLoggedUserUseCase(loggedRepository: dependencies.userLoggedRepository)
-        }
+        setupViewModel()
+    }
+
+    func setupViewModel(){
         interactor = AccountInteractor(createNewSession: makeCreateSessionUseCase(),
                                        fetchAccountDetails: makeFetchAccountDetailsUseCase(),
                                        fetchLoggedUser: makeFetchLoggedUserUseCase(),
@@ -64,6 +52,25 @@ final class DIContainer {
     
     func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {
         return AccountCoordinator(navigationController: navigationController, dependencies: self)
+    }
+}
+//UseCases
+extension DIContainer{
+    
+    func makeCreateSessionUseCase() -> CreateSessionUseCase {
+        return DefaultCreateSessionUseCase(authRepository: authRepository)
+    }
+    
+    func makeFetchAccountDetailsUseCase() -> FetchAccountDetailsUseCase {
+        return FetchAccountDetailsUseCaseImplementation(accountRepository: accountRepository)
+    }
+    
+    func makeFetchLoggedUserUseCase() -> FetchLoggedUser {
+        return FetchLoggedUserImplementation(loggedRepository: dependencies.userLoggedRepository)
+    }
+    
+    func makeDeleteLoggedUserUseCase() -> DeleteLoggedUserUseCase {
+        return DeleteLoggedUserUseCaseImplementation(loggedRepository: dependencies.userLoggedRepository)
     }
 }
 

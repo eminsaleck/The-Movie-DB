@@ -12,7 +12,7 @@ protocol DeleteLoggedUserUseCase {
   func execute() -> LoggedUserRepositoryProtocol
 }
 
-final class DefaultDeleteLoggedUserUseCase: DeleteLoggedUserUseCase {
+final class DeleteLoggedUserUseCaseImplementation: DeleteLoggedUserUseCase {
   private let loggedRepository: LoggedUserRepositoryProtocol
 
   init(loggedRepository: LoggedUserRepositoryProtocol) {

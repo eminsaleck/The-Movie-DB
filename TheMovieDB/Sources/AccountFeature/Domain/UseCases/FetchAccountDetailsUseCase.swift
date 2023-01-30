@@ -14,7 +14,7 @@ protocol FetchAccountDetailsUseCase {
   func execute() -> AccountRepository
 }
 
-final class DefaultFetchAccountDetailsUseCase: FetchAccountDetailsUseCase {
+final class FetchAccountDetailsUseCaseImplementation: FetchAccountDetailsUseCase {
   private let accountRepository: AccountRepository
 
   init(accountRepository: AccountRepository) {

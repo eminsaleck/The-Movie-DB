@@ -10,7 +10,7 @@ public protocol FetchLoggedUser {
   func execute() -> LoggedUserRepositoryProtocol
 }
 
-public final class DefaultFetchLoggedUser: FetchLoggedUser {
+public final class FetchLoggedUserImplementation: FetchLoggedUser {
   private let loggedRepository: LoggedUserRepositoryProtocol
 
   public init(loggedRepository: LoggedUserRepositoryProtocol) {
