@@ -11,33 +11,28 @@ import Network
 import Networking
 import Common
 
-public final class AccountRepositoryImplementation {
-  private let remoteDataSource: AccountRemoteDataSource
-  private let accessTokenRepository: AccessTokenRepositoryProtocol
-  private let userLoggedRepository: LoggedUserRepositoryProtocol
-  private let gravatarBaseURL: String
-
-  init(remoteDataSource: AccountRemoteDataSource, accessTokenRepository: AccessTokenRepositoryProtocol,
-       userLoggedRepository: LoggedUserRepositoryProtocol,
-       gravatarBaseURL: String) {
-    self.remoteDataSource = remoteDataSource
-    self.accessTokenRepository = accessTokenRepository
-    self.userLoggedRepository = userLoggedRepository
-    self.gravatarBaseURL = gravatarBaseURL
-  }
+public final class AccountRepositoryImplementation: AccountRepository {
+    
+    private let dependencies: AccountDependencies
+    
+    init(dependencies: AccountDependencies) {
+        self.dependencies = dependencies
+    }
+    
+    public func getAccountDetails() -> AnyPublisher<Account, DataTransferError> {
+        let sessionId = dependencies.accessTokenRepository.getAccessToken()
+        
+        return dependencies.remoteDataSource.getAccountDetails(session: sessionId)
+            .map {
+                self.dependencies.userLoggedRepository.saveUser(userId: $0.id, sessionId: sessionId)
+                let avatarURL = URL(string: "\(self.dependencies.gravatarBaseURL)/\($0.avatar?.gravatar?.hash ?? "" )")
+                return Account(id: $0.id, userName: $0.userName, avatarURL: avatarURL)
+            }
+            .eraseToAnyPublisher()
+    }
 }
 
-extension AccountRepositoryImplementation: AccountRepository {
 
-  public func getAccountDetails() -> AnyPublisher<Account, DataTransferError> {
-    let sessionId = accessTokenRepository.getAccessToken()
 
-    return remoteDataSource.getAccountDetails(session: sessionId)
-      .map {
-        self.userLoggedRepository.saveUser(userId: $0.id, sessionId: sessionId)
-        let avatarURL = URL(string: "\(self.gravatarBaseURL)/\($0.avatar?.gravatar?.hash ?? "" )")
-        return Account(id: $0.id, userName: $0.userName, avatarURL: avatarURL)
-      }
-      .eraseToAnyPublisher()
-  }
-}
+
+

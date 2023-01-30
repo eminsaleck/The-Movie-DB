@@ -13,22 +13,24 @@ final class DIContainer {
     
     private let dependencies: ModuleDependencies
     
-    private lazy var authRepository: AuthRepository = {
-        return AuthRepositoryImplementation(
-            remoteDataSource: AuthRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
-            requestTokenRepository: dependencies.requestTokenRepository,
-            accessTokenRepository: dependencies.accessTokenRepository,
-            tokenMapper: RequestTokenMapper(authenticateBaseURL: dependencies.authenticateBaseURL)
-        )
-    }()
+    private lazy var accountDependencies = AccountDependencies(
+        remoteDataSource: AccountRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
+        accessTokenRepository: dependencies.accessTokenRepository,
+        userLoggedRepository: dependencies.userLoggedRepository,
+        gravatarBaseURL: dependencies.gravatarBaseURL)
+    
+    private lazy var authDependencies = AuthDependencies(
+        remoteDataSource: AuthRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
+        requestTokenRepository: dependencies.requestTokenRepository,
+        accessTokenRepository: dependencies.accessTokenRepository,
+        tokenMapper: RequestTokenMapper(authenticateBaseURL: dependencies.authenticateBaseURL))
     
     private lazy var accountRepository: AccountRepository = {
-        return AccountRepositoryImplementation(
-            remoteDataSource: AccountRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
-            accessTokenRepository: dependencies.accessTokenRepository,
-            userLoggedRepository: dependencies.userLoggedRepository,
-            gravatarBaseURL: dependencies.gravatarBaseURL
-        )
+        return AccountRepositoryImplementation(dependencies: accountDependencies)
+    }()
+    
+    private lazy var authRepository: AuthRepository = {
+        return AuthRepositoryImplementation(dependencies: authDependencies)
     }()
     
     private var interactor: AccountInteractorProtocol?
