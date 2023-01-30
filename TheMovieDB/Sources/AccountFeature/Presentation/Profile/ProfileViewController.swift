@@ -15,11 +15,11 @@ class ProfileViewController: UIViewController {
     private var viewModel: ProfileViewModelProtocol
     private var bag = Set<AnyCancellable>()
 
-    var delegate: ProfileViewControllerDelegate?
+    var delegate: ProfileViewControllerDelegate
 
-    
-    init(viewModel: ProfileViewModelProtocol){
+    init(viewModel: ProfileViewModelProtocol, delegate: ProfileViewControllerDelegate){
         self.viewModel = viewModel
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -51,7 +51,7 @@ class ProfileViewController: UIViewController {
     private func showSignOutActionSheet() {
         let signOutAction = UIAlertAction(title: Localized.accountAlertLogout.localized(),
                                           style: .destructive) {  [weak self] _ in
-            self?.delegate?.didLogoutTapped(true)
+            self?.delegate.logoutTapped(true)
         }
         showSimpleActionSheet(title: Localized.accountAlertLogout.localized(),
                               message: nil, action: signOutAction)

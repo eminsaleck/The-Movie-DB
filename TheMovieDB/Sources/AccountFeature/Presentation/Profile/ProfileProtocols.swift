@@ -9,7 +9,7 @@ import Combine
 
 
 protocol ProfileViewControllerDelegate{
-    func didLogoutTapped(_ bool: Bool)
+    func logoutTapped(_ bool: Bool)
 }
 
 protocol ProfileViewModelDelegate {

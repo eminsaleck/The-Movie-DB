@@ -116,14 +116,13 @@ extension AccountViewModel: ProfileViewControllerDelegate, ProfileViewModelDeleg
     func option(_ option: UserListType) {
         switch option {
         case .favorites:
-
             navigate(with: .favourites)
         case .watchList:
             navigate(with: .watchList)
         }
     }
     
-    func didLogoutTapped(_ bool: Bool) {
+    func logoutTapped(_ bool: Bool) {
         logout()
     }
 }

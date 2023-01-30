@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-
 final class ProfileViewModel: ProfileViewModelProtocol{
 
     var delegate: ProfileViewModelDelegate?
@@ -22,14 +21,15 @@ final class ProfileViewModel: ProfileViewModelProtocol{
     }
     
     private func createSection(account: Account) -> [ProfileSection] {
-      let items: [ProfilesSectionItem] = [
+        
+      let lists: [ProfilesSectionItem] = [
         .userLists(items: .favorites),
         .userLists(items: .watchList)
       ]
-
+        
       let sectionProfile: [ProfileSection] = [
         .userInfo(items: [.userInfo(number: account)]),
-        .userLists(items: items),
+        .userLists(items: lists),
         .logout(items: [.logout(items: "Log Out")])
       ]
       return sectionProfile

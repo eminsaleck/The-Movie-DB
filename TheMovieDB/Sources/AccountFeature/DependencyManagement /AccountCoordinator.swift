@@ -47,7 +47,7 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
     
 }
 
-//MARK: - navigation to picked cells
+    //MARK: - navigation to picked cells
 extension AccountCoordinator{
     private func navigateToAccountFeature() {
         let accountVC = dependencies.buildAccountViewController(coordinator: self)

@@ -14,8 +14,8 @@ final class DIContainer {
     private let dependencies: ModuleDependencies
     
     private lazy var authRepository: AuthRepository = {
-        return DefaultAuthRepository(
-            remoteDataSource: DefaultAuthRemoteDataSource(dataTransferService: dependencies.apiDataTransferService),
+        return AuthRepositoryImplementation(
+            remoteDataSource: AuthRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
             requestTokenRepository: dependencies.requestTokenRepository,
             accessTokenRepository: dependencies.accessTokenRepository,
             tokenMapper: RequestTokenMapper(authenticateBaseURL: dependencies.authenticateBaseURL)
@@ -23,8 +23,8 @@ final class DIContainer {
     }()
     
     private lazy var accountRepository: AccountRepository = {
-        return DefaultAccountRepository(
-            remoteDataSource: DefaultAccountRemoteDataSource(dataTransferService: dependencies.apiDataTransferService),
+        return AccountRepositoryImplementation(
+            remoteDataSource: AccountRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
             accessTokenRepository: dependencies.accessTokenRepository,
             userLoggedRepository: dependencies.userLoggedRepository,
             gravatarBaseURL: dependencies.gravatarBaseURL
@@ -96,9 +96,8 @@ extension DIContainer: AccountViewControllerDelegate {
     
     func makeProfileViewController(with account: Account) -> UIViewController {
         let profileViewModel = ProfileViewModel(account)
-        let profileViewController = ProfileViewController(viewModel: profileViewModel)
+        let profileViewController = ProfileViewController(viewModel: profileViewModel, delegate: accountViewModel!)
         profileViewModel.delegate = accountViewModel
-        profileViewController.delegate = accountViewModel
         return profileViewController
     }
 }
