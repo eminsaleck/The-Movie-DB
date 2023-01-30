@@ -58,3 +58,20 @@ enum UserListType: Hashable {
     }
   }
 }
+
+enum CellID{
+    case plainCell
+    case profileCell
+    case logoutCell
+    
+    var id: String {
+        switch self {
+        case  .plainCell:
+            return "PlainCell"
+        case  .profileCell:
+            return "ProfileTableViewCell"
+        case  .logoutCell:
+            return "LogoutTableViewCell"
+        }
+    }
+}

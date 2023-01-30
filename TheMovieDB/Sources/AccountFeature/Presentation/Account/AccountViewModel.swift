@@ -106,3 +106,9 @@ extension AccountViewModel: AuthPermissionViewModelDelegate {
       coordinator?.navigate(with: .authorizationIsComplete)
   }
 }
+
+extension AccountViewModel: ProfileViewControllerDelegate{
+    func didLogoutTapped(_ bool: Bool) {
+        logout()
+    }
+}

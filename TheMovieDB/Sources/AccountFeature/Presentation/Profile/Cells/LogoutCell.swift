@@ -8,20 +8,20 @@
 import UIKit
 import UI
 
-class LogoutCell: UITableViewCell {
+final class LogoutCell: UITableViewCell {
 
     let identifier = "LogoutTableViewCell"
     
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    setupUI()
+      configUI()
   }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-  private func setupUI() {
+  private func configUI() {
     backgroundColor = .secondarySystemBackground
     textLabel?.text = Localized.accountLogout.localized()
     textLabel?.textAlignment = .center

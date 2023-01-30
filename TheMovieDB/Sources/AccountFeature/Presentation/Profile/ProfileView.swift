@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import UI
 
-final class ProfileRootView: UIView {
+final class ProfileView: UIView {
     
     private let viewModel: ProfileViewModelProtocol
     
@@ -46,12 +46,12 @@ final class ProfileRootView: UIView {
     }
     
     private func setup() {
-        setupUI()
-        setupDataSource()
+        configUI()
+        configDataSource()
         subscribe()
     }
     
-    private func setupUI() {
+    private func configUI() {
         tableView.delegate = self
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,66 +82,38 @@ final class ProfileRootView: UIView {
             .store(in: &bag)
     }
     
-    private func setupDataSource() {
-        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { [weak self] tableView, indexPath, model in
+    private func configDataSource() {
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: {
+            tableView, indexPath, model in
             
             switch model {
             case .userInfo(number: let accountInfo):
-                return self?.profileCell(tableView, at: indexPath, element: accountInfo)
+                let cell = tableView.dequeueReusableCell(withIdentifier: CellID.profileCell.id, for: indexPath) as! ProfileCell
+                cell.configureData(with: accountInfo)
+                return cell
                 
             case .userLists(items: let title):
-                return self?.listsCell(tableView, at: indexPath, element: title)
+                let cell = tableView.dequeueReusableCell(withIdentifier: CellID.plainCell.id, for: indexPath) as! PlainCell
+                cell.configTitle(with: title.localizedDescription)
+                return cell
                 
-            case .logout(items: let title):
-                return self?.logoutCell(tableView, at: indexPath, element: title)
+            case .logout(items: _):
+                let cell = tableView.dequeueReusableCell(withIdentifier: CellID.logoutCell.id, for: indexPath) as! LogoutCell
+                return cell
             }
         })
     }
-    
-    private func profileCell(_ tableView: UITableView, at indexPath: IndexPath, element: Account) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.profileCell.id, for: indexPath)
-        cell.setModel(with: element)
-        return cell
-    }
-    
-    private func listsCell(_ tableView: UITableView, at indexPath: IndexPath, element: UserListType) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.plainCell.id, for: indexPath)
-        cell.setTitle(with: element.localizedDescription)
-        return cell
-    }
-    private func logoutCell(_ tableView: UITableView, at indexPath: IndexPath, element: String) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellID.logoutCell.id, for: indexPath)
-        return cell
-    }
 }
 
-extension ProfileRootView: UITableViewDelegate {
+extension ProfileView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(40)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let model = dataSource?.itemIdentifier(for: indexPath) {
-            viewModel.didCellTap(model: model)
-        }
-    }
-}
-
-
-enum CellID{
-    case plainCell
-    case profileCell
-    case logoutCell
-    
-    var id: String {
-        switch self {
-        case  .plainCell:
-            return "PlainCell"
-        case  .profileCell:
-            return "ProfileTableViewCell"
-        case  .logoutCell:
-            return "LogoutTableViewCell"
+        if let cell = dataSource?.itemIdentifier(for: indexPath) {
+            viewModel.chosen(cell: cell)
         }
     }
 }

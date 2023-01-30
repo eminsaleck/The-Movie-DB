@@ -93,11 +93,12 @@ extension DIContainer: AccountViewControllerDelegate {
         loginViewModel.delegate = accountViewModel
         return LoginViewController(viewModel: loginViewModel)
     }
-
+    
     func makeProfileViewController(with account: Account) -> UIViewController {
-      let profileViewModel = ProfileViewModel(account)
-      profileViewModel.delegate = profileViewModel
-      return ProfileViewController(viewModel: profileViewModel)
+        let profileViewModel = ProfileViewModel(account)
+        let profileViewController = ProfileViewController(viewModel: profileViewModel)
+        profileViewController.delegate = accountViewModel
+        return profileViewController
     }
 }
 
