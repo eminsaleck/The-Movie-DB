@@ -11,15 +11,29 @@ import Combine
 
 final class ProfileViewModel: ProfileViewModelProtocol{
 
+
     var delegate: ProfileViewModelDelegate?
     
     let dataSource = CurrentValueSubject<[ProfileSection], Never>([])
-    let presentSignOutAlert = CurrentValueSubject<Bool, Never>(false)
-    
-    private let account: Account
-    
+    let presentAlert = CurrentValueSubject<Bool, Never>(false)
+        
     init(_ account: Account){
-        self.account = account
+        let section = createSection(account: account)
+        dataSource.send(section)
+    }
+    
+    private func createSection(account: Account) -> [ProfileSection] {
+      let items: [ProfilesSectionItem] = [
+        .userLists(items: .favorites),
+        .userLists(items: .watchList)
+      ]
+
+      let sectionProfile: [ProfileSection] = [
+        .userInfo(items: [.userInfo(number: account)]),
+        .userLists(items: items),
+        .logout(items: [.logout(items: "Log Out")])
+      ]
+      return sectionProfile
     }
     
     func chosen(cell: ProfilesSectionItem) {
@@ -27,7 +41,7 @@ final class ProfileViewModel: ProfileViewModelProtocol{
         case .userLists(items: let type):
             delegate?.option(type)
         case .logout:
-            presentSignOutAlert.send(true)
+            presentAlert.send(true)
         default:
             break
         }

@@ -16,5 +16,5 @@ protocol ProfileViewModelProtocol {
     var delegate: ProfileViewModelDelegate? { get set }
 
     var dataSource: CurrentValueSubject<[ProfileSection], Never> { get }
-    var presentSignOutAlert: CurrentValueSubject<Bool, Never> { get }
+    var presentAlert: CurrentValueSubject<Bool, Never> { get }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import UI
+import Combine
 
 protocol ProfileViewControllerDelegate{
     func didLogoutTapped(_ bool: Bool)
@@ -15,6 +16,8 @@ protocol ProfileViewControllerDelegate{
 class ProfileViewController: UIViewController {
     
     private var viewModel: ProfileViewModelProtocol
+    private var bag = Set<AnyCancellable>()
+
     var delegate: ProfileViewControllerDelegate?
 
     
@@ -34,6 +37,18 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .brown
+        setupBindables()
+    }
+    
+    private func setupBindables() {
+      viewModel
+        .presentAlert
+        .receive(on: DispatchQueue.main)
+        .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] _ in
+           
+          self?.showSignOutActionSheet()
+        })
+        .store(in: &bag)
     }
     
     private func showSignOutActionSheet() {
