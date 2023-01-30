@@ -17,7 +17,6 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
     
     private let dependencies: AccountCoordinatorDependencies
     
-    // MARK: - Life Cycle
     init(navigationController: UINavigationController, dependencies: AccountCoordinatorDependencies) {
         self.navigationController = navigationController
         self.dependencies = dependencies
@@ -27,19 +26,19 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
         navigate(with: .accountFeatureInit)
     }
     
-    // MARK: - Navigation
-    
     public func navigate(with state: AccountState) {
         switch state {
         case .accountFeatureInit:
             navigateToAccountFeature()
+            
         case .loginInIsPicked(url: let url, delegate: let delegate):
             navigateToAuthPermission(url: url, delegate: delegate)
+            
         case .authorizationIsComplete:
             navigationController.presentedViewController?.dismiss(animated: true)
+            
         case .favourites:
             navigateToFavorites()
-            
         case .watchList:
             navigateToWatchList()
         }
