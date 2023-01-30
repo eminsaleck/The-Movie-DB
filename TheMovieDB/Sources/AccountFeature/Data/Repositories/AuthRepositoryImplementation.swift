@@ -11,7 +11,7 @@ import Network
 import Networking
 import Common
 
-final class DefaultAuthRepository {
+final class AuthRepositoryImplementation {
   private let remoteDataSource: AuthRemoteDataSource
   private let requestTokenRepository: RequestTokenRepositoryProtocol
   private let accessTokenRepository: AccessTokenRepositoryProtocol
@@ -28,7 +28,7 @@ final class DefaultAuthRepository {
   }
 }
 
-extension DefaultAuthRepository: AuthRepository {
+extension AuthRepositoryImplementation: AuthRepository {
 
 
   func requestToken() -> AnyPublisher<NewRequestToken, DataTransferError> {

@@ -11,7 +11,7 @@ import Network
 import Networking
 import Common
 
-public final class DefaultAccountRepository {
+public final class AccountRepositoryImplementation {
   private let remoteDataSource: AccountRemoteDataSource
   private let accessTokenRepository: AccessTokenRepositoryProtocol
   private let userLoggedRepository: LoggedUserRepositoryProtocol
@@ -27,7 +27,7 @@ public final class DefaultAccountRepository {
   }
 }
 
-extension DefaultAccountRepository: AccountRepository {
+extension AccountRepositoryImplementation: AccountRepository {
 
   public func getAccountDetails() -> AnyPublisher<Account, DataTransferError> {
     let sessionId = accessTokenRepository.getAccessToken()
