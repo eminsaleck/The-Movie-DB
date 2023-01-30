@@ -22,7 +22,7 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
         self.navigationController = navigationController
         self.dependencies = dependencies
     }
-
+    
     public func start() {
         navigate(with: .accountFeatureInit)
     }
@@ -37,9 +37,18 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
             navigateToAuthPermission(url: url, delegate: delegate)
         case .authorizationIsComplete:
             navigationController.presentedViewController?.dismiss(animated: true)
+        case .favourites:
+            navigateToFavorites()
+            
+        case .watchList:
+            navigateToWatchList()
         }
     }
     
+}
+
+//MARK: - navigation to picked cells
+extension AccountCoordinator{
     private func navigateToAccountFeature() {
         let accountVC = dependencies.buildAccountViewController(coordinator: self)
         navigationController.pushViewController(accountVC, animated: true)
@@ -50,7 +59,16 @@ class AccountCoordinator: NavigationCoordinator, AccountCoordinatorProtocol {
         
         let embedNavController = UINavigationController(rootViewController: authViewController)
         embedNavController.presentationController?.delegate = authViewController
-
+        
         navigationController.present(embedNavController, animated: true)
+    }
+    
+    private func navigateToFavorites() {
+     print("navigateToFavorites")
+    }
+
+    private func navigateToWatchList() {
+        print("navigateToWatchList")
+
     }
 }

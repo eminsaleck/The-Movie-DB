@@ -17,6 +17,8 @@ public enum AccountState: State {
     case accountFeatureInit
     case loginInIsPicked(url: URL, delegate: AuthPermissionViewModelDelegate?)
     case authorizationIsComplete
+    case favourites
+    case watchList
 }
 
 protocol AccountCoordinatorDependencies {

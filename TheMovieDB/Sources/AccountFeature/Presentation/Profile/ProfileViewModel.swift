@@ -11,7 +11,6 @@ import Combine
 
 final class ProfileViewModel: ProfileViewModelProtocol{
 
-
     var delegate: ProfileViewModelDelegate?
     
     let dataSource = CurrentValueSubject<[ProfileSection], Never>([])

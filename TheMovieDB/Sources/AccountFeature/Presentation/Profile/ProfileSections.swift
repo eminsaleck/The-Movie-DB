@@ -11,6 +11,7 @@ enum ProfileSection: Equatable {
   case userInfo(items: [ProfilesSectionItem])
   case userLists(items: [ProfilesSectionItem])
   case logout(items: [ProfilesSectionItem])
+    
 
   var sectionView: ProfileSectionView {
     switch self {

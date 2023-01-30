@@ -9,9 +9,6 @@ import UIKit
 import UI
 import Combine
 
-protocol ProfileViewControllerDelegate{
-    func didLogoutTapped(_ bool: Bool)
-}
 
 class ProfileViewController: UIViewController {
     

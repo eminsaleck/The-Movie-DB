@@ -69,15 +69,15 @@ final class ProfileView: UIView {
             .dataSource
             .map { dataSource -> Snapshot in
                 var snapShot = Snapshot()
-                for element in dataSource {
-                    snapShot.appendSections([element.sectionView])
-                    snapShot.appendItems(element.items, toSection: element.sectionView)
+                dataSource.forEach {
+                    snapShot.appendSections([$0.sectionView])
+                    snapShot.appendItems($0.items, toSection: $0.sectionView)
                 }
                 return snapShot
             }
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] snapshot in
-                self?.dataSource?.apply(snapshot)
+            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] in
+                self?.dataSource?.apply($0)
             })
             .store(in: &bag)
     }

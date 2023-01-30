@@ -7,13 +7,18 @@
 
 import Combine
 
+
+protocol ProfileViewControllerDelegate{
+    func didLogoutTapped(_ bool: Bool)
+}
+
 protocol ProfileViewModelDelegate {
     func option(_ option: UserListType)
 }
 
 protocol ProfileViewModelProtocol {
-    func chosen(cell: ProfilesSectionItem)
     var delegate: ProfileViewModelDelegate? { get set }
+    func chosen(cell: ProfilesSectionItem)
 
     var dataSource: CurrentValueSubject<[ProfileSection], Never> { get }
     var presentAlert: CurrentValueSubject<Bool, Never> { get }

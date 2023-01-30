@@ -25,9 +25,9 @@ final class AccountViewModel: AccountViewModelProtocol {
     private let interactor: AccountInteractorProtocol
     weak var coordinator: AccountCoordinatorProtocol?
     private var bag = Set<AnyCancellable>()
-
+    
     let viewState: CurrentValueSubject<AccountViewState, Never> = .init(.login)
-
+    
     init(interactor: AccountInteractorProtocol) {
         self.interactor = interactor
     }
@@ -95,19 +95,34 @@ final class AccountViewModel: AccountViewModelProtocol {
 }
 
 extension AccountViewModel: LoginViewModelDelegate {
-  func loginViewModelDelegate(_ url: URL) {
-      coordinator?.navigate(with: .loginInIsPicked(url: url, delegate: self))
-  }
+    func loginViewModelDelegate(_ url: URL) {
+        coordinator?.navigate(with: .loginInIsPicked(url: url, delegate: self))
+    }
 }
 
 extension AccountViewModel: AuthPermissionViewModelDelegate {
-  func authPermissionViewModelDelegate(_ signedIn: Bool) {
-    createSession()
-      coordinator?.navigate(with: .authorizationIsComplete)
-  }
+    func authPermissionViewModelDelegate(_ signedIn: Bool) {
+        createSession()
+        coordinator?.navigate(with: .authorizationIsComplete)
+    }
 }
 
-extension AccountViewModel: ProfileViewControllerDelegate{
+extension AccountViewModel: ProfileViewControllerDelegate, ProfileViewModelDelegate{
+    
+    private func navigate(with: AccountState) {
+      coordinator?.navigate(with: with)
+    }
+    
+    func option(_ option: UserListType) {
+        switch option {
+        case .favorites:
+
+            navigate(with: .favourites)
+        case .watchList:
+            navigate(with: .watchList)
+        }
+    }
+    
     func didLogoutTapped(_ bool: Bool) {
         logout()
     }
