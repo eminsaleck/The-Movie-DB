@@ -12,7 +12,7 @@ public struct Module {
 
   private let diContainer: DIContainer
 
-  public init(dependencies: ModuleDependencies) {
+  public init(dependencies: FeatureDependencies) {
     self.diContainer = DIContainer(dependencies: dependencies)
   }
 

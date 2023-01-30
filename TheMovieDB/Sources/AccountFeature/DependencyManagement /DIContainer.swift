@@ -11,7 +11,7 @@ import MovieListFeatureInterface
 
 final class DIContainer {
     
-    private let dependencies: ModuleDependencies
+    private let dependencies: FeatureDependencies
     
     private lazy var accountDependencies = AccountDependencies(
         remoteDataSource: AccountRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
@@ -36,7 +36,7 @@ final class DIContainer {
     private var interactor: AccountInteractorProtocol?
     private var accountViewModel: AccountViewModel?
     
-    init(dependencies: ModuleDependencies) {
+    init(dependencies: FeatureDependencies) {
         self.dependencies = dependencies
         
         func makeCreateSessionUseCase() -> CreateSessionUseCase {

@@ -79,7 +79,7 @@ public class DIContainer {
     
     // MARK: - Account Module
     func buildAccountModule() -> AccountFeature.Module {
-        let dependencies = AccountFeature.ModuleDependencies(apiDataTransferService: apiDataTransferService,
+        let dependencies = AccountFeature.FeatureDependencies(apiDataTransferService: apiDataTransferService,
                                                              imagesBaseURL: appConfigurations.imagesBaseURL,
                                                              authenticateBaseURL: appConfigurations.authenticateBaseURL,
                                                              gravatarBaseURL: appConfigurations.gravatarBaseURL,
