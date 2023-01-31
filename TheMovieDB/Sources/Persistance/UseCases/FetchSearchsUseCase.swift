@@ -17,7 +17,7 @@ public struct FetchSearchesUseCaseRequestValue {
   public init() { }
 }
 
-public final class DefaultFetchSearchesUseCase: FetchSearchesUseCase {
+public final class FetchSearchesUseCaseImplementation: FetchSearchesUseCase {
   private let searchLocalRepository: SearchLocalRepositoryProtocol
 
   public init(searchLocalRepository: SearchLocalRepositoryProtocol) {

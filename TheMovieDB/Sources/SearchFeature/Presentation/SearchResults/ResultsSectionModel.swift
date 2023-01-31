@@ -8,9 +8,9 @@
 
 import UI
 
-enum ResultSearchSectionModel: Hashable {
-  case recentSearchs(items: [ResultSearchSectionItem])
-  case results(items: [ResultSearchSectionItem])
+enum ResultSectionModel: Hashable {
+  case recentSearchs(items: [ResultSectionModelItem])
+  case results(items: [ResultSectionModelItem])
 
   var section: ResultSearchSectionView {
     switch self {
@@ -21,7 +21,7 @@ enum ResultSearchSectionModel: Hashable {
     }
   }
 
-  var items: [ResultSearchSectionItem] {
+  var items: [ResultSectionModelItem] {
     switch self {
     case let .recentSearchs(items):
       return items
@@ -45,7 +45,7 @@ enum ResultSearchSectionView: Hashable {
   }
 }
 
-enum ResultSearchSectionItem: Hashable {
+enum ResultSectionModelItem: Hashable {
   case recentSearchs(items: String)
   case results(items: MovieCellViewModel)
 }
