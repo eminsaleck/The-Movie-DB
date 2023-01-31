@@ -25,7 +25,9 @@ class PersistenceStore<Entity: Object>: NSObject {
     
     func configureResultsController(predicate: NSPredicate? = nil,
                                     sortDescriptors: [SortDescriptor] = []) {
-        let results = realm.objects(Entity.self).filter(predicate!)
+        guard let predicate = predicate else { return }
+            
+        let results = realm.objects(Entity.self).filter(predicate)
         notificationToken = results.observe { [weak self] (changes: RealmCollectionChange) in
             switch changes {
             case .initial:

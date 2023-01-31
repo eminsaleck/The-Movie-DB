@@ -23,11 +23,11 @@ let package = Package(
         .library(name: "MovieDetailsFeature", targets: ["MovieDetailsFeature"]),
         .library(name: "MovieListFeatureInterface", targets: ["MovieListFeatureInterface"]),
         .library(name: "MovieListFeature", targets: ["MovieListFeature"]),
-
+        
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
-        .package(url: "https://github.com/realm/realm-swift.git", from: "10.0.0"),
+        .package(url: "https://github.com/realm/realm-swift.git", from: "10.34.1"),
         .package(url: "https://github.com/SDWebImage/SDWebImage.git", from: "5.1.0"),
         .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.1.2"),
     ],
@@ -77,24 +77,32 @@ let package = Package(
                 name: "UI",
                 dependencies: [
                     "Common",
-                    .product(name: "SDWebImage", package: "SDWebImage"),
+                    "SDWebImage"
                 ],
                 resources: [
                     .process("Resources"),
                 ]
             ),
-        
-            .target(
-                name: "AccountFeature",
-                dependencies: [
-                    "Common",
-                    "Persistance",
-                    "Network",
-                    "MovieListFeatureInterface",
-                    "UI",
-                    .product(name: "Lottie", package: "lottie-spm")
-                ]
-            ),
+        .target(
+            name: "SearchFeature",
+            dependencies: [
+                "Network",
+                "Persistance",
+                "Common",
+                "SDWebImage",
+            ]
+        ),
+        .target(
+            name: "AccountFeature",
+            dependencies: [
+                "Common",
+                "Persistance",
+                "Network",
+                "MovieListFeatureInterface",
+                "UI",
+                .product(name: "Lottie", package: "lottie-spm")
+            ]
+        ),
         
             .target(
                 name: "MovieDetailsFeatureInterface",
@@ -135,6 +143,7 @@ let package = Package(
             .target(
                 name: "AppFeature",
                 dependencies: [
+                    "SearchFeature",
                     "PersistanceRealm",
                     "Common",
                     "UI",

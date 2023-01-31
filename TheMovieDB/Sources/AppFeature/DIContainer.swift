@@ -7,6 +7,7 @@
 
 import UI
 import AccountFeature
+import SearchFeature
 import Common
 import UIKit
 import KeychainStorage
@@ -77,41 +78,49 @@ public class DIContainer {
         Localized.currentLocale = Locale(identifier: language.rawValue)
     }
     
-    // MARK: - Account Module
+    // MARK: - Account feature
     func buildAccountModule() -> AccountFeature.Module {
         let dependencies = AccountFeature.FeatureDependencies(apiDataTransferService: apiDataTransferService,
-                                                             imagesBaseURL: appConfigurations.imagesBaseURL,
-                                                             authenticateBaseURL: appConfigurations.authenticateBaseURL,
-                                                             gravatarBaseURL: appConfigurations.gravatarBaseURL,
-                                                             requestTokenRepository: requestTokenRepository,
-                                                             accessTokenRepository: accessTokenRepository,
-                                                             userLoggedRepository: loggedUserRepository,showListBuilder: self)
+                                                              imagesBaseURL: appConfigurations.imagesBaseURL,
+                                                              authenticateBaseURL: appConfigurations.authenticateBaseURL,
+                                                              gravatarBaseURL: appConfigurations.gravatarBaseURL,
+                                                              requestTokenRepository: requestTokenRepository,
+                                                              accessTokenRepository: accessTokenRepository,
+                                                              userLoggedRepository: loggedUserRepository,
+                                                              showListBuilder: self)
         return AccountFeature.Module(dependencies: dependencies)
+    }
+    // MARK: - Search feature
+    func buildSearchModule() -> SearchFeature.Module {
+        let dependencies = SearchFeature.FeatureDependencies(apiDataTransferService: apiDataTransferService,
+                                                             imagesBaseURL: appConfigurations.imagesBaseURL,
+                                                             showsPersistence: showsPersistence,
+                                                             searchsPersistence: searchPersistence)
+        return SearchFeature.Module(dependencies: dependencies)
     }
 }
 
-
 extension DIContainer: ModuleMovieDetailsBuilderProtocol {
-  public func buildModuleCoordinator(in navigationController: UINavigationController,
-                                     delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol {
-    let dependencies = MovieDetailsFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
-                                                                      imagesBaseURL: appConfigurations.imagesBaseURL,
-                                                                      showsPersistenceRepository: showsPersistence,
-                                                                      loggedUserRepository: loggedUserRepository)
-    let module = MovieDetailsFeature.Module(dependencies: dependencies)
-    return module.buildModuleCoordinator(in: navigationController, delegate: delegate)
-  }
+    public func buildModuleCoordinator(in navigationController: UINavigationController,
+                                       delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol {
+        let dependencies = MovieDetailsFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
+                                                                           imagesBaseURL: appConfigurations.imagesBaseURL,
+                                                                           showsPersistenceRepository: showsPersistence,
+                                                                           loggedUserRepository: loggedUserRepository)
+        let module = MovieDetailsFeature.Module(dependencies: dependencies)
+        return module.buildModuleCoordinator(in: navigationController, delegate: delegate)
+    }
 }
 
 extension DIContainer: ModuleMovieListDetailsBuilderProtocol {
- 
-  public func buildModuleCoordinator(in navigationController: UINavigationController,
-                                     delegate: MovieListCoordinatorDelegate?) -> MovieListCoordinatorProtocol {
-    let dependencies = MovieListFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
-                                                                   imagesBaseURL: appConfigurations.imagesBaseURL,
-                                                                   loggedUserRepository: loggedUserRepository,
-                                                                   showDetailsBuilder: self)
-    let module = MovieListFeature.Module(dependencies: dependencies)
-    return module.buildModuleCoordinator(in: navigationController, delegate: delegate)
-  }
+    
+    public func buildModuleCoordinator(in navigationController: UINavigationController,
+                                       delegate: MovieListCoordinatorDelegate?) -> MovieListCoordinatorProtocol {
+        let dependencies = MovieListFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
+                                                                        imagesBaseURL: appConfigurations.imagesBaseURL,
+                                                                        loggedUserRepository: loggedUserRepository,
+                                                                        showDetailsBuilder: self)
+        let module = MovieListFeature.Module(dependencies: dependencies)
+        return module.buildModuleCoordinator(in: navigationController, delegate: delegate)
+    }
 }
