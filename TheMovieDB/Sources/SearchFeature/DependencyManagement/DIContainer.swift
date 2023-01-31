@@ -7,6 +7,7 @@
 
 import UIKit
 import Common
+import Persistance
 import MovieDetailsFeature
 
 class DIContainer{
@@ -21,17 +22,39 @@ class DIContainer{
       searchViewModel = SearchViewModel()
     }
     
-    func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {
-      return SearchCoordinator(navigationController: navigationController, dependencies: self)
+    //MARK: - UseCases
+    
+    private func makeSearchShowsUseCase() -> SearchMovieUseCase {
+      let moviePageRepository = MoviePageRepositoryImplementation(
+        showsPageRemoteDataSource: MovieRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
+        mapper: DefaultMoviePageMapper(),
+        imageBasePath: dependencies.imagesBaseURL
+      )
+      return SearchMovieUseCaseImplementation(
+        moviePageRepository: moviePageRepository,
+        searchsLocalRepository: dependencies.searchsPersistence
+      )
     }
 }
 
 extension DIContainer: SearchCoordinatorDependencies {
     func buildSearchViewController(coordinator: SearchCoordinatorProtocol?) -> UIViewController {
-        return SearchViewController()
+        
+      let resultsViewModel = buildResultsViewModel(with: searchViewModel)
+
+      searchViewModel.coordinator = coordinator
+      searchViewModel.resultsViewModel = resultsViewModel
+
+      let searchVC = SearchViewController(viewModel: searchViewModel,
+                                          searchController: buildSearchController(with: resultsViewModel),
+                                          delegate: self)
+      return searchVC
+    }
+    
+    private func buildSearchController(with viewModel: ResultsSearchViewModelProtocol) -> UISearchController {
+      let resultsController = ResultsSearchViewController(viewModel: viewModel)
+      let searchController = UISearchController(searchResultsController: resultsController)
+      return searchController
     }
 }
-extension DIContainer{
-    // MARK: - SearchViewControllerDelegate
 
-}
