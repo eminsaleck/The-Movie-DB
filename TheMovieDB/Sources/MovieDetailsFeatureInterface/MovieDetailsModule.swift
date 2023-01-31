@@ -15,16 +15,16 @@ public struct ModuleDependencies {
 
   public let apiDataTransferService: DataTransferServiceProtocol
   public let imagesBaseURL: String
-  public let showsPersistenceRepository: ShowsVisitedLocalRepositoryProtocol
+  public let moviePersistence: MovieVisitedLocalRepositoryProtocol
   public let loggedUserRepository: LoggedUserRepositoryProtocol
 
   public init(apiDataTransferService: DataTransferServiceProtocol,
               imagesBaseURL: String,
-              showsPersistenceRepository: ShowsVisitedLocalRepositoryProtocol,
+              moviePersistence: MovieVisitedLocalRepositoryProtocol,
               loggedUserRepository: LoggedUserRepositoryProtocol) {
     self.apiDataTransferService = apiDataTransferService
     self.imagesBaseURL = imagesBaseURL
-    self.showsPersistenceRepository = showsPersistenceRepository
+    self.moviePersistence = moviePersistence
     self.loggedUserRepository = loggedUserRepository
   }
 }

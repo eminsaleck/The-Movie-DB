@@ -24,7 +24,7 @@ final class RealmShowVisitedStorage {
     }
 }
 
-extension RealmShowVisitedStorage: ShowsVisitedLocalDataSource {
+extension RealmShowVisitedStorage: MovieVisitedLocalDataSource {
     
     public func saveShow(id: Int, pathImage: String, userId: Int) -> AnyPublisher<Void, ErrorEnvelope> {
         return Deferred { [store, limitStorage] in
@@ -38,9 +38,9 @@ extension RealmShowVisitedStorage: ShowsVisitedLocalDataSource {
         .eraseToAnyPublisher()
     }
     
-    public func fetchVisitedShows(userId: Int) -> AnyPublisher<[ShowVisitedDLO], ErrorEnvelope> {
+    public func fetchVisitedShows(userId: Int) -> AnyPublisher<[MovieVisitedDLO], ErrorEnvelope> {
         return Deferred { [store] in
-            return Future<[ShowVisitedDLO], ErrorEnvelope> { promise in
+            return Future<[MovieVisitedDLO], ErrorEnvelope> { promise in
                 let results = store.findAll(for: userId).compactMap { $0.toDomain() }
                 promise(.success(results))
             }

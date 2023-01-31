@@ -1,15 +1,14 @@
 //
-//  TVShowsPageRepository.swift
-//  Common
+//  File 2.swift
 //
-//  Created by Jeans on 1/14/20.
-//  Copyright © 2020 Jeans. All rights reserved.
+//
+//  Created by LEMIN DAHOVICH on 231.01.2023.
 //
 
 import Combine
 import Network
 
-public protocol TVShowsPageRepository {
+public protocol MoviePageRepository {
   func fetchAiringTodayShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError>
   func fetchPopularShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError>
   func fetchShowsByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePage, DataTransferError>

@@ -31,4 +31,7 @@ extension DIContainer: SearchCoordinatorDependencies {
         return SearchViewController()
     }
 }
+extension DIContainer{
+    // MARK: - SearchViewControllerDelegate
 
+}

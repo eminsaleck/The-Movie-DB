@@ -10,22 +10,22 @@ import Combine
 import Common
 
 public protocol FetchVisitedShowsUseCase {
-  func execute(requestValue: FetchVisitedShowsUseCaseRequestValue) -> AnyPublisher<[ShowVisited], ErrorEnvelope>
+  func execute(requestValue: FetchVisitedShowsUseCaseRequestValue) -> AnyPublisher<[MovieVisited], ErrorEnvelope>
 }
 
 public struct FetchVisitedShowsUseCaseRequestValue {
   public init() { }
 }
 
-public final class DefaultFetchVisitedShowsUseCase: FetchVisitedShowsUseCase {
+public final class FetchVisitedShowsUseCaseImplementation: FetchVisitedShowsUseCase {
 
-  private let showsVisitedLocalRepository: ShowsVisitedLocalRepositoryProtocol
+  private let movieVisitedLocalRepository: MovieVisitedLocalRepositoryProtocol
 
-  public init(showsVisitedLocalRepository: ShowsVisitedLocalRepositoryProtocol) {
-    self.showsVisitedLocalRepository = showsVisitedLocalRepository
+  public init(movieVisitedLocalRepository: MovieVisitedLocalRepositoryProtocol) {
+    self.movieVisitedLocalRepository = movieVisitedLocalRepository
   }
 
-  public func execute(requestValue: FetchVisitedShowsUseCaseRequestValue) -> AnyPublisher<[ShowVisited], ErrorEnvelope> {
-    return showsVisitedLocalRepository.fetchVisitedShows()
+  public func execute(requestValue: FetchVisitedShowsUseCaseRequestValue) -> AnyPublisher<[MovieVisited], ErrorEnvelope> {
+    return movieVisitedLocalRepository.fetchVisitedShows()
   }
 }

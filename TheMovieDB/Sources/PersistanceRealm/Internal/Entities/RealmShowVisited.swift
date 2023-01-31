@@ -29,8 +29,8 @@ final class RealmShowVisited: Object {
 }
 
 extension RealmShowVisited {
-    func toDomain() -> ShowVisitedDLO {
-        return ShowVisitedDLO(id: id, pathImage: pathImage)
+    func toDomain() -> MovieVisitedDLO {
+        return MovieVisitedDLO(id: id, pathImage: pathImage)
     }
 }
 

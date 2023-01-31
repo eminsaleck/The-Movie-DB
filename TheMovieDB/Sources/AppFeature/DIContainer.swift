@@ -49,8 +49,8 @@ public class DIContainer {
         return LocalStorage(realmStorage: .shared)
     }()
     
-    lazy var showsPersistence: ShowsVisitedLocalRepositoryProtocol = {
-        return ShowsVisitedLocalRepository(dataSource: localStorage.getShowVisitedDataSource(limitStorage: 10),
+    lazy var moviePersistence: MovieVisitedLocalRepositoryProtocol = {
+        return MovieVisitedLocalRepository(dataSource: localStorage.getShowVisitedDataSource(limitStorage: 10),
                                            loggedUserRepository: loggedUserRepository)
     }()
     
@@ -94,7 +94,7 @@ public class DIContainer {
     func buildSearchModule() -> SearchFeature.Module {
         let dependencies = SearchFeature.FeatureDependencies(apiDataTransferService: apiDataTransferService,
                                                              imagesBaseURL: appConfigurations.imagesBaseURL,
-                                                             showsPersistence: showsPersistence,
+                                                             moviePersistence: moviePersistence,
                                                              searchsPersistence: searchPersistence)
         return SearchFeature.Module(dependencies: dependencies)
     }
@@ -105,7 +105,7 @@ extension DIContainer: ModuleMovieDetailsBuilderProtocol {
                                        delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol {
         let dependencies = MovieDetailsFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
                                                                            imagesBaseURL: appConfigurations.imagesBaseURL,
-                                                                           showsPersistenceRepository: showsPersistence,
+                                                                           moviePersistence: moviePersistence,
                                                                            loggedUserRepository: loggedUserRepository)
         let module = MovieDetailsFeature.Module(dependencies: dependencies)
         return module.buildModuleCoordinator(in: navigationController, delegate: delegate)

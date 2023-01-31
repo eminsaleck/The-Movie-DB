@@ -12,14 +12,14 @@ public protocol RecentVisitedShowDidChangeUseCase {
   func execute() -> AnyPublisher<Bool, Never>
 }
 
-public final class DefaultRecentVisitedShowDidChangeUseCase: RecentVisitedShowDidChangeUseCase {
-  private let showsVisitedLocalRepository: ShowsVisitedLocalRepositoryProtocol
+public final class RecentVisitedShowDidChangeUseCaseImplementation: RecentVisitedShowDidChangeUseCase {
+  private let movieVisitedLocalRepository: MovieVisitedLocalRepositoryProtocol
 
-  public init(showsVisitedLocalRepository: ShowsVisitedLocalRepositoryProtocol) {
-    self.showsVisitedLocalRepository = showsVisitedLocalRepository
+  public init(movieVisitedLocalRepository: MovieVisitedLocalRepositoryProtocol) {
+    self.movieVisitedLocalRepository = movieVisitedLocalRepository
   }
 
   public func execute() -> AnyPublisher<Bool, Never> {
-    return showsVisitedLocalRepository.recentVisitedShowsDidChange()
+    return movieVisitedLocalRepository.recentVisitedShowsDidChange()
   }
 }
