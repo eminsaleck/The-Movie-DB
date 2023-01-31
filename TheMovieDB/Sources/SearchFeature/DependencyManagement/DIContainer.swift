@@ -46,7 +46,6 @@ class DIContainer{
         let searchController = UISearchController(searchResultsController: resultsController)
         return searchController
     }
-    
     private func buildResultsViewModel(_ delegate: ResultsViewModelDelegate?) -> ResultsViewModelProtocol {
         let resultsViewModel = ResultsViewModel(searchMovieUseCase: makeSearchMovieUseCase(),
                                                 fetchRecentSearchesUseCase: makeFetchSearchesUseCase())
