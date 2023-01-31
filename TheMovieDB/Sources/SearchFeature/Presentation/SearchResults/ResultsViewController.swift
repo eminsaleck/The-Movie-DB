@@ -12,14 +12,15 @@ class ResultsViewController: UIViewController {
     private let resultsView = ResultsView()
 
     
-    init(viewModel: ResultsViewModelProtocol) {
+    init(_ viewModel: ResultsViewModelProtocol) {
       self.viewModel = viewModel
-        super.init()
+      super.init()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
     override func loadView() {
       super.loadView()

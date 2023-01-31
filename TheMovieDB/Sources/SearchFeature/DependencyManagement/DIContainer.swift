@@ -42,7 +42,7 @@ class DIContainer{
     //MARK: - assembling scenes
     
     private func buildSearchController(viewModel: ResultsViewModelProtocol) -> UISearchController {
-        let resultsController = ResultsViewController(viewModel: viewModel)
+        let resultsController = ResultsViewController(viewModel)
         let searchController = UISearchController(searchResultsController: resultsController)
         return searchController
     }
@@ -57,7 +57,6 @@ class DIContainer{
 
 extension DIContainer: SearchCoordinatorDependencies {
     func buildSearchViewController(coordinator: SearchCoordinatorProtocol?) -> UIViewController {
-        
         let resultsViewModel = buildResultsViewModel(searchViewModel)
         
         searchViewModel.coordinator = coordinator
