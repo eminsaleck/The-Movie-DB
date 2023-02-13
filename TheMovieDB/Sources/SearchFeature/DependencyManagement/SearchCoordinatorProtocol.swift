@@ -11,18 +11,19 @@ import MovieListFeatureInterface
 import Common
 
 protocol SearchCoordinatorProtocol: AnyObject {
-  func navigate(with state: SearchState)
+    func navigate(with state: SearchState)
 }
 
 protocol SearchCoordinatorDependencies {
-  func buildSearchViewController(coordinator: SearchCoordinatorProtocol?) -> UIViewController
+    func buildSearchViewController(coordinator: SearchCoordinatorProtocol?) -> UIViewController
 }
 
 public enum SearchState: State {
-  case searchGo
+    case searchInit
+    case movieIsPicked(id: Int)
 }
 
 
 public enum SearchChildCoordinator {
-  case detailShow
+    case detailShow
 }

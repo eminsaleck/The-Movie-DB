@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Genre: Hashable {
+public struct Movie: Hashable {
   
   public init(id: Int, name: String) {
     self.id = id

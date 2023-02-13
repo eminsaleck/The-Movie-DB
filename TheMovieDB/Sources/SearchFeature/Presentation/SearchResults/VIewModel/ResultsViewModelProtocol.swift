@@ -2,35 +2,33 @@
 //  File.swift
 //  
 //
-//  Created by LEMIN DAHOVICH on 31.01.2023.
+//  Created by LEMIN DAHOVICH on 13.02.2023.
 //
 
 import Combine
 
-import Foundation
-
 protocol ResultsViewModelDelegate: AnyObject {
   func resultsSearchViewModel(_ resultsViewModel: ResultsViewModelProtocol,
-                              didSelectShow idShow: Int)
+                              selectedMovie id: Int)
 
   func resultsSearchViewModel(_ resultsViewModel: ResultsViewModelProtocol,
-                              didSelectRecentSearch query: String)
+                              recentSearchSelected query: String)
 }
 
-
 protocol ResultsViewModelProtocol {
-  func recentSearch(query: String)
-  func movie(index: Int)
-  func searchMovie(with query: String)
+  // MARK: - Input
+  func recentSearchIsPicked(query: String)
+  func showIsPicked(index: Int)
+  func searchShows(with query: String)
   func resetSearch()
 
+  // MARK: - Output
   var viewState: CurrentValueSubject<ResultViewState, Never> { get }
-  var dataSource: CurrentValueSubject<[ResultSectionModel], Never> { get }
+  var dataSource: CurrentValueSubject<[ResultsSectionModel], Never> { get }
   var delegate: ResultsViewModelDelegate? { get set }
   func getViewState() -> ResultViewState
 }
 
-// MARK: - View State
 enum ResultViewState: Equatable {
   case initial
   case empty
