@@ -63,6 +63,7 @@ final class SearchPopularViewModel: SearchPopularViewModelProtocol {
       .sink(receiveCompletion: { [weak self] completion in
         switch completion {
         case let .failure(error):
+            print(error)
           self?.handleError(error)
         case .finished: break
         }
@@ -74,7 +75,7 @@ final class SearchPopularViewModel: SearchPopularViewModelProtocol {
 
   private func handleError(_ error: DataTransferError) {
     if viewStateObservableSubject.value.isInitialPage {
-        viewStateObservableSubject.send(.error(error.localizedDescription as! Error))
+        viewStateObservableSubject.send(.error(error.localizedDescription))
     }
   }
 
@@ -83,7 +84,7 @@ final class SearchPopularViewModel: SearchPopularViewModelProtocol {
       shows.removeAll()
     }
 
-    shows.append(contentsOf: response.showsList)
+    shows.append(contentsOf: response.results)
       
     if shows.isEmpty {
       viewStateObservableSubject.send(.empty)

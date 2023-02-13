@@ -14,7 +14,7 @@ class PopularRootView: UIView {
     
     private let viewModel: SearchPopularViewModelProtocol
     
-     lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateLayout())
         collectionView.backgroundColor = .systemBackground
         return collectionView
@@ -60,12 +60,11 @@ class PopularRootView: UIView {
     }
     
     private func setupDataSource() {
-        
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { (collectionView, indexPath, model) -> UICollectionViewCell? in
-                   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellID, for: indexPath) as! MovieViewCell
-                   cell.setModel(viewModel: model)
-                   return cell
-               }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellID, for: indexPath) as! MovieViewCell
+            cell.setModel(viewModel: model)
+            return cell
+        }
     }
     
     private func subscribe() {
@@ -103,10 +102,8 @@ extension PopularRootView: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let totalItems = dataSource?.collectionView(collectionView, numberOfItemsInSection: indexPath.section) ?? 0
-        
+        let totalItems = dataSource?.collectionView(collectionView, numberOfItemsInSection: indexPath.section) ?? 0        
         viewModel.willDisplayItem(indexPath.item, outOf: totalItems)
-        print("totalItems: \(totalItems) \n item: \(indexPath.item)")
     }
 }
 

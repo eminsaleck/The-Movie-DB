@@ -9,15 +9,15 @@ import Foundation
 
 public struct MoviePageDTO: Decodable {
   public let page: Int
-  public let showsList: [Movie2DTO]
+  public let results: [Movie2DTO]
   public let totalPages: Int
-  public let totalShows: Int
+  public let totalResults: Int
 
   enum CodingKeys: String, CodingKey {
     case page
-    case showsList = "results"
+    case results = "results"
     case totalPages = "total_pages"
-    case totalShows = "total_results"
+    case totalResults = "total_results"
   }
 }
 
@@ -25,7 +25,6 @@ public struct Movie2DTO: Decodable {
   public let id: Int
   public let name: String
   public let overview: String
-  public let firstAirDate: String?
   public let posterPath: String?
   public let backDropPath: String?
   public let genreIds: [Int]?
@@ -34,9 +33,8 @@ public struct Movie2DTO: Decodable {
 
   enum CodingKeys: String, CodingKey {
     case id
-    case name
+      case name = "original_title"
     case overview
-    case firstAirDate = "first_air_date"
     case posterPath = "poster_path"
     case backDropPath = "backdrop_path"
     case genreIds = "genre_ids"

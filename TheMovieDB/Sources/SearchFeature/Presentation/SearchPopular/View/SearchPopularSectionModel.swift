@@ -10,5 +10,4 @@ import UI
 
 enum SearchPopularSectionView: Hashable {
   case movies
-
 }

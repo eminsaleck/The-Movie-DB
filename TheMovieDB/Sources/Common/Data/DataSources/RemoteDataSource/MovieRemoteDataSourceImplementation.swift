@@ -16,18 +16,10 @@ public final class MovieRemoteDataSourceImplementation: MovieRemoteDataSourcePro
     self.dataTransferService = dataTransferService
   }
 
-  public func fetchAiringTodayShows(page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
-    let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/tv/airing_today",
-      method: .get,
-      queryParameters: ["page": page]
-    )
-    return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
-  }
 
   public func fetchPopularMovies(page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/tv/popular",
+      path: "3/movie/popular",
       method: .get,
       queryParameters: ["page": page]
     )

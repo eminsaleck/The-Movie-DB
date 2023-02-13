@@ -32,7 +32,7 @@ extension DefaultAccountTVShowsRepository: AccountMovieRepository {
     let userId = loggedUser?.id ?? 0
 
     return showsPageRemoteDataSource.fetchFavoritesShows(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+      .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
 
@@ -41,7 +41,7 @@ extension DefaultAccountTVShowsRepository: AccountMovieRepository {
     let userId = loggedUser?.id ?? 0
 
     return showsPageRemoteDataSource.fetchWatchListShows(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+      .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
 }

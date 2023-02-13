@@ -25,19 +25,21 @@ extension MoviePageRepositoryImplementation: MoviePageRepository {
 
   public func fetchPopularMovies(page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
     return moviePageRemoteDataSource.fetchPopularMovies(page: page)
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+      .map {
+          self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium)
+      }
       .eraseToAnyPublisher()
   }
 
   public func fetchMoviesByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
     return moviePageRemoteDataSource.fetchMoviesByGenre(genreId: genreId, page: page)
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+      .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
 
   public func searchMovieFor(query: String, page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
     return moviePageRemoteDataSource.searchMovieFor(query: query, page: page)
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+      .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
 }
