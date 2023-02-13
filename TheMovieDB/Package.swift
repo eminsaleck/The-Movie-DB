@@ -89,6 +89,7 @@ let package = Package(
                 "Network",
                 "Persistance",
                 "Common",
+                "UI",
                 "SDWebImage",
             ]
         ),

@@ -7,19 +7,21 @@
 
 import Foundation
 import Combine
+import Common
+import UI
 
 protocol SearchPopularViewModelDelegate: AnyObject {
   func searchPopularViewModel(_ searchPopularViewModel: SearchPopularViewModel,
-                              popularMoviePicked id: Int,
-                              title: String?)
+                              popularMoviePicked id: Int)
 }
 
-protocol SearchPopularViewModelProtocol{
+protocol SearchPopularViewModelProtocol {
   // MARK: - Input
   func viewDidLoad()
-  func modelIsPicked(with item: SearchSectionItem)
+  func willDisplayRow(_ row: Int, outOf totalRows: Int)
+  func movieIsPicked(index: Int)
+  func refreshView()
 
   // MARK: - Output
-  var viewState: CurrentValueSubject<PopularViewState, Never> { get }
-  var dataSource: CurrentValueSubject<[SearchPopularSectionModel], Never> { get }
+  var viewStateObservableSubject: CurrentValueSubject<SimpleViewState<MovieCellViewModel>, Never> { get }
 }

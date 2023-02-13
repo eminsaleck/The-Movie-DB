@@ -21,15 +21,16 @@ class DIContainer{
         searchViewModel = SearchViewModel()
     }
     
-<<<<<<< HEAD
+    
     func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {
-      return SearchCoordinator(navigationController: navigationController, dependencies: self)
-=======
+        return SearchCoordinator(navigationController: navigationController, dependencies: self)
+    }
+
     //MARK: - UseCases
     
     private func makeSearchMovieUseCase() -> SearchMovieUseCase {
         let moviePageRepository = MoviePageRepositoryImplementation(
-            showsPageRemoteDataSource: MovieRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
+            moviePageRemoteDataSource: MovieRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
             mapper: DefaultMoviePageMapper(),
             imageBasePath: dependencies.imagesBaseURL
         )
@@ -39,22 +40,19 @@ class DIContainer{
         )
     }
     
+    private func makeFetchPopularUseCase() -> PopularUseCase {
+        let moviePageRepository = MoviePageRepositoryImplementation(
+            moviePageRemoteDataSource: MovieRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
+            mapper: DefaultMoviePageMapper(),
+            imageBasePath: dependencies.imagesBaseURL
+        )
+        return PopularUseCaseImplementation(
+            moviePageRepository: moviePageRepository
+        )
+    }
+    
     private func makeFetchSearchesUseCase() -> FetchSearchesUseCase {
         return FetchSearchesUseCaseImplementation(searchLocalRepository: dependencies.searchsPersistence)
-    }
-    //MARK: - assembling scenes
-    
-    private func buildSearchController(viewModel: ResultsViewModelProtocol) -> UISearchController {
-        let resultsController = ResultsViewController(viewModel)
-        let searchController = UISearchController(searchResultsController: resultsController)
-        return searchController
-    }
-    private func buildResultsViewModel(_ delegate: ResultsViewModelDelegate?) -> ResultsViewModelProtocol {
-        let resultsViewModel = ResultsViewModel(searchMovieUseCase: makeSearchMovieUseCase(),
-                                                fetchRecentSearchesUseCase: makeFetchSearchesUseCase())
-        resultsViewModel.delegate = searchViewModel
-        return resultsViewModel
->>>>>>> c97a1487e6a73bb235ce3fd18bd2bf5d0afaad83
     }
 }
 
@@ -73,7 +71,8 @@ extension DIContainer: SearchCoordinatorDependencies {
 
 extension DIContainer: SearchViewControllerFactory {
     func buildSearchPopularController() -> UIViewController {
-        let viewModel = SearchPopularViewModel()
+        let viewModel = SearchPopularViewModel(fetchPopularUseCase: makeFetchPopularUseCase())
+        viewModel.delegate = searchViewModel
         let viewController = SearchPopularViewController(viewModel: viewModel)
         return viewController
     }

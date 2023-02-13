@@ -31,7 +31,7 @@ final class SearchMovieUseCaseImplementation: SearchMovieUseCase {
   }
 
   func execute(requestValue: SearchMovieUseCaseRequestValue) -> AnyPublisher<MoviePage, DataTransferError> {
-    return moviePageRepository.searchShowsFor(query: requestValue.query, page: requestValue.page)
+    return moviePageRepository.searchMovieFor(query: requestValue.query, page: requestValue.page)
       .receive(on: DispatchQueue.main)
       .flatMap { resultSearch -> AnyPublisher<MoviePage, DataTransferError> in
         if requestValue.page == 1 {

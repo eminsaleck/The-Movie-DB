@@ -25,10 +25,9 @@ final class SearchViewModel {
 }
 
 extension SearchViewModel: SearchPopularViewModelDelegate {
-    func searchPopularViewModel(_ searchPopularViewModel: SearchPopularViewModel, popularMoviePicked id: Int, title: String?) {
+    func searchPopularViewModel(_ searchPopularViewModel: SearchPopularViewModel, popularMoviePicked id: Int) {
         navigateWith(state: .movieIsPicked(id: id))
     }
-    
 }
 
 extension SearchViewModel: ResultsViewModelDelegate {
