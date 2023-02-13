@@ -25,6 +25,7 @@ public class LoadingView: UIView {
   public override init(frame: CGRect) {
     super.init(frame: frame)
     setupView()
+      
   }
 
   public required init?(coder: NSCoder) {

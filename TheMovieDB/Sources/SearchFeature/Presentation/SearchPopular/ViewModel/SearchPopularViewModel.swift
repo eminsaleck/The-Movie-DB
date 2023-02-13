@@ -31,8 +31,10 @@ final class SearchPopularViewModel: SearchPopularViewModelProtocol {
     getMovies(for: 1)
   }
 
-  func willDisplayRow(_ row: Int, outOf totalRows: Int) {
-    if case .paging(_, let nextPage) = viewStateObservableSubject.value, row == totalRows - 1 {
+  func willDisplayItem(_ item: Int, outOf totalRows: Int) {
+      
+    if case .paging(_, let nextPage) = viewStateObservableSubject.value, item == totalRows - 1 {
+        print("REQUEST - : NEXTPAGE:\(nextPage)")
         getMovies(for: nextPage)
     }
   }
@@ -49,7 +51,7 @@ final class SearchPopularViewModel: SearchPopularViewModelProtocol {
 
   // MARK: - Private
   private func getMovies(for page: Int, showLoader: Bool = true) {
-
+      
     if viewStateObservableSubject.value.isInitialPage, showLoader {
       viewStateObservableSubject.send(.loading)
     }

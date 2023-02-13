@@ -38,7 +38,7 @@ public enum Localized: String, CaseIterable {
   case popularTitle = "popular_title" // Popular Movies
   case searchPlaceholder = "search_placeholder" // Search a movie
   case searchResultsRecentSearchsTitle = "search_results_recent_searchs_title" // Recent Searchs
-  case searchSectionGenresTitle = "search_section_genres_title" // Movies Genres
+  case searchSectionPopular = "search_section_popular_title" // popular search
   case searchSectionRecentTitle = "search_section_recent_title" // Recently Movies Visited
   case searchTabbar = "search_tabbar" // Search
   case searchTitle = "search_title" // Search Movies

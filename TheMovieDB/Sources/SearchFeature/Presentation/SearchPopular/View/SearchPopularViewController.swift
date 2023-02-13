@@ -55,29 +55,22 @@ class SearchPopularViewController: UIViewController, Loadable{
         switch state {
         case .loading:
             showLoadingView()
-            rootView?.tableView.tableFooterView = nil
-            rootView?.tableView.separatorStyle = .none
+            rootView?.collectionView.backgroundView = nil
             
         case .paging:
             hideLoadingView()
-            rootView?.tableView.tableFooterView = LoadingView.defaultView
-            rootView?.tableView.separatorStyle = .singleLine
             
         case .populated:
             hideLoadingView()
-            rootView?.tableView.tableFooterView = UIView()
-            rootView?.tableView.separatorStyle = .singleLine
+            rootView?.collectionView.backgroundView = nil
             
         case .empty:
             hideLoadingView()
-            rootView?.tableView.tableFooterView = nil
-            rootView?.tableView.separatorStyle = .none
+            rootView?.collectionView.backgroundView = nil
             
         case .error(let message):
             hideLoadingView()
-            rootView?.tableView.tableFooterView = nil
-            rootView?.tableView.separatorStyle = .none
-            
+            rootView?.collectionView.backgroundView = nil
         }
     }
     

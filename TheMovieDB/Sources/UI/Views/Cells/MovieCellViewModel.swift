@@ -9,17 +9,27 @@ import Foundation
 import Common
 
 public struct MovieCellViewModel: Hashable {
-  private let showId: Int
-  let name: String
-  let average: String
-  let firstAirDate: String
-  let posterPathURL: URL?
-
+    private let id = UUID().uuidString
+    private let showId: Int
+    let name: String
+    let average: String
+    let firstAirDate: String
+    let posterPathURL: URL?
+    
     public init(show: MoviePage.Movie) {
-    showId = show.id
-    name = show.name
-    average = (show.voteAverage == 0) ? "0.0": String(show.voteAverage)
-    firstAirDate = show.firstAirDate
-    posterPathURL = show.posterPath
-  }
+        showId = show.id
+        name = show.name
+        average = (show.voteAverage == 0) ? "0.0": String(show.voteAverage)
+        firstAirDate = show.firstAirDate
+        posterPathURL = show.posterPath
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    public static func == (lhs: MovieCellViewModel, rhs: MovieCellViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
+

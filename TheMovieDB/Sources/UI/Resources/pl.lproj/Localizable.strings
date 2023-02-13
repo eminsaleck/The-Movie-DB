@@ -1,36 +1,36 @@
 
 
-"airing_today_title" = "Hoy en TV";
-"main_tabbar" = "Main";
+"airing_today_title" = "Dzisiaj w TV";
+"main_tabbar" = "Główna";
 
-"popular_title" = "Series de TV Populares";
-"popular_tabbar" = "Populares";
+"popular_title" = "Popularne Filmy";
+"popular_tabbar" = "Popularne";
 
-"search_title" = "Busqueda";
-"search_tabbar" = "Busqueda";
-"search_placeholder" = "Busca una Serie de TV";
-"search_section_recent_title" = "Series recien vistas";
-"search_section_genres_title" = "Géneros de TV";
-"search_results_recent_searchs_title" = "Búsquedas recientes";
+"search_title" = "Wyszukiwanie";
+"search_tabbar" = "Wyszukiwanie";
+"search_placeholder" = "Wyszukaj Film";
+"search_section_recent_title" = "Ostatnio obejrzane seriale";
+"search_section_popular_title" = "Popularne filmy";
+"search_results_recent_searchs_title" = "Ostatnie wyszukiwania";
 
-"account_title" = "Mi Cuenta";
-"account_greetings" = "Hola";
-"account_favorites_cell" = "Mis Favoritos";
-"account_watchlist_cell" = "Ver más tarde";
-"account_logout" = "Terminar Sesión";
-"account_alert_title" = "¿Está seguro que desea terminar la Sesión?";
-"account_alert_logout" = "Terminar Sesión";
-"account_alert_cancel" = "Cancelar";
-"account_title_login" = "Iniciar sesión";
-"account_title_detail_button" = "Iniciar sessión con TheMovieDB";
-"account_favorite_list_title" = "Favoritos";
-"account_favorite_watchList_title" = "Ver más tarde";
+"account_title" = "Moje Konto";
+"account_greetings" = "Witaj";
+"account_favorites_cell" = "Moje Ulubione";
+"account_watchlist_cell" = "Obejrzeć później";
+"account_logout" = "Wyloguj się";
+"account_alert_title" = "Czy na pewno chcesz się wylogować?";
+"account_alert_logout" = "Wyloguj się";
+"account_alert_cancel" = "Anuluj";
+"account_title_login" = "Zaloguj się";
+"account_title_detail_button" = "Zaloguj się przez TheMovieDB";
+"account_favorite_list_title" = "Ulubione";
+"account_favorite_watchList_title" = "Obejrzeć później";
 
-"details_episode_guide" = "Guía de Episodios";
+"details_episode_guide" = "Przewodnik po odcinkach";
 
-"seasons_title" = "Todos los Episodios";
-"seasons_section_title" = "Temporadas:";
+"seasons_title" = "Wszystkie odcinki";
+"seasons_section_title" = "Sezony:";
 
-"commom_error_title" = "Uy!";
-"common_error_retry" = "Reintentar";
-"common_empty_title" = "Ninguna Serie de TV para hoy";
+"commom_error_title" = "Ups!";
+"common_error_retry" = "Ponów";
+"common_empty_title" = "Brak seriali TV dzisiaj";

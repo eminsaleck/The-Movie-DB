@@ -18,7 +18,7 @@ protocol SearchPopularViewModelDelegate: AnyObject {
 protocol SearchPopularViewModelProtocol {
   // MARK: - Input
   func viewDidLoad()
-  func willDisplayRow(_ row: Int, outOf totalRows: Int)
+  func willDisplayItem(_ item: Int, outOf totalRows: Int)
   func movieIsPicked(index: Int)
   func refreshView()
 

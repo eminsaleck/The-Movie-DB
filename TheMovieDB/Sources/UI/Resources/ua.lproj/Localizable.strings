@@ -1,36 +1,36 @@
 
 
-"airing_today_title" = "Hoy en TV";
+"airing_today_title" = "Сьогодні в ТБ";
 "main_tabbar" = "Головна";
 
-"popular_title" = "Series de TV Populares";
-"popular_tabbar" = "Populares";
+"popular_title" = "Популярні фільми";
+"popular_tabbar" = "Популярні";
 
-"search_title" = "Busqueda";
-"search_tabbar" = "Busqueda";
-"search_placeholder" = "Busca una Serie de TV";
-"search_section_recent_title" = "Series recien vistas";
-"search_section_genres_title" = "Géneros de TV";
-"search_results_recent_searchs_title" = "Búsquedas recientes";
+"search_title" = "Пошук";
+"search_tabbar" = "Пошук";
+"search_placeholder" = "Шукати фільм";
+"search_section_recent_title" = "Останні переглянуті серіали";
+"search_section_popular_title" = "Популярні фільми";
+"search_results_recent_searchs_title" = "Останні пошуки";
 
-"account_title" = "Mi Cuenta";
-"account_greetings" = "Hola";
-"account_favorites_cell" = "Mis Favoritos";
-"account_watchlist_cell" = "Ver más tarde";
-"account_logout" = "Terminar Sesión";
-"account_alert_title" = "¿Está seguro que desea terminar la Sesión?";
-"account_alert_logout" = "Terminar Sesión";
-"account_alert_cancel" = "Cancelar";
-"account_title_login" = "Iniciar sesión";
-"account_title_detail_button" = "Iniciar sessión con TheMovieDB";
-"account_favorite_list_title" = "Favoritos";
-"account_favorite_watchList_title" = "Ver más tarde";
+"account_title" = "Мій акаунт";
+"account_greetings" = "Вітаємо";
+"account_favorites_cell" = "Мої Улюблені";
+"account_watchlist_cell" = "Дивитися пізніше";
+"account_logout" = "Вийти";
+"account_alert_title" = "Ви впевнені, що хочете вийти?";
+"account_alert_logout" = "Вийти";
+"account_alert_cancel" = "Скасувати";
+"account_title_login" = "Увійти";
+"account_title_detail_button" = "Увійти через TheMovieDB";
+"account_favorite_list_title" = "Улюблені";
+"account_favorite_watchList_title" = "Дивитися пізніше";
 
-"details_episode_guide" = "Guía de Episodios";
+"details_episode_guide" = "Посібник по епізодах";
 
-"seasons_title" = "Todos los Episodios";
-"seasons_section_title" = "Temporadas:";
+"seasons_title" = "Всі епізоди";
+"seasons_section_title" = "Сезони:";
 
-"commom_error_title" = "Uy!";
-"common_error_retry" = "Reintentar";
-"common_empty_title" = "Ninguna Serie de TV para hoy";
+"commom_error_title" = "Ой!";
+"common_error_retry" = "Повторити";
+"common_empty_title" = "Сьогодні немає серіалів ТБ";
