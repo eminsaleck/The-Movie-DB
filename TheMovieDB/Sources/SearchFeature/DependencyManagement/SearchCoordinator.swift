@@ -8,6 +8,7 @@
 import UIKit
 import Common
 import UI
+import MovieDetailsFeatureInterface
 
 class SearchCoordinator: NavigationCoordinator, SearchCoordinatorProtocol{
     
@@ -23,18 +24,26 @@ class SearchCoordinator: NavigationCoordinator, SearchCoordinatorProtocol{
     }
     
     public func start() {
-        navigate(with: .searchGo)
+        navigate(with: .searchInit)
     }
     
     public func navigate(with state: SearchState) {
         switch state {
-        case .searchGo:
+        case .searchInit:
             navigateToSearch()
+        case .movieIsPicked(let id):
+            navigateToMovieDetailScreen(with: id)
         }
     }
-    func navigateToSearch(){
+    
+    private func navigateToSearch(){
         let searchVC = dependencies.buildSearchViewController(coordinator: self)
         searchVC.navigationItem.title = Localized.searchTitle.localized()
         navigationController.pushViewController(searchVC, animated: true)
     }
-}
+    
+    private func navigateToMovieDetailScreen(with id: Int) {
+        print("MOVIE PICKED - \(id)")
+    }
+  }
+

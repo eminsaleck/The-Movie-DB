@@ -7,13 +7,14 @@
 
 import Foundation
 
+
 public struct MovieDetail: Hashable {
   public let id: Int
   public let name: String
   public let firstAirDate: String
   public let lastAirDate: String
   public let episodeRunTime: [Int]
-  public let genreIds: [Genre]
+  public let genreIds: [Movie]
   public let numberOfEpisodes: Int
   public let numberOfSeasons: Int
 

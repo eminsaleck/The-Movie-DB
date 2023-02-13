@@ -8,13 +8,12 @@
 import UIKit
 import Common
 import Persistance
-import MovieDetailsFeature
 
 class DIContainer{
     
     private let dependencies: FeatureDependencies
     
-    private let searchViewModel: SearchViewModel?
+    private let searchViewModel: SearchViewModel
     
     init(dependencies: FeatureDependencies) {
         self.dependencies = dependencies
@@ -22,6 +21,10 @@ class DIContainer{
         searchViewModel = SearchViewModel()
     }
     
+<<<<<<< HEAD
+    func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {
+      return SearchCoordinator(navigationController: navigationController, dependencies: self)
+=======
     //MARK: - UseCases
     
     private func makeSearchMovieUseCase() -> SearchMovieUseCase {
@@ -51,21 +54,28 @@ class DIContainer{
                                                 fetchRecentSearchesUseCase: makeFetchSearchesUseCase())
         resultsViewModel.delegate = searchViewModel
         return resultsViewModel
+>>>>>>> c97a1487e6a73bb235ce3fd18bd2bf5d0afaad83
     }
 }
 
 extension DIContainer: SearchCoordinatorDependencies {
+    
     func buildSearchViewController(coordinator: SearchCoordinatorProtocol?) -> UIViewController {
-        let resultsViewModel = buildResultsViewModel(searchViewModel)
         
         searchViewModel.coordinator = coordinator
-        searchViewModel.resultsViewModel = resultsViewModel
         
         let searchController = SearchViewController(viewModel: searchViewModel,
-                                                    searchController: buildSearchController(resultsViewModel),
-                                                    delegate: self)
+                                                    searchControllerFactory: self)
         return searchController
     }
     
+}
+
+extension DIContainer: SearchViewControllerFactory {
+    func buildSearchPopularController() -> UIViewController {
+        let viewModel = SearchPopularViewModel()
+        let viewController = SearchPopularViewController(viewModel: viewModel)
+        return viewController
+    }
 }
 

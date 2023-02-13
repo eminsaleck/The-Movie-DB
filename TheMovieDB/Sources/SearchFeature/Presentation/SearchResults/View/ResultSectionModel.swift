@@ -2,17 +2,17 @@
 //  File.swift
 //  
 //
-//  Created by LEMIN DAHOVICH on 31.01.2023.
+//  Created by LEMIN DAHOVICH on 13.02.2023.
 //
 
-
+import Foundation
 import UI
 
-enum ResultSectionModel: Hashable {
-  case recentSearchs(items: [ResultSectionModelItem])
-  case results(items: [ResultSectionModelItem])
+enum ResultsSectionModel: Hashable {
+  case recentSearchs(items: [ResultsSectionItem])
+  case results(items: [ResultsSectionItem])
 
-  var section: ResultSearchSectionView {
+  var section: ResultsSectionView {
     switch self {
     case .recentSearchs:
       return .recentSearch
@@ -21,7 +21,7 @@ enum ResultSectionModel: Hashable {
     }
   }
 
-  var items: [ResultSectionModelItem] {
+  var items: [ResultsSectionItem] {
     switch self {
     case let .recentSearchs(items):
       return items
@@ -31,21 +31,21 @@ enum ResultSectionModel: Hashable {
   }
 }
 
-enum ResultSearchSectionView: Hashable {
+enum ResultsSectionView: Hashable {
   case recentSearch
   case results
 
   var header: String? {
     switch self {
     case .recentSearch:
-      return Localized.searchResultsRecentSearchsTitle.localized()
+      return "Strings..."
     default:
       return nil
     }
   }
 }
 
-enum ResultSectionModelItem: Hashable {
+enum ResultsSectionItem: Hashable {
   case recentSearchs(items: String)
   case results(items: MovieCellViewModel)
 }
