@@ -33,7 +33,7 @@ public struct Movie2DTO: Decodable {
 
   enum CodingKeys: String, CodingKey {
     case id
-      case name = "original_title"
+    case name = "original_title"
     case overview
     case posterPath = "poster_path"
     case backDropPath = "backdrop_path"

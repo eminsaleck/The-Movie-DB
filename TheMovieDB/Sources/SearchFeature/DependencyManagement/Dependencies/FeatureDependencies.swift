@@ -15,16 +15,13 @@ public class FeatureDependencies{
     
     let apiDataTransferService: DataTransferServiceProtocol
     let imagesBaseURL: String
-    let moviePersistence: MovieVisitedLocalRepositoryProtocol
     let searchsPersistence: SearchLocalRepositoryProtocol
 
     public init(apiDataTransferService: DataTransferServiceProtocol,
                 imagesBaseURL: String,
-                moviePersistence: MovieVisitedLocalRepositoryProtocol,
                 searchsPersistence: SearchLocalRepositoryProtocol) {
       self.apiDataTransferService = apiDataTransferService
       self.imagesBaseURL = imagesBaseURL
-      self.moviePersistence = moviePersistence
       self.searchsPersistence = searchsPersistence
     }
 }

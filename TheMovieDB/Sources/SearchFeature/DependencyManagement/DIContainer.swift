@@ -27,7 +27,6 @@ class DIContainer{
     }
 
     //MARK: - UseCases
-    
     private func makeSearchMovieUseCase() -> SearchMovieUseCase {
         let moviePageRepository = MoviePageRepositoryImplementation(
             moviePageRemoteDataSource: MovieRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
@@ -51,8 +50,16 @@ class DIContainer{
         )
     }
     
-    private func makeFetchSearchesUseCase() -> FetchSearchesUseCase {
+    private func makeFetchRecentSearchesUseCase() -> FetchSearchesUseCase {
         return FetchSearchesUseCaseImplementation(searchLocalRepository: dependencies.searchsPersistence)
+    }
+
+    private func buildResultsViewModel(
+        with delegate: ResultsViewModelDelegate?) -> ResultsViewModelProtocol {
+            let resultsViewModel = ResultsViewModel(searchTVShowsUseCase: makeSearchMovieUseCase(),
+                                                    fetchRecentSearchesUseCase: makeFetchRecentSearchesUseCase())
+      resultsViewModel.delegate = searchViewModel
+      return resultsViewModel
     }
 }
 

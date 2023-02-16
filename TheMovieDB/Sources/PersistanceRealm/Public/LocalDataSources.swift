@@ -8,7 +8,6 @@
 import Persistance
 
 public protocol LocalDataSourceProtocol {
-  func getShowVisitedDataSource(limitStorage: Int) -> MovieVisitedLocalDataSource
   func getRecentSearchesDataSource() -> SearchLocalDataSource
 }
 
@@ -17,11 +16,6 @@ final public class LocalStorage: LocalDataSourceProtocol {
 
   public init(realmStorage: RealmStorage) {
     self.realmStorage = realmStorage
-  }
-
-  public func getShowVisitedDataSource(limitStorage: Int) -> MovieVisitedLocalDataSource {
-    let store: PersistenceStore<RealmShowVisited> = PersistenceStore(realmStorage.realm)
-    return RealmShowVisitedStorage(limitStorage: limitStorage, store: store)
   }
 
   public func getRecentSearchesDataSource() -> SearchLocalDataSource {

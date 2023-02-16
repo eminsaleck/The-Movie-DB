@@ -90,7 +90,7 @@ let package = Package(
                 "Persistance",
                 "Common",
                 "UI",
-                "SDWebImage",
+                "MovieListFeatureInterface",
             ]
         ),
         .target(
