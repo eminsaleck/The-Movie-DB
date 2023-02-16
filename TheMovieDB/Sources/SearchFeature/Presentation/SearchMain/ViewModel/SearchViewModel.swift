@@ -14,13 +14,20 @@ final class SearchViewModel {
     
     weak var coordinator: SearchCoordinatorProtocol?
     
-    let searchBarTextSubject: CurrentValueSubject<String, Never> = .init("")
+    let searchBarText: CurrentValueSubject<String, Never> = .init("")
     
     init() { }
     
-    
-    fileprivate func navigateWith(state: SearchState) {
+    private func navigateWith(state: SearchState) {
         coordinator?.navigate(with: state)
+    }
+    
+    func startSearch(with text: String) {
+      resultsViewModel?.searchMovie(with: text)
+    }
+
+    func resetSearch() {
+      resultsViewModel?.resetSearch()
     }
 }
 
@@ -32,10 +39,11 @@ extension SearchViewModel: SearchPopularViewModelDelegate {
 
 extension SearchViewModel: ResultsViewModelDelegate {
     func resultsSearchViewModel(_ resultsViewModel: ResultsViewModelProtocol, selectedMovie id: Int) {
-        print(id)
+        navigateWith(state: .movieIsPicked(id: id))
     }
     
     func resultsSearchViewModel(_ resultsViewModel: ResultsViewModelProtocol, recentSearchSelected query: String) {
-        print(query)
+        searchBarText.send(query)
+        startSearch(with: query)
     }
 }

@@ -18,8 +18,8 @@ protocol ResultsViewModelDelegate: AnyObject {
 protocol ResultsViewModelProtocol {
   // MARK: - Input
   func recentSearchIsPicked(query: String)
-  func showIsPicked(index: Int)
-  func searchShows(with query: String)
+  func movieIsPicked(id: Int)
+  func searchMovie(with query: String)
   func resetSearch()
 
   // MARK: - Output

@@ -49,7 +49,15 @@ public extension UIView{
                 heightDimension: .fractionalWidth(16/9)),
             subitems: [fullItem, mainWithPairReversedGroup])
         
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100)),
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        
         let section = NSCollectionLayoutSection(group: nestedGroup)
+        section.boundarySupplementaryItems = [header]
+        
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }

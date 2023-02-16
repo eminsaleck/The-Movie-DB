@@ -25,7 +25,7 @@ class DIContainer{
     func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {
         return SearchCoordinator(navigationController: navigationController, dependencies: self)
     }
-
+    
     //MARK: - UseCases
     private func makeSearchMovieUseCase() -> SearchMovieUseCase {
         let moviePageRepository = MoviePageRepositoryImplementation(
@@ -53,30 +53,38 @@ class DIContainer{
     private func makeFetchRecentSearchesUseCase() -> FetchSearchesUseCase {
         return FetchSearchesUseCaseImplementation(searchLocalRepository: dependencies.searchsPersistence)
     }
-
+    
     private func buildResultsViewModel(
         with delegate: ResultsViewModelDelegate?) -> ResultsViewModelProtocol {
-            let resultsViewModel = ResultsViewModel(searchTVShowsUseCase: makeSearchMovieUseCase(),
+            let resultsViewModel = ResultsViewModel(searchMovieUseCase: makeSearchMovieUseCase(),
                                                     fetchRecentSearchesUseCase: makeFetchRecentSearchesUseCase())
-      resultsViewModel.delegate = searchViewModel
-      return resultsViewModel
-    }
+            resultsViewModel.delegate = searchViewModel
+            return resultsViewModel
+        }
 }
 
 extension DIContainer: SearchCoordinatorDependencies {
+    private func buildSearchController(with viewModel: ResultsViewModelProtocol) -> UISearchController {
+      let resultsController = ResultsViewController(viewModel: viewModel)
+      let searchController = UISearchController(searchResultsController: resultsController)
+      return searchController
+    }
     
     func buildSearchViewController(coordinator: SearchCoordinatorProtocol?) -> UIViewController {
+        let resultsViewModel = buildResultsViewModel(with: searchViewModel)
         
         searchViewModel.coordinator = coordinator
-        
+        searchViewModel.resultsViewModel = resultsViewModel
+
         let searchController = SearchViewController(viewModel: searchViewModel,
-                                                    searchControllerFactory: self)
+                                                    searchController: buildSearchController(with: resultsViewModel),
+                                                    delegate: self)
         return searchController
     }
     
 }
 
-extension DIContainer: SearchViewControllerFactory {
+extension DIContainer: SearchViewControllerDelegate {
     func buildSearchPopularController() -> UIViewController {
         let viewModel = SearchPopularViewModel(fetchPopularUseCase: makeFetchPopularUseCase())
         viewModel.delegate = searchViewModel

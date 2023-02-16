@@ -9,5 +9,6 @@ import Foundation
 import UI
 
 enum SearchPopularSectionView: Hashable {
-  case movies
+    case movies
+    case header
 }

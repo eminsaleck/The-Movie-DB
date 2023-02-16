@@ -27,7 +27,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
-        .package(url: "https://github.com/realm/realm-swift.git", from: "10.34.1"),
+        .package(url: "https://github.com/realm/realm-swift.git", from: "10.36.0"),
         .package(url: "https://github.com/SDWebImage/SDWebImage.git", from: "5.1.0"),
         .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.1.2"),
     ],

@@ -53,6 +53,9 @@ class PopularRootView: UIView {
     // MARK: - Setup CollectionView
     private func setupCollectionView() {
         collectionView.register(MovieViewCell.self, forCellWithReuseIdentifier: Constants.cellID)
+        collectionView.register(HeaderView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: Constants.headerReuseIdentifier)
         collectionView.delegate = self
         collectionView.refreshControl = RefreshController( { [weak self] in
             self?.viewModel.refreshView()
@@ -65,6 +68,15 @@ class PopularRootView: UIView {
             cell.setModel(viewModel: model)
             return cell
         }
+        if let dataSource = dataSource {
+            configHeader(dataSource: dataSource)
+        }
+    }
+    
+    private func configHeader(dataSource: DataSource){
+        dataSource.supplementaryViewProvider = .some({ (collectionView, kind, indexPath) -> UICollectionReusableView? in
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constants.headerReuseIdentifier, for: indexPath) as! HeaderView
+        })
     }
     
     private func subscribe() {
@@ -102,11 +114,10 @@ extension PopularRootView: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let totalItems = dataSource?.collectionView(collectionView, numberOfItemsInSection: indexPath.section) ?? 0        
+        let totalItems = dataSource?.collectionView(collectionView, numberOfItemsInSection: indexPath.section) ?? 0
         viewModel.willDisplayItem(indexPath.item, outOf: totalItems)
     }
 }
-
 // MARK: - UICollectionViewDelegateFlowLayout
 extension PopularRootView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -114,11 +125,10 @@ extension PopularRootView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
 extension PopularRootView {
-    
     struct Constants {
         static var cellID: String = "cell"
         static var headerID: String = "header"
+        static var headerReuseIdentifier: String = "headerReuse"
     }
 }
