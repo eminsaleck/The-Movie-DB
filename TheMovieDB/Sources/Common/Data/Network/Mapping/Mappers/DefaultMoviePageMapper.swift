@@ -12,17 +12,18 @@ public final class DefaultMoviePageMapper: MoviePageMapperProtocol {
 
   public init() { }
 
-  public func mapTVShowPage(_ page: MoviePageDTO, imageBasePath: String, imageSize: ImageSize) -> MoviePage {
-    let shows = page.showsList.compactMap { self.mapTVShow($0, imageBasePath: imageBasePath, imageSize: imageSize) }
+  public func mapMoviePage(_ page: MoviePageDTO, imageBasePath: String, imageSize: ImageSize) -> MoviePage {
+    let movies = page.results.compactMap { self.mapMovie($0, imageBasePath: imageBasePath, imageSize: imageSize) }
+     
     return MoviePage(page: page.page,
-                      showsList: shows,
+                      results: movies,
                       totalPages: page.totalPages,
-                      totalShows: page.totalShows
+                      totalResults: page.totalResults
     )
   }
 
-  private func mapTVShow(_ show: Movie2DTO, imageBasePath: String, imageSize: ImageSize) -> MoviePage.Movie {
-
+  private func mapMovie(_ show: Movie2DTO, imageBasePath: String, imageSize: ImageSize) -> MoviePage.Movie {
+    
     let posterPath = show.posterPath ?? ""
     let posterPathURL = URL(string: "\(imageBasePath)/t/p/\(imageSize.rawValue)\(posterPath)")
     let backPath = show.backDropPath ?? ""
@@ -32,7 +33,6 @@ public final class DefaultMoviePageMapper: MoviePageMapperProtocol {
       id: show.id,
       name: show.name,
       overview: show.overview,
-      firstAirDate: show.firstAirDate ?? "",
       posterPath: posterPathURL,
       backDropPath: backPathURL,
       genreIds: show.genreIds ?? [],

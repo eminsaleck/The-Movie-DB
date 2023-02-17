@@ -9,9 +9,9 @@ import Combine
 import Common
 
 public protocol MovieVisitedLocalRepositoryProtocol {
-  func saveShow(id: Int, pathImage: String) -> AnyPublisher<Void, ErrorEnvelope>
+  func saveMovie(id: Int, pathImage: String) -> AnyPublisher<Void, ErrorEnvelope>
 
-  func fetchVisitedShows() -> AnyPublisher<[MovieVisited], ErrorEnvelope>
+  func fetchVisitedMovies() -> AnyPublisher<[MovieVisited], ErrorEnvelope>
 
   func recentVisitedShowsDidChange() -> AnyPublisher<Bool, Never>
 }

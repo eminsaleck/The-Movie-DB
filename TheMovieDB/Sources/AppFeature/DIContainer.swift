@@ -49,11 +49,6 @@ public class DIContainer {
         return LocalStorage(realmStorage: .shared)
     }()
     
-    lazy var moviePersistence: MovieVisitedLocalRepositoryProtocol = {
-        return MovieVisitedLocalRepository(dataSource: localStorage.getShowVisitedDataSource(limitStorage: 10),
-                                           loggedUserRepository: loggedUserRepository)
-    }()
-    
     lazy var searchPersistence: SearchLocalRepository = {
         return SearchLocalRepository(dataSource: localStorage.getRecentSearchesDataSource(),
                                      loggedUserRepository: loggedUserRepository)
@@ -94,7 +89,6 @@ public class DIContainer {
     func buildSearchModule() -> SearchFeature.Module {
         let dependencies = SearchFeature.FeatureDependencies(apiDataTransferService: apiDataTransferService,
                                                              imagesBaseURL: appConfigurations.imagesBaseURL,
-                                                             moviePersistence: moviePersistence,
                                                              searchsPersistence: searchPersistence)
         return SearchFeature.Module(dependencies: dependencies)
     }
@@ -105,7 +99,6 @@ extension DIContainer: ModuleMovieDetailsBuilderProtocol {
                                        delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol {
         let dependencies = MovieDetailsFeatureInterface.ModuleDependencies(apiDataTransferService: apiDataTransferService,
                                                                            imagesBaseURL: appConfigurations.imagesBaseURL,
-                                                                           moviePersistence: moviePersistence,
                                                                            loggedUserRepository: loggedUserRepository)
         let module = MovieDetailsFeature.Module(dependencies: dependencies)
         return module.buildModuleCoordinator(in: navigationController, delegate: delegate)

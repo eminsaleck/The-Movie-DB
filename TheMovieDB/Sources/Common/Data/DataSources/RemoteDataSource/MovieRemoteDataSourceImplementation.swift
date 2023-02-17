@@ -16,27 +16,19 @@ public final class MovieRemoteDataSourceImplementation: MovieRemoteDataSourcePro
     self.dataTransferService = dataTransferService
   }
 
-  public func fetchAiringTodayShows(page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
+
+  public func fetchPopularMovies(page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/tv/airing_today",
+      path: "3/movie/popular",
       method: .get,
       queryParameters: ["page": page]
     )
     return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
   }
 
-  public func fetchPopularShows(page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
+  public func fetchMoviesByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/tv/popular",
-      method: .get,
-      queryParameters: ["page": page]
-    )
-    return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
-  }
-
-  public func fetchShowsByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
-    let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/discover/tv",
+      path: "3/discover/",
       method: .get,
       queryParameters: [
         "with_genres": genreId,
@@ -49,9 +41,9 @@ public final class MovieRemoteDataSourceImplementation: MovieRemoteDataSourcePro
     return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
   }
 
-  public func searchShowsFor(query: String, page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
+  public func searchMovieFor(query: String, page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/search/tv",
+      path: "3/search/movie",
       method: .get,
       queryParameters: [
         "query": query,

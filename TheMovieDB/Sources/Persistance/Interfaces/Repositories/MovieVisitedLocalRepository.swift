@@ -19,12 +19,13 @@ public final class MovieVisitedLocalRepository {
 }
 
 extension MovieVisitedLocalRepository: MovieVisitedLocalRepositoryProtocol {
-  public func saveShow(id: Int, pathImage: String) -> AnyPublisher<Void, ErrorEnvelope> {
+    
+  public func saveMovie(id: Int, pathImage: String) -> AnyPublisher<Void, ErrorEnvelope> {
     let userId = loggedUserRepository.getUser()?.id ?? 0
     return dataSource.saveShow(id: id, pathImage: pathImage, userId: userId)
   }
 
-  public func fetchVisitedShows() -> AnyPublisher<[MovieVisited], ErrorEnvelope> {
+  public func fetchVisitedMovies() -> AnyPublisher<[MovieVisited], ErrorEnvelope> {
     let userId = loggedUserRepository.getUser()?.id ?? 0
     return dataSource.fetchVisitedShows(userId: userId)
       .map {

@@ -10,12 +10,12 @@ import Network
 import Combine
 
 public final class MoviePageRepositoryImplementation {
-  private let showsPageRemoteDataSource: MovieRemoteDataSourceProtocol
+  private let moviePageRemoteDataSource: MovieRemoteDataSourceProtocol
   private let mapper: MoviePageMapperProtocol
   private let imageBasePath: String
 
-  public init(showsPageRemoteDataSource: MovieRemoteDataSourceProtocol, mapper: MoviePageMapperProtocol, imageBasePath: String) {
-    self.showsPageRemoteDataSource = showsPageRemoteDataSource
+  public init(moviePageRemoteDataSource: MovieRemoteDataSourceProtocol, mapper: MoviePageMapperProtocol, imageBasePath: String) {
+    self.moviePageRemoteDataSource = moviePageRemoteDataSource
     self.mapper = mapper
     self.imageBasePath = imageBasePath
   }
@@ -23,27 +23,23 @@ public final class MoviePageRepositoryImplementation {
 
 extension MoviePageRepositoryImplementation: MoviePageRepository {
 
-  public func fetchAiringTodayShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
-    return showsPageRemoteDataSource.fetchAiringTodayShows(page: page)
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+  public func fetchPopularMovies(page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
+    return moviePageRemoteDataSource.fetchPopularMovies(page: page)
+      .map {
+          self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium)
+      }
       .eraseToAnyPublisher()
   }
 
-  public func fetchPopularShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
-    return showsPageRemoteDataSource.fetchPopularShows(page: page)
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+  public func fetchMoviesByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
+    return moviePageRemoteDataSource.fetchMoviesByGenre(genreId: genreId, page: page)
+      .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
 
-  public func fetchShowsByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
-    return showsPageRemoteDataSource.fetchShowsByGenre(genreId: genreId, page: page)
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
-      .eraseToAnyPublisher()
-  }
-
-  public func searchShowsFor(query: String, page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
-    return showsPageRemoteDataSource.searchShowsFor(query: query, page: page)
-      .map { self.mapper.mapTVShowPage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+  public func searchMovieFor(query: String, page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
+    return moviePageRemoteDataSource.searchMovieFor(query: query, page: page)
+      .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
 }
