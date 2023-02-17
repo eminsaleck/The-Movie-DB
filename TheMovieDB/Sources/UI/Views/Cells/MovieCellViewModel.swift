@@ -10,16 +10,16 @@ import Common
 
 public struct MovieCellViewModel: Hashable {
     private let id = UUID().uuidString
-    private let showId: Int
+    private let movieId: Int
     let name: String
     let average: String
     let posterPathURL: URL?
     
-    public init(show: MoviePage.Movie) {
-        showId = show.id
-        name = show.name
-        average = (show.voteAverage == 0) ? "0.0": String(show.voteAverage)
-        posterPathURL = show.posterPath
+    public init(movie: MoviePage.Movie) {
+        movieId = movie.id
+        name = movie.name
+        average = (movie.voteAverage == 0) ? "0.0": String(movie.voteAverage)
+        posterPathURL = movie.posterPath
     }
     
     public func hash(into hasher: inout Hasher) {

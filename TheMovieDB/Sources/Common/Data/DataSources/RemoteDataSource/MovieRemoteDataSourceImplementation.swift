@@ -28,7 +28,7 @@ public final class MovieRemoteDataSourceImplementation: MovieRemoteDataSourcePro
 
   public func fetchMoviesByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/discover/tv",
+      path: "3/discover/",
       method: .get,
       queryParameters: [
         "with_genres": genreId,
@@ -43,7 +43,7 @@ public final class MovieRemoteDataSourceImplementation: MovieRemoteDataSourcePro
 
   public func searchMovieFor(query: String, page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/search/tv",
+      path: "3/search/movie",
       method: .get,
       queryParameters: [
         "query": query,

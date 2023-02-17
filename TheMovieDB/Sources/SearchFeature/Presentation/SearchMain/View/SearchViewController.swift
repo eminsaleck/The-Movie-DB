@@ -74,7 +74,7 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UISearchBarDelegate, UISearchResultsUpdating {
-    func searchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
       if let query = searchBar.text {
         viewModel.startSearch(with: query)
       }
@@ -84,6 +84,9 @@ extension SearchViewController: UISearchBarDelegate, UISearchResultsUpdating {
         if let isEmpty = searchController.searchBar.text?.isEmpty, isEmpty {
             viewModel.resetSearch()
         }
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+      viewModel.resetSearch()
     }
 }
 

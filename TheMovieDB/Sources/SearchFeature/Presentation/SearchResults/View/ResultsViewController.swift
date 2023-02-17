@@ -4,25 +4,24 @@
 //
 //  Created by LEMIN DAHOVICH on 16.02.2023.
 //
-
 import Combine
 import UIKit
 import Common
 import UI
 
-class ResultsSearchViewController: UIViewController {
+class ResultsViewController: UIViewController {
     private let viewModel: ResultsViewModelProtocol
-    private let resultView: ResultListView = ResultListView()
-    typealias DataSource = UITableViewDiffableDataSource<ResultsSectionView, ResultsSectionItem>
+    private let resultView = ResultCollectionView()
+    
+    typealias DataSource = UICollectionViewDiffableDataSource<ResultsSectionView, ResultsSectionItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<ResultsSectionView, ResultsSectionItem>
     private var dataSource: DataSource?
     
-    private var disposeBag = Set<AnyCancellable>()
+    private var bag = Set<AnyCancellable>()
     
-    // MARK: - Life Cycle
-    init(viewModel: ResultsSearchViewModelProtocol) {
+    init(viewModel: ResultsViewModelProtocol) {
         self.viewModel = viewModel
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -36,48 +35,50 @@ class ResultsSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
-        setupViewModel()
-        setupTable()
+        bindLayout()
+        configCollectionView()
+        configViewModel()
+        setupCollection()
     }
     
-    private func setupTableView() {
-        resultView.tableView.register(cellType: MovieCellViewModel.self)
-        resultView.tableView.register(cellType: RecentsTableViewCell.self)
-        resultView.tableView.delegate = self
+    private func bindLayout() {
+        viewModel.layout
+            .sink { [weak self] layout in
+                self?.resultView.layoutConfig = layout
+            }
+            .store(in: &bag)
     }
     
-    // MARK: - SetupViewModel
-    private func setupViewModel() {
+    private func configCollectionView() {
+        resultView.collectionView.register(MovieViewCell.self, forCellWithReuseIdentifier: Constants.movieCell)
+        resultView.collectionView.register(RecentsCell.self, forCellWithReuseIdentifier: Constants.recentsCell)
+        resultView.collectionView.delegate = self
+    }
+    
+    private func configViewModel() {
         viewModel
             .viewState
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] state in
                 self?.configView(with: state)
             })
-            .store(in: &disposeBag)
+            .store(in: &bag)
     }
     
-    // MARK: - Setup Table View
-    private func setupTable() {
-        setupDataSource()
+    private func setupCollection() {
+        configDataSource()
         subscribe()
     }
     
-    private func setupDataSource() {
-        dataSource = CustomSectionTableViewDiffableDataSource(tableView: resultView.tableView, cellProvider: { [weak self] tableView, indexPath, model in
-            guard let strongSelf = self else {
-                fatalError()
-            }
-            
+    private func configDataSource() {
+        dataSource = UICollectionViewDiffableDataSource(collectionView: resultView.collectionView, cellProvider: { [weak self] collectionView, indexPath, model in
             switch model {
             case let .recentSearchs(model):
-                return strongSelf.makeCellForRecentSearch(tableView, at: indexPath, element: model)
+                return self?.makeCellForRecentSearch(collectionView, at: indexPath, element: model)
             case let .results(viewModel):
-                return strongSelf.makeCellForResultSearch(tableView, at: indexPath, element: viewModel)
+                return self?.makeCellForResultSearch(collectionView, at: indexPath, element: viewModel)
             }
         })
-        
     }
     
     private func subscribe() {
@@ -95,68 +96,72 @@ class ResultsSearchViewController: UIViewController {
             .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] snapshot in
                 self?.dataSource?.apply(snapshot)
             })
-            .store(in: &disposeBag)
+            .store(in: &bag)
     }
     
-    // MARK: - Handle View State
     private func configView(with state: ResultViewState) {
-        let tableView = resultView.tableView
+        let collectionView = resultView.collectionView
         
         switch state {
         case .initial :
-            tableView.tableFooterView = UIView()
-            tableView.separatorStyle = .singleLine
+            collectionView.backgroundView = nil
             
         case .loading:
-            tableView.tableFooterView = LoadingView.defaultView
-            tableView.separatorStyle = .none
+            collectionView.backgroundView = LoadingView.defaultView
             
         case .populated :
-            tableView.tableFooterView = UIView()
-            tableView.separatorStyle = .singleLine
+            collectionView.backgroundView = nil
             
         case .empty :
-            messageView.messageLabel.text = "No results to Show"
-            tableView.tableFooterView = messageView
-            tableView.separatorStyle = .none
+            collectionView.backgroundView = EmptyView.defaultView
             
-        case .error(let message):
-            messageView.messageLabel.text = message
-            tableView.tableFooterView = messageView
-            tableView.separatorStyle = .none
+        case .error(_):
+            collectionView.backgroundView = EmptyView.defaultView
+            
         }
     }
 }
 
-// MARK: - UITableViewDelegate
-extension ResultsSearchViewController: UITableViewDelegate {
+extension ResultsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let dataSource = dataSource else { return }
+        let totalItems = dataSource.collectionView(collectionView, numberOfItemsInSection: indexPath.section)
+        if indexPath.item == totalItems - 1 {
+            viewModel.willDisplayItem()
+        }
+    }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let model = dataSource?.itemIdentifier(for: indexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-            
             switch model {
-            case .recentSearchs(let query) :
+            case .recentSearchs(let query):
                 viewModel.recentSearchIsPicked(query: query)
-                
             case .results:
-                viewModel.showIsPicked(index: indexPath.row)
+                viewModel.movieIsPicked(id: indexPath.item)
             }
         }
     }
 }
 
-// MARK: - Build Cells
-extension ResultsSearchViewController {
-    private func makeCellForRecentSearch(_ tableView: UITableView, at indexPath: IndexPath, element: String) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(with: RecentSearchTableViewCell.self, for: indexPath)
+extension ResultsViewController {
+    private func makeCellForRecentSearch(_ collectionView: UICollectionView, at indexPath: IndexPath, element: String) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.recentsCell,
+                                                      for: indexPath) as! RecentsCell
         cell.setModel(with: element)
         return cell
     }
     
-    private func makeCellForResultSearch(_ tableView: UITableView, at indexPath: IndexPath, element: TVShowCellViewModel) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(with: TVShowViewCell.self, for: indexPath)
+    private func makeCellForResultSearch(_ collectionView: UICollectionView, at indexPath: IndexPath, element: MovieCellViewModel) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.movieCell, for: indexPath) as! MovieViewCell
         cell.setModel(viewModel: element)
         return cell
     }
+}
+
+extension ResultsViewController{
+    struct Constants {
+        static var movieCell = "MovieCellID"
+        static var recentsCell = "recentsCellID"
+    }
+    
 }

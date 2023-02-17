@@ -101,6 +101,6 @@ final class SearchPopularViewModel: SearchPopularViewModelProtocol {
     }
     
     private func mapToCell(entities: [MoviePage.Movie]) -> [MovieCellViewModel] {
-        return entities.map { MovieCellViewModel(show: $0) }
+        return entities.map { MovieCellViewModel(movie: $0) }
     }
 }

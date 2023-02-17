@@ -34,15 +34,6 @@ enum ResultsSectionModel: Hashable {
 enum ResultsSectionView: Hashable {
   case recentSearch
   case results
-
-  var header: String? {
-    switch self {
-    case .recentSearch:
-      return Localized.searchResultsRecentSearchsTitle.localized()
-    default:
-      return nil
-    }
-  }
 }
 
 enum ResultsSectionItem: Hashable {
