@@ -67,14 +67,14 @@ final class ResultsViewModel: ResultsViewModelProtocol {
     
     private func subscribeToRecents() {
         viewState
-            .removeDuplicates()
             .filter { $0 == .initial }
             .flatMap { [fetchRecentSearchesUseCase] _ -> AnyPublisher<[Search], ErrorEnvelope> in
                 return fetchRecentSearchesUseCase.execute(requestValue: FetchSearchesUseCaseRequestValue())
             }
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] results in
-                self?.createSectionModel(recentSearches: results.map { $0.query }, resultsMovies: [])
+                let dict = Dictionary(uniqueKeysWithValues: results.map { ($0.query, $0.date) })
+                self?.createSectionModel(recentSearches: dict, resultsMovies: [])
             })
             .store(in: &bag)
     }
@@ -108,8 +108,9 @@ final class ResultsViewModel: ResultsViewModelProtocol {
             viewState.send(.populated)
         }
         currentResult = response.results
+        
         if page == 1 {
-            createSectionModel(recentSearches: [], resultsMovies: response.results)
+            createSectionModel(recentSearches: [:], resultsMovies: response.results)
         } else {
             appendSectionModel(resultsMovies: response.results)
         }
@@ -136,9 +137,10 @@ final class ResultsViewModel: ResultsViewModelProtocol {
         }
     }
     
-    private func createSectionModel(recentSearches: [String], resultsMovies: [MoviePage.Movie]) {
-        let recentSearchsItem = recentSearches.map { ResultsSectionItem.recentSearchs(items: $0) }
-        
+    private func createSectionModel(recentSearches: [String: Date], resultsMovies: [MoviePage.Movie]) {
+        let sortedSearches = recentSearches.sorted { $0.value > $1.value }
+        let recentSearchsItem = sortedSearches.map { ResultsSectionItem.recentSearchs(search: $0.key,
+                                                                                      date: $0.value) }
         let resultsMovieItem = resultsMovies
             .map { MovieCellViewModel(movie: $0) }
             .map { ResultsSectionItem.results(items: $0) }

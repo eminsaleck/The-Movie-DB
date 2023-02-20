@@ -74,7 +74,8 @@ class ResultsViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource(collectionView: resultView.collectionView, cellProvider: { [weak self] collectionView, indexPath, model in
             switch model {
             case let .recentSearchs(model):
-                return self?.makeCellForRecentSearch(collectionView, at: indexPath, element: model)
+                return self?.makeCellForRecentSearch(collectionView, at: indexPath,
+                                                     search: model.search, date: model.date)
             case let .results(viewModel):
                 return self?.makeCellForResultSearch(collectionView, at: indexPath, element: viewModel)
             }
@@ -134,8 +135,8 @@ extension ResultsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let model = dataSource?.itemIdentifier(for: indexPath) {
             switch model {
-            case .recentSearchs(let query):
-                viewModel.recentSearchIsPicked(query: query)
+            case .recentSearchs(let entity):
+                viewModel.recentSearchIsPicked(query: entity.search)
             case .results:
                 viewModel.movieIsPicked(id: indexPath.item)
             }
@@ -144,10 +145,13 @@ extension ResultsViewController: UICollectionViewDelegate {
 }
 
 extension ResultsViewController {
-    private func makeCellForRecentSearch(_ collectionView: UICollectionView, at indexPath: IndexPath, element: String) -> UICollectionViewCell {
+    private func makeCellForRecentSearch(_ collectionView: UICollectionView,
+                                         at indexPath: IndexPath,
+                                         search: String,
+                                         date: Date ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.recentsCell,
                                                       for: indexPath) as! RecentsCell
-        cell.setModel(with: element)
+        cell.setModel(with: search, date: date)
         return cell
     }
     

@@ -10,7 +10,6 @@ import Common
 import UI
 
 class RecentsCell: UICollectionViewCell {
-    
     private let label = UILabel()
 
     override init(frame: CGRect) {
@@ -22,11 +21,14 @@ class RecentsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setModel(with text: String) {
+    func setModel(with text: String, date createdAt: Date) {
         label.text = text
     }
 
     private func setupUI() {
+        layer.cornerRadius = 8
+        layer.masksToBounds = true
+        
         backgroundColor = .secondarySystemBackground
         contentView.addSubview(label)
         activateConstraintsForLabel()

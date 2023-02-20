@@ -32,11 +32,11 @@ enum ResultsSectionModel: Hashable {
 }
 
 enum ResultsSectionView: Hashable {
-  case recentSearch
-  case results
+    case recentSearch
+    case results
 }
 
 enum ResultsSectionItem: Hashable {
-  case recentSearchs(items: String)
-  case results(items: MovieCellViewModel)
+    case recentSearchs(search: String, date: Date)
+    case results(items: MovieCellViewModel)
 }

@@ -5,22 +5,23 @@
 //  Created by LEMIN DAHOVICH on 13.02.2023.
 //
 
-
 import UIKit
 
 public class MovieViewCell: UICollectionViewCell {
     
     private let posterImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.setContentCompressionResistancePriority(.required, for: .vertical)
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
+        layer.shadowed()
         backgroundColor = .white
     }
     
@@ -56,5 +57,8 @@ public class MovieViewCell: UICollectionViewCell {
     // MARK: - Public
     public func setModel(viewModel: MovieCellViewModel) {
         posterImageView.loadImage(imagePath: viewModel.posterPathURL!)
+        
+        let radius = layer.cornerRadius
+        posterImageView.layer.cornerRadius = radius
     }
 }
