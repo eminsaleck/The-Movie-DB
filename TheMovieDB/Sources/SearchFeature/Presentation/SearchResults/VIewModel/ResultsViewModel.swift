@@ -117,7 +117,6 @@ final class ResultsViewModel: ResultsViewModelProtocol {
         if totalPages - currentPage > 0{
             hasMorePages = true
         }
-        print("currentPage: \(currentPage)\n totalPages: \(totalPages)")
     }
     
     private func appendSectionModel(resultsMovies: [MoviePage.Movie]) {
