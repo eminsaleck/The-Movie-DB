@@ -34,7 +34,6 @@ final class SearchPopularViewModel: SearchPopularViewModelProtocol {
     func willDisplayItem(_ item: Int, outOf totalRows: Int) {
         
         if case .paging(_, let nextPage) = viewStateObservableSubject.value, item == totalRows - 1 {
-            print("REQUEST - : NEXTPAGE:\(nextPage)")
             getMovies(for: nextPage)
         }
     }
