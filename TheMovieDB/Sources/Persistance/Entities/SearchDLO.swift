@@ -8,10 +8,11 @@
 import Foundation
 
 public struct SearchDLO {
-
-  public let query: String
-
-  public init(query: String) {
-    self.query = query
-  }
+    public let query: String
+    public let date: Date
+    
+    public init(query: String, date: Date) {
+        self.query = query
+        self.date = date
+    }
 }

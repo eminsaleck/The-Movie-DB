@@ -19,6 +19,13 @@ extension PersistenceStore where Entity == RealmRecentSearch {
     }
     
     func insert(query: String, userId: Int) {
+        let searchResults = findAll(userId: userId)
+        if searchResults.count >= 5 {
+            try! realm.write {
+                realm.delete(searchResults.last!)
+            }
+        }
+        
         try! realm.write {
             let recentSearch = RealmRecentSearch()
             recentSearch.id = UUID().uuidString

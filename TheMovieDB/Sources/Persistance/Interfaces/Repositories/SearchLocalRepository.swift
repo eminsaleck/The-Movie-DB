@@ -28,7 +28,9 @@ extension SearchLocalRepository: SearchLocalRepositoryProtocol {
     let userId = loggedUserRepository.getUser()?.id ?? 0
     return dataSource.fetchRecentSearches(userId: userId)
       .map {
-        return $0.map { Search(query: $0.query) }
+          return $0.map { searchDLO in
+              Search(query: searchDLO.query, date: searchDLO.date)
+          }
       }
       .eraseToAnyPublisher()
   }

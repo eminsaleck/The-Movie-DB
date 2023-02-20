@@ -29,6 +29,6 @@ final class RealmRecentSearch: Object {
 
 extension RealmRecentSearch {
     func toDomain() -> SearchDLO {
-        return SearchDLO(query: query)
+        return SearchDLO(query: query, date: createdAt)
     }
 }
