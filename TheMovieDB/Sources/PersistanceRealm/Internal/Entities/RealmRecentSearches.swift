@@ -32,9 +32,3 @@ extension RealmRecentSearch {
         return SearchDLO(query: query)
     }
 }
-
-extension RealmRecentSearch {
-    static func getDefaultSortDescriptors() -> [SortDescriptor] {
-        return [SortDescriptor(key: "createdAt", ascending: false)]
-    }
-}
