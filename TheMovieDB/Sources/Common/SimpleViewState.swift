@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SimpleViewState<Entity>: Equatable where Entity: Equatable {
+public enum SimpleViewState<Entity>: Equatable where Entity: Equatable {
 
     case loading
     case paging([Entity], next: Int)
@@ -15,7 +15,7 @@ enum SimpleViewState<Entity>: Equatable where Entity: Equatable {
     case empty
     case error(Error)
 
-    static func == (lhs: SimpleViewState<Entity>, rhs: SimpleViewState<Entity>) -> Bool {
+    public static func == (lhs: SimpleViewState<Entity>, rhs: SimpleViewState<Entity>) -> Bool {
         switch (lhs, rhs) {
         case (.loading, .loading):
             return true
