@@ -28,14 +28,12 @@ public final class MovieRemoteDataSourceImplementation: MovieRemoteDataSourcePro
 
   public func fetchMoviesByGenre(genreId: Int, page: Int) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/discover/",
+      path: "3/discover/movie",
       method: .get,
       queryParameters: [
         "with_genres": genreId,
         "page": page,
         "sort_by": "popularity.desc",
-        "timezone": "America%2FNew_York",
-        "include_null_first_air_dates": "false"
       ]
     )
     return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
