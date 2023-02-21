@@ -23,7 +23,7 @@ let package = Package(
         .library(name: "MovieDetailsFeature", targets: ["MovieDetailsFeature"]),
         .library(name: "MovieListFeatureInterface", targets: ["MovieListFeatureInterface"]),
         .library(name: "MovieListFeature", targets: ["MovieListFeature"]),
-        
+        .library(name: "ExploreFeature", targets: ["ExploreFeature"]),
     ],
     dependencies: [
         .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
@@ -34,6 +34,17 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        .target(
+            name: "ExploreFeature",
+            dependencies: [
+                "Network",
+                "Persistance",
+                "Common",
+                "UI",
+                "MovieListFeatureInterface",
+                "MovieListFeatureInterface",
+            ]
+        ),
         .target(
             name: "Network",
             dependencies: [
@@ -148,6 +159,7 @@ let package = Package(
                     "PersistanceRealm",
                     "Common",
                     "UI",
+                    "ExploreFeature",
                     "MovieListFeatureInterface",
                     "MovieDetailsFeature",
                     "MovieListFeature",

@@ -28,11 +28,7 @@ public enum Localized: String, CaseIterable {
   case accountTitleDetailButton = "account_title_detail_button" // Sign in with TheMovieDB
   case accountTitleLogin = "account_title_login" // Login
   case accountWatchlistCell = "account_watchlist_cell" // Watch List
-  case mainTabbar = "main_tabbar" // Today
-  case airingTodayTitle = "airing_today_title" // Today on TV
-  case commomErrorTitle = "commom_error_title" // Oops!
-  case commonEmptyTitle = "common_empty_title" // No shows for Today :(
-  case commonErrorRetry = "common_error_retry" // Retry
+  case exploreTabbar = "explore_tabbar_title" // Explore
   case detailsEpisodeGuide = "details_episode_guide" // Episode Guide
   case popularTabbar = "popular_tabbar" // Popular
   case popularTitle = "popular_title" // Popular Movies

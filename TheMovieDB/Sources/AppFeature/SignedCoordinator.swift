@@ -13,6 +13,7 @@ import UI
 public enum SignedChildCoordinator {
     case account
     case search
+    case explore
 }
 
 public class SignedCoordinator: Coordinator {
@@ -41,9 +42,11 @@ public class SignedCoordinator: Coordinator {
                                                    image: UIImage(systemName: "magnifyingglass"), tag: 2)
         buildSearchScene(in: searchNavigation)
         
-        tabBarController.setViewControllers([searchNavigation,accountNavigation], animated: true)
+        let exploreNavigation = UINavigationController()
+        exploreNavigation.tabBarItem = UITabBarItem(title: Localized.exploreTabbar.localized(),
+                                                   image: UIImage(systemName: "scribble.variable"), tag: 1)
         
-        
+        tabBarController.setViewControllers([exploreNavigation,searchNavigation,accountNavigation], animated: true)
     }
 }
 
@@ -60,6 +63,13 @@ extension SignedCoordinator {
     private func buildSearchScene(in navigation: UINavigationController) {
       let searchModule = DIContainer.buildSearchModule()
       let coordinator = searchModule.buildSearchCoordinator(in: navigation)
+      coordinator.start()
+      childCoordinators[.search] = coordinator
+    }
+    // MARK: - Explore Scene
+    private func buildExploreScene(in navigation: UINavigationController) {
+      let exploreModule = DIContainer.buildExploreModule()
+      let coordinator = exploreModule.buildExploreCoordinator(in: navigation)
       coordinator.start()
       childCoordinators[.search] = coordinator
     }

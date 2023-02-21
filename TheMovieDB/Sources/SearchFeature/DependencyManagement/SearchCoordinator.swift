@@ -17,7 +17,6 @@ class SearchCoordinator: NavigationCoordinator, SearchCoordinatorProtocol{
     
     private var childCoordinators = [SearchChildCoordinator: Coordinator]()
     
-    
     public init(navigationController: UINavigationController, dependencies: DIContainer){
         self.navigationController = navigationController
         self.dependencies = dependencies

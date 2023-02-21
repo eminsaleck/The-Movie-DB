@@ -7,7 +7,6 @@
 
 import UIKit
 import Common
-import SDWebImage
 
 public struct Module {
 
