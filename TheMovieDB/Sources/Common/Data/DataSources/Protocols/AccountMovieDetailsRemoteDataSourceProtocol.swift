@@ -13,6 +13,6 @@ public protocol AccountMovieDetailsRemoteDataSourceProtocol {
 
   func saveToWatchList(tvShowId: Int, userId: String, session: String, watchedList: Bool) -> AnyPublisher<MovieActionStatusDTO, DataTransferError>
 
-  func fetchTVShowStatus(tvShowId: Int, sessionId: String) -> AnyPublisher<MovieAccountStatusDTO, DataTransferError>
+  func fetchMovieStatus(tvShowId: Int, sessionId: String) -> AnyPublisher<MovieAccountStatusDTO, DataTransferError>
 }
 

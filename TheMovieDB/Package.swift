@@ -38,6 +38,7 @@ let package = Package(
             name: "ExploreFeature",
             dependencies: [
                 "Network",
+                "Networking",
                 "Persistance",
                 "Common",
                 "UI",

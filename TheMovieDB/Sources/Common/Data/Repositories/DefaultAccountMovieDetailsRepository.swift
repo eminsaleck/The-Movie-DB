@@ -42,9 +42,9 @@ extension DefaultAccountMovieDetailsRepository: AccountMovieDetailsRepository {
       .eraseToAnyPublisher()
   }
 
-  public func fetchTVShowStatus(tvShowId: Int) -> AnyPublisher<MovieAccountStatus, DataTransferError> {
+  public func fetchMovieStatus(tvShowId: Int) -> AnyPublisher<MovieAccountStatus, DataTransferError> {
     let sessionId = loggedUserRepository.getUser()?.sessionId ?? ""
-    return showsRemoteDataSource.fetchTVShowStatus(tvShowId: tvShowId, sessionId: sessionId)
+    return showsRemoteDataSource.fetchMovieStatus(tvShowId: tvShowId, sessionId: sessionId)
       .map { self.mapper.mapTVShowStatusResult(result: $0) }
       .eraseToAnyPublisher()
   }

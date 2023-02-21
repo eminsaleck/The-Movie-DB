@@ -21,7 +21,7 @@ protocol ExploreCoordinatorDependencies {
 public enum ExploreState: State {
     case exploreInit
     case movieIsPicked(id: Int)
-    case allIsPicked(id: Int)
+    case allIsPicked(id: Int, title: String)
 }
 
 

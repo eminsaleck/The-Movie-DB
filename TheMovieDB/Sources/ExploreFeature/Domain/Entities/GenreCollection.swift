@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import Common
+
+struct GenreCollection {
+  let genres: [Genre]
+}

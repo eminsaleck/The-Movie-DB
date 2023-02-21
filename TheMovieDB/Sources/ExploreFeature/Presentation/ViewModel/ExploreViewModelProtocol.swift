@@ -14,9 +14,8 @@ import UI
 protocol ExploreViewModelProtocol {
     // MARK: - Input
     func viewDidLoad()
-    func willDisplayItem(_ item: Int, outOf totalRows: Int)
     func movieIsPicked(index: Int)
-    func refreshView()
+    func moviesByGenre(id: Int, title: String)
     
     // MARK: - Output
     var viewStateObservableSubject: CurrentValueSubject<SimpleViewState<MovieCellViewModel>, Never> { get }
