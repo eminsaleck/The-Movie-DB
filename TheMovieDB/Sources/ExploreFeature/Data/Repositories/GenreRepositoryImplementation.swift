@@ -29,13 +29,10 @@ extension DefaultGenreRepository: GenresRepository {
         return remoteDataSource.fetchGenres()
             .flatMap { genreCollectionDTO -> AnyPublisher<[GenreMovies], DataTransferError> in
                 let moviePublishers = genreCollectionDTO.genres.map { self.moviesByGenre(genreId: $0.id) }
-                let moviePagesPublisher = Publishers.MergeMany(moviePublishers)
-                let allMoviesPublisher = moviePagesPublisher.collect()
-                
-                return allMoviesPublisher
+                return Publishers.MergeMany(moviePublishers).collect()
                     .map { moviesByGenre in
-                        genreCollectionDTO.genres.enumerated().map { (index, genreDTO) -> GenreMovies in
-                            let movies = moviesByGenre[index]
+                        genreCollectionDTO.genres.enumerated().map { (id, genreDTO) -> GenreMovies in
+                            let movies = moviesByGenre[id]
                             return GenreMovies(id: genreDTO.id, name: genreDTO.name, movies: movies)
                         }
                     }

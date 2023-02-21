@@ -46,7 +46,9 @@ final class ExploreViewModel: ExploreViewModelProtocol {
                 case .finished: break
                 }
             }, receiveValue: { result in
-                print(result)
+                result.genres.map { genre in
+                    print(genre.name)
+                }
             })
             .store(in: &bag)
     }
