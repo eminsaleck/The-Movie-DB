@@ -50,7 +50,7 @@ extension AccountMovieDetailsRemoteDataSource: AccountMovieDetailsRemoteDataSour
     return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
   }
 
-  public func fetchTVShowStatus(tvShowId: Int, sessionId: String) -> AnyPublisher<MovieAccountStatusDTO, DataTransferError> {
+  public func fetchMovieStatus(tvShowId: Int, sessionId: String) -> AnyPublisher<MovieAccountStatusDTO, DataTransferError> {
     let endpoint = Endpoint<MovieAccountStatusDTO>(
       path: "3/tv/\(String(tvShowId))/account_states",
       method: .get,

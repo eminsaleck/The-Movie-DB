@@ -13,5 +13,5 @@ public protocol AccountMovieDetailsRepository {
 
   func saveToWatchList(tvShowId: Int, watchedList: Bool) -> AnyPublisher<MovieActionStatus, DataTransferError>
 
-  func fetchTVShowStatus(tvShowId: Int) -> AnyPublisher<MovieAccountStatus, DataTransferError>
+  func fetchMovieStatus(tvShowId: Int) -> AnyPublisher<MovieAccountStatus, DataTransferError>
 }

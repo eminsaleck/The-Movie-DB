@@ -8,7 +8,7 @@
 "search_section_recent_title" = "Recently TVShows Visited";
 "popular_title" = "Popular Movies";
 "search_results_recent_searchs_title" = "Recent Searchs";
-
+"explore_tabbar_title" = "Explore";
 "account_title" = "Account";
 "account_greetings" = "Hi";
 "account_favorites_cell" = "Favorites";
@@ -23,8 +23,8 @@
 "account_favorite_watchList_title" = "Watch List";
 
 "details_episode_guide" = "Episode Guide";
-
-
+"header_trending" = "Trends";
+"header_genre" = "Genres"
 
 "commom_error_title" = "Oops!";
 "common_error_retry" = "Retry";

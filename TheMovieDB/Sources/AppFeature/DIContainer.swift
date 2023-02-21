@@ -18,6 +18,7 @@ import Persistance
 import MovieDetailsFeature
 import MovieDetailsFeatureInterface
 import MovieListFeature
+import ExploreFeature
 import MovieListFeatureInterface
 
 public class DIContainer {
@@ -91,6 +92,12 @@ public class DIContainer {
                                                              imagesBaseURL: appConfigurations.imagesBaseURL,
                                                              searchsPersistence: searchPersistence)
         return SearchFeature.Module(dependencies: dependencies)
+    }
+    // MARK: - Explore feature
+    func buildExploreModule() -> ExploreFeature.Module {
+        let dependencies = ExploreFeature.FeatureDependencies(apiDataTransferService: apiDataTransferService,
+                                                             imagesBaseURL: appConfigurations.imagesBaseURL)
+        return ExploreFeature.Module(dependencies: dependencies)
     }
 }
 

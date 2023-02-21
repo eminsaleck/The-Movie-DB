@@ -21,7 +21,6 @@ class DIContainer{
         searchViewModel = SearchViewModel()
     }
     
-    
     func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {
         return SearchCoordinator(navigationController: navigationController, dependencies: self)
     }

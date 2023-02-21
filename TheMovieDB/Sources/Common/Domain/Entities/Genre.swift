@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct Movie: Hashable {
-  
-  public init(id: Int, name: String) {
-    self.id = id
-    self.name = name
-  }
-  
-  public let id: Int
-  public let name: String
+public struct Genre: Hashable {
+    
+    public init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+    
+    public let id: Int
+    public let name: String
 }

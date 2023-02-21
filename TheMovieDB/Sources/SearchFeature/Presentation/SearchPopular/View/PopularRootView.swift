@@ -5,7 +5,6 @@
 //  Created by LEMIN DAHOVICH on 13.02.2023.
 //
 
-
 import UIKit
 import Combine
 import UI
@@ -13,6 +12,7 @@ import UI
 class PopularRootView: UIView {
     
     private let viewModel: SearchPopularViewModelProtocol
+    
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateLayout())
