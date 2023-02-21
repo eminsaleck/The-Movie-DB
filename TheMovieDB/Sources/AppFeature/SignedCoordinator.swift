@@ -21,7 +21,6 @@ public class SignedCoordinator: Coordinator {
     private var childCoordinators = [SignedChildCoordinator: Coordinator]()
     private let DIContainer: DIContainer
     
-    
     public init(tabBarController: UITabBarController, DIContainer: DIContainer) {
         self.tabBarController = tabBarController
         self.DIContainer = DIContainer
@@ -45,6 +44,7 @@ public class SignedCoordinator: Coordinator {
         let exploreNavigation = UINavigationController()
         exploreNavigation.tabBarItem = UITabBarItem(title: Localized.exploreTabbar.localized(),
                                                    image: UIImage(systemName: "scribble.variable"), tag: 1)
+        buildExploreScene(in: exploreNavigation)
         
         tabBarController.setViewControllers([exploreNavigation,searchNavigation,accountNavigation], animated: true)
     }

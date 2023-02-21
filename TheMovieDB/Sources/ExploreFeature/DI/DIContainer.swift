@@ -11,9 +11,11 @@ import Common
 class DIContainer{
     
     private let dependencies: FeatureDependencies
+    private let exploreViewModel: ExploreViewModel
     
     init(dependencies: FeatureDependencies) {
         self.dependencies = dependencies
+        exploreViewModel = ExploreViewModel()
     }
     
     func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {
@@ -23,8 +25,8 @@ class DIContainer{
 
 extension DIContainer: ExploreCoordinatorDependencies{
     func buildExploreViewController(coordinator: ExploreCoordinatorProtocol?) -> UIViewController {
-        let vc = UIViewController(nibName: nil, bundle: nil)
-        vc.view.backgroundColor = .red
-        return vc
+        exploreViewModel.coordinator = coordinator
+        let exploreVC = ExploreViewController(viewModel: exploreViewModel)
+        return exploreVC
     }
 }

@@ -21,6 +21,7 @@ class ExploreCoordinator: NavigationCoordinator, ExploreCoordinatorProtocol{
         self.dependencies = dependencies
     }
     public func start() {
+        print("SS")
         navigate(with: .exploreInit)
     }
     
