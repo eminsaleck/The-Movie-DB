@@ -13,10 +13,12 @@ class DIContainer{
     private let dependencies: FeatureDependencies
     
     private lazy var genresRepository: GenresRepository = {
-      return DefaultGenreRepository(
-        remoteDataSource: DefaultGenreRemoteDataSource(dataTransferService: dependencies.apiDataTransferService))
+        return DefaultGenreRepository(
+            remoteDataSource: DefaultGenreRemoteDataSource(dataTransferService: dependencies.apiDataTransferService),
+            mapper: DefaultMoviePageMapper(),
+            imageBasePath: dependencies.imagesBaseURL)
     }()
-
+    
     init(dependencies: FeatureDependencies) {
         self.dependencies = dependencies
     }
@@ -26,24 +28,14 @@ class DIContainer{
         return ExploreCoordinator(navigationController: navigationController, dependencies: self)
     }
     
-    private func makeFetchMoviesByGenreUseCase() -> FetchMoviesByGenreUseCase {
-      let moviePageRepository = MoviePageRepositoryImplementation(
-        moviePageRemoteDataSource: MovieRemoteDataSourceImplementation(dataTransferService: dependencies.apiDataTransferService),
-        mapper: DefaultMoviePageMapper(),
-        imageBasePath: dependencies.imagesBaseURL
-      )
-      return DefaultFetchMoviesByGenreUseCase(moviePageRepository: moviePageRepository)
-    }
-    
     private func makeFetchGenresUseCase() -> FetchGenresUseCase {
-      return DefaultFetchGenresUseCase(genresRepository: genresRepository)
+        return DefaultFetchGenresUseCase(genresRepository: genresRepository)
     }
 }
 
 extension DIContainer: ExploreCoordinatorDependencies{
     private func buildViewModel() -> ExploreViewModel {
-        let exploreViewModel = ExploreViewModel(fetchGenresUseCase: makeFetchGenresUseCase(),
-                                                fetchMoviesByGenreUseCase: makeFetchMoviesByGenreUseCase())
+        let exploreViewModel = ExploreViewModel(fetchGenresUseCase: makeFetchGenresUseCase())
         
         return exploreViewModel
     }

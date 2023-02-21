@@ -26,7 +26,8 @@
 "account_title_detail_button" = "Zaloguj się przez TheMovieDB";
 "account_favorite_list_title" = "Ulubione";
 "account_favorite_watchList_title" = "Obejrzeć później";
-
+"header_trending" = "Trends";
+"header_genre" = "Genres"
 "details_episode_guide" = "Przewodnik po odcinkach";
 
 "seasons_title" = "Wszystkie odcinki";

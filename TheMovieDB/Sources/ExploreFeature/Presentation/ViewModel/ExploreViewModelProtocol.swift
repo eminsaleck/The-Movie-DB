@@ -18,6 +18,8 @@ protocol ExploreViewModelProtocol {
     func moviesByGenre(id: Int, title: String)
     
     // MARK: - Output
-    var viewStateObservableSubject: CurrentValueSubject<SimpleViewState<MovieCellViewModel>, Never> { get }
+    var viewStateObservableSubject: CurrentValueSubject<ExploreViewState, Never> { get }
+    var dataSource: CurrentValueSubject<[ExploreSectionModel], Never> { get }
+
 }
 

@@ -23,8 +23,8 @@
 "account_favorite_watchList_title" = "Watch List";
 
 "details_episode_guide" = "Episode Guide";
-
-
+"header_trending" = "Trends";
+"header_genre" = "Genres"
 
 "commom_error_title" = "Oops!";
 "common_error_retry" = "Retry";

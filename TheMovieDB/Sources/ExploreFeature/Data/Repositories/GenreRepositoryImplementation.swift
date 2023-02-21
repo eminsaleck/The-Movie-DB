@@ -11,21 +11,46 @@ import Networking
 import Common
 
 final class DefaultGenreRepository {
-  private let remoteDataSource: GenreRemoteDataSource
-
-  init(remoteDataSource: GenreRemoteDataSource) {
-    self.remoteDataSource = remoteDataSource
-  }
+    private let mapper: MoviePageMapperProtocol
+    private let remoteDataSource: GenreRemoteDataSource
+    private let imageBasePath: String
+    
+    
+    init(remoteDataSource: GenreRemoteDataSource, mapper: MoviePageMapperProtocol, imageBasePath: String) {
+        self.mapper = mapper
+        self.remoteDataSource = remoteDataSource
+        self.imageBasePath = imageBasePath
+    }
 }
 
 extension DefaultGenreRepository: GenresRepository {
-
-  func genresCollection() -> AnyPublisher<GenreCollection, DataTransferError> {
-    return remoteDataSource.fetchGenres()
-      .map { collection in
-        let genresDomain = collection.genres.map { Genre(id: $0.id, name: $0.name) }
-        return GenreCollection(genres: genresDomain )
-      }
-      .eraseToAnyPublisher()
-  }
+    
+    func genresCollection() -> AnyPublisher<GenreCollection, DataTransferError> {
+        return remoteDataSource.fetchGenres()
+            .flatMap { genreCollectionDTO -> AnyPublisher<[GenreMovies], DataTransferError> in
+                let moviePublishers = genreCollectionDTO.genres.map { self.moviesByGenre(genreId: $0.id) }
+                let moviePagesPublisher = Publishers.MergeMany(moviePublishers)
+                let allMoviesPublisher = moviePagesPublisher.collect()
+                
+                return allMoviesPublisher
+                    .map { moviesByGenre in
+                        genreCollectionDTO.genres.enumerated().map { (index, genreDTO) -> GenreMovies in
+                            let movies = moviesByGenre[index]
+                            return GenreMovies(id: genreDTO.id, name: genreDTO.name, movies: movies)
+                        }
+                    }
+                    .eraseToAnyPublisher()
+            }
+            .map { (genreMovies: [GenreMovies]) -> GenreCollection in
+                GenreCollection(genres: genreMovies)
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func moviesByGenre(genreId: Int) -> AnyPublisher<[MoviePage.Movie], Network.DataTransferError> {
+        return remoteDataSource.fetchMoviesByGenre(genreId: genreId)
+            .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium).results }
+            .eraseToAnyPublisher()
+    }
 }
+

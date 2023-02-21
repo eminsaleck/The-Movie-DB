@@ -12,23 +12,22 @@ import UI
 
 final class ExploreViewModel: ExploreViewModelProtocol {
     
-    let viewStateObservableSubject: CurrentValueSubject<SimpleViewState<MovieCellViewModel>, Never> = .init(.loading)
+    let viewStateObservableSubject: CurrentValueSubject<ExploreViewState, Never> = .init(.loading)
+    let dataSource = CurrentValueSubject<[ExploreSectionModel], Never>([])
+    
     private var bag = Set<AnyCancellable>()
     
     private let fetchGenresUseCase: FetchGenresUseCase
-    private let fetchMoviesByGenreUseCase: FetchMoviesByGenreUseCase
     
     weak var coordinator: ExploreCoordinatorProtocol?
     
-    init(fetchGenresUseCase: FetchGenresUseCase,
-         fetchMoviesByGenreUseCase: FetchMoviesByGenreUseCase) {
+    init(fetchGenresUseCase: FetchGenresUseCase) {
         self.fetchGenresUseCase = fetchGenresUseCase
-        self.fetchMoviesByGenreUseCase = fetchMoviesByGenreUseCase
         fetch()
     }
     
     func viewDidLoad() {
-        //
+        fetch()
     }
     
     private func fetchGenres() -> AnyPublisher<GenreCollection, ErrorEnvelope> {
@@ -37,29 +36,21 @@ final class ExploreViewModel: ExploreViewModelProtocol {
             .eraseToAnyPublisher()
     }
     
-    private func fetchMoviesByGenre(genre: Int) -> AnyPublisher<MoviePage, ErrorEnvelope> {
-        let requestValue = FetchMoviesByGenreUseCaseRequestValue(genreID: genre)
-        return fetchMoviesByGenreUseCase.execute(requestValue: requestValue)
-            .mapError { error -> ErrorEnvelope in return ErrorEnvelope(transferError: error) }
-            .eraseToAnyPublisher()
-    }
-
     private func fetch() {
-        fetchMoviesByGenre(genre: 10770)
+        fetchGenres()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case let .failure(error):
-                print(error)
-                case .finished:
-                    break
+                    print(error)
+                case .finished: break
                 }
-            },
-                  receiveValue: { genre in
-                print(genre)
+            }, receiveValue: { result in
+                print(result)
             })
             .store(in: &bag)
     }
+    
     
     private func navigateWith(state: ExploreState) {
         coordinator?.navigate(with: state)

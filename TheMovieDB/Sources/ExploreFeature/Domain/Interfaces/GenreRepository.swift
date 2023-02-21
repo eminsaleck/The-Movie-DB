@@ -7,7 +7,9 @@
 
 import Combine
 import Network
+import Common
 
 protocol GenresRepository {
-  func genresCollection() -> AnyPublisher<GenreCollection, DataTransferError>
+    func genresCollection() -> AnyPublisher<GenreCollection, DataTransferError>
+    func moviesByGenre(genreId: Int) -> AnyPublisher<[MoviePage.Movie], DataTransferError> 
 }

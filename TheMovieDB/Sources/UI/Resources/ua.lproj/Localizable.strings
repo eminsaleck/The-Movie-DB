@@ -26,7 +26,8 @@
 "account_title_detail_button" = "Увійти через TheMovieDB";
 "account_favorite_list_title" = "Улюблені";
 "account_favorite_watchList_title" = "Дивитися пізніше";
-
+"header_trending" = "Trends";
+"header_genre" = "Genres"
 "details_episode_guide" = "Посібник по епізодах";
 
 "seasons_title" = "Всі епізоди";
