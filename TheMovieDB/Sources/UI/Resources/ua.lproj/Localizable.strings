@@ -27,7 +27,7 @@
 "account_favorite_list_title" = "Улюблені";
 "account_favorite_watchList_title" = "Дивитися пізніше";
 "header_trending" = "Trends";
-"header_genre" = "Genres"
+"header_genre" = "Genres";
 "details_episode_guide" = "Посібник по епізодах";
 
 "seasons_title" = "Всі епізоди";
@@ -36,3 +36,4 @@
 "commom_error_title" = "Ой!";
 "common_error_retry" = "Повторити";
 "common_empty_title" = "Сьогодні немає серіалів ТБ";
+"all_genres" = "Усе";

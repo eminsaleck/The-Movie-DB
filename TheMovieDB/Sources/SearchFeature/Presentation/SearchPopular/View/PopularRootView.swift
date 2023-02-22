@@ -13,13 +13,11 @@ class PopularRootView: UIView {
     
     private let viewModel: SearchPopularViewModelProtocol
     
-    
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: SearchLayout())
         collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
-    
     
     typealias DataSource = UICollectionViewDiffableDataSource<SearchPopularSectionView, MovieCellViewModel>
     typealias Snapshot = NSDiffableDataSourceSnapshot<SearchPopularSectionView, MovieCellViewModel>

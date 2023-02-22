@@ -11,8 +11,7 @@ import Common
 import UI
 
 final class ExploreViewModel: ExploreViewModelProtocol {
-    
-    let viewStateObservableSubject: CurrentValueSubject<ExploreViewState, Never> = .init(.loading)
+    let viewState: CurrentValueSubject<ExploreViewState, Never> = .init(.loading)
     let dataSource = CurrentValueSubject<[ExploreSectionModel], Never>([])
     
     private var bag = Set<AnyCancellable>()
@@ -30,12 +29,19 @@ final class ExploreViewModel: ExploreViewModelProtocol {
         fetch()
     }
     
-    private func fetchGenres() -> AnyPublisher<GenreCollection, ErrorEnvelope> {
-        return fetchGenresUseCase.execute(requestValue: FetchGenresUseCaseRequestValue())
-            .mapError { error -> ErrorEnvelope in return ErrorEnvelope(transferError: error) }
-            .eraseToAnyPublisher()
+    func movieIsPicked(index id: Int) {
+        navigateWith(state: .movieIsPicked(id: id))
     }
     
+    func moviesByGenre(id: Int){
+        navigateWith(state: .allIsPicked(id: id))
+    }
+    
+    func refreshView() {
+        fetch()
+    }
+    
+    //MARK: - Private
     private func fetch() {
         fetchGenres()
             .receive(on: DispatchQueue.main)
@@ -45,22 +51,36 @@ final class ExploreViewModel: ExploreViewModelProtocol {
                     print(error)
                 case .finished: break
                 }
-            }, receiveValue: { result in
-                print(result)
+            }, receiveValue: { [weak self] result in
+                self?.processFetched(result.genres)
             })
             .store(in: &bag)
     }
     
+    private func fetchGenres() -> AnyPublisher<GenreCollection, ErrorEnvelope> {
+        return fetchGenresUseCase.execute(requestValue: FetchGenresUseCaseRequestValue())
+            .mapError { error -> ErrorEnvelope in return ErrorEnvelope(transferError: error) }
+            .eraseToAnyPublisher()
+    }
     
+    private func processFetched(_ response: [GenreMovies]) {
+        if response.isEmpty {
+            viewState.send(.empty)
+        } else {
+            viewState.send(.populated )
+        }
+        
+        var sectionModels: [ExploreSectionModel] = []
+        response.forEach { genre in
+            let movies = genre.movies.map(MovieCellViewModel.init)
+            let header = ExploreSectionView.genre(id: genre.id, header: genre.name)
+            let sectionModel = ExploreSectionModel.genre(header: header, movies: movies)
+            sectionModels.append(sectionModel)
+        }
+        dataSource.send(sectionModels)
+    }
     private func navigateWith(state: ExploreState) {
         coordinator?.navigate(with: state)
     }
     
-    func movieIsPicked(index id: Int) {
-        navigateWith(state: .movieIsPicked(id: id))
-    }
-    
-    func moviesByGenre(id: Int, title: String){
-        navigateWith(state: .allIsPicked(id: id, title: title))
-    }
 }

@@ -24,8 +24,9 @@
 
 "details_episode_guide" = "Episode Guide";
 "header_trending" = "Trends";
-"header_genre" = "Genres"
+"header_genre" = "Genres";
 
 "commom_error_title" = "Oops!";
 "common_error_retry" = "Retry";
 "common_empty_title" = "No shows for Today";
+"all_genres" = "All";

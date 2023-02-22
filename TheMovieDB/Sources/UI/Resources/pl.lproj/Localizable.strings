@@ -27,7 +27,7 @@
 "account_favorite_list_title" = "Ulubione";
 "account_favorite_watchList_title" = "Obejrzeć później";
 "header_trending" = "Trends";
-"header_genre" = "Genres"
+"header_genre" = "Genres";
 "details_episode_guide" = "Przewodnik po odcinkach";
 
 "seasons_title" = "Wszystkie odcinki";
@@ -36,3 +36,4 @@
 "commom_error_title" = "Ups!";
 "common_error_retry" = "Ponów";
 "common_empty_title" = "Brak seriali TV dzisiaj";
+"all_genres" = "Wszystko";

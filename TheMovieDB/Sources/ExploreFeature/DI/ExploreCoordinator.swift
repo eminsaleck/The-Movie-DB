@@ -30,8 +30,8 @@ class ExploreCoordinator: NavigationCoordinator, ExploreCoordinatorProtocol{
             navigateToExplore()
         case .movieIsPicked(let id):
             navigateToMovieDetailScreen(with: id)
-        case .allIsPicked(let id, let title):
-            navigateToMovieListScreen(with: id, title: title)
+        case .allIsPicked(let id):
+            navigateToMovieListScreen(with: id)
         }
     }
     
@@ -41,7 +41,7 @@ class ExploreCoordinator: NavigationCoordinator, ExploreCoordinatorProtocol{
         navigationController.pushViewController(exploreVC, animated: true)
     }
     
-    private func navigateToMovieListScreen(with id: Int, title: String) {
+    private func navigateToMovieListScreen(with id: Int) {
         print("Genre PICKED - \(id)")
     }
     

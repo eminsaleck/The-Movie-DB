@@ -19,6 +19,10 @@ public class HeaderView: UICollectionReusableView {
         backgroundColor = .clear
     }
     
+    public func setTitle(_ title: String){
+        label.text = title
+    }
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
