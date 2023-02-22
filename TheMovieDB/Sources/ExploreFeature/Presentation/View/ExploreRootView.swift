@@ -50,6 +50,23 @@ final class ExploreRootView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     // MARK: - Setup CollectionView
+    private func setupCollectionView() {
+        collectionView.register(MovieViewCell.self, forCellWithReuseIdentifier: Constants.cellID)
+        collectionView.register(MainHeaderView.self,
+                                forSupplementaryViewOfKind: Constants.headerSection,
+                                withReuseIdentifier: Constants.headerSection)
+        collectionView.register(LineView.self,
+                                forSupplementaryViewOfKind: Constants.topLine,
+                                withReuseIdentifier: Constants.topLine)
+        collectionView.register(LineView.self,
+                                forSupplementaryViewOfKind: Constants.bottomLine,
+                                withReuseIdentifier: Constants.bottomLine)
+        collectionView.delegate = self
+        collectionView.refreshControl = RefreshController( { [weak self] in
+            self?.viewModel.refreshView()
+        })
+    }
+    
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { (collectionView, indexPath, model) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellID, for: indexPath) as! MovieViewCell
@@ -57,20 +74,32 @@ final class ExploreRootView: UIView {
             return cell
         }
         if let dataSource = dataSource {
-            configHeader(dataSource: dataSource)
+            configSupplements(dataSource: dataSource)
         }
     }
     
-    private func configHeader(dataSource: DataSource){
+    private func configSupplements(dataSource: DataSource){
         dataSource.supplementaryViewProvider = .some({ (collectionView, kind, indexPath) -> UICollectionReusableView? in
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: "headers", withReuseIdentifier: Constants.headerReuseIdentifier, for: indexPath) as! MainHeaderView
-            let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            headerView.setModel(genre: section.header, id: section.id)
             
-            headerView.buttonTapHandler = { [weak self] id in
-                self?.viewModel.moviesByGenre(id: id)
+            switch kind {
+            case Constants.headerSection:
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: Constants.headerSection, withReuseIdentifier: Constants.headerSection, for: indexPath) as! MainHeaderView
+                let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+                headerView.setModel(genre: section.header, id: section.id)
+                
+                headerView.buttonTapHandler = { [weak self] id in
+                    self?.viewModel.moviesByGenre(id: id)
+                }
+                return headerView
+            case Constants.topLine:
+                let lineView = collectionView.dequeueReusableSupplementaryView(ofKind: Constants.topLine, withReuseIdentifier: Constants.topLine, for: indexPath) as! LineView
+                      return lineView
+            case Constants.bottomLine:
+                let lineView = collectionView.dequeueReusableSupplementaryView(ofKind: Constants.bottomLine, withReuseIdentifier: Constants.bottomLine, for: indexPath) as! LineView
+                      return lineView
+            default:
+                return nil
             }
-            return headerView
         })
     }
     
@@ -91,16 +120,6 @@ final class ExploreRootView: UIView {
             })
             .store(in: &bag)
     }
-    private func setupCollectionView() {
-        collectionView.register(MovieViewCell.self, forCellWithReuseIdentifier: Constants.cellID)
-        collectionView.register(MainHeaderView.self,
-                                forSupplementaryViewOfKind: "headers",
-                                withReuseIdentifier: Constants.headerReuseIdentifier)
-        collectionView.delegate = self
-        collectionView.refreshControl = RefreshController( { [weak self] in
-            self?.viewModel.refreshView()
-        })
-    }
     
     func stopRefresh() {
         collectionView.refreshControl?.endRefreshing(with: 0.5)
@@ -118,6 +137,7 @@ extension ExploreRootView {
     struct Constants {
         static var cellID: String = "cells"
         static var headerSection: String = "headers"
-        static var headerReuseIdentifier: String = "headerReuses"
+        static var topLine: String = "topLine"
+        static var bottomLine: String = "bottomLine"
     }
 }

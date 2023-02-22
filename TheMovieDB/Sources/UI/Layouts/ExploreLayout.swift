@@ -36,13 +36,33 @@ public class ExploreLayout: UICollectionViewCompositionalLayout {
           widthDimension: .fractionalWidth(1.0),
           heightDimension: .estimated(30)
         )
-
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+        
+        let headerItem = NSCollectionLayoutBoundarySupplementaryItem(
           layoutSize: headerFooterSize,
           elementKind: "headers",
           alignment: .top
         )
-        layoutSection.boundarySupplementaryItems = [sectionHeader]
+        
+        let lineItemHeight = 0.5 / UIScreen.main.scale
+        let lineItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.92), heightDimension: .absolute(lineItemHeight))
+        
+        let topLineItem = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: lineItemSize,
+            elementKind: "topLine",
+            alignment: .top)
+
+        let bottomLineItem = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: lineItemSize,
+            elementKind: "bottomLine",
+            alignment: .bottom)
+        
+        let supplementaryItemContentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4)
+        headerItem.contentInsets = supplementaryItemContentInsets
+        topLineItem.contentInsets = supplementaryItemContentInsets
+        bottomLineItem.contentInsets = supplementaryItemContentInsets
+        
+        
+        layoutSection.boundarySupplementaryItems = [headerItem, bottomLineItem, topLineItem]
 
          return layoutSection
     }
