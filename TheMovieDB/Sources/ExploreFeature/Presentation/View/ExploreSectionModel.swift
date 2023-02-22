@@ -10,42 +10,26 @@ import UI
 import Common
 
 enum ExploreSectionModel {
-  case genres(genres: [GenreMovies], headerViewModels: [SectionHeaderViewModel])
-
-  var sectionView: ExploreSectionView {
-    switch self {
-    case .genres:
-      return .genres
+    case genre(header: String?, movies: [MovieCellViewModel])
+    
+    var sectionView: String? {
+        switch self {
+        case let .genre(header, _):
+            return header
+        }
     }
-  }
-
-  var items: [ExploreSectionItem] {
-    switch self {
-    case let .genres(genres, headerViewModels):
-      var items: [ExploreSectionItem] = []
-      for (index, genre) in genres.enumerated() {
-        let headerViewModel = headerViewModels[index]
-        items.append(.header(headerViewModel))
-        let movieViewModels = genre.movies.map(MovieCellViewModel.init)
-        items.append(contentsOf: movieViewModels.map(ExploreSectionItem.movie))
-      }
-      return items
+    
+    var items: [MovieCellViewModel] {
+        switch self {
+        case let .genre(_, movies):
+            return movies
+        }
     }
-  }
-}
-
-enum ExploreSectionItem: Hashable {
-  case header(SectionHeaderViewModel)
-  case movie(MovieCellViewModel)
 }
 
 enum ExploreSectionView: Hashable {
-  case genres
-
-  var header: String? {
-    switch self {
-    case .genres:
-      return Localized.sectionGenreTitle.localized()
-    }
-  }
+    case genre 
 }
+
+
+

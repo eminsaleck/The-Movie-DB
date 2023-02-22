@@ -34,12 +34,14 @@ final class SearchViewModel {
 extension SearchViewModel: SearchPopularViewModelDelegate {
     func searchPopularViewModel(_ searchPopularViewModel: SearchPopularViewModel, popularMoviePicked id: Int) {
         navigateWith(state: .movieIsPicked(id: id))
+        print(" PICKED - \(id)")
     }
 }
 
 extension SearchViewModel: ResultsViewModelDelegate {
     func resultsSearchViewModel(_ resultsViewModel: ResultsViewModelProtocol, selectedMovie id: Int) {
         navigateWith(state: .movieIsPicked(id: id))
+        print(" PICKED - \(id)")
     }
     
     func resultsSearchViewModel(_ resultsViewModel: ResultsViewModelProtocol, recentSearchSelected query: String) {
