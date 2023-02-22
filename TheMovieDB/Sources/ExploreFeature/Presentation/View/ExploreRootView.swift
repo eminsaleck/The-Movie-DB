@@ -20,8 +20,8 @@ final class ExploreRootView: UIView {
         return collectionView
     }()
     
-    typealias DataSource = UICollectionViewDiffableDataSource<SectionHeaderModel, MovieCellViewModel>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<SectionHeaderModel, MovieCellViewModel>
+    typealias DataSource = UICollectionViewDiffableDataSource<ExploreSectionView, MovieCellViewModel>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<ExploreSectionView, MovieCellViewModel>
     private var dataSource: DataSource?
     
     private var bag = Set<AnyCancellable>()

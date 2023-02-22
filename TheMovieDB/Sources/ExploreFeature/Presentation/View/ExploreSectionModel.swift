@@ -10,9 +10,9 @@ import UI
 import Common
 
 enum ExploreSectionModel {
-    case genre(header: SectionHeaderModel, movies: [MovieCellViewModel])
+    case genre(header: ExploreSectionView, movies: [MovieCellViewModel])
     
-    var sectionView: SectionHeaderModel {
+    var sectionView: ExploreSectionView {
         switch self {
         case let .genre(header, _):
             return header
@@ -28,15 +28,16 @@ enum ExploreSectionModel {
 }
 
 enum ExploreSectionView: Hashable {
-    case genre
-}
-
-
-struct SectionHeaderModel: Hashable {
-    let title: String
-
-    init(title: String) {
-        self.title = title
+    case genre(header: String?)
+    
+    var header: String? {
+        switch self {
+        case .genre(let header):
+            return header
+        }
+    }
+    
+    init(header: String?) {
+        self = .genre(header: header)
     }
 }
-

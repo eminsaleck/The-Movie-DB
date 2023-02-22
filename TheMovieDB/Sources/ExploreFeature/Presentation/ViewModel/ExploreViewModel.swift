@@ -73,7 +73,7 @@ final class ExploreViewModel: ExploreViewModelProtocol {
         var sectionModels: [ExploreSectionModel] = []
         response.forEach { genre in
             let movies = genre.movies.map(MovieCellViewModel.init)
-            let header = SectionHeaderModel(title: genre.name)
+            let header = ExploreSectionView.genre(header: genre.name)
             let sectionModel = ExploreSectionModel.genre(header: header, movies: movies)
             sectionModels.append(sectionModel)
         }
