@@ -1,7 +1,7 @@
 # The Movie DB
 App which is aimed to find a movie for you
 
-App is being separated into 8 modules and 4 features. [See](https://github.com/eminsaleck/The-Movie-DB/blob/main/TheMovieDB/Package.swift)
+App is being separated into 13 modules and 6 features. [See](https://github.com/eminsaleck/The-Movie-DB/blob/main/TheMovieDB/Package.swift)
 
 # development cycle:
 >1. (September'22: Monolith)
