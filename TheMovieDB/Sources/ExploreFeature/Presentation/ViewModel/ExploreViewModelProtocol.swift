@@ -15,7 +15,7 @@ protocol ExploreViewModelProtocol {
     // MARK: - Input
     func viewDidLoad()
     func movieIsPicked(index: Int)
-    func moviesByGenre(id: Int, title: String)
+    func moviesByGenre(id: Int)
     func refreshView()
     
     // MARK: - Output

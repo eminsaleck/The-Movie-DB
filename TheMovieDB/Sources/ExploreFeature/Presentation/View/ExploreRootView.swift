@@ -15,7 +15,7 @@ final class ExploreRootView: UIView {
     private let viewModel: ExploreViewModelProtocol
     
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: generateLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: ExploreLayout())
         collectionView.backgroundColor = .systemBackground
         return collectionView
     }()
@@ -38,7 +38,7 @@ final class ExploreRootView: UIView {
     private func setupUI() {
         setupHierarchy()
         setupCollectionView()
-        //        setupDataSource()
+        setupDataSource()
         subscribe()
     }
     required init?(coder: NSCoder) {
@@ -56,30 +56,23 @@ final class ExploreRootView: UIView {
             cell.setModel(viewModel: model)
             return cell
         }
-        guard let dataSource = dataSource else { return }
-        //        setupHeader(dataSource)
+        if let dataSource = dataSource {
+            configHeader(dataSource: dataSource)
+        }
     }
-    //    private func setupHeader(_ dataSource: DataSource) {
-    //        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-    //            guard let sectionView = ExploreSectionView(header: indexPath.section) else {
-    //                return nil
-    //            }
-    //
-    //            switch kind {
-    //            case UICollectionView.elementKindSectionHeader:
-    //                if sectionView == .genre {
-    //                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Constants.headerID, for: indexPath) as! SectionHeaderView
-    //                    let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
-    //                    headerView.setTitle(section.header)
-    //                    return headerView
-    //                } else {
-    //                    return nil
-    //                }
-    //            default:
-    //                return nil
-    //            }
-    //        }
-    //    }
+    
+    private func configHeader(dataSource: DataSource){
+        dataSource.supplementaryViewProvider = .some({ (collectionView, kind, indexPath) -> UICollectionReusableView? in
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: "headers", withReuseIdentifier: Constants.headerReuseIdentifier, for: indexPath) as! MainHeaderView
+            let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            headerView.setModel(genre: section.header, id: section.id)
+            
+            headerView.buttonTapHandler = { [weak self] id in
+                self?.viewModel.moviesByGenre(id: id)
+            }
+            return headerView
+        })
+    }
     
     private func subscribe() {
         viewModel.dataSource
@@ -100,17 +93,13 @@ final class ExploreRootView: UIView {
     }
     private func setupCollectionView() {
         collectionView.register(MovieViewCell.self, forCellWithReuseIdentifier: Constants.cellID)
-        collectionView.register(HeaderView.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+        collectionView.register(MainHeaderView.self,
+                                forSupplementaryViewOfKind: "headers",
                                 withReuseIdentifier: Constants.headerReuseIdentifier)
         collectionView.delegate = self
         collectionView.refreshControl = RefreshController( { [weak self] in
             self?.viewModel.refreshView()
         })
-    }
-    
-    func allButtonIsClicked(id: Int, title: String) {
-        viewModel.moviesByGenre(id: id, title: title)
     }
     
     func stopRefresh() {
@@ -119,7 +108,6 @@ final class ExploreRootView: UIView {
 }
 
 extension ExploreRootView: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         viewModel.movieIsPicked(index: indexPath.item)
@@ -129,7 +117,7 @@ extension ExploreRootView: UICollectionViewDelegate {
 extension ExploreRootView {
     struct Constants {
         static var cellID: String = "cells"
-        static var headerID: String = "headers"
+        static var headerSection: String = "headers"
         static var headerReuseIdentifier: String = "headerReuses"
     }
 }

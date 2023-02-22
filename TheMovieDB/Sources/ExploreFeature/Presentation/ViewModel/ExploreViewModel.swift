@@ -33,8 +33,8 @@ final class ExploreViewModel: ExploreViewModelProtocol {
         navigateWith(state: .movieIsPicked(id: id))
     }
     
-    func moviesByGenre(id: Int, title: String){
-        navigateWith(state: .allIsPicked(id: id, title: title))
+    func moviesByGenre(id: Int){
+        navigateWith(state: .allIsPicked(id: id))
     }
     
     func refreshView() {
@@ -73,7 +73,7 @@ final class ExploreViewModel: ExploreViewModelProtocol {
         var sectionModels: [ExploreSectionModel] = []
         response.forEach { genre in
             let movies = genre.movies.map(MovieCellViewModel.init)
-            let header = ExploreSectionView.genre(header: genre.name)
+            let header = ExploreSectionView.genre(id: genre.id, header: genre.name)
             let sectionModel = ExploreSectionModel.genre(header: header, movies: movies)
             sectionModels.append(sectionModel)
         }

@@ -2,13 +2,26 @@
 //  File.swift
 //  
 //
-//  Created by LEMIN DAHOVICH on 13.02.2023.
+//  Created by LEMIN DAHOVICH on 22.02.2023.
 //
 
-import UIKit.UIView
+import UIKit
 
-public extension UIView{
-    func generateLayout() -> UICollectionViewLayout {
+public class SearchLayout: UICollectionViewCompositionalLayout {
+    
+    public override init(section: NSCollectionLayoutSection) {
+        super.init(section: section)
+    }
+    
+    public convenience init() {
+        self.init(section: SearchLayout.generateLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    static func generateLayout() -> NSCollectionLayoutSection {
         
         let fullItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
@@ -58,7 +71,6 @@ public extension UIView{
         let section = NSCollectionLayoutSection(group: nestedGroup)
         section.boundarySupplementaryItems = [header]
         
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        return section
     }
 }

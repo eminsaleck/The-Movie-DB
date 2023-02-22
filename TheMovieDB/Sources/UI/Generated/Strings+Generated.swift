@@ -39,5 +39,5 @@ public enum Localized: String, CaseIterable {
   case sectionGenreTitle = "header_genre" // Trends
   case searchTabbar = "search_tabbar" // Search
   case searchTitle = "search_title" // Search Movies
-
+  case all = "all_genres"
 }

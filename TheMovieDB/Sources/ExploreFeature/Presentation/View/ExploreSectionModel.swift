@@ -28,16 +28,23 @@ enum ExploreSectionModel {
 }
 
 enum ExploreSectionView: Hashable {
-    case genre(header: String?)
+    case genre(id: Int, header: String?)
+    
+    var id: Int {
+        switch self {
+        case .genre(let id, _):
+            return id
+        }
+    }
     
     var header: String? {
         switch self {
-        case .genre(let header):
+        case .genre(_, let header):
             return header
         }
     }
     
-    init(header: String?) {
-        self = .genre(header: header)
+    init(id: Int, header: String?) {
+        self = .genre(id: id, header: header)
     }
 }
