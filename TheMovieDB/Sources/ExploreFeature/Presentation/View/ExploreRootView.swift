@@ -20,8 +20,8 @@ final class ExploreRootView: UIView {
         return collectionView
     }()
     
-    typealias DataSource = UICollectionViewDiffableDataSource<String, MovieCellViewModel>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<String, MovieCellViewModel>
+    typealias DataSource = UICollectionViewDiffableDataSource<SectionHeaderModel, MovieCellViewModel>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<SectionHeaderModel, MovieCellViewModel>
     private var dataSource: DataSource?
     
     private var bag = Set<AnyCancellable>()
@@ -86,9 +86,8 @@ final class ExploreRootView: UIView {
             .map { dataSource -> Snapshot in
                 var snapshot = Snapshot()
                 dataSource.forEach { section in
-                    guard let a = section.sectionView else { return }
-                    snapshot.appendSections([a])
-                    snapshot.appendItems(section.items, toSection: a)
+                    snapshot.appendSections([section.sectionView])
+                    snapshot.appendItems(section.items, toSection: section.sectionView)
                 }
                 return snapshot
             }
