@@ -10,11 +10,11 @@ import Common
 import UI
 import MovieDetailsFeatureInterface
 
-class ExploreCoordinator: NavigationCoordinator, ExploreCoordinatorProtocol{
+final class ExploreCoordinator: NavigationCoordinator, ExploreCoordinatorProtocol{
     
-    var navigationController: UINavigationController
+    public let navigationController: UINavigationController
     private let dependencies: ExploreCoordinatorDependencies
-
+    private var childCoordinators = [ExploreChildCoordinator: NavigationCoordinator]()
     
     public init(navigationController: UINavigationController, dependencies: DIContainer){
         self.navigationController = navigationController
@@ -44,10 +44,19 @@ class ExploreCoordinator: NavigationCoordinator, ExploreCoordinatorProtocol{
     private func navigateToMovieListScreen(with id: Int) {
         print("Genre PICKED - \(id)")
     }
-    
+
     private func navigateToMovieDetailScreen(with id: Int) {
-        print("MOVIE PICKED - \(id)")
+      let detailCoordinator = dependencies.buildMovieDetailCoordinator(navigationController: navigationController, delegate: self)
+        
+        childCoordinators[.detailMovie] = detailCoordinator
+
+        let nextState = MovieDetailsState.movieDetailsIsRequired(withId: id)
+        detailCoordinator.navigate(with: nextState)
     }
-  }
+}
 
-
+extension ExploreCoordinator: MovieDetailCoordinatorDelegate {
+    public func movieDetailCoordinatorDidFinish() {
+        childCoordinators[.detailMovie] = nil
+    }
+}

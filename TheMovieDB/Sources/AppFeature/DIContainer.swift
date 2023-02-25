@@ -6,6 +6,7 @@
 //
 
 import UI
+import ExploreFeature
 import AccountFeature
 import SearchFeature
 import Common
@@ -18,7 +19,6 @@ import Persistance
 import MovieDetailsFeature
 import MovieDetailsFeatureInterface
 import MovieListFeature
-import ExploreFeature
 import MovieListFeatureInterface
 
 public class DIContainer {
@@ -96,7 +96,8 @@ public class DIContainer {
     // MARK: - Explore feature
     func buildExploreModule() -> ExploreFeature.Module {
         let dependencies = ExploreFeature.FeatureDependencies(apiDataTransferService: apiDataTransferService,
-                                                             imagesBaseURL: appConfigurations.imagesBaseURL)
+                                                              imagesBaseURL: appConfigurations.imagesBaseURL,
+                                                              movieDetailsBuilder: self)
         return ExploreFeature.Module(dependencies: dependencies)
     }
 }

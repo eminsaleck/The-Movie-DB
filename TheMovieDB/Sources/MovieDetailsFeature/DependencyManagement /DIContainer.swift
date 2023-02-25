@@ -9,7 +9,6 @@ import UIKit
 import Common
 import MovieDetailsFeatureInterface
 
-
 final class DIContainer {
     
     private let dependencies: ModuleDependencies
@@ -32,10 +31,11 @@ final class DIContainer {
         return coordinator
     }
     
-    func buildShowDetailsViewController(with showId: Int,
+    func buildMovieDetailsViewController(with showId: Int,
                                         coordinator: MovieDetailCoordinatorProtocol?,
                                         closures: MovieDetailViewModelClosures? = nil) -> UIViewController {
-        let detailVC = DetailVC()
+        let viewModel = MovieDetailViewModel()
+        let detailVC = MovieDetailViewController(viewModel: viewModel)
         return detailVC
     }
 }

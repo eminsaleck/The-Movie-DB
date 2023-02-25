@@ -40,7 +40,7 @@ public protocol MovieDetailCoordinatorProtocol: NavigationCoordinator {
 }
 
 public enum MovieDetailsState: State {
-  case showDetailsIsRequired(withId: Int, closures: MovieDetailViewModelClosures? = nil)
+  case movieDetailsIsRequired(withId: Int, closures: MovieDetailViewModelClosures? = nil)
   case detailViewDidFinish
 }
 

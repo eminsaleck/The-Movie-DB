@@ -7,6 +7,7 @@
 
 import UIKit
 import Common
+import MovieDetailsFeatureInterface
 
 class DIContainer{
     
@@ -23,7 +24,6 @@ class DIContainer{
         self.dependencies = dependencies
     }
     
-    
     func buildModuleCoordinator(navigationController: UINavigationController) -> Coordinator {
         return ExploreCoordinator(navigationController: navigationController, dependencies: self)
     }
@@ -34,6 +34,11 @@ class DIContainer{
 }
 
 extension DIContainer: ExploreCoordinatorDependencies{
+    func buildMovieDetailCoordinator(navigationController: UINavigationController,
+                                     delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol {
+        return dependencies.movieDetailsBuilder.buildModuleCoordinator(in: navigationController, delegate: delegate)
+    }
+    
     private func buildViewModel() -> ExploreViewModel {
         let exploreViewModel = ExploreViewModel(fetchGenresUseCase: makeFetchGenresUseCase())
         
