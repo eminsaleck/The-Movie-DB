@@ -18,7 +18,6 @@ public class MovieDetailCoordinator: MovieDetailCoordinatorProtocol {
     
     private let dependencies: MovieDetailCoordinatorDependencies
     
-    // MARK: - Life Cycle
     init(navigationController: UINavigationController,
          dependencies: MovieDetailCoordinatorDependencies) {
         self.navigationController = navigationController
@@ -27,15 +26,15 @@ public class MovieDetailCoordinator: MovieDetailCoordinatorProtocol {
     
     public func navigate(with state: MovieDetailsState) {
       switch state {
-      case .showDetailsIsRequired(let showId, let closures):
+      case .movieDetailsIsRequired(let showId, let closures):
         movieDetailsFeature(with: showId, closures: closures)
       case .detailViewDidFinish:
         delegate?.movieDetailCoordinatorDidFinish()
       }
     }
     
-    fileprivate func movieDetailsFeature(with showId: Int, closures: MovieDetailViewModelClosures? = nil) {
-      let detailVC = dependencies.buildShowDetailsViewController(with: showId, coordinator: self, closures: closures)
+    private func movieDetailsFeature(with id: Int, closures: MovieDetailViewModelClosures? = nil) {
+      let detailVC = dependencies.buildMovieDetailsViewController(with: id, coordinator: self, closures: closures)
       detailVC.hidesBottomBarWhenPushed = true
       navigationController.pushViewController(detailVC, animated: true)
     }

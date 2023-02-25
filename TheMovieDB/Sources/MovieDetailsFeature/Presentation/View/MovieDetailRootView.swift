@@ -10,11 +10,15 @@ import Common
 import UI
 
 class MovieDetailRootView: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .red
-    }
+
+  private let viewModel: MovieDetailViewModelProtocol
+
+  // MARK: - Initializer
+  init(frame: CGRect = .zero, viewModel: MovieDetailViewModelProtocol) {
+    self.viewModel = viewModel
+    super.init(frame: frame)
+      backgroundColor = .red
+  }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

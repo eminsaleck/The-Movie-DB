@@ -10,7 +10,7 @@ import Common
 import MovieDetailsFeatureInterface
 
 protocol MovieDetailCoordinatorDependencies {
-  func buildShowDetailsViewController(with showId: Int,
+  func buildMovieDetailsViewController(with id: Int,
                                       coordinator: MovieDetailCoordinatorProtocol?,
                                       closures: MovieDetailViewModelClosures?) -> UIViewController
 }

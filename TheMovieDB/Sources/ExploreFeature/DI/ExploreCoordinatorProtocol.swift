@@ -16,6 +16,8 @@ protocol ExploreCoordinatorProtocol: AnyObject {
 
 protocol ExploreCoordinatorDependencies {
     func buildExploreViewController(coordinator: ExploreCoordinatorProtocol?) -> UIViewController
+    func buildMovieDetailCoordinator(navigationController: UINavigationController,
+                                      delegate: MovieDetailCoordinatorDelegate?) -> MovieDetailCoordinatorProtocol
 }
 
 public enum ExploreState: State {
