@@ -93,10 +93,10 @@ final class ExploreRootView: UIView {
                 return headerView
             case Constants.topLine:
                 let lineView = collectionView.dequeueReusableSupplementaryView(ofKind: Constants.topLine, withReuseIdentifier: Constants.topLine, for: indexPath) as! LineView
-                      return lineView
+                return lineView
             case Constants.bottomLine:
                 let lineView = collectionView.dequeueReusableSupplementaryView(ofKind: Constants.bottomLine, withReuseIdentifier: Constants.bottomLine, for: indexPath) as! LineView
-                      return lineView
+                return lineView
             default:
                 return nil
             }
@@ -129,7 +129,9 @@ final class ExploreRootView: UIView {
 extension ExploreRootView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        viewModel.movieIsPicked(index: indexPath.item)
+        if let movie = dataSource?.itemIdentifier(for: indexPath) {
+            viewModel.movieIsPicked(index: movie.movieId)
+        }
     }
 }
 

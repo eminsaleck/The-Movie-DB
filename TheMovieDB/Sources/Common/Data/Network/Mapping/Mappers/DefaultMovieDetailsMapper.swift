@@ -21,19 +21,14 @@ public final class DefaultMovieDetailsMapper: MovieDetailsMapperProtocol {
 
     return MovieDetail(
       id: id.id,
-      name: id.name,
-      firstAirDate: id.firstAirDate ?? "",
-      lastAirDate: id.lastAirDate ?? "",
-      episodeRunTime: id.episodeRunTime ?? [],
+      name: id.name, releaseDate: id.releaseDate ?? "",
       genreIds: genres,
-      numberOfEpisodes: id.numberOfEpisodes ?? 0,
-      numberOfSeasons: id.numberOfSeasons ?? 0,
+
       posterPathURL: posterPathURL,
       backDropPathURL: backPathURL,
       overview: id.overview ?? "",
       voteAverage: id.voteAverage ?? 0.0,
-      voteCount: id.voteCount ?? 0,
-      status: id.status ?? ""
+      voteCount: id.voteCount ?? 0
     )
   }
 }

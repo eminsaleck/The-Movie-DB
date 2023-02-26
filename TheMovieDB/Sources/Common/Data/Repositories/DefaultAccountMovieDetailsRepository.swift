@@ -28,7 +28,7 @@ extension AccountMovieDetailsRepositoryImplementation: AccountMovieDetailsReposi
     let loggedUser = loggedUserRepository.getUser()
     let userId = loggedUser?.id ?? 0
 
-    return movieRemoteDataSource.markAsFavorite(tvShowId: id, userId: String(userId), session: loggedUser?.sessionId ?? "", favorite: favorite)
+    return movieRemoteDataSource.markAsFavorite(movieID: id, userId: String(userId), session: loggedUser?.sessionId ?? "", favorite: favorite)
       .map { self.mapper.mapActionResult(result: $0) }
       .eraseToAnyPublisher()
   }
@@ -37,14 +37,14 @@ extension AccountMovieDetailsRepositoryImplementation: AccountMovieDetailsReposi
     let loggedUser = loggedUserRepository.getUser()
     let userId = loggedUser?.id ?? 0
 
-    return movieRemoteDataSource.saveToWatchList(tvShowId: id, userId: String(userId), session: loggedUser?.sessionId ?? "", watchedList: watchedList)
+    return movieRemoteDataSource.saveToWatchList(movieID: id, userId: String(userId), session: loggedUser?.sessionId ?? "", watchedList: watchedList)
       .map { self.mapper.mapActionResult(result: $0) }
       .eraseToAnyPublisher()
   }
 
   public func fetchMovieStatus(id: Int) -> AnyPublisher<MovieAccountStatus, DataTransferError> {
     let sessionId = loggedUserRepository.getUser()?.sessionId ?? ""
-    return movieRemoteDataSource.fetchMovieStatus(tvShowId: id, sessionId: sessionId)
+    return movieRemoteDataSource.fetchMovieStatus(movieID: id, sessionId: sessionId)
       .map { self.mapper.mapMovieStatusResult(result: $0) }
       .eraseToAnyPublisher()
   }

@@ -29,7 +29,8 @@ public final class FetchMovieDetailsUseCaseImplementation: FetchMovieDetailsUseC
     return movieDetailsRepository
       .fetchMovieDetails(with: requestValue.identifier)
       .receive(on: DispatchQueue.main)
-      .mapError { _ -> DataTransferError in DataTransferError.noResponse }
+      .mapError { _ -> DataTransferError in
+         return DataTransferError.noResponse }
       .eraseToAnyPublisher()
   }
 }
