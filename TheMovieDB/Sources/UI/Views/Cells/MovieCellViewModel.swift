@@ -10,7 +10,7 @@ import Common
 
 public struct MovieCellViewModel: Hashable {
     private let id = UUID().uuidString
-    private let movieId: Int
+    public let movieId: Int
     let name: String
     let average: String
     let posterPathURL: URL?

@@ -9,6 +9,6 @@ import Combine
 import Network
 
 public protocol AccountMovieRemoteDataSourceProtocol {
-  func fetchFavoritesShows(page: Int, userId: Int, sessionId: String) -> AnyPublisher<MoviePageDTO, DataTransferError>
-  func fetchWatchListShows(page: Int, userId: Int, sessionId: String) -> AnyPublisher<MoviePageDTO, DataTransferError>
+  func fetchFavoritesMovies(page: Int, userId: Int, sessionId: String) -> AnyPublisher<MoviePageDTO, DataTransferError>
+  func fetchWatchListMovies(page: Int, userId: Int, sessionId: String) -> AnyPublisher<MoviePageDTO, DataTransferError>
 }

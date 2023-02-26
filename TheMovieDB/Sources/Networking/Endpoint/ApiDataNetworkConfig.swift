@@ -22,5 +22,6 @@ public struct ApiDataNetworkConfig: NetworkConfigurable {
     self.baseURL = baseURL
     self.headers = headers
     self.queryParameters = queryParameters
+      
   }
 }

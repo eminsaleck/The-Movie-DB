@@ -64,6 +64,7 @@ public final class NetworkService: NetworkServiceProtocol {
   public func request(endpoint: Requestable) -> AnyPublisher<Data, NetworkError> {
     do {
       let urlRequest = try endpoint.urlRequest(with: config)
+        print(urlRequest)
       return request(request: urlRequest)
     } catch {
       return Fail(error: NetworkError.urlGeneration)

@@ -45,11 +45,11 @@ public enum MovieDetailsState: State {
 }
 
 public struct MovieUpdated {
-  public let showId: Int
+  public let movieId: Int
   public let isActive: Bool
 
-  public init(showId: Int, isActive: Bool) {
-    self.showId = showId
+  public init(movieId: Int, isActive: Bool) {
+    self.movieId = movieId
     self.isActive = isActive
   }
 }

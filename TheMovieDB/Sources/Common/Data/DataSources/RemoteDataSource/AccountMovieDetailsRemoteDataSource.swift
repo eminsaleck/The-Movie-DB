@@ -18,7 +18,7 @@ public class AccountMovieDetailsRemoteDataSource {
 }
 
 extension AccountMovieDetailsRemoteDataSource: AccountMovieDetailsRemoteDataSourceProtocol {
-  public func markAsFavorite(tvShowId: Int, userId: String, session: String, favorite: Bool) -> AnyPublisher<MovieActionStatusDTO, DataTransferError> {
+  public func markAsFavorite(movieID: Int, userId: String, session: String, favorite: Bool) -> AnyPublisher<MovieActionStatusDTO, DataTransferError> {
     let endpoint = Endpoint<MovieActionStatusDTO>(
       path: "3/account/\(userId)/favorite",
       method: .post,
@@ -26,15 +26,16 @@ extension AccountMovieDetailsRemoteDataSource: AccountMovieDetailsRemoteDataSour
         "session_id": session
       ],
       bodyParameters: [
-        "media_type": "tv",
-        "media_id": tvShowId,
+        "media_type": "movie",
+        "media_id": movieID,
         "favorite": favorite
       ]
     )
+      print(movieID)
     return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
   }
 
-  public func saveToWatchList(tvShowId: Int, userId: String, session: String, watchedList: Bool) -> AnyPublisher<MovieActionStatusDTO, DataTransferError> {
+  public func saveToWatchList(movieID: Int, userId: String, session: String, watchedList: Bool) -> AnyPublisher<MovieActionStatusDTO, DataTransferError> {
     let endpoint = Endpoint<MovieActionStatusDTO>(
       path: "3/account/\(userId)/watchlist",
       method: .post,
@@ -42,17 +43,17 @@ extension AccountMovieDetailsRemoteDataSource: AccountMovieDetailsRemoteDataSour
         "session_id": session
       ],
       bodyParameters: [
-        "media_type": "tv",
-        "media_id": tvShowId,
+        "media_type": "movie",
+        "media_id": movieID,
         "watchlist": watchedList
       ]
     )
     return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
   }
 
-  public func fetchMovieStatus(tvShowId: Int, sessionId: String) -> AnyPublisher<MovieAccountStatusDTO, DataTransferError> {
+  public func fetchMovieStatus(movieID: Int, sessionId: String) -> AnyPublisher<MovieAccountStatusDTO, DataTransferError> {
     let endpoint = Endpoint<MovieAccountStatusDTO>(
-      path: "3/tv/\(String(tvShowId))/account_states",
+      path: "3/movie/\(String(movieID))/account_states",
       method: .get,
       queryParameters: [
         "session_id": sessionId

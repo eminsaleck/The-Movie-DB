@@ -15,7 +15,7 @@ public final class DefaultAccountMovieDetailsMapper: AccountMovieDetailsMapperPr
     return MovieActionStatus(statusCode: result.code, statusMessage: result.message ?? "")
   }
 
-  public func mapTVShowStatusResult(result: MovieAccountStatusDTO) -> MovieAccountStatus {
-    return MovieAccountStatus(showId: result.showId, isFavorite: result.isFavorite, isWatchList: result.isWatchList)
+  public func mapMovieStatusResult(result: MovieAccountStatusDTO) -> MovieAccountStatus {
+      return MovieAccountStatus(id: result.id, isFavorite: result.isFavorite, isWatchList: result.isWatchList)
   }
 }

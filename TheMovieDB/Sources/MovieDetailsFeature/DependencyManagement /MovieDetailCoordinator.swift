@@ -26,8 +26,8 @@ public class MovieDetailCoordinator: MovieDetailCoordinatorProtocol {
     
     public func navigate(with state: MovieDetailsState) {
       switch state {
-      case .movieDetailsIsRequired(let showId, let closures):
-        movieDetailsFeature(with: showId, closures: closures)
+      case .movieDetailsIsRequired(let movieId, let closures):
+        movieDetailsFeature(with: movieId, closures: closures)
       case .detailViewDidFinish:
         delegate?.movieDetailCoordinatorDidFinish()
       }

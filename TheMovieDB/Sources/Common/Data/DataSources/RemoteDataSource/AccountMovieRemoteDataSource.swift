@@ -18,9 +18,9 @@ public class AccountMovieRemoteDataSource {
 }
 
 extension AccountMovieRemoteDataSource: AccountMovieRemoteDataSourceProtocol {
-  public func fetchFavoritesShows(page: Int, userId: Int, sessionId: String) -> AnyPublisher<MoviePageDTO, DataTransferError> {
+  public func fetchFavoritesMovies(page: Int, userId: Int, sessionId: String) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/account/\(userId)/favorite/tv",
+      path: "3/account/\(userId)/favorite/movies",
       method: .get,
       queryParameters: [
         "page": page,
@@ -30,9 +30,9 @@ extension AccountMovieRemoteDataSource: AccountMovieRemoteDataSourceProtocol {
     return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
   }
 
-  public func fetchWatchListShows(page: Int, userId: Int, sessionId: String) -> AnyPublisher<MoviePageDTO, DataTransferError> {
+  public func fetchWatchListMovies(page: Int, userId: Int, sessionId: String) -> AnyPublisher<MoviePageDTO, DataTransferError> {
     let endpoint = Endpoint<MoviePageDTO>(
-      path: "3/account/\(userId)/watchlist/tv",
+      path: "3/account/\(userId)/watchlist/movies",
       method: .get,
       queryParameters: [
         "page": page,
