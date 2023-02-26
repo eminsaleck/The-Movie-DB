@@ -5,24 +5,25 @@
 //  Created by LEMIN DAHOVICH on 26.02.2023.
 //
 
-import Foundation
+import Combine
+import Network
 
-public final class DefaultTVShowsDetailRepository {
-  private let showsPageRemoteDataSource: TVShowsDetailsRemoteDataSourceProtocol
-  private let mapper: TVShowDetailsMapperProtocol
+public final class MovieDetailRepositoryImplementation {
+  private let moviePageRemoteDataSource: MovieDetailsRemoteDataSourceProtocol
+  private let mapper: MovieDetailsMapperProtocol
   private let imageBasePath: String
 
-  public init(showsPageRemoteDataSource: TVShowsDetailsRemoteDataSourceProtocol, mapper: TVShowDetailsMapperProtocol, imageBasePath: String) {
-    self.showsPageRemoteDataSource = showsPageRemoteDataSource
+  public init(moviePageRemoteDataSource: MovieDetailsRemoteDataSourceProtocol, mapper: MovieDetailsMapperProtocol, imageBasePath: String) {
+    self.moviePageRemoteDataSource = moviePageRemoteDataSource
     self.mapper = mapper
     self.imageBasePath = imageBasePath
   }
 }
 
-extension DefaultTVShowsDetailRepository: TVShowsDetailsRepository {
-  public func fetchTVShowDetails(with showId: Int) -> AnyPublisher<TVShowDetail, DataTransferError> {
-    return showsPageRemoteDataSource.fetchTVShowDetails(with: showId)
-      .map { self.mapper.mapTVShow($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
+extension MovieDetailRepositoryImplementation: MovieDetailsRepository {
+  public func fetchMovieDetails(with id: Int) -> AnyPublisher<MovieDetail, DataTransferError> {
+    return moviePageRemoteDataSource.fetchMovieDetails(with: id)
+      .map { self.mapper.mapMovie($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
 }

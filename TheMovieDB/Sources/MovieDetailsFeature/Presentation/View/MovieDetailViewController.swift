@@ -27,7 +27,6 @@ class MovieDetailViewController: UIViewController, Loadable {
     
     private var disposeBag = Set<AnyCancellable>()
     
-    // MARK: - Initializer
     init(viewModel: MovieDetailViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -42,9 +41,8 @@ class MovieDetailViewController: UIViewController, Loadable {
         view = rootView
     }
     
-    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.viewDidLoad()
     }
 }

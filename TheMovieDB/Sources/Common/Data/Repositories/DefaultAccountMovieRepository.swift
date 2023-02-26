@@ -9,38 +9,38 @@ import Combine
 import Network
 import Networking
 
-public final class DefaultAccountTVShowsRepository {
-  private let showsPageRemoteDataSource: AccountMovieRemoteDataSourceProtocol
+public final class DefaultAccountMovieRepository {
+  private let moviePageRemoteDataSource: AccountMovieRemoteDataSourceProtocol
   private let mapper: MoviePageMapperProtocol
   private let imageBasePath: String
   private let loggedUserRepository: LoggedUserRepositoryProtocol
 
-  public init(showsPageRemoteDataSource: AccountMovieRemoteDataSourceProtocol,
+  public init(moviePageRemoteDataSource: AccountMovieRemoteDataSourceProtocol,
               mapper: MoviePageMapperProtocol, imageBasePath: String,
               loggedUserRepository: LoggedUserRepositoryProtocol) {
-    self.showsPageRemoteDataSource = showsPageRemoteDataSource
+    self.moviePageRemoteDataSource = moviePageRemoteDataSource
     self.mapper = mapper
     self.imageBasePath = imageBasePath
     self.loggedUserRepository = loggedUserRepository
   }
 }
 
-extension DefaultAccountTVShowsRepository: AccountMovieRepository {
+extension DefaultAccountMovieRepository: AccountMovieRepository {
 
-  public func fetchFavoritesShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
+  public func fetchFavorites(page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
     let loggedUser = loggedUserRepository.getUser()
     let userId = loggedUser?.id ?? 0
 
-    return showsPageRemoteDataSource.fetchFavoritesShows(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
+    return moviePageRemoteDataSource.fetchFavoritesShows(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
       .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
 
-  public func fetchWatchListShows(page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
+  public func fetchWatchList(page: Int) -> AnyPublisher<MoviePage, DataTransferError> {
     let loggedUser = loggedUserRepository.getUser()
     let userId = loggedUser?.id ?? 0
 
-    return showsPageRemoteDataSource.fetchWatchListShows(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
+    return moviePageRemoteDataSource.fetchWatchListShows(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
       .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }

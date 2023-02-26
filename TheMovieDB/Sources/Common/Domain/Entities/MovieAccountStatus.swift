@@ -8,7 +8,7 @@
 import Foundation
 
 public struct MovieAccountStatus {
-  public let showId: Int
+  public let id: Int
   public let isFavorite: Bool
   public let isWatchList: Bool
 }

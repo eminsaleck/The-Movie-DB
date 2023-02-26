@@ -14,8 +14,8 @@ final class DIContainer: MovieListCoordinatorDependencies {
     private let dependencies: MovieListFeatureInterface.ModuleDependencies
     
     private lazy var accountShowsRepository: AccountMovieRepository = {
-        return DefaultAccountTVShowsRepository(
-            showsPageRemoteDataSource: AccountMovieRemoteDataSource(dataTransferService: dependencies.apiDataTransferService),
+        return DefaultAccountMovieRepository(
+            moviePageRemoteDataSource: AccountMovieRemoteDataSource(dataTransferService: dependencies.apiDataTransferService),
             mapper: DefaultMoviePageMapper(),
             imageBasePath: dependencies.imagesBaseURL,
             loggedUserRepository: dependencies.loggedUserRepository

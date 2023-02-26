@@ -22,18 +22,18 @@ public struct MovieDetailInfoModel {
   var maxScore: String = "/10"
   var countVote: String?
 
-  public init(show: MovieDetail) {
-    id = show.id
-    backDropPath = show.backDropPathURL
-    nameShow = show.name
-    yearsRelease = show.releaseYears
-    duration = show.episodeDuration
-    genre = show.genreIds.first?.name
-    numberOfEpisodes = String(show.numberOfEpisodes)
-    posterPath = show.posterPathURL
-    overView = show.overview
-    score = String(show.voteAverage)
-    countVote = String(show.voteCount)
+  public init(movie: MovieDetail) {
+    id = movie.id
+    backDropPath = movie.backDropPathURL
+    nameShow = movie.name
+    yearsRelease = movie.releaseYears
+    duration = movie.episodeDuration
+    genre = movie.genreIds.first?.name
+    numberOfEpisodes = String(movie.numberOfEpisodes)
+    posterPath = movie.posterPathURL
+    overView = movie.overview
+    score = String(movie.voteAverage)
+    countVote = String(movie.voteCount)
   }
 }
 

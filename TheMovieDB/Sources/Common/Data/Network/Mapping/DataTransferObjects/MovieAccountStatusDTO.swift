@@ -8,12 +8,12 @@
 import Foundation
 
 public struct MovieAccountStatusDTO: Decodable {
-  public let showId: Int
+  public let id: Int
   public let isFavorite: Bool
   public let isWatchList: Bool
 
   enum CodingKeys: String, CodingKey {
-    case showId = "id"
+    case id = "id"
     case isFavorite = "favorite"
     case isWatchList = "watchlist"
   }

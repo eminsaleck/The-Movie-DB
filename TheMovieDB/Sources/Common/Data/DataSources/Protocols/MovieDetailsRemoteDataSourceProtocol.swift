@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import Combine
+import Network
+
+public protocol MovieDetailsRemoteDataSourceProtocol {
+  func fetchMovieDetails(with id: Int) -> AnyPublisher<MovieDetailDTO, DataTransferError>
+}

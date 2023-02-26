@@ -7,6 +7,11 @@
 
 import Foundation
 
+public protocol MovieDetailsMapperProtocol {
+  func mapMovie(_ id: MovieDetailDTO, imageBasePath: String, imageSize: ImageSize) -> MovieDetail
+}
+
+
 public protocol MoviePageMapperProtocol {
   func mapMoviePage(_ page: MoviePageDTO, imageBasePath: String, imageSize: ImageSize) -> MoviePage
 }
@@ -18,5 +23,5 @@ public enum ImageSize: String {
 
 public protocol AccountMovieDetailsMapperProtocol {
   func mapActionResult(result: MovieActionStatusDTO) -> MovieActionStatus
-  func mapTVShowStatusResult(result: MovieAccountStatusDTO) -> MovieAccountStatus
+  func mapMovieStatusResult(result: MovieAccountStatusDTO) -> MovieAccountStatus
 }
