@@ -86,12 +86,14 @@ class MovieDetailViewController: UIViewController, Loadable{
             image: UIImage(systemName: "heart.fill"),
             handler: { [weak self] _ in
                 self?.viewModel.favoriteButtonDidTapped()
+                print("favoriteButton tapped")
             })
         
         watchListButton.primaryAction = UIAction(
             image: UIImage(systemName: "bookmark.fill"),
             handler: { [weak self] _ in
                 self?.viewModel.watchedButtonDidTapped()
+                print("watchListButton tapped")
             })
         
         viewModel

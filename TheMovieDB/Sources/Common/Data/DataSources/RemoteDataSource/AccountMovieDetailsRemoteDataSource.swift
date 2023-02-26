@@ -26,11 +26,12 @@ extension AccountMovieDetailsRemoteDataSource: AccountMovieDetailsRemoteDataSour
         "session_id": session
       ],
       bodyParameters: [
-        "media_type": "tv",
+        "media_type": "movie",
         "media_id": movieID,
         "favorite": favorite
       ]
     )
+      print(movieID)
     return dataTransferService.request(with: endpoint).eraseToAnyPublisher()
   }
 
@@ -42,7 +43,7 @@ extension AccountMovieDetailsRemoteDataSource: AccountMovieDetailsRemoteDataSour
         "session_id": session
       ],
       bodyParameters: [
-        "media_type": "tv",
+        "media_type": "movie",
         "media_id": movieID,
         "watchlist": watchedList
       ]

@@ -114,18 +114,19 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
         .filter { didSendTap, isLoading in
             return didSendTap && isLoading == false
         }
-        .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
+        .debounce(for: .milliseconds(150), scheduler: DispatchQueue.main)
         .flatMap { [weak self] _ -> AnyPublisher<Result<Bool, DataTransferError>, Never> in
-            guard let strongSelf = self else { return Empty().eraseToAnyPublisher() }
-            strongSelf.markAsFavoriteOnFlight.send(true)
-            strongSelf.tapFavoriteButton.send(false)
-            return strongSelf.markAsFavorite(state: strongSelf.isFavorite.value)
+            guard let self = self else { return Empty().eraseToAnyPublisher() }
+            self.markAsFavoriteOnFlight.send(true)
+            self.tapFavoriteButton.send(false)
+            return self.markAsFavorite(state: self.isFavorite.value)
         }
         .receive(on: DispatchQueue.main)
         .sink(receiveValue: { [weak self] result in
             self?.markAsFavoriteOnFlight.send(false)
             switch result {
             case .failure:
+                print("SASF")
                 break
             case .success(let newState):
                 self?.isFavorite.send(newState)
@@ -158,6 +159,7 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
             case .failure:
                 break
             case .success(let newState):
+                print("asf")
                 self?.isWatchList.send(newState)
                 self?.closures?.updateWatchListMovies?(MovieUpdated(movieId: self?.movieId ?? 0, isActive: newState))
             }

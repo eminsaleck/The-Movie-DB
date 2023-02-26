@@ -31,7 +31,7 @@ extension DefaultAccountMovieRepository: AccountMovieRepository {
     let loggedUser = loggedUserRepository.getUser()
     let userId = loggedUser?.id ?? 0
 
-    return moviePageRemoteDataSource.fetchFavoritesShows(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
+    return moviePageRemoteDataSource.fetchFavoritesMovies(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
       .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
@@ -40,7 +40,7 @@ extension DefaultAccountMovieRepository: AccountMovieRepository {
     let loggedUser = loggedUserRepository.getUser()
     let userId = loggedUser?.id ?? 0
 
-    return moviePageRemoteDataSource.fetchWatchListShows(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
+    return moviePageRemoteDataSource.fetchFavoritesMovies(page: page, userId: userId, sessionId: loggedUser?.sessionId ?? "")
       .map { self.mapper.mapMoviePage($0, imageBasePath: self.imageBasePath, imageSize: .medium) }
       .eraseToAnyPublisher()
   }
