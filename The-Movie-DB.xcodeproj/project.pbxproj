@@ -31,7 +31,7 @@
 		AC0F35AA2912843C00BB05AF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC229BFF296D8E0F0062261C /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		ACABB54E29436F5200B5B7E4 /* TheMovieDB */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TheMovieDB; sourceTree = "<group>"; };
-		ACD6F1AF299E4CE5001F9856 /* SwiftLint-main */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "SwiftLint-main"; path = "../../Downloads/SwiftLint-main"; sourceTree = "<group>"; };
+		ACD2CB3829B4CB3E0089C534 /* The-Movie-DB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "The-Movie-DB.entitlements"; sourceTree = "<group>"; };
 		ACD70945290117BB00A1116C /* The-Movie-DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Movie-DB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD70948290117BB00A1116C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACD70951290117BD00A1116C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,18 +57,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ACD6F1AE299E4CE5001F9856 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				ACD6F1AF299E4CE5001F9856 /* SwiftLint-main */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		ACD7093C290117BB00A1116C = {
 			isa = PBXGroup;
 			children = (
-				ACD6F1AE299E4CE5001F9856 /* Packages */,
+				ACD2CB3829B4CB3E0089C534 /* The-Movie-DB.entitlements */,
 				ACABB54E29436F5200B5B7E4 /* TheMovieDB */,
 				ACD70947290117BB00A1116C /* iOS */,
 				ACD70946290117BB00A1116C /* Products */,
@@ -312,6 +304,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "The-Movie-DB.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5JVTTP945W;
@@ -340,6 +333,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "The-Movie-DB.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5JVTTP945W;

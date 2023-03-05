@@ -10,26 +10,17 @@ import Common
 import UI
 
 class MovieDetailRootView: UIView {
-    
     private let viewModel: MovieDetailViewModelProtocol
     private let scrollView: UIScrollView = UIScrollView()
+    private let backDropView = MovieDetailBackdropView()
     
     private lazy var mainStackView: UIStackView = {
-        let firstSeparatorView = MovieDetailRootView.buildSeparatorView()
-        let secondSeparatorView = MovieDetailRootView.buildSeparatorView()
-        let thirdSeparatorView = MovieDetailRootView.buildSeparatorView()
-        let fourthSeparatorView = MovieDetailRootView.buildSeparatorView()
-        
         let stack = UIStackView(arrangedSubviews: [
             titleContainerView,
-            backDropImageView,
-            firstSeparatorView,
+            backDropView,
             episodeGuideContainerView,
-            secondSeparatorView,
             overViewContainer,
-            thirdSeparatorView,
             votesViewContainer,
-            fourthSeparatorView
         ])
         stack.axis = .vertical
         stack.alignment = .fill
@@ -38,9 +29,40 @@ class MovieDetailRootView: UIView {
         return stack
     }()
     
+    private lazy var episodeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.text = "safa"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.adjustsFontForContentSizeCategory = true
+        return label
+    }()
+    
+    private lazy var numberEpisodesLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.text = "1123"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 1
+        label.adjustsFontForContentSizeCategory = true
+        return label
+    }()
+    
+    private lazy var rightSelectorView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "chevron.right")
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    
     private lazy var backDropImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
+        imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -164,35 +186,7 @@ class MovieDetailRootView: UIView {
         return view
     }()
     
-    private lazy var episodeLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.adjustsFontForContentSizeCategory = true
-        return label
-    }()
     
-    private lazy var numberEpisodesLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.text = "1123"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 1
-        label.adjustsFontForContentSizeCategory = true
-        return label
-    }()
-    
-    private lazy var rightSelectorView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "chevron.right")
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    // MARK: - Overview
     private lazy var overViewContainer: UIView = {
         let view = UIView()
         
@@ -203,7 +197,6 @@ class MovieDetailRootView: UIView {
         posterImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             posterImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            posterImageView.trailingAnchor.constraint(equalTo: overViewText.leadingAnchor, constant: -10),
             posterImageView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 0),
             posterImageView.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: 0),
             posterImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4),
@@ -214,16 +207,18 @@ class MovieDetailRootView: UIView {
         NSLayoutConstraint.activate([
             overViewText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             overViewText.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 0),
+            overViewText.widthAnchor.constraint(equalToConstant: 300),
             overViewText.bottomAnchor.constraint(greaterThanOrEqualTo: view.bottomAnchor, constant: 0),
             overViewText.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-        
         return view
     }()
     
     private lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.opacity = 0
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -315,12 +310,16 @@ class MovieDetailRootView: UIView {
     init(frame: CGRect = .zero, viewModel: MovieDetailViewModelProtocol) {
         self.viewModel = viewModel
         super.init(frame: frame)
-
+        
         setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupPoster(_ imageView: UIImageView) {
+        imageView.layer.cornerRadius = 20
     }
     
     func setupView(with movie: MovieDetailInfoModel) {
@@ -333,6 +332,8 @@ class MovieDetailRootView: UIView {
         maxScoreLabel.text = movie.maxScore
         backDropImageView.loadImage(imagePath:movie.backDropPath!)
         posterImageView.loadImage(imagePath: movie.posterPath!)
+        setupPoster(posterImageView)
+        animateBackDrop()
     }
     
     // MARK: - Private
@@ -341,9 +342,33 @@ class MovieDetailRootView: UIView {
         constructHierarchy()
         activateConstraints()
         setupGestures()
+        animateOverviewContainer()
+    }
+    
+    func animateOverviewContainer() {
+        UIView.animate(withDuration: 1) { [weak self] in
+            self?.posterImageView.transform = CGAffineTransform(translationX: 0, y: -250)
+            self?.overViewText.transform = CGAffineTransform(translationX: -40, y: 0)
+            self?.votesViewContainer.transform = CGAffineTransform(translationX: 75, y: 0)
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        backDropView.addSubview(backDropImageView)
+        backDropImageView.frame = backDropView.bounds
+    }
+    
+    private func animateBackDrop() {
+        UIView.animate(withDuration: 2.0) { [weak self] in
+            self?.posterImageView.layer.opacity = 1.0  }
     }
     
     private func constructHierarchy() {
+        backDropImageView.frame = backDropView.bounds
+        backDropView.addSubview(backDropImageView)
+        
         scrollView.addSubview(mainStackView)
         addSubview(scrollView)
     }
@@ -357,7 +382,7 @@ class MovieDetailRootView: UIView {
     private func activateConstraintsForSubViews() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            backDropImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25),
+            backDropView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25),
             overViewContainer.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)
         ])
     }
@@ -383,25 +408,6 @@ class MovieDetailRootView: UIView {
         ])
     }
     
-    static func buildSeparatorView() -> UIView {
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
-        let lineView = UIView()
-        lineView.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
-        
-        view.addSubview(lineView)
-        
-        lineView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            lineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            lineView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            lineView.topAnchor.constraint(equalTo: view.topAnchor),
-            lineView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
-        return view
-    }
     
     // MARK: - Gestures
     private func setupGestures() {
