@@ -26,7 +26,6 @@ let package = Package(
         .library(name: "ExploreFeature", targets: ["ExploreFeature"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/evgenyneu/keychain-swift.git", from: "14.0.0"),
         .package(url: "https://github.com/realm/realm-swift.git", from: "10.36.0"),
         .package(url: "https://github.com/SDWebImage/SDWebImage.git", from: "5.1.0"),
         .package(url: "https://github.com/airbnb/lottie-spm.git", from: "4.1.2"),
@@ -67,7 +66,6 @@ let package = Package(
         .target(
             name: "Common",
             dependencies: [
-                .product(name: "KeychainSwift", package: "keychain-swift"),
             ]
         ),
         
@@ -77,7 +75,6 @@ let package = Package(
                     "Common",
                 ]
             ),
-        
             .target(
                 name: "Networking",
                 dependencies: [

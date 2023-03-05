@@ -24,6 +24,7 @@ final class DefaultGenreRemoteDataSource: GenreRemoteDataSource {
             path: "3/genre/movie/list",
             method: .get
         )
+        print(endpoint.path)
         return dataTransferService.request(with: endpoint)
     }
     

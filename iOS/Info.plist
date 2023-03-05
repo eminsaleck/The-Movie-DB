@@ -12,5 +12,11 @@
 	<string>https://gravatar.com/avatar</string>
 	<key>IMAGE_BASE_URL</key>
 	<string>https://image.tmdb.org</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>

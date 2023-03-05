@@ -21,6 +21,8 @@ public protocol Requestable {
   func urlRequest(with networkConfig: NetworkConfigurable) throws -> URLRequest
 }
 
+
+
 public enum HTTPMethodType: String {
   case get     = "GET"
   case head    = "HEAD"

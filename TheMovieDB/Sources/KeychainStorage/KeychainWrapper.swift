@@ -5,21 +5,22 @@
 //  Created by LEMIN DAHOVICH on 08.12.2022.
 //
 
-import KeychainSwift
+
+import Foundation
 
 @propertyWrapper
-public struct KeychainStorage {
-
+public struct KeychainWrapper {
+    
     private let key: String
-    private lazy var keychain = KeychainSwift()
-
+    private lazy var keychain = KeychainService()
+    
     init(key: String) {
         self.key = key
     }
-
+    
     public var wrappedValue: String? {
         mutating get {
-            return keychain.get(key)
+            return keychain.getValue(key)
         }
         set {
             if let newValue = newValue {
@@ -29,5 +30,4 @@ public struct KeychainStorage {
             }
         }
     }
-
 }

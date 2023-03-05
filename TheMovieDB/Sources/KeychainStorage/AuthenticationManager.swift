@@ -11,16 +11,16 @@ public final class AuthenticationManager {
     
     public static let shared = AuthenticationManager()
     
-    @KeychainStorage(key: Constants.sessionIdKey)
+    @KeychainWrapper(key: Constants.sessionIdKey)
     private var sessionId: String?
     
-    @KeychainStorage(key: Constants.accountIdKey)
+    @KeychainWrapper(key: Constants.accountIdKey)
     private var accountId: String?
     
-    @KeychainStorage(key: Constants.accessTokenKey)
+    @KeychainWrapper(key: Constants.accessTokenKey)
     private var accessToken: String?
     
-    @KeychainStorage(key: Constants.requestTokenKey)
+    @KeychainWrapper(key: Constants.requestTokenKey)
     var requestToken: String?
     
     // MARK: - Initializer
